@@ -1,0 +1,7 @@
+<?php
+
+$school_name = 
+
+
+
+?>
