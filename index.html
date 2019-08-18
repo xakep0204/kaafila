@@ -705,13 +705,23 @@
               </button>
             </div>
             <div class="modal-body">
-              <form method="POST" action="#">
+              <form method="POST" action="register.php">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="your-name" placeholder="School Name">
+                  <input type="text" class="form-control" name="school_name" placeholder="School Name">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="your-email" placeholder="Your Email">
+                  <input type="email" class="form-control" name="school_email" placeholder="Your Email">
                 </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="school_address" placeholder="School Address">
+                </div>
+                <div class="form-group">
+                  <input type="tel" class="form-control" name="school_phone" placeholder="School Contact Number">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="main_contact" placeholder="Main Contact Person at your school">
+                </div>
+                
                 <div class="form-group">  
                   <select id="ticket-type" name="ticket-type" class="form-control" >
                     <option value="">-- Select Your Ticket Type --</option>
