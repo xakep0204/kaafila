@@ -478,7 +478,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #intro:before {
   content: "";
-  background: rgba(255,255,255);
+  background: url("/img/bg-banner-bottom.png") no-repeat center bottom, url("/img/bg-banner-top.png") no-repeat center top, rgba(255,255,255);
   position: absolute;
   bottom: 0;
   top: 0;
