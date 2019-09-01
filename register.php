@@ -9,6 +9,15 @@ $main_contact_w = $_POST['main_contact_w'];
 $teacher_escort_1 = $_POST['teacher_escort_1'];
 $teacher_escort_1_w = $_POST['teacher_escort_1_w'];
 
+$sql ='INSERT INTO `Basic_school`( `school_name`, `school_email`, `school_address`, `school_phone`, `main_contact`, `main_contact_w`, `teacher_escort_1`, `teacher_escort_1_w`) VALUES ()';
+
+
+
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
