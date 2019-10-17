@@ -33,6 +33,10 @@ p {
   margin: 0 0 30px 0;
 }
 
+.supporter-logo img {
+  height: 100%
+}
+
 h1,
 h2,
 h3,
@@ -657,8 +661,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------------------------------------*/
 
 #about {
-  background: url("../img/about-bg.jpg");
-  background-size: cover;
+  background: url("../img/about-banner.png") right no-repeat;
+  background-size: 70vh;
   overflow: hidden;
   position: relative;
   color: #fff;
