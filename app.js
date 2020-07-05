@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var hbs = require('express-handlebars');
 var indexRouter = require('./routes/index');
 
 var app = express();
@@ -12,6 +12,12 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('layouts', path.join(__dirname, 'views/layouts'));
 app.set('view engine', 'hbs');
+app.engine('hbs', hbs({
+    extname: 'hbs',
+    defaultView: 'default',
+    layoutsDir: __dirname + 'views/pages/',
+    partialDie: __dirname + 'views/partials'
+}));
 
 app.use(logger('dev'));
 app.use(express.json());
