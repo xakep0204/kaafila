@@ -9,14 +9,12 @@ var indexRouter = require('./routes/index');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('layouts', path.join(__dirname, 'views/layouts'));
 app.set('view engine', 'hbs');
 app.engine('hbs', hbs({
     extname: 'hbs',
     defaultView: 'default',
-    layoutsDir: __dirname + 'views/layouts/',
-    partialDie: __dirname + 'views/partials'
+    layoutsDir: __dirname + '/views/layouts/',
+    partialDie: __dirname + '/views/partials'
 }));
 
 app.use(logger('dev'));
