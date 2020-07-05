@@ -15,6 +15,6 @@
     "semantic-ui": "^2.4.2"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^4.0.2"
   }
 }
