@@ -1,12 +1,26 @@
+@font-face {
+    font-family: 'anaktoria';
+    src: url('/fonts/anaktoria.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'timeless';
+    src: url('/fonts/Timeless.ttf') format('truetype');
+}
+
 body {
-    min-height: 2000px;
     padding-top: 54px;
+    min-height: 2000px;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: grayscale;
 }
 
+.anaktoria {
+    font-family: 'anaktoria'!important;
+}
+
 .ui.borderless.menu {
-    background-color: #f8f8f8;
+    background-color: #17232E;
     box-shadow: none;
     flex-wrap: wrap;
     border: none;
@@ -14,9 +28,56 @@ body {
     padding-right: 0;
 }
 
-.ui.borderless.menu .header.item {
-    font-size: 18px;
-    font-weight: 400;
+.ui.borderless.menu .item,
+.ui.borderless.menu .item h2 {
+    color: white!important;
+}
+
+.ui.borderless.menu .item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ui.borderless.menu .item#signin:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.ui.borderless.menu .item.active {
+    border-top: 4px solid #4B8BCE;
+}
+
+.ui.borderless.menu.vertical .item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ui.borderless.menu.vertical .item#signin:hover,
+.item#togglebutton:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.ui.borderless.menu .item {
+    font-size: 16px;
+    font-family: 'timeless'
+}
+
+#togglebutton button:hover,
+#togglebutton button:active,
+#togglebutton button:focus {
+    background: rgba(255, 255, 255, 0.1)!important;
+}
+
+#togglebutton i {
+    color: white;
+}
+
+.ui.borderless.menu.vertical .item.active {
+    border-top: 0px solid #4B8BCE;
+    font-weight: bolder;
+    color: #4B8BCE!important;
+}
+
+.ui.borderless.menu .item h2 {
+    font-size: 24px;
+    font-weight: 200;
 }
 
 .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
