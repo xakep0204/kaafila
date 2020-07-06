@@ -5,6 +5,7 @@
 
 body {
     padding-top: 54px;
+    background-color: black;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: grayscale;
 }
@@ -14,17 +15,20 @@ body {
 }
 
 .ui.borderless.menu {
-    background-color: #f8f8f8;
+    background-color: #17232E;
     box-shadow: none;
     flex-wrap: wrap;
     border: none;
     padding-left: 0;
     padding-right: 0;
 }
+.ui.borderless.menu .item, .ui.borderless.menu .item h2 {
+    color: white!important;
+}
 
-.ui.borderless.menu .header.item {
-    font-size: 18px;
-    font-weight: 400;
+.ui.borderless.menu .item h2 {
+    font-size: 24px;
+    font-weight: 200;
 }
 
 .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
