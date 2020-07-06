@@ -5,12 +5,12 @@
 
 @font-face {
     font-family: 'timeless';
-    src: url('fonts/Timeless.ttf') format('truetype');
+    src: url('/fonts/Timeless.ttf') format('truetype');
 }
 
 body {
     padding-top: 54px;
-    background-color: black;
+    min-height: 2000px;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: grayscale;
 }
