@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
 =======
     res.render('index', {
         title: "Express",
-        headerStyles: ['/css/navbar.css']
+        headerStyles: ['/css/navbar.css', '/css/hero-banner.css'],
+        scripts: ['/js/navbar.js']
     });
 >>>>>>> c1ab19f793e4c08a3ed92029800c92b5a120b713
 });
