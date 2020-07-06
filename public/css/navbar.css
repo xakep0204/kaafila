@@ -3,6 +3,11 @@
     src: url('/fonts/anaktoria.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'timeless';
+    src: url('fonts/Timeless.ttf') format('truetype');
+}
+
 body {
     padding-top: 54px;
     background-color: black;
@@ -22,8 +27,52 @@ body {
     padding-left: 0;
     padding-right: 0;
 }
-.ui.borderless.menu .item, .ui.borderless.menu .item h2 {
+
+.ui.borderless.menu .item,
+.ui.borderless.menu .item h2 {
     color: white!important;
+}
+
+.ui.borderless.menu .item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ui.borderless.menu .item#signin:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.ui.borderless.menu .item.active {
+    border-top: 4px solid #4B8BCE;
+}
+
+.ui.borderless.menu.vertical .item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ui.borderless.menu.vertical .item#signin:hover,
+.item#togglebutton:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.ui.borderless.menu .item {
+    font-size: 16px;
+    font-family: 'timeless'
+}
+
+#togglebutton button:hover,
+#togglebutton button:active,
+#togglebutton button:focus {
+    background: rgba(255, 255, 255, 0.1)!important;
+}
+
+#togglebutton i {
+    color: white;
+}
+
+.ui.borderless.menu.vertical .item.active {
+    border-top: 0px solid #4B8BCE;
+    font-weight: bolder;
+    color: #4B8BCE!important;
 }
 
 .ui.borderless.menu .item h2 {
