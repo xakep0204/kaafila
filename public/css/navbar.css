@@ -1,8 +1,16 @@
+@font-face {
+    font-family: 'anaktoria';
+    src: url('/fonts/anaktoria.ttf') format('truetype');
+}
+
 body {
-    min-height: 2000px;
     padding-top: 54px;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: grayscale;
+}
+
+.anaktoria {
+    font-family: 'anaktoria'!important;
 }
 
 .ui.borderless.menu {

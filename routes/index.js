@@ -5,7 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: "Express",
-        headerStyles: ['/css/navbar.css']
+        headerStyles: ['/css/navbar.css'],
+        scripts: ['/js/navbar.js']
     });
 });
 
