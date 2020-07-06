@@ -3,6 +3,9 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/out/semantic.min.css' />
+    {{#each headerStyles}}
+      <link rel='stylesheet' href='{{this}}' />
+    {{/each}}
   </head>
   <body>
     {{{body}}}
