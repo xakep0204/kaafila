@@ -12,5 +12,5 @@ router.get('/', function(req, res, next) {
         scripts: ['/js/navbar.js']
     });
 });
-// test
+
 module.exports = router;
