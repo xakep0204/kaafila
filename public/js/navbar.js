@@ -5,3 +5,10 @@ $(document).ready(function() {
 
     $(".ui.dropdown").dropdown();
 });
+
+$(function() {
+    $(document).scroll(function() {
+        var $nav = $(".ui.borderless.menu");
+        $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+    });
+});
