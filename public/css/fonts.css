@@ -1,0 +1,80 @@
+/* Kaafila */
+@font-face {
+    font-family: 'anaktoria';
+    src: url('/fonts/anaktoria.ttf') format('truetype');
+}
+
+/* Bread and Circuses */
+@font-face {
+    font-family: 'rye';
+    src: url('/fonts/Rye-Regular.ttf')
+    format('truetype');
+}
+@font-face {
+    font-family: 'princess-sofia';
+    src: url('/fonts/PrincessSofia-Regular.ttf')
+    format('truetype');
+}
+
+/* Folk Fluence */
+@font-face {
+    font-family: 'ardagh';
+    src: url('/fonts/Ardagh.ttf')
+    format('truetype');
+}
+@font-face {
+    font-family: 'dalelands';
+    src: url('/fonts/Dalelands Uncial.otf')
+    format('opentype');
+}
+
+/* Strings Attached */
+@font-face {
+    font-family: 'welcome';
+    src: url('/fonts/Welcome.ttf')
+    format('truetype');
+}
+
+/* General */
+@font-face {
+    font-family: 'appleGaramond';
+    src: url('/fonts/AppleGaramond.ttf')
+    format('truetype');
+}
+@font-face {
+    font-family: 'madeBonVoyage';
+	src: url('/fonts/MADE Bon Voyage Regular.otf') 
+	format('opentype');
+}
+@font-face {
+    font-family: 'timeless';
+    src: url('/fonts/Timeless.ttf') format('truetype');
+}
+
+.anaktoria {
+    font-family: 'anaktoria'!important;
+}
+.princess-sofia {
+    font-family: 'princess-sofia' !important;
+}
+.rye {
+    font-family: 'rye'!important;
+}
+.ardagh {
+    font-family: 'ardagh'!important;
+}
+.dalelands {
+    font-family: 'dalelands'!important;
+}
+.welcome {
+    font-family: 'welcome'!important;
+}
+.apple-garamond {
+    font-family: 'appleGaramond'!important;
+}
+.bon-voyage {
+    font-family: 'madeBonVoyage'!important;
+}
+.timeless {
+    font-family: 'timeless'!important;
+}
