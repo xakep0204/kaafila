@@ -52,8 +52,13 @@ body {
 }
 
 .ui.borderless.menu .signin.item button {
-  /* padding: 1em 1em; */
   background-color: #007F74;
+}
+.ui.borderless.menu .signin.item button:hover {
+  background-color: #006D64;
+}
+.ui.borderless.menu .signin.item button:focus {
+  background-color: #005B53;
 }
 
 .mobile .ui.borderless.menu .signin.item {
