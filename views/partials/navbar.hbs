@@ -1,55 +1,89 @@
-<
-iv class="ui computer only padded grid">
-    <div class="ui top fixed borderless fluid huge menu">
-        <div class="ui container">
-            <a class="item">
-                <h2 class="ui header anaktoria">Kaafila</h2>
-            </a>
-            <div class="right menu">
-                <a href="" class="ui item">Bread & Circuses</a>
-                <a href="" class="active ui item">Folk Fluence</a>
-                <a href="" class="ui item">Iridescence</a>
-                <a href="" class="ui item">Strings Attached</a>
-                <a href="/signup" class="ui item" id="signin">
-                    <button class="ui primary button">Sign in</button>
-                </a>
-
-                {{!-- <a class="active ui simple dropdown item">
-                    Bread & Circuses
-                    <div class="menu">
-                        <div class="item">Gallery</div>
-                        <div class="item">Another action</div>
-                        <div class="item">Something else here</div>
-                        <div class="ui divider"></div>
-                        <div class="header">Navbar header</div>
-                        <div class="item">Seperated link</div>
-                        <div class="item">One more seperated link</div>
-                    </div>
-                </a> --}}
-            </div>
-        </div>
-    </div>
+<div class="ui computer only padded grid">
+	<div class="ui top fixed borderless fluid huge menu">
+		<div class="ui container">
+			<a class="header item">Kaafila</a>
+			{{!-- <a class="header item">
+				<img src="/img/logo-main.png" alt="kaafila_logo">
+			</a> --}}
+			<div class="right menu">
+				<a class="ui dropdown item" tabindex="0">
+					Events <i class="dropdown icon"></i>
+					<div class="menu" tabindex="-1">
+						<div class="item">Bread & Circuses</div>
+						<div class="item">Folk Fluence</div>
+						<div class="item">Iridescence</div>
+						<div class="item">Strings Attached</div> 
+						{{!-- <div class="ui divider"></div>
+						<div class="header">Navbar header</div> --}}
+					</div>
+				</a>
+				<a class="ui dropdown item" tabindex="0">
+					Workshops <i class="dropdown icon"></i>
+					<div class="menu" tabindex="-1">
+						<div class="item">Workshop 0</div>
+						<div class="item">Workshop 1</div>
+						<div class="item">Workshop 2</div>
+						<div class="item">Workshop 3</div> 
+						<div class="item">Workshop 4</div> 
+					</div>
+				</a>
+				<a class="item">About</a>
+				<a class="item">Contact</a>
+				<a class="item signin">
+					<button class="ui button primary">Sign in</button>
+				</a>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="ui mobile tablet only padded grid">
-    <div class="ui top fixed borderless huge fluid menu">
-        <a class="item">
-            <h2 class="ui header anaktoria">Kaafila</h2>
-        </a>
-        <div class="right menu">
-            <div id="togglebutton" class="item">
-                <button class="ui icon toggle basic button">
-                    <i class="content icon"></i>
-                </button>
-            </div>
-        </div>
-        <div class="ui vertical borderless fluid menu">
-            <a href="" class="ui item">Bread & Circuses</a>
-            <a href="" class="active ui item">Folk Fluence</a>
-            <a href="" class="ui item">Iridescence</a>
-            <a href="" class="ui item">Strings Attached</a>
-            <a href="" class="ui item" id="signin">
-                <button class="ui primary button">Sign in</button>
-            </a>
-        </div>
-    </div>
+	<div class="ui top fixed borderless huge fluid menu">
+		<a class="header item">Kaafila</a>
+		<div class="right menu">
+			<div class="item signin">
+				<button class="ui button primary">Sign in</button>
+			</div>
+			<div class="item togglebutton">
+				<button class="ui icon toggle basic button">
+					<i class="content icon"></i>
+				</button>
+			</div>
+		</div>
+		<div class="ui vertical borderless fluid menu">
+			<a class="ui dropdown item" tabindex="0">
+					Events <i class="dropdown icon"></i>
+					<div class="menu" tabindex="-1">
+						<div class="item">Bread & Circuses</div>
+						<div class="item">Folk Fluence</div>
+						<div class="item">Iridescence</div>
+						<div class="item">Strings Attached</div> 
+						{{!-- <div class="ui divider"></div>
+						<div class="header">Navbar header</div> --}}
+					</div>
+				</a>
+				<a class="ui dropdown item" tabindex="0">
+					Workshops <i class="dropdown icon"></i>
+					<div class="menu" tabindex="-1">
+						<div class="item">Workshop 0</div>
+						<div class="item">Workshop 1</div>
+						<div class="item">Workshop 2</div>
+						<div class="item">Workshop 3</div> 
+						<div class="item">Workshop 4</div> 
+					</div>
+				</a>
+				<a class="item">About</a>
+				<a class="item">Contact</a>
+			{{!-- <div class="ui dropdown item" tabindex="0">
+				Dropdown<i class="dropdown icon"></i>
+				<div class="menu" tabindex="-1">
+					<a class="item"> Action </a> <a class="item"> Another action </a>
+					<a class="item"> Something else here </a>
+					<div class="divider"></div>
+					<div class="header">Navbar header</div>
+					<a class="item"> Seperated link </a>
+					<a class="item"> One more seperated link </a>
+				</div>
+			</div> --}}
+		</div>
+	</div>
 </div>
