@@ -35,8 +35,13 @@ body {
 .mobile .ui.borderless.menu.scrolled .active.item {
   background-color: rgba(0,0,0,.2);
 }
+
 .ui.borderless.menu .togglebutton.item:hover, 
-.ui.borderless.menu .signin.item:hover {
+.ui.borderless.menu .signin.item:hover, 
+.ui.borderless.menu .togglebutton.item:focus, 
+.ui.borderless.menu .signin.item:focus, 
+.ui.borderless.menu .togglebutton.item:active, 
+.ui.borderless.menu .signin.item:active {
   background-color: transparent!important;
 }
 
@@ -63,6 +68,7 @@ body {
 
 .mobile .ui.borderless.menu .signin.item {
   padding-right: 0;
+  padding-left: 0;
 }
 
 .ui.borderless.menu .item button.toggle {
