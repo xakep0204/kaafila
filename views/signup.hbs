@@ -1,0 +1,51 @@
+{{>navbar_logo}}
+<div id="signin" class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui image header">
+      <div class="content">
+        <img src="/img/logo-main.png" alt="kaafila_logo">
+        Sign up
+      </div>
+    </h2>
+    <form class="ui large form">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui input">
+            <input type="text" name="firstName" placeholder="First Name">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui input">
+            <input type="text" name="lastName" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui input">
+            <input type="email" name="email" placeholder="Email address">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui input">
+            <input type="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui input">
+            <input type="password" name="confirmPassword" placeholder="Confirm Password">
+          </div>
+        </div>
+        <div id="signin_email" class="ui fluid large primary submit button">Sign up</div>
+        <div id="signin_google" class="ui fluid large basic black submit button">
+          <i class="google icon"></i>Sign up with Google
+        </div>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message">
+      Already have an Account? <a href="/signin">Sign in</a>
+    </div>
+  </div>
+</div>
