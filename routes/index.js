@@ -9,7 +9,9 @@ router.get('/', function(req, res, next) {
             '/css/navbar.css',
             '/css/hero-banner.css'
         ],
-        scripts: ['/js/navbar.js']
+        scripts: [
+            '/js/navbar.js'
+        ]
     });
 });
 
@@ -17,6 +19,10 @@ router.get('/', function(req, res, next) {
 router.get('/signin', function(req, res, next) {
     res.render('signin', {
         title: "Kaafila - Shiv Nadar School Noida",
+        headerStyles: [
+            '/css/navbar_logo.css',
+            '/css/signin.css'
+        ]
     });
 });
 
