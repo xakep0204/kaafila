@@ -21,7 +21,23 @@ router.get('/signin', function(req, res, next) {
         title: "Kaafila - Shiv Nadar School Noida",
         headerStyles: [
             '/css/navbar_logo.css',
-            '/css/signin.css'
+            '/css/signin.css',
+        ],
+        scripts: [
+            '/js/google_signin.js'
+        ]
+    });
+});
+
+router.get('/signup', function(req, res, next) {
+    res.render('signup', {
+        title: "Kaafila - Shiv Nadar School Noida",
+        headerStyles: [
+            '/css/navbar_logo.css',
+            '/css/signup.css',
+        ],
+        scripts: [
+            '/js/google_signin.js'
         ]
     });
 });
