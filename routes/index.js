@@ -38,7 +38,6 @@ router.get('/signup', function(req, res, next) {
         ],
         scripts: [
             '/js/google_signin.js'
-
         ]
     });
 });
