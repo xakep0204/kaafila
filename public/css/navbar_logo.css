@@ -1,7 +1,5 @@
 body {
-  /* min-height: 2000px; */
   padding-top: 54px;
-  /* background: black; */
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: grayscale;
 }
@@ -24,89 +22,13 @@ body {
 .ui.borderless.menu .item:hover {
   background-color: rgba(255, 255, 255, .2);
 }
-.computer .ui.borderless.menu .active.item {
-  border-top: 5px solid #01b6a7;
-  background-color: transparent;
-}
-.computer .ui.borderless.menu.scrolled .active.item {
-  border-top: 5px solid white;
-  background-color: transparent;
-}
-.mobile .ui.borderless.menu.scrolled .active.item {
-  background-color: rgba(0,0,0,.2);
-}
-.ui.borderless.menu .togglebutton.item:hover, 
-.ui.borderless.menu .signin.item:hover {
-  background-color: transparent!important;
-}
 
 .ui.borderless.menu.scrolled {
   background-color: #01b6a7;
 }
 
-
 .ui.borderless.menu .header.item {
   font-size: 20px;
   font-weight: 600;
   font-family: 'anaktoria';
-}
-
-.ui.borderless.menu .signin.item button {
-  background-color: #007F74;
-}
-.ui.borderless.menu .signin.item button:hover {
-  background-color: #006D64;
-}
-.ui.borderless.menu .signin.item button:focus {
-  background-color: #005B53;
-}
-
-.mobile .ui.borderless.menu .signin.item {
-  padding-right: 0;
-}
-
-.ui.borderless.menu .item button.toggle {
-  background-color: #ffffff!important;
-}
-
-.ui.mobile.only.grid .ui.menu .ui.vertical.menu {
-  display: none;
-}
-
-.ui.mobile.only.grid .ui.vertical.menu .dropdown.icon {
-  float: unset;
-}
-
-.ui.mobile.only.grid .ui.vertical.menu .dropdown.icon:before {
-  content: "\f0d7";
-}
-
-.ui.mobile.only.grid .ui.vertical.menu .ui.dropdown.item .menu {
-  position: static;
-  width: 100%;
-  background-color: unset;
-  border: none;
-  box-shadow: none;
-}
-
-.ui.mobile.only.grid .ui.vertical.menu .ui.dropdown.item .menu {
-  margin-top: 6px;
-}
-
-.ui.container > .ui.message {
-  /* background-color: #eeeeee; */
-  box-shadow: none;
-  padding: 5rem 4rem;
-  margin-top: 1rem;
-}
-
-.ui.message h1.ui.header {
-  font-size: 4.5rem;
-}
-
-.ui.message p.lead {
-  font-size: 1.3rem;
-  color: #333333;
-  line-height: 1.4;
-  font-weight: 300;
 }

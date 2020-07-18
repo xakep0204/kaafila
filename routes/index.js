@@ -7,7 +7,9 @@ router.get('/', function(req, res, next) {
         title: "Kaafila - Shiv Nadar School Noida",
         headerStyles: [
             '/css/navbar.css',
-            '/css/hero-banner.css'
+            '/css/hero-banner.css',
+            '/css/index.css',
+            '/css/pastels.css'
         ],
         scripts: [
             '/js/navbar.js'
