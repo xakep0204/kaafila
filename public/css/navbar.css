@@ -16,14 +16,47 @@ body {
   transition: background 200ms linear;
 }
 
-.ui.borderless.menu.scrolled {
-  background-color: #ffffff;
+.ui.borderless.menu .item {
+  color: white!important;
+  font-family: 'timeless';
+  font-weight: 700;
 }
+.ui.borderless.menu .item:hover {
+  background-color: rgba(255, 255, 255, .2);
+}
+.computer .ui.borderless.menu .active.item {
+  border-top: 5px solid #01b6a7;
+  background-color: transparent;
+}
+.computer .ui.borderless.menu.scrolled .active.item {
+  border-top: 5px solid white;
+  background-color: transparent;
+}
+.mobile .ui.borderless.menu.scrolled .active.item {
+  background-color: rgba(0,0,0,.2);
+}
+.ui.borderless.menu .togglebutton.item:hover {
+  background-color: transparent!important;
+}
+
+.ui.borderless.menu.scrolled {
+  background-color: #01b6a7;
+}
+
 
 .ui.borderless.menu .header.item {
   font-size: 20px;
   font-weight: 600;
   font-family: 'anaktoria';
+}
+
+.ui.borderless.menu .signin.item button {
+  /* padding: 1em 1em; */
+  background-color: #007F74;
+}
+
+.mobile .ui.borderless.menu .signin.item {
+  padding-right: 0;
 }
 
 .ui.borderless.menu .item button.toggle {
