@@ -3,19 +3,25 @@
 
 <head>
   <title>{{title}}</title>
-  <link rel='stylesheet' href='/out/semantic.min.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no">
+  <link rel="stylesheet" href="/css/semantic.min.css" type="text/css" />
   <link rel='stylesheet' href='/css/fonts.css' />
   <link rel="icon" href="/img/favicon.png">
   {{#each headerStyles}}
   <link rel='stylesheet' href='{{this}}' />
   {{/each}}
+
 </head>
 
-<body>
+<body id="root" cz-shortcut-listen="true">
   {{{body}}}
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="/out/semantic.min.js"></script>
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/js/semantic.min.js"></script>
+  
+  
+  
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 
@@ -39,6 +45,7 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   </script>
+  
   {{#each scripts}}
   <script src="{{this}}"></script>
   {{/each}}
