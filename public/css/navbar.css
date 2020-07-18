@@ -35,7 +35,8 @@ body {
 .mobile .ui.borderless.menu.scrolled .active.item {
   background-color: rgba(0,0,0,.2);
 }
-.ui.borderless.menu .togglebutton.item:hover {
+.ui.borderless.menu .togglebutton.item:hover, 
+.ui.borderless.menu .signin.item:hover {
   background-color: transparent!important;
 }
 
