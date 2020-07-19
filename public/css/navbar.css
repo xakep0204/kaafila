@@ -21,6 +21,18 @@ body {
   padding-left: .9em;
   padding-right: .9em;
 }
+
+i.content.icon {
+  line-height: 1em!important;
+}
+
+.ui.menu.vertical .ui.dropdown .menu>.item,
+.ui.menu.vertical .ui.dropdown .menu>.item:hover,
+.ui.menu.vertical .ui.dropdown .menu>.item:focus,
+.ui.menu.vertical .ui.dropdown .menu>.item:active {
+  color: white!important;
+}
+
 .ui.borderless.menu .item:hover {
   background-color: rgba(255, 255, 255, .2);
 }
