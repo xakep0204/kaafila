@@ -27,7 +27,6 @@ body {
 }
 
 .fullscreen-video-wrap video {
-  min-height: 100%;
   width: auto;
   display: block;
   position: absolute;

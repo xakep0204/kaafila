@@ -9,10 +9,13 @@ router.get('/', function(req, res, next) {
             '/css/navbar.css',
             '/css/hero-banner.css',
             '/css/index.css',
-            '/css/pastels.css'
+            '/css/pastels.css',
+            'https://jeffry.in/old-jeffry-in/css/jeffry.in.slider.css',
+            'https://jeffry.in/old-jeffry-in/css/jeffry.in.css',
         ],
         scripts: [
-            '/js/navbar.js'
+            '/js/navbar.js',
+            'https://cdn.jsdelivr.net/jquery.glide/1.0.6/jquery.glide.min.js'
         ]
     });
 });

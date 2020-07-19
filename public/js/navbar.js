@@ -8,22 +8,33 @@ $(document).ready(function () {
 		}
 		$(".mobile.only.grid .ui.vertical.menu").toggle(100);
 	});
-
+	
 	$nav.toggleClass("scrolled", $(this).scrollTop() + 108 > $header.height());
-});
-
-$(function () {
 	$(document).scroll(function () {
 		$nav.toggleClass("scrolled", $(this).scrollTop() + 108 > $header.height());
+	});
+	
+	$(".vertical.menu a").click(function() {
+		if (!$(this).hasClass('dropdown')) {
+				$(".mobile.only.grid .ui.vertical.menu").toggle(100);
+		}
+	});
+
+	$(".vertical.menu #dropdowntext").click(function() {
+			$(".mobile.only.grid .ui.vertical.menu").toggle(100);
+	});
+	
+	$(".ui.borderless.menu a").click(function() {
+		var target = $(this).attr('data-target');
+		
+		$('html, body').animate({
+				scrollTop: $(target).offset().top - 54
+		}, 700);
 	});
 });
 
 $(function () {
-  $(".ui.borderless.menu a").click(function() {
-    var target = $(this).attr('data-target');
-    
-    $('html, body').animate({
-        scrollTop: $(target).offset().top - 54
-    }, 700);
-  });
+});
+
+$(function () {
 });
