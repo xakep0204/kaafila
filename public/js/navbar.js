@@ -21,7 +21,7 @@ $(document).ready(function () {
 
 	$nav.toggleClass("scrolled", $(this).scrollTop() + 108 > $header.height());
 	$(document).scroll(function () {
-		$nav.toggleClass("scrolled", $(this).scrollTop() + 108 > $header.height());
+		$nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
 	});
 	
 	$(".ui.borderless.menu a").click(function() {
