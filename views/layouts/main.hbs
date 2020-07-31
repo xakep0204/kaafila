@@ -8,7 +8,25 @@
   <link rel="stylesheet" href="/css/semantic.min.css" type="text/css" />
   <link rel='stylesheet' href='/css/fonts.css' />
   <link rel="icon" href="/img/favicon.png">
-  
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Kaafila - Shiv Nadar School Noida">
+  <meta name="description" content="Kaafila - Integrated Arts Festival | Shiv Nadar School Noida">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://snsartsfestival.in/">
+  <meta property="og:title" content="Kaafila - Shiv Nadar School Noida">
+  <meta property="og:description" content="Kaafila - Integrated Arts Festival | Shiv Nadar School Noida">
+  <meta property="og:image" content="/img/content_image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://snsartsfestival.in/">
+  <meta property="twitter:title" content="Kaafila - Shiv Nadar School Noida">
+  <meta property="twitter:description" content="Kaafila - Integrated Arts Festival | Shiv Nadar School Noida">
+  <meta property="twitter:image" content="/img/content_image.png">
+
   {{#each headerStyles}}
   <link rel='stylesheet' href='{{this}}' />
   {{/each}}
@@ -17,12 +35,12 @@
 
 <body id="root" cz-shortcut-listen="true">
   {{{body}}}
-  
+
   <script src="/js/jquery.min.js"></script>
   <script src="/js/semantic.min.js"></script>
-  
-  
-  
+
+
+
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 
@@ -46,7 +64,7 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   </script>
-  
+
   {{#each scripts}}
   <script src="{{this}}"></script>
   {{/each}}
