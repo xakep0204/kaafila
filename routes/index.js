@@ -19,9 +19,12 @@ router.get('/about', function(req, res, next) {
         active_a: true,
         styles: [
             '/css/pastels.css',
+            '/css/fancybox.min.css'
         ],
         scripts: [
             '/js/navbar.js',
+            '/js/fancybox.min.js',
+            '/js/about.js'
         ]
     });
 });
@@ -31,6 +34,7 @@ router.get('/bread-and-circuses', function(req, res, next) {
         title: "Bread and Circuses - Kaafila",
         active_bnc: true,
         styles: [
+            '/css/events.css',
             '/css/pastels.css',
         ],
         scripts: [
@@ -43,6 +47,7 @@ router.get('/folk-fluence', function(req, res, next) {
         title: "Folk Fluence - Kaafila",
         active_ff: true,
         styles: [
+            '/css/events.css',
             '/css/pastels.css',
         ],
         scripts: [
@@ -55,6 +60,7 @@ router.get('/iridescence', function(req, res, next) {
         title: "Iridescence - Kaafila",
         active_i: true,
         styles: [
+            '/css/events.css',
             '/css/pastels.css',
         ],
         scripts: [
@@ -67,6 +73,7 @@ router.get('/strings-attached', function(req, res, next) {
         title: "Strings Attached - Kaafila",
         active_sa: true,
         styles: [
+            '/css/events.css',
             '/css/pastels.css',
         ],
         scripts: [

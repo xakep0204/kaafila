@@ -78,9 +78,12 @@ body {
   padding-bottom: 2rem;
 }
 
+.hero h1, .hero h4 {
+  color: white!important;
+}
+
 .hero h1 {
   font-size: 4rem!important;
-  color: white!important;
 }
 
 @media (max-width: 960px) {
