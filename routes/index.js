@@ -60,11 +60,11 @@ router.get('/breadandcircuses', function(req, res, next) {
     });
 });
 
-router.get('/folkfluence', function(req, res, next) {
+router.get('/folk-fluence', function(req, res, next) {
     res.render('event', {
         title: "Folk Fluence - Kaafila",
         eventName: "Folk Fluence",
-        eventImg: "img/gallery/2.jpg",
+        eventImg: "img/gallery/folk-fluence-banner.png",
         headerStyles: [
             '/css/navbar.css',
             '/css/event.css',
@@ -80,7 +80,7 @@ router.get('/iridescence', function(req, res, next) {
     res.render('event', {
         title: "Iridescence - Kaafila",
         eventName: "Iridescence",
-        eventImg: "img/gallery/3.jpg",
+        eventImg: "img/gallery/iridescence-banner.png",
         headerStyles: [
             '/css/navbar.css',
             '/css/event.css',
@@ -92,11 +92,11 @@ router.get('/iridescence', function(req, res, next) {
     });
 });
 
-router.get('/stringsattached', function(req, res, next) {
+router.get('/strings-attached', function(req, res, next) {
     res.render('event', {
         title: "Strings Attached - Kaafila",
         eventName: "Strings Attached",
-        eventImg: "img/gallery/4.jpg",
+        eventImg: "img/gallery/strings-attached",
         headerStyles: [
             '/css/navbar.css',
             '/css/event.css',

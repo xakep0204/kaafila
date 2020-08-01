@@ -21,10 +21,10 @@ $(document).ready(function () {
 		window.location.href = "/breadandcircuses"
 	})
 	$("#ff").click(function() {
-		window.location.href = "/folkfluence"
+		window.location.href = "/folk-fluence"
 	})
 	$("#ff-m").click(function() {
-		window.location.href = "/folkfluence"
+		window.location.href = "/folk-fluence"
 	})
 	$("#i").click(function() {
 		window.location.href = "/iridescence"
@@ -33,9 +33,9 @@ $(document).ready(function () {
 		window.location.href = "/iridescence"
 	})
 	$("#sa").click(function() {
-		window.location.href = "/stringsattached"
+		window.location.href = "/strings-attached"
 	})
 	$("#sa-m").click(function() {
-		window.location.href = "/stringsattached"
+		window.location.href = "/strings-attached"
 	})
 });
