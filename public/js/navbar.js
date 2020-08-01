@@ -33,10 +33,10 @@ $(document).ready(function () {
 	});
 
 	$("#bnc").click(function() {
-		window.location.href = "/breadandcircuses"
+		window.location.href = "/bread-and-circuses"
 	})
 	$("#bnc-m").click(function() {
-		window.location.href = "/breadandcircuses"
+		window.location.href = "/bread-and-circuses"
 	})
 	$("#ff").click(function() {
 		window.location.href = "/folk-fluence"
