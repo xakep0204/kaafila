@@ -1,3 +1,141 @@
+<style>
+	body {
+		padding-top: 54px;
+		-webkit-font-smoothing: antialiased;
+		-moz-font-smoothing: grayscale;
+	}
+
+	.ui.borderless.menu {
+		background-color: transparent;
+		box-shadow: none;
+		flex-wrap: wrap;
+		border: none;
+		padding-left: 0;
+		padding-right: 0;
+		transition: background 200ms linear;
+	}
+
+	.ui.borderless.menu .item {
+		color: white !important;
+		font-family: 'timeless';
+		font-weight: 700;
+		padding-left: .9em;
+		padding-right: .9em;
+	}
+
+	i.content.icon {
+		line-height: 1em !important;
+	}
+
+	.ui.menu.vertical .ui.dropdown .menu>.item,
+	.ui.menu.vertical .ui.dropdown .menu>.item:hover,
+	.ui.menu.vertical .ui.dropdown .menu>.item:focus,
+	.ui.menu.vertical .ui.dropdown .menu>.item:active {
+		color: white !important;
+	}
+
+	.ui.borderless.menu .item:hover {
+		background-color: rgba(255, 255, 255, .2);
+	}
+
+	.computer .ui.borderless.menu .active.item {
+		border-top: 5px solid #01b6a7;
+		background-color: transparent;
+	}
+
+	.computer .ui.borderless.menu.scrolled .active.item {
+		border-top: 5px solid white;
+		background-color: transparent;
+	}
+
+	.mobile .ui.borderless.menu.scrolled .active.item {
+		background-color: rgba(0, 0, 0, .2);
+	}
+
+	.ui.borderless.menu .togglebutton.item:hover,
+	.ui.borderless.menu .signin.item:hover,
+	.ui.borderless.menu .togglebutton.item:focus,
+	.ui.borderless.menu .signin.item:focus,
+	.ui.borderless.menu .togglebutton.item:active,
+	.ui.borderless.menu .signin.item:active {
+		background-color: transparent !important;
+	}
+
+	.ui.borderless.menu.scrolled {
+		background-color: #01b6a7;
+	}
+
+
+	.ui.borderless.menu .header.item {
+		font-size: 20px;
+		font-weight: 600;
+		font-family: 'anaktoria';
+	}
+
+	.ui.borderless.menu .signin.item button {
+		background-color: #007F74;
+	}
+
+	.ui.borderless.menu .signin.item button:hover {
+		background-color: #006D64;
+	}
+
+	.ui.borderless.menu .signin.item button:focus {
+		background-color: #005B53;
+	}
+
+	.mobile .ui.borderless.menu .signin.item {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.ui.borderless.menu .item button.toggle {
+		background-color: #ffffff !important;
+	}
+
+	.ui.mobile.only.grid .ui.menu .ui.vertical.menu {
+		display: none;
+	}
+
+	.ui.mobile.only.grid .ui.vertical.menu .dropdown.icon {
+		float: unset;
+	}
+
+	.ui.mobile.only.grid .ui.vertical.menu .dropdown.icon:before {
+		content: "\f0d7";
+	}
+
+	.ui.mobile.only.grid .ui.vertical.menu .ui.dropdown.item .menu {
+		position: static;
+		width: 100%;
+		background-color: unset;
+		border: none;
+		box-shadow: none;
+	}
+
+	.ui.mobile.only.grid .ui.vertical.menu .ui.dropdown.item .menu {
+		margin-top: 6px;
+	}
+
+	.ui.container>.ui.message {
+		/* background-color: #eeeeee; */
+		box-shadow: none;
+		padding: 5rem 4rem;
+		margin-top: 1rem;
+	}
+
+	.ui.message h1.ui.header {
+		font-size: 4.5rem;
+	}
+
+	.ui.message p.lead {
+		font-size: 1.3rem;
+		color: #333333;
+		line-height: 1.4;
+		font-weight: 300;
+	}
+</style>
+
 <div class="ui computer only padded grid">
 	<div class="ui top fixed borderless fluid huge menu">
 		<div class="ui container">
@@ -6,22 +144,11 @@
 				<img src="/img/logo-main.png" alt="kaafila_logo">
 			</a> --}}
 			<div class="right menu">
-				<a class="item" data-target="#about">About</a>
-				<a class="item" data-target="#theme">Theme</a>
-				<a class="ui simple dropdown item" data-target="#events" tabindex="0">
-					Events <i class="dropdown icon"></i>
-					<div class="menu" tabindex="-1">
-						<div id="bnc" class="item">Bread & Circuses</div>
-						<div id="ff" class="item">Folk Fluence</div>
-						<div id="i" class="item">Iridescence</div>
-						<div id="sa" class="item">Strings Attached</div>
-						{{!-- <div class="ui divider"></div>
-						<div class="header">Navbar header</div> --}}
-					</div>
-				</a>
-				<a class="item" data-target="#gallery">Gallery</a>
-				<a class="item" data-target="#sponsors">Sponsors</a>
-				<a class="item" data-target="#faq">FAQ</a>
+				<a class="item {{#if active_bnc}}active{{/if}}" href="/bread-and-circuses">Bread & Circuses</a>
+				<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
+				<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
+				<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
+				<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
 				<a class="item" data-target="#contact">Contact</a>
 				<a class="item signin" href="/signin">
 					<button class="ui button primary">Sign in</button>
@@ -46,34 +173,12 @@
 			</div>
 		</div>
 		<div class="ui vertical borderless fluid menu">
+			<a class="item" href="/bread-and-circuses">Bread & Circuses</a>
+			<a class="item" href="/folk-fluence">Folk Fluence</a>
+			<a class="item" href="/iridescence">Iridescence</a>
+			<a class="item" href="/strings-attached">Strings Attached</a>
 			<a class="item" data-target="#about">About</a>
-			<a class="item" data-target="#theme">Theme</a>
-			<a class="ui simple dropdown item" data-target="#events" tabindex="0">
-				<span id="dropdowntext">Events</span> <i class="dropdown icon"></i>
-				<div class="menu" tabindex="-1">
-					<div id="bnc-m" class="item">Bread & Circuses</div>
-					<div id="ff-m" class="item">Folk Fluence</div>
-					<div id="i-m" class="item">Iridescence</div>
-					<div id="sa-m" class="item">Strings Attached</div>
-					{{!-- <div class="ui divider"></div>
-						<div class="header">Navbar header</div> --}}
-				</div>
-			</a>
-			<a class="item" data-target="#gallery">Gallery</a>
-			<a class="item" data-target="#sponsors">Sponsors</a>
-			<a class="item" data-target="#faq">FAQ</a>
 			<a class="item" data-target="#contact">Contact</a>
-			{{!-- <div class="ui dropdown item" tabindex="0">
-				Dropdown<i class="dropdown icon"></i>
-				<div class="menu" tabindex="-1">
-					<a class="item"> Action </a> <a class="item"> Another action </a>
-					<a class="item"> Something else here </a>
-					<div class="divider"></div>
-					<div class="header">Navbar header</div>
-					<a class="item"> Seperated link </a>
-					<a class="item"> One more seperated link </a>
-				</div>
-			</div> --}}
 		</div>
 	</div>
 </div>

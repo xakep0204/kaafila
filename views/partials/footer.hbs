@@ -1,3 +1,79 @@
+<style>
+	#contact,
+	#updates {
+		padding-top: 3em;
+		padding-bottom: 3em;
+	}
+
+	#content>div {
+		padding-top: 5em;
+		padding-bottom: 5em;
+	}
+
+	#contact a,
+	#dev a {
+		color: #46a3ff;
+	}
+
+	#dev {
+		background-color: black
+	}
+
+	.ui.form, .ui.form .grid {
+		width: 100% !important;
+	}
+
+	#updates {
+		background-color: #01b6a7;
+	}
+
+	#updates input {
+		background-color: #0000003d;
+		color: white;
+	}
+
+	#updates button {
+		background-color: #007F74;
+	}
+
+	#updates button:hover {
+		background-color: #006D64;
+	}
+
+	#updates button:focus {
+		background-color: #005B53;
+	}
+</style>
+
+<div id="updates" class="ui vertical footer segment">
+	<div class="ui container">
+		<h2 class="ui inverted header">Subscribe to Updates!</h2>
+		<form class="ui form">
+			<div class="ui grid two columns">
+				<div class="nine wide column computer tablet only">
+					<div class="field">
+						<div class="ui input">
+							<input type="text" name="email" placeholder="Email address">
+						</div>
+					</div>
+				</div>
+				<div class="twelve wide column mobile only">
+					<div class="field">
+						<div class="ui input">
+							<input type="text" name="email" placeholder="Email address">
+						</div>
+					</div>
+				</div>
+				<div class="two wide column">
+					<button class="ui button primary">Subscribe</button>
+				</div>
+
+			</div>
+			<div class="ui error message"></div>
+		</form>
+	</div>
+</div>
+
 <div id="contact" class="ui inverted vertical footer segment">
 	<div class="ui container">
 		<div class="ui top aligned stackable divided grid container">
@@ -25,7 +101,7 @@
 	</div>
 </div>
 
-<div id="dev" style="background-color: black" class="ui inverted vertical footer segment">
+<div id="dev" class="ui inverted vertical footer segment">
 	<div class="ui container center aligned">
 		<h4>Developed by <a href="https://github.com/adikul358">Aditya</a> and <a
 				href="https://github.com/xakep0204">Abhimanyu</a></h4>

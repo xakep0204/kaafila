@@ -5,10 +5,19 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: "Kaafila - Shiv Nadar School Noida",
-        headerStyles: [
-            '/css/navbar.css',
-            '/css/hero-banner.css',
-            '/css/index.css',
+        styles: [
+            '/css/pastels.css',
+        ],
+        scripts: [
+            '/js/navbar.js',
+        ]
+    });
+});
+router.get('/about', function(req, res, next) {
+    res.render('about', {
+        title: "About - Kaafila",
+        active_a: true,
+        styles: [
             '/css/pastels.css',
         ],
         scripts: [
@@ -17,97 +26,53 @@ router.get('/', function(req, res, next) {
     });
 });
 
-
-router.get('/signin', function(req, res, next) {
-    res.render('signin', {
-        title: "Kaafila - Shiv Nadar School Noida",
-        headerStyles: [
-            '/css/navbar_logo.css',
-            '/css/signin.css',
-        ],
-        scripts: [
-            '/js/google_signin.js'
-        ]
-    });
-});
-
-router.get('/signup', function(req, res, next) {
-    res.render('signup', {
-        title: "Kaafila - Shiv Nadar School Noida",
-        headerStyles: [
-            '/css/navbar_logo.css',
-            '/css/signup.css',
-        ],
-        scripts: [
-            '/js/google_signin.js'
-        ]
-    });
-});
-
 router.get('/bread-and-circuses', function(req, res, next) {
-    res.render('event', {
-        title: "Bread & Circuses - Kaafila",
-        eventName: "Bread & Circuses",
-        eventImg: "img/bread-and-circuses-banner.png",
-        headerStyles: [
-            '/css/navbar.css',
-            '/css/event.css',
+    res.render('events/bread-and-circuses', {
+        title: "Bread and Circuses - Kaafila",
+        active_bnc: true,
+        styles: [
             '/css/pastels.css',
         ],
         scripts: [
-            '/js/navbar_nonhome.js',
+            '/js/navbar.js',
         ]
     });
 });
-
 router.get('/folk-fluence', function(req, res, next) {
-    res.render('event', {
+    res.render('events/folk-fluence', {
         title: "Folk Fluence - Kaafila",
-        eventName: "Folk Fluence",
-        eventImg: "img/folk-fluence-banner.png",
-        headerStyles: [
-            '/css/navbar.css',
-            '/css/event.css',
+        active_ff: true,
+        styles: [
             '/css/pastels.css',
         ],
         scripts: [
-            '/js/navbar_nonhome.js',
+            '/js/navbar.js',
         ]
     });
 });
-
 router.get('/iridescence', function(req, res, next) {
-    res.render('event', {
+    res.render('events/iridescence', {
         title: "Iridescence - Kaafila",
-        eventName: "Iridescence",
-        eventImg: "img/iridescence-banner.png",
-        headerStyles: [
-            '/css/navbar.css',
-            '/css/event.css',
+        active_i: true,
+        styles: [
             '/css/pastels.css',
         ],
         scripts: [
-            '/js/navbar_nonhome.js',
+            '/js/navbar.js',
         ]
     });
 });
-
 router.get('/strings-attached', function(req, res, next) {
-    res.render('event', {
+    res.render('events/strings-attached', {
         title: "Strings Attached - Kaafila",
-        eventName: "Strings Attached",
-        eventImg: "img/strings-attached-banner.png",
-        headerStyles: [
-            '/css/navbar.css',
-            '/css/event.css',
+        active_sa: true,
+        styles: [
             '/css/pastels.css',
         ],
         scripts: [
-            '/js/navbar_nonhome.js',
+            '/js/navbar.js',
         ]
     });
 });
-
-
 
 module.exports = router;

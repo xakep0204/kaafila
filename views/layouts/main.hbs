@@ -27,7 +27,7 @@
   <meta property="twitter:description" content="Kaafila - Integrated Arts Festival | Shiv Nadar School Noida">
   <meta property="twitter:image" content="/img/content_image.png">
 
-  {{#each headerStyles}}
+  {{#each styles}}
   <link rel='stylesheet' href='{{this}}' />
   {{/each}}
 
@@ -41,15 +41,9 @@
 
 
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
-
   <script>
-    // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyBVLs6Abc0Nt0LyZQHlQd2NcL5y5FiLtWc",
       authDomain: "kaafila-8cc49.firebaseapp.com",
@@ -60,7 +54,6 @@
       appId: "1:821115427097:web:492776918ba67392ea4d88",
       measurementId: "G-YT3TV95M5Y"
     };
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   </script>

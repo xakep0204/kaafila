@@ -1,3 +1,34 @@
+<style>
+  /* body > .grid {
+  height: 100%;
+} */
+  #signin .column {
+    max-width: 480px;
+  }
+
+  #signin .content img {
+    height: 70px;
+    margin-bottom: 50px;
+  }
+
+  #signin_email {
+    background-color: #007F74;
+    margin-bottom: 2em;
+  }
+
+  #signin_email:hover {
+    background-color: #006D64;
+  }
+
+  #signin_email:focus {
+    background-color: #005B53;
+  }
+
+  #signin_google {
+    font-weight: 700 !important;
+  }
+</style>
+
 {{>navbar_logo}}
 <div id="signin" class="ui middle aligned center aligned grid">
   <div class="column">
@@ -20,7 +51,9 @@
           </div>
           <div style="text-align: right;"><a href="">Forgot Password</a></div>
         </div>
-        <a href="/"><div id="signin_email" class="ui fluid large primary submit button">Sign in</div></a>
+        <a href="/">
+          <div id="signin_email" class="ui fluid large primary submit button">Sign in</div>
+        </a>
         <div id="signin_google" class="ui fluid large basic black submit button">
           <i class="google icon"></i>Sign in with Google
         </div>
