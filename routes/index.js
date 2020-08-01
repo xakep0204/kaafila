@@ -34,6 +34,7 @@ router.get('/bread-and-circuses', function(req, res, next) {
         title: "Bread and Circuses - Kaafila",
         active_bnc: true,
         styles: [
+            '/css/fonts.css',
             '/css/events.css',
             '/css/pastels.css',
         ],
@@ -47,6 +48,7 @@ router.get('/folk-fluence', function(req, res, next) {
         title: "Folk Fluence - Kaafila",
         active_ff: true,
         styles: [
+            '/css/fonts.css',
             '/css/events.css',
             '/css/pastels.css',
         ],
@@ -60,6 +62,7 @@ router.get('/iridescence', function(req, res, next) {
         title: "Iridescence - Kaafila",
         active_i: true,
         styles: [
+            '/css/fonts.css',
             '/css/events.css',
             '/css/pastels.css',
         ],
@@ -73,6 +76,7 @@ router.get('/strings-attached', function(req, res, next) {
         title: "Strings Attached - Kaafila",
         active_sa: true,
         styles: [
+            '/css/fonts.css',
             '/css/events.css',
             '/css/pastels.css',
         ],
