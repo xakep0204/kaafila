@@ -144,11 +144,11 @@
 				<img src="/img/logo-main.png" alt="kaafila_logo">
 			</a> --}}
 			<div class="right menu">
+				<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
 				<a class="item {{#if active_bnc}}active{{/if}}" href="/bread-and-circuses">Bread & Circuses</a>
 				<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
 				<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
 				<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
-				<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
 				<a class="item" data-target="#contact">Contact</a>
 				<a class="item signin" href="/signin">
 					<button class="ui button primary">Sign in</button>
@@ -173,11 +173,11 @@
 			</div>
 		</div>
 		<div class="ui vertical borderless fluid menu">
-			<a class="item" href="/bread-and-circuses">Bread & Circuses</a>
-			<a class="item" href="/folk-fluence">Folk Fluence</a>
-			<a class="item" href="/iridescence">Iridescence</a>
-			<a class="item" href="/strings-attached">Strings Attached</a>
-			<a class="item" data-target="#about">About</a>
+			<a class="item {{#if active_a}}active{{/if}}" data-target="/about">About</a>
+			<a class="item {{#if active_bnc}}active{{/if}}" href="/bread-and-circuses">Bread & Circuses</a>
+			<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
+			<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
+			<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
 			<a class="item" data-target="#contact">Contact</a>
 		</div>
 	</div>
