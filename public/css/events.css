@@ -101,14 +101,14 @@ body {
     padding-left: 3rem;
   }
 }
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
   .v-header, .photo-wrap, .header-overlay {
     height: 70vh;
   }
   .photo-wrap img {
     height: 100%!important;
   }
-}
+} */
 
 .ui.borderless.menu {
   background-color: #01b6a7!important;
