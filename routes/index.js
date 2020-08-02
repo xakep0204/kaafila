@@ -1,7 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
+var fs = require('fs');
 
-/* GET home page. */
+
+var galleryDirectoryPath = path.join(__dirname, '../public/img/gallery');
+var sponsorsDirectoryPath = path.join(__dirname, '../public/img/sponsors');
+var galleryImages = []
+var sponsorsImages = []
+
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: "Kaafila - Shiv Nadar School Noida",
@@ -14,9 +21,35 @@ router.get('/', function(req, res, next) {
     });
 });
 router.get('/about', function(req, res, next) {
+    var galleryImages = []
+    fs.readdir(galleryDirectoryPath, function (err, files) {
+        if (err) {
+            return console.log('Unable to scan directory: ' + err);
+        } 
+        files.forEach(function (file) {
+            if (file.slice(-3) == 'jpg' || file.slice(-3) == 'png' || file.slice(-3) == 'gif') {
+                imageObject = {'path': file, 'caption': file.slice(0, -4)}
+                galleryImages.push(imageObject);
+            }
+        });
+    });
+    var sponsorsImages = []
+    fs.readdir(sponsorsDirectoryPath, function (err, files) {
+        if (err) {
+            return console.log('Unable to scan directory: ' + err);
+        } 
+        files.forEach(function (file) {
+            if (file.slice(-3) == 'jpg' || file.slice(-3) == 'png' || file.slice(-3) == 'gif') {
+                sponsorsImages.push(file);
+            }
+        });
+    });
+
     res.render('about', {
         title: "About - Kaafila",
         active_a: true,
+        galleryImages: galleryImages,
+        sponsorsImages: sponsorsImages,
         styles: [
             '/css/pastels.css',
             '/css/fancybox.min.css'

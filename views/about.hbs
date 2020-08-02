@@ -93,16 +93,21 @@
 		}
 	}
 
+	#content > div:nth-child(even) {
+		background: #01b6a733!important;
+	}
+
+	#content > div {
+		padding-top: 5em;
+		padding-bottom: 5em;
+	}
+
 	#contact,
 	#updates {
 		padding-top: 3em;
 		padding-bottom: 3em;
 	}
 
-	#content>div {
-		padding-top: 5em;
-		padding-bottom: 5em;
-	}
 
 	#contact a,
 	#dev a {
@@ -137,7 +142,7 @@
 
 <div id="content">
 
-	<div id="about" class="">
+	<div id="about">
 		<div class="ui middle center aligned grid container">
 			<h1 class="ui header">About</h1>
 			<div class="ui grid stackable center aligned middle aligned">
@@ -171,7 +176,7 @@
 		</div>
 	</div>
 
-	<div id="theme" class="pastelprimary">
+	<div id="theme">
 		<div class="ui middle center aligned grid container">
 			<h1 class="ui header">Theme</h1>
 			<div class="ui grid stackable center aligned middle aligned">
@@ -192,7 +197,7 @@
 		</div>
 	</div>
 
-	<div id="events" class="">
+	<div id="events">
 		<div class="ui middle center aligned grid container">
 			<h1 class="ui header">Events</h1>
 			<div class="ui grid stackable center aligned four columns">
@@ -200,7 +205,7 @@
 					<a href="/bread-and-circuses">
 						<div class="ui fluid card">
 							<div class="image">
-								<img src="/img/bread-and-circuses-banner.png">
+								<img src="/img/banners/bread-and-circuses-banner.png">
 							</div>
 							<div class="content">
 								<div class="header">Bread & Circuses</div>
@@ -216,7 +221,7 @@
 					<a href="/folk-fluence">
 						<div class="ui fluid card">
 							<div class="image">
-								<img src="/img/folk-fluence-banner.png">
+								<img src="/img/banners/folk-fluence-banner.png">
 							</div>
 							<div class="content">
 								<div class="header">Folk Fluence</div>
@@ -232,7 +237,7 @@
 					<a href="/iridescence">
 						<div class="ui fluid card">
 							<div class="image">
-								<img src="/img/iridescence-banner.png">
+								<img src="/img/banners/iridescence-banner.png">
 							</div>
 							<div class="content">
 								<div class="header">Iridescence</div>
@@ -248,7 +253,7 @@
 					<a href="/strings-attached">
 						<div class="ui fluid card">
 							<div class="image">
-								<img src="/img/strings-attached-banner.png">
+								<img src="/img/banners/strings-attached-banner.png">
 							</div>
 							<div class="content">
 								<div class="header">Strings Attached</div>
@@ -264,87 +269,37 @@
 		</div>
 	</div>
 
-	<div id="gallery" class="pastelprimary">
+	<div id="gallery">
 		<div class="ui middle center aligned grid container">
 			<h1 class="ui header">Gallery</h1>
 			<div class="ui grid stackable center aligned four columns">
+				{{#each galleryImages}}
 				<div class="column">
-					<a href="/img/gallery/1.jpg" data-fancybox="gallery" data-caption="Caption for single image">
-						<img src="/img/gallery/1.jpg" class="ui large bordered rounded image centered">
+					<a href="/img/gallery/{{this.path}}" data-fancybox="gallery" data-caption="{{this.caption}}">
+						<img src="/img/gallery/{{this.path}}" class="ui large bordered rounded image centered">
 					</a>
 				</div>
-				<div class="column">
-					<a href="/img/gallery/2.jpg" data-fancybox="gallery" data-caption="Caption for single image">
-						<img src="/img/gallery/2.jpg" class="ui large bordered rounded image centered">
-					</a>
-				</div>
-				<div class="column">
-					<a href="/img/gallery/3.jpg" data-fancybox="gallery" data-caption="Caption for single image">
-						<img src="/img/gallery/3.jpg" class="ui large bordered rounded image centered">
-					</a>
-				</div>
-				<div class="column">
-					<a href="/img/gallery/4.jpg" data-fancybox="gallery" data-caption="Caption for single image">
-						<img src="/img/gallery/4.jpg" class="ui large bordered rounded image centered">
-					</a>
-				</div>
-				<div class="column">
-					<a href="/img/gallery/5.jpg" data-fancybox="gallery" data-caption="Caption for single image">
-						<img src="/img/gallery/5.jpg" class="ui large bordered rounded image centered">
-					</a>
-				</div>
-				<div class="column">
-					<a href="/img/gallery/6.jpg" data-fancybox="gallery" data-caption="Caption for single image">
-						<img src="/img/gallery/6.jpg" class="ui large bordered rounded image centered">
-					</a>
-				</div>
-				<div class="column">
-					<a href="/img/gallery/7.jpg" data-fancybox="gallery" data-caption="Caption for single image">
-						<img src="/img/gallery/7.jpg" class="ui large bordered rounded image centered">
-					</a>
-				</div>
-				<div class="column">
-					<a href="/img/gallery/8.jpg" data-fancybox="gallery" data-caption="Caption for single image">
-						<img src="/img/gallery/8.jpg" class="ui large bordered rounded image centered">
-					</a>
-				</div>
+				{{/each}}
 			</div>
 		</div>
 	</div>
 
-	{{!-- <div id="sponsors" class="">
+	<div id="sponsors">
 		<div class="ui middle center aligned grid container">
 			<h1 class="ui header">Sponsors</h1>
-			<div class="ui grid center aligned ">
-				<div class="four wide column">
-					<img src="/img/sponsors/1.jpg" class="ui large bordered rounded image centered">
+			<div class="ui grid center aligned middle aligned five columns">
+				{{#each sponsorsImages}}
+				<div class="column">
+					{{!-- <a href="{{this.link}}"> --}}
+						<img src="/img/sponsors/{{this}}" class="ui large bordered rounded image centered">
+					{{!-- </a> --}}
 				</div>
-				<div class="four wide column">
-					<img src="/img/sponsors/2.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="four wide column">
-					<img src="/img/sponsors/3.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="four wide column">
-					<img src="/img/sponsors/4.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="four wide column">
-					<img src="/img/sponsors/5.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="four wide column">
-					<img src="/img/sponsors/6.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="four wide column">
-					<img src="/img/sponsors/7.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="four wide column">
-					<img src="/img/sponsors/8.jpg" class="ui large bordered rounded image centered">
-				</div>
+				{{/each}}
 			</div>
 		</div>
-	</div> --}}
+	</div>
 
-	<div id="faq" class="">
+	<div id="faq">
 		<div class="ui middle aligned center aligned grid stackable container one columns">
 			<div class="column">
 				<h1 class="ui header">Frequently Asked Questions</h1>
