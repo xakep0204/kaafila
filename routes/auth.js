@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/signin', function(req, res, next) {
+router.get('/signin', function(req, res, next) {    
     res.render('signin', {
         title: "Kaafila - Shiv Nadar School Noida",
         styles: [
@@ -27,3 +27,18 @@ router.get('/signup', function(req, res, next) {
     });
 });
 
+router.get('/signout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
+
+router.get('/firebaseauth', passport.authenticate('firebaseauth', {
+    scope: ['profile']
+}));
+
+router.get('/firebaseauth/redirect', passport.authenticate('firebaseauth'), (req, res) => {
+    res.redirect('/profile');
+});
+
+
+module.exports = router;

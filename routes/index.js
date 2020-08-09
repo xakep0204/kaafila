@@ -4,10 +4,8 @@ var path = require('path');
 var fs = require('fs');
 
 
-var galleryDirectoryPath = path.join(__dirname, '../public/img/gallery');
+var galleryDirectoryPath = path.join(__dirname, '../../kaafila-img/gallery');
 var sponsorsDirectoryPath = path.join(__dirname, '../public/img/sponsors');
-var galleryImages = []
-var sponsorsImages = []
 
 router.get('/', function(req, res, next) {
     res.render('index', {
@@ -63,8 +61,9 @@ router.get('/about', function(req, res, next) {
 });
 
 router.get('/bread-and-circuses', function(req, res, next) {
-    res.render('events/bread-and-circuses', {
+    res.render('event', {
         title: "Bread and Circuses - Kaafila",
+        bannerName: "bread-and-circuses",
         active_bnc: true,
         styles: [
             '/css/fonts.css',
@@ -77,8 +76,9 @@ router.get('/bread-and-circuses', function(req, res, next) {
     });
 });
 router.get('/folk-fluence', function(req, res, next) {
-    res.render('events/folk-fluence', {
+    res.render('event', {
         title: "Folk Fluence - Kaafila",
+        bannerName: "folk-fluence",
         active_ff: true,
         styles: [
             '/css/fonts.css',
@@ -91,8 +91,9 @@ router.get('/folk-fluence', function(req, res, next) {
     });
 });
 router.get('/iridescence', function(req, res, next) {
-    res.render('events/iridescence', {
+    res.render('event', {
         title: "Iridescence - Kaafila",
+        bannerName: "iridescence",
         active_i: true,
         styles: [
             '/css/fonts.css',
@@ -107,6 +108,7 @@ router.get('/iridescence', function(req, res, next) {
 router.get('/strings-attached', function(req, res, next) {
     res.render('events/strings-attached', {
         title: "Strings Attached - Kaafila",
+        bannerName: "strings-attached",
         active_sa: true,
         styles: [
             '/css/fonts.css',
@@ -116,6 +118,21 @@ router.get('/strings-attached', function(req, res, next) {
         scripts: [
             '/js/navbar.js',
         ]
+    });
+});
+
+
+const authCheck = (req, res, next) => {
+    if(!req.user){
+        res.redirect('/signin');
+    } else {
+        next();
+    }
+};
+
+router.get('/profile', (req, res) => {
+    res.render('profile', { 
+        user: req.user 
     });
 });
 

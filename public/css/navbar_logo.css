@@ -5,7 +5,9 @@ body {
 }
 
 .ui.borderless.menu {
-  background-color: #01b6a7;
+  background: #085078;
+  background: -webkit-linear-gradient(to left, #85D8CE, #085078);
+  background: linear-gradient(to left, #6eb4ac, #085078);
   box-shadow: none;
   flex-wrap: wrap;
   border: none;
@@ -21,10 +23,6 @@ body {
 }
 .ui.borderless.menu .item:hover {
   background-color: rgba(255, 255, 255, .2);
-}
-
-.ui.borderless.menu.scrolled {
-  background-color: #01b6a7;
 }
 
 .ui.borderless.menu .header.item {

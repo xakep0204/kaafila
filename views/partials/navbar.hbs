@@ -62,9 +62,10 @@
 	}
 
 	.ui.borderless.menu.scrolled {
-		background-color: #01b6a7;
+		background: #085078;
+		background: -webkit-linear-gradient(to left, #85D8CE, #085078);
+		background: linear-gradient(to left, #6eb4ac, #085078);
 	}
-
 
 	.ui.borderless.menu .header.item {
 		font-size: 20px;
@@ -73,15 +74,15 @@
 	}
 
 	.ui.borderless.menu .signin.item button {
-		background-color: #007F74;
+		background: #085078;
 	}
 
 	.ui.borderless.menu .signin.item button:hover {
-		background-color: #006D64;
+		background: #074769;
 	}
 
 	.ui.borderless.menu .signin.item button:focus {
-		background-color: #005B53;
+		background: #063e5c;
 	}
 
 	.mobile .ui.borderless.menu .signin.item {
@@ -149,10 +150,16 @@
 				<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
 				<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
 				<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
-				<a class="item" data-target="#contact">Contact</a>
+				{{!-- <a class="item" data-target="#contact">Contact</a> --}}
+				{{#if userData.name}}
+				<a class="item signin" href="/profile">
+					<button class="ui button primary">{{userData.name}}</button>
+				</a>
+				{{else}}
 				<a class="item signin" href="/signin">
 					<button class="ui button primary">Sign in</button>
 				</a>
+				{{/if}}
 			</div>
 		</div>
 	</div>
@@ -173,12 +180,12 @@
 			</div>
 		</div>
 		<div class="ui vertical borderless fluid menu">
-			<a class="item {{#if active_a}}active{{/if}}" data-target="/about">About</a>
+			<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
 			<a class="item {{#if active_bnc}}active{{/if}}" href="/bread-and-circuses">Bread & Circuses</a>
 			<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
 			<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
 			<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
-			<a class="item" data-target="#contact">Contact</a>
+			{{!-- <a class="item" data-target="#contact">Contact</a> --}}
 		</div>
 	</div>
 </div>

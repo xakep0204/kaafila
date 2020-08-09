@@ -111,7 +111,9 @@ body {
 } */
 
 .ui.borderless.menu {
-  background-color: #01b6a7!important;
+  background: #085078;
+  background: -webkit-linear-gradient(to left, #85D8CE, #085078);
+  background: linear-gradient(to left, #6eb4ac, #085078);
 }
 .computer .ui.borderless.menu .active.item {
   border-top: 5px solid white!important;
