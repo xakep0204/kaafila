@@ -106,7 +106,7 @@ router.get('/iridescence', function(req, res, next) {
     });
 });
 router.get('/strings-attached', function(req, res, next) {
-    res.render('events/strings-attached', {
+    res.render('event', {
         title: "Strings Attached - Kaafila",
         bannerName: "strings-attached",
         active_sa: true,

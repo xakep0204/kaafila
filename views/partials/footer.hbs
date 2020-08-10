@@ -29,20 +29,20 @@
 		background: linear-gradient(to left, #6eb4ac, #085078);
 	}
 
-	#updates input {
+	{{!-- #updates input {
 		background-color: #0000003d;
 		color: white;
-	}
+	} --}}
 
-	#updates button {
+	#updates .button.primary {
 		background-color: #085078;
 	}
 
-	#updates button:hover {
+	#updates .button.primary:hover {
 		background-color: #074769;
 	}
 
-	#updates button:focus {
+	#updates .button.primary:focus {
 		background-color: #063e5c;
 	}
 </style>
@@ -50,24 +50,24 @@
 <div id="updates" class="ui vertical footer segment">
 	<div class="ui container">
 		<h2 class="ui inverted header">Subscribe to Updates!</h2>
-		<form class="ui form">
+		<form class="ui form" me>
 			<div class="ui grid two columns">
 				<div class="nine wide column computer tablet only">
 					<div class="field">
 						<div class="ui input">
-							<input type="text" name="email" placeholder="Email address">
+							<input type="text" name="email" id="emailC" placeholder="Email address">
 						</div>
 					</div>
 				</div>
 				<div class="twelve wide column mobile only">
 					<div class="field">
 						<div class="ui input">
-							<input type="text" name="email" placeholder="Email address">
+							<input type="text" name="email" id="emailM" placeholder="Email address">
 						</div>
 					</div>
 				</div>
 				<div class="two wide column">
-					<button class="ui button primary">Subscribe</button>
+					<div class="ui button submit primary">Subscribe</div>
 				</div>
 
 			</div>
