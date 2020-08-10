@@ -4,7 +4,7 @@ var path = require('path');
 var fs = require('fs');
 
 
-var galleryDirectoryPath = path.join(__dirname, '../public/img/kaafila-img/gallery');
+var galleryDirectoryPath = path.join(__dirname, '../public/img/gallery');
 var sponsorsDirectoryPath = path.join(__dirname, '../public/img/sponsors');
 
 router.get('/', function(req, res, next) {
