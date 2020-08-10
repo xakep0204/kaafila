@@ -19,7 +19,8 @@
 		background-color: black
 	}
 
-	.ui.form, .ui.form .grid {
+	.ui.form,
+	.ui.form .grid {
 		width: 100% !important;
 	}
 
@@ -29,10 +30,16 @@
 		background: linear-gradient(to left, #6eb4ac, #085078);
 	}
 
-	{{!-- #updates input {
-		background-color: #0000003d;
-		color: white;
-	} --}}
+		{
+			{
+			 !-- #updates input {
+				background-color: #0000003d;
+				color: white;
+			}
+
+			--
+		}
+	}
 
 	#updates .button.primary {
 		background-color: #085078;
@@ -104,8 +111,12 @@
 </div>
 
 <div id="dev" class="ui inverted vertical footer segment">
-	<div class="ui container center aligned">
-		<h4>Developed by <a href="https://github.com/adikul358">Aditya</a> and <a
-				href="https://github.com/xakep0204">Abhimanyu</a></h4>
+	<div class="ui grid two columns stackable container center aligned">
+		<div class="column">
+		<h4>Developed by <a href="https://github.com/adikul358">Aditya</a> and <a href="https://github.com/xakep0204">Abhimanyu</a></h4>
+		</div>
+		<div class="column">
+		<h4>Designed by <a>Kalyaani Manoj</a></h4>
+		</div>
 	</div>
 </div>
