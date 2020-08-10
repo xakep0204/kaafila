@@ -4,14 +4,18 @@
 		<img src="/img/banners/{{bannerName}}-banner.png">
 	</div>
 	<div class="header-overlay"></div>
-	{{!-- <div class="header-content text-md-center">
-		<h1 class="ui header rye">Bread <span class="princess-sofia">&</span> Circuses</h1>
+	<div class="header-content text-md-center">
+		{{#if header_bnc}}
+		<h1 class="ui header {{headerFont}}">Bread <span class="princess-sofia">&</span> Circuses</h1>
+		{{else}}
+		<h1 class="ui header {{headerFont}}">{{header}}</h1>
+		{{/if}}
 		<h4 class="ui header timeless">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae quam et felis
 			molestie
 			lacinia. Cras mauris dui, eleifend non vehicula sed, cursus sit amet est. Etiam non lorem in felis mattis
 			blandit ac ut purus. Nulla semper ipsum risus, sollicitudin pharetra risus luctus ut. Suspendisse et
 			finibus</h4>
-	</div> --}}
+	</div>
 </header>
 
 <div id="content">
