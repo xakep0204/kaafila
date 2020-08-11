@@ -67,6 +67,7 @@ router.get('/bread-and-circuses', function(req, res, next) {
         header_bnc: true,
         header: 'Bread <span class="princess-sofia">&</span> Circuses',
         headerFont: 'rye',
+        headerGradient: 'background: rgb(201,120,76); background: linear-gradient(45deg, rgba(201,120,76,1) 37%, rgba(217,217,217,1) 100%);',
         bannerName: "bread-and-circuses",
         active_bnc: true,
         styles: [
@@ -84,6 +85,7 @@ router.get('/folk-fluence', function(req, res, next) {
         title: "Folk Fluence - Kaafila",
         header: 'Folk Fluence',
         headerFont: 'ardagh',
+        headerGradient: 'background: rgb(145,63,63); background: linear-gradient(45deg, rgba(145,63,63,1) 0%, rgba(156,185,53,1) 100%);',
         bannerName: "folk-fluence",
         active_ff: true,
         styles: [
@@ -101,6 +103,7 @@ router.get('/iridescence', function(req, res, next) {
         title: "Iridescence - Kaafila",
         header: 'Iridescence',
         headerFont: 'apple-garamond',
+        headerGradient: 'background: rgb(183,145,182); background: linear-gradient(45deg, rgba(183,145,182,1) 41%, rgba(91,208,186,1) 100%);',
         bannerName: "iridescence",
         active_i: true,
         styles: [
@@ -118,6 +121,7 @@ router.get('/strings-attached', function(req, res, next) {
         title: "Strings Attached - Kaafila",
         header: 'Strings Attached',
         headerFont: 'welcome',
+        headerGradient: 'background: rgb(203,78,44); background: linear-gradient(45deg, rgba(203,78,44,1) 0%, rgba(208,139,53,1) 100%);',
         bannerName: "strings-attached",
         active_sa: true,
         styles: [
