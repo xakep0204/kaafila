@@ -39,7 +39,7 @@
 	}
 
 	.computer .ui.borderless.menu .active.item {
-		border-top: 5px solid #01b6a7;
+		border-top: 5px solid #085078;
 		background-color: transparent;
 	}
 
@@ -145,13 +145,13 @@
 				<img src="/img/logo-main.png" alt="kaafila_logo">
 			</a> --}}
 			<div class="right menu">
-				<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
+				{{!-- <a class="item {{#if active_a}}active{{/if}}" href="/about">About</a> --}}
 				<a class="item {{#if active_bnc}}active{{/if}}" href="/bread-and-circuses">Bread & Circuses</a>
 				<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
 				<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
 				<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
 				{{!-- <a class="item" data-target="#contact">Contact</a> --}}
-				{{#if userData.name}}
+				{{!-- {{#if userData.name}}
 				<a class="item signin" href="/profile">
 					<button class="ui button primary">{{userData.name}}</button>
 				</a>
@@ -159,7 +159,7 @@
 				<a class="item signin" href="/signin">
 					<button class="ui button primary">Sign in</button>
 				</a>
-				{{/if}}
+				{{/if}} --}}
 			</div>
 		</div>
 	</div>
@@ -168,11 +168,11 @@
 	<div class="ui top fixed borderless huge fluid menu">
 		<a class="header item" href="/">Kaafila</a>
 		<div class="right menu">
-			<a href="/signin">
+			{{!-- <a href="/signin">
 				<div class="item signin">
 					<button class="ui button primary">Sign in</button>
 				</div>
-			</a>
+			</a> --}}
 			<div class="item togglebutton">
 				<button class="ui icon toggle basic button">
 					<i class="content icon"></i>
@@ -180,7 +180,7 @@
 			</div>
 		</div>
 		<div class="ui vertical borderless fluid menu">
-			<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
+			{{!-- <a class="item {{#if active_a}}active{{/if}}" href="/about">About</a> --}}
 			<a class="item {{#if active_bnc}}active{{/if}}" href="/bread-and-circuses">Bread & Circuses</a>
 			<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
 			<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>

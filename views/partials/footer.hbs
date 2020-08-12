@@ -43,6 +43,8 @@
 
 	#updates .button.primary {
 		background-color: #085078;
+		height: 38px !important;
+		vertical-align: middle !important;
 	}
 
 	#updates .button.primary:hover {
@@ -52,36 +54,42 @@
 	#updates .button.primary:focus {
 		background-color: #063e5c;
 	}
+
+	#updates .mobile .column {
+		padding-left: 0px!important;
+		padding-right: 0px!important;
+	}
 </style>
 
-<div id="updates" class="ui vertical footer segment">
+{{!-- <div id="updates" class="ui vertical footer segment">
 	<div class="ui container">
 		<h2 class="ui inverted header">Subscribe to Updates!</h2>
-		<form class="ui form" me>
-			<div class="ui grid two columns">
-				<div class="nine wide column computer tablet only">
-					<div class="field">
-						<div class="ui input">
-							<input type="text" name="email" id="emailC" placeholder="Email address">
-						</div>
+		<form class="ui form">
+			<div style="margin-top: 14px" class="ui grid top aligned computer tablet only">
+				<div style="width: 500px; margin-right: 12px !important;" class="field">
+					<div class="ui input">
+						<input type="text" name="emailC" id="email" placeholder="Email address">
 					</div>
 				</div>
-				<div class="twelve wide column mobile only">
-					<div class="field">
-						<div class="ui input">
-							<input type="text" name="email" id="emailM" placeholder="Email address">
-						</div>
-					</div>
-				</div>
-				<div class="two wide column">
-					<div class="ui button submit primary">Subscribe</div>
-				</div>
-
+				<div class="ui button submit primary">Subscribe</div>
+				<div class="ui error message"></div>
 			</div>
-			<div class="ui error message"></div>
+			<div class="ui grid stackable top aligned mobile only">
+				<div class="column">
+					<div class="field">
+						<div class="ui input">
+							<input type="text" name="emailM" id="email" placeholder="Email address">
+						</div>
+					</div>
+				</div>
+				<div style="padding-top: 0px!important; padding-bottom: 0px!important" class="column right aligned">
+					<div class="ui button submit primary">Subscribe</div>
+					<div class="ui error message"></div>
+				</div>
+			</div>
 		</form>
 	</div>
-</div>
+</div> --}}
 
 <div id="contact" class="ui inverted vertical footer segment">
 	<div class="ui container">
@@ -113,10 +121,11 @@
 <div id="dev" class="ui inverted vertical footer segment">
 	<div class="ui grid two columns stackable container center aligned">
 		<div class="column">
-		<h4>Developed by <a href="https://github.com/adikul358">Aditya</a> and <a href="https://github.com/xakep0204">Abhimanyu</a></h4>
+			<h4>Developed by <a href="https://github.com/adikul358">Aditya</a> and <a
+					href="https://github.com/xakep0204">Abhimanyu</a></h4>
 		</div>
 		<div class="column">
-		<h4>Designed by <a>Kalyaani Manoj</a></h4>
+			<h4>Designed by <a>Kalyaani Manoj</a></h4>
 		</div>
 	</div>
 </div>

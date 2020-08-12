@@ -81,6 +81,11 @@
 		color: white !important;
 	}
 
+	.hero h1 {
+		font-size: 4em !important;
+	}
+
+
 	#contact {
 		padding-top: 3em;
 		padding-bottom: 3em;
@@ -94,6 +99,13 @@
 	#contact a,
 	#dev a {
 		color: #46a3ff;
+	}
+
+	@media (max-width: 960px) {
+		.h-container {
+			padding-right: 3rem;
+			padding-left: 3rem;
+		}
 	}
 
 	#content>div {
@@ -121,7 +133,22 @@
 		.photo-wrap img {
 			height: 100%!important;
 		}
-	} */
+	}*/
+
+	.ui.borderless.menu {
+		background: #085078;
+		background: -webkit-linear-gradient(to left, #85D8CE, #085078);
+		background: linear-gradient(to left, #6eb4ac, #085078);
+	}
+
+	.computer .ui.borderless.menu .active.item {
+		border-top: 5px solid white !important;
+		background-color: transparent !important;
+	}
+
+	.mobile .ui.borderless.menu .active.item {
+		background-color: rgba(0, 0, 0, .2) !important;
+	}
 
 	#event-bnc {
 		background: rgb(201, 120, 76);
@@ -142,31 +169,37 @@
 		background: #FDC830;
 		background: linear-gradient(45deg, rgb(243, 115, 53), rgb(253, 200, 48));
 	}
+
+	#title h1 {
+		font-size: 4rem;
+	}
 </style>
 
 {{>navbar}}
-<header class="hero v-header h-container">
-	<div id="{{cssID}}" class="photo-wrap">
-	</div>
-	<div class="header-overlay"></div>
-	<div class="header-content text-md-center">
-		{{!-- <img src="/img/banners.png" alt="kaafila_logo"> --}}
-		<h1 class="ui header {{headerFont}}">
-			{{#if active_bnc}}
-			Bread <span class="princess-sofia">&</span> Circuses
-			{{else}}
-			{{header}}
-			{{/if}}
-		</h1>
-	</div>
-</header>
 
 <div id="content">
+	<div id="title">
+		<div class="ui left aligned grid container">
+			<div class="ui grid stackable center aligned top aligned">
+				<div class="row">
+					<div class="four wide column left aligned">
+						<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in{{subeventImage}}?width=740"
+							class="ui large bordered rounded image centered">
+					</div>
+					<div class="ten wide column left aligned">
+						<h1 class="ui header">{{subeventName}}</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	{{#if active_bnc}}{{>events/bread-and-circuses}}{{/if}}
-	{{#if active_ff}}{{>events/folk-fluence}}{{/if}}
-	{{#if active_i}}{{>events/iridescence}}{{/if}}
-	{{#if active_sa}}{{>events/strings-attached}}{{/if}}
+	{{#if bnc_mm}}{{>subevents/bnc-mm}}{{/if}}
+	{{#if bnc_oap}}{{>subevents/bnc-oap}}{{/if}}
+	{{#if ff_ff}}{{>subevents/ff-ff}}{{/if}}
+	{{#if i_sof}}{{>subevents/i-sof}}{{/if}}
+	{{#if sa_sas}}{{>subevents/sa-sas}}{{/if}}
+	{{#if sa_sff}}{{>subevents/sa-sff}}{{/if}}
 
 </div>
 
