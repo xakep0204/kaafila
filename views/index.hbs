@@ -112,13 +112,30 @@
 		background: #6eb4ac80 !important;
 	}
 
-	p.ui, h5.ui {
+	p.ui,
+	h5.ui {
 		font-size: 16px !important;
 		font-family: 'helvetica' !important;
 	}
 
 	#faq h5 {
-		margin-bottom: 0px!important;
+		margin-bottom: 0px !important;
+	}
+
+	#content #gallery .gallery-more {
+		display: none;
+	}
+
+	.button.primary {
+		background-color: #085078 !important;
+	}
+
+	.button.primary:hover {
+		background-color: #074769 !important;
+	}
+
+	.button.primary:focus {
+		background-color: #063e5c !important;
 	}
 </style>
 
@@ -209,10 +226,13 @@
 	</div> --}}
 	<div id="about-video">
 		<div class="ui middle center aligned grid container computer tablet only">
-			<iframe allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/Hj0JTOU1p_Y?&showinfo=0&rel=0&iv_load_policy=3&color=white" width="100%" height="550" frameborder="0"></iframe>
+			<iframe allowfullscreen="allowfullscreen"
+				src="https://www.youtube.com/embed/Hj0JTOU1p_Y?&showinfo=0&rel=0&iv_load_policy=3&color=white" width="100%"
+				height="550" frameborder="0"></iframe>
 		</div>
 		<div class="ui middle center aligned grid container mobile only">
-			<iframe src="https://www.youtube.com/embed/Hj0JTOU1p_Y?&showinfo=0&rel=0&iv_load_policy=3&color=white" width="100%" height="270" frameborder="0"></iframe>
+			<iframe src="https://www.youtube.com/embed/Hj0JTOU1p_Y?&showinfo=0&rel=0&iv_load_policy=3&color=white"
+				width="100%" height="270" frameborder="0"></iframe>
 		</div>
 	</div>
 
@@ -375,6 +395,21 @@
 					</a>
 				</div>
 				{{/each}}
+
+				{{#if galleryImagesMore}}
+				<div id="gallery-more-button" class="row">
+					<button class="ui button large primary">See More</button>
+				</div>
+				{{#each galleryImagesMore}}
+				<div class="gallery-more column">
+					<a href="https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in/img/gallery/{{this.path}}?width=1920"
+						data-fancybox="gallery">
+						<img src="https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in/img/gallery/{{this.path}}?width=400"
+							class="ui large bordered rounded image centered">
+					</a>
+				</div>
+				{{/each}}
+				{{/if}}
 			</div>
 			{{else}}
 			<div class="ui container center aligned middle aligned one columns">
@@ -393,16 +428,26 @@
 			</div>
 			<div class="ten wide column left aligned">
 				<h5 class="ui header">Q. What is Kaafila?</h5>
-				<p class="ui">Kaafila is Shiv Nadar School Noida’s flagship integrated art fest covering 4 baskets of arts: theatre, music, dance, visual arts</p>
+				<p class="ui">Kaafila is Shiv Nadar School Noida’s flagship integrated art fest covering 4 baskets of arts:
+					theatre, music, dance, visual arts</p>
 
 				<h5 class="ui header">Q. Is there any eligibility criteria to participate in Kaafila?</h5>
-				<p class="ui">Most of our events are open to all individuals but students from Grades 9-12 of participating schools will be offered special discounts on the various workshops we offer.</p>
+				<p class="ui">Most of our events are open to all individuals but students from Grades 9-12 of participating
+					schools will be offered special discounts on the various workshops we offer.</p>
 
 				<h5 class="ui header">Q. Does Kaafila only offer competitive events?</h5>
-				<p class="ui">Kaafila aims to provide students an environment that challenges them into discovering their talent and skills, and to inspire the joy of learning by fostering a culture of creativity. Thus we have decided to keep a vast range of non competitive events along with the competitive events to provide a platform to celebrate the arts.</p>
+				<p class="ui">Kaafila aims to provide students an environment that challenges them into discovering their
+					talent
+					and skills, and to inspire the joy of learning by fostering a culture of creativity. Thus we have decided to
+					keep a vast range of non competitive events along with the competitive events to provide a platform to
+					celebrate the arts.</p>
 
 				<h5 class="ui header">Q. Why is Kaafila online this year?</h5>
-				<p class="ui">We strongly believe that art has no bounds, and a mere pandemic cannot shut us down! This shiny new online avatar, explores the possibilities of collaborative work beyond geographical limitations and presents artistic works that have crossed defined boundaries. We look forward to interacting with people from around the world.</p>
+				<p class="ui">We strongly believe that art has no bounds, and a mere pandemic cannot shut us down! This shiny
+					new online avatar, explores the possibilities of collaborative work beyond geographical limitations and
+					presents artistic works that have crossed defined boundaries. We look forward to interacting with people
+					from
+					around the world.</p>
 
 				<h5 class="ui header">Q. When is Kaafila again?</h5>
 				<p class="ui">15<sup>th</sup>, 16<sup>th</sup> and 17<sup>th</sup> of October</p>

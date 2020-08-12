@@ -4,3 +4,9 @@ $('[data-fancybox="gallery"]').fancybox({
     "close"
   ]
 });
+
+$('#gallery-more-button button').click(() => {
+  $(".gallery-more").css("display", "block");
+  $('#gallery-more-button').css("display", "none");
+
+});
