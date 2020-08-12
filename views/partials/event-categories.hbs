@@ -1,0 +1,22 @@
+{{#if eventCategories}}
+{{#each eventCategories}}
+<div id="events">
+  <div class="ui middle center stackable aligned grid container">
+    <div class="row">
+      <h1 class="ui header">{{this.name}}</h1>
+    </div>
+    {{#each this.main}}
+    <div class="four wide column">
+      <a href="{{this.link}}">
+        <div class="ui fluid card">
+          <div class="image">
+            <img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in{{this.image}}?width=599">
+          </div>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
+</div>
+{{/each}}
+{{/if}}

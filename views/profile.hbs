@@ -1,0 +1,147 @@
+{{>navbar}}
+<style>
+	body {
+		margin: 0;
+	}
+
+	.v-header {
+		height: 40vh;
+		display: flex;
+		align-items: center;
+	}
+
+	.h-container {
+		max-width: 960px;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		margin: auto;
+		margin-top: 0;
+		text-align: center;
+	}
+
+	.photo-wrap {
+		position: absolute;
+		top: 54px;
+		left: 0;
+		width: 100%;
+		height: 40vh;
+		overflow: hidden;
+		background-color: #01b6a7;
+	}
+
+	.photo-wrap img {
+		width: auto;
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+	}
+
+	@media screen and (max-aspect-ratio: 96/90) {
+		.photo-wrap img {
+			width: 100%;
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 96/90) {
+		.photo-wrap img {
+			height: 100%;
+		}
+	}
+
+	.header-overlay {
+		height: 40vh;
+		position: absolute;
+		top: 54px;
+		left: 0;
+		width: 100vw;
+		z-index: 1;
+		background: black;
+		opacity: 0.7;
+	}
+
+	.header-content {
+		z-index: 2;
+		width: 100%;
+	}
+
+	.header-content img {
+		margin-bottom: 20px;
+	}
+
+	.header-content h1,
+	.header-content h4 {
+		margin-bottom: 0;
+	}
+
+	.header-content h3 {
+		display: block;
+		font-weight: 200;
+		padding-bottom: 2rem;
+	}
+
+	.hero h1 {
+		font-size: 6rem !important;
+		color: white !important;
+	}
+
+	@media (max-width: 960px) {
+		.h-container {
+			padding-right: 3rem;
+			padding-left: 3rem;
+		}
+	}
+
+	#content > div:nth-child(even) {
+		background: #01b6a733!important;
+	}
+
+	#content > div {
+		padding-top: 5em;
+		padding-bottom: 5em;
+	}
+
+	#contact,
+	#updates {
+		padding-top: 3em;
+		padding-bottom: 3em;
+	}
+
+
+	#contact a,
+	#dev a {
+		color: #46a3ff;
+	}
+
+	.ui.borderless.menu {
+		background-color: #01b6a7 !important;
+	}
+
+	.computer .ui.borderless.menu .active.item {
+		border-top: 5px solid white !important;
+		background-color: transparent !important;
+	}
+
+	.mobile .ui.borderless.menu .active.item {
+		background-color: rgba(0, 0, 0, .2) !important;
+	}
+</style>
+
+
+<header class="hero v-header h-container">
+	<div class="photo-wrap">
+		<img src="/img/content-image.png">
+	</div>
+	<div class="header-overlay"></div>
+	<div class="header-content text-md-center">
+		<h1 class="ui header anaktoria">Your Profile</h1>
+	</div>
+</header>
+
+<div id="content">
+  <div class="ui container">
+    <h1 class="ui header">This: {{userData}}</h1>
+  </div>
+</div>

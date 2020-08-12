@@ -1,3 +1,96 @@
+<style>
+	#contact,
+	#updates {
+		padding-top: 3em;
+		padding-bottom: 3em;
+	}
+
+	#content>div {
+		padding-top: 5em;
+		padding-bottom: 5em;
+	}
+
+	#contact a,
+	#dev a {
+		color: #46a3ff;
+	}
+
+	#dev {
+		background-color: black
+	}
+
+	.ui.form,
+	.ui.form .grid {
+		width: 100% !important;
+	}
+
+	#updates {
+		background: #085078;
+		background: -webkit-linear-gradient(to left, #85D8CE, #085078);
+		background: linear-gradient(to left, #6eb4ac, #085078);
+	}
+
+		{
+			{
+			 !-- #updates input {
+				background-color: #0000003d;
+				color: white;
+			}
+
+			--
+		}
+	}
+
+	#updates .button.primary {
+		background-color: #085078;
+		height: 38px !important;
+		vertical-align: middle !important;
+	}
+
+	#updates .button.primary:hover {
+		background-color: #074769;
+	}
+
+	#updates .button.primary:focus {
+		background-color: #063e5c;
+	}
+
+	#updates .mobile .column {
+		padding-left: 0px!important;
+		padding-right: 0px!important;
+	}
+</style>
+
+{{!-- <div id="updates" class="ui vertical footer segment">
+	<div class="ui container">
+		<h2 class="ui inverted header">Subscribe to Updates!</h2>
+		<form class="ui form">
+			<div style="margin-top: 14px" class="ui grid top aligned computer tablet only">
+				<div style="width: 500px; margin-right: 12px !important;" class="field">
+					<div class="ui input">
+						<input type="text" name="emailC" id="email" placeholder="Email address">
+					</div>
+				</div>
+				<div class="ui button submit primary">Subscribe</div>
+				<div class="ui error message"></div>
+			</div>
+			<div class="ui grid stackable top aligned mobile only">
+				<div class="column">
+					<div class="field">
+						<div class="ui input">
+							<input type="text" name="emailM" id="email" placeholder="Email address">
+						</div>
+					</div>
+				</div>
+				<div style="padding-top: 0px!important; padding-bottom: 0px!important" class="column right aligned">
+					<div class="ui button submit primary">Subscribe</div>
+					<div class="ui error message"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div> --}}
+
 <div id="contact" class="ui inverted vertical footer segment">
 	<div class="ui container">
 		<div class="ui top aligned stackable divided grid container">
@@ -6,15 +99,15 @@
 					<h2 class="ui inverted header">Contact Us</h2>
 				</div>
 			</div>
-			<div class="row three column divided" style="position: relative;">
+			<div class="row two column divided" style="position: relative;">
 				<div class="column">
 					<h3 class="ui inverted header">Mail</h3>
 					<p class="ui"><a href="mailto:contact@snsartsfestival.in">contact@snsartsfestival.in</a></p>
 				</div>
-				<div class="column">
+				{{!-- <div class="column">
 					<h3 class="ui inverted header">Phone</h3>
 					<p class="ui"><a href="tel:+91 98408 70565">+91 81302 00199</a></p>
-				</div>
+				</div> --}}
 				<div class="column">
 					<h3 class="ui inverted header">Address</h3>
 					<p class="ui"><a href="https://goo.gl/maps/9HYuYjXAY7XKAEnv6">Plot No, SS -1, Noida-Greater Noida Expy,
@@ -25,9 +118,14 @@
 	</div>
 </div>
 
-<div id="dev" style="background-color: black" class="ui inverted vertical footer segment">
-	<div class="ui container center aligned">
-		<h4>Developed by <a href="https://github.com/adikul358">Aditya</a> and <a
-				href="https://github.com/xakep0204">Abhimanyu</a></h4>
+<div id="dev" class="ui inverted vertical footer segment">
+	<div class="ui grid two columns stackable container center aligned">
+		<div class="column">
+			<h4>Developed by <a href="https://github.com/adikul358">Aditya</a> and <a
+					href="https://github.com/xakep0204">Abhimanyu</a></h4>
+		</div>
+		<div class="column">
+			<h4>Designed by <a>Kalyaani Manoj</a></h4>
+		</div>
 	</div>
 </div>

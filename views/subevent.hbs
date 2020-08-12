@@ -1,0 +1,206 @@
+<style>
+	body {
+		margin: 0;
+	}
+
+	.v-header {
+		height: 60vh;
+		display: flex;
+		align-items: center;
+	}
+
+	.h-container {
+		max-width: 960px;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		margin: auto;
+		margin-top: -54px;
+		text-align: center;
+	}
+
+	.photo-wrap {
+		position: absolute;
+		top: 0px;
+		left: 0;
+		width: 100%;
+		height: 60vh;
+		overflow: hidden;
+
+			{
+				{
+				headerGradient
+			}
+		}
+	}
+
+	.photo-wrap img {
+		width: auto;
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+	}
+
+	@media screen and (max-aspect-ratio: 6/10) {
+		.photo-wrap img {
+			height: 100%;
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 6/10) {
+		.photo-wrap img {
+			width: 100%;
+		}
+	}
+
+	.header-overlay {
+		height: 60vh;
+		position: absolute;
+		top: 0px;
+		left: 0;
+		width: 100vw;
+		z-index: 1;
+		background: black;
+		opacity: 0.2;
+	}
+
+	.header-content {
+		z-index: 2;
+		width: 100%;
+	}
+
+	.header-content h1,
+	.header-content h4 {
+		margin-bottom: 0;
+	}
+
+	.hero h1,
+	.hero h4 {
+		color: white !important;
+	}
+
+	.hero h1 {
+		font-size: 4em !important;
+	}
+
+
+	#contact {
+		padding-top: 3em;
+		padding-bottom: 3em;
+	}
+
+	#content>div {
+		padding-top: 5em;
+		padding-bottom: 5em;
+	}
+
+	#contact a,
+	#dev a {
+		color: #46a3ff;
+	}
+
+	@media (max-width: 960px) {
+		.h-container {
+			padding-right: 3rem;
+			padding-left: 3rem;
+		}
+	}
+
+	#content>div {
+		background: #f0e9dc !important;
+	}
+
+	#content>div:nth-child(even) {
+		background: #6eb4ac80 !important;
+	}
+
+	p.ui,
+	h5.ui {
+		font-size: 16px !important;
+		font-family: 'helvetica' !important;
+	}
+
+	#faq h5 {
+		margin-bottom: 0px !important;
+	}
+
+	/* @media (max-width: 576px) {
+		.v-header, .photo-wrap, .header-overlay {
+			height: 70vh;
+		}
+		.photo-wrap img {
+			height: 100%!important;
+		}
+	}*/
+
+	.ui.borderless.menu {
+		background: #085078;
+		background: -webkit-linear-gradient(to left, #85D8CE, #085078);
+		background: linear-gradient(to left, #6eb4ac, #085078);
+	}
+
+	.computer .ui.borderless.menu .active.item {
+		border-top: 5px solid white !important;
+		background-color: transparent !important;
+	}
+
+	.mobile .ui.borderless.menu .active.item {
+		background-color: rgba(0, 0, 0, .2) !important;
+	}
+
+	#event-bnc {
+		background: rgb(201, 120, 76);
+		background: linear-gradient(45deg, rgba(201, 120, 76, 1) 37%, rgba(217, 217, 217, 1) 100%);
+	}
+
+	#event-ff {
+		background: rgb(145, 63, 63);
+		background: linear-gradient(45deg, rgba(145, 63, 63, 1) 0%, rgba(156, 185, 53, 1) 100%);
+	}
+
+	#event-i {
+		background: rgb(183, 145, 182);
+		background: linear-gradient(45deg, rgba(183, 145, 182, 1) 41%, rgba(91, 208, 186, 1) 100%);
+	}
+
+	#event-sa {
+		background: #FDC830;
+		background: linear-gradient(45deg, rgb(243, 115, 53), rgb(253, 200, 48));
+	}
+
+	#title h1 {
+		font-size: 4rem;
+	}
+</style>
+
+{{>navbar}}
+
+<div id="content">
+	<div id="title">
+		<div class="ui left aligned grid container">
+			<div class="ui grid stackable center aligned top aligned">
+				<div class="row">
+					<div class="four wide column left aligned">
+						<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in{{subeventImage}}?width=740"
+							class="ui large bordered rounded image centered">
+					</div>
+					<div class="ten wide column left aligned">
+						<h1 class="ui header">{{subeventName}}</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{{#if bnc_mm}}{{>subevents/bnc-mm}}{{/if}}
+	{{#if bnc_oap}}{{>subevents/bnc-oap}}{{/if}}
+	{{#if ff_ff}}{{>subevents/ff-ff}}{{/if}}
+	{{#if i_sof}}{{>subevents/i-sof}}{{/if}}
+	{{#if sa_sas}}{{>subevents/sa-sas}}{{/if}}
+	{{#if sa_sff}}{{>subevents/sa-sff}}{{/if}}
+
+</div>
+
+{{>footer}}

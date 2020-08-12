@@ -23,5 +23,8 @@
   background-color: rgba(231, 239, 145, .2);
 }
 .pastelprimary {
-  background-color: #01b6a733;
+  background-color: #01b6a733!important;
+}
+.pastelsecondary {
+  background-color: #01b6a76e!important;
 }

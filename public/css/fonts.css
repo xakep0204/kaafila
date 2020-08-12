@@ -37,12 +37,12 @@
 
 /* General */
 @font-face {
-    font-family: 'appleGaramond';
+    font-family: 'apple-garamond';
     src: url('/fonts/AppleGaramond.ttf')
     format('truetype');
 }
 @font-face {
-    font-family: 'madeBonVoyage';
+    font-family: 'made-bon-voyage';
 	src: url('/fonts/MADE Bon Voyage Regular.otf') 
 	format('opentype');
 }
@@ -70,7 +70,7 @@
     font-family: 'welcome'!important;
 }
 .apple-garamond {
-    font-family: 'appleGaramond'!important;
+    font-family: 'apple-garamond'!important;
 }
 .bon-voyage {
     font-family: 'madeBonVoyage'!important;

@@ -1,107 +1,173 @@
-{{>navbar_nonhome}}
+<style>
+	body {
+		margin: 0;
+	}
+
+	.v-header {
+		height: 60vh;
+		display: flex;
+		align-items: center;
+	}
+
+	.h-container {
+		max-width: 960px;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		margin: auto;
+		margin-top: -54px;
+		text-align: center;
+	}
+
+	.photo-wrap {
+		position: absolute;
+		top: 0px;
+		left: 0;
+		width: 100%;
+		height: 60vh;
+		overflow: hidden;
+
+			{
+				{
+				headerGradient
+			}
+		}
+	}
+
+	.photo-wrap img {
+		width: auto;
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+	}
+
+	@media screen and (max-aspect-ratio: 6/10) {
+		.photo-wrap img {
+			height: 100%;
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 6/10) {
+		.photo-wrap img {
+			width: 100%;
+		}
+	}
+
+	.header-overlay {
+		height: 60vh;
+		position: absolute;
+		top: 0px;
+		left: 0;
+		width: 100vw;
+		z-index: 1;
+		background: black;
+		opacity: 0.2;
+	}
+
+	.header-content {
+		z-index: 2;
+		width: 100%;
+	}
+
+	.header-content h1,
+	.header-content h4 {
+		margin-bottom: 0;
+	}
+
+	.hero h1,
+	.hero h4 {
+		color: white !important;
+	}
+
+	#contact {
+		padding-top: 3em;
+		padding-bottom: 3em;
+	}
+
+	#content>div {
+		padding-top: 5em;
+		padding-bottom: 5em;
+	}
+
+	#contact a,
+	#dev a {
+		color: #46a3ff;
+	}
+
+	#content>div {
+		background: #f0e9dc !important;
+	}
+
+	#content>div:nth-child(even) {
+		background: #6eb4ac80 !important;
+	}
+
+	p.ui,
+	h5.ui {
+		font-size: 16px !important;
+		font-family: 'helvetica' !important;
+	}
+
+	#faq h5 {
+		margin-bottom: 0px !important;
+	}
+
+	/* @media (max-width: 576px) {
+		.v-header, .photo-wrap, .header-overlay {
+			height: 70vh;
+		}
+		.photo-wrap img {
+			height: 100%!important;
+		}
+	} */
+
+	#event-bnc {
+		background: rgb(201, 120, 76);
+		background: linear-gradient(45deg, rgba(201, 120, 76, 1) 37%, rgba(217, 217, 217, 1) 100%);
+	}
+
+	#event-ff {
+		background: rgb(145, 63, 63);
+		background: linear-gradient(45deg, rgba(145, 63, 63, 1) 0%, rgba(156, 185, 53, 1) 100%);
+	}
+
+	#event-i {
+		background: rgb(183, 145, 182);
+		background: linear-gradient(45deg, rgba(183, 145, 182, 1) 41%, rgba(91, 208, 186, 1) 100%);
+	}
+
+	#event-sa {
+		background: #FDC830;
+		background: linear-gradient(45deg, rgb(243, 115, 53), rgb(253, 200, 48));
+	}
+</style>
+
+{{>navbar}}
 <header class="hero v-header h-container">
-	<div class="photo-wrap">
-		<img src="{{eventImg}}">
+	<div id="{{cssID}}" class="photo-wrap">
 	</div>
 	<div class="header-overlay"></div>
 	<div class="header-content text-md-center">
-		<h1 class="ui header timeless">{{eventName}}</h1>
+		{{!-- <img src="/img/banners.png" alt="kaafila_logo"> --}}
+		<h1 class="ui header {{headerFont}}">
+			{{#if active_bnc}}
+			Bread <span class="princess-sofia">&</span> Circuses
+			{{else}}
+			{{header}}
+			{{/if}}
+		</h1>
 	</div>
 </header>
 
 <div id="content">
 
-	<div id="about" class="">
-		<div class="ui middle center aligned grid container">
-			<h1 class="ui header">About</h1>
-			<div class="ui grid stackable center aligned middle aligned">
-				<div class="eight wide column left aligned">
-					<p class="ui">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae quam et felis molestie
-						lacinia. Cras mauris dui, eleifend non vehicula sed, cursus sit amet est. Etiam non lorem in felis mattis
-						blandit ac ut purus. Nulla semper ipsum risus, sollicitudin pharetra risus luctus ut. Suspendisse et
-						finibus
-						erat, quis feugiat enim. Phasellus et sem finibus, semper mi a, ornare dui. Etiam ac ornare tellus.
-						Vestibulum mi lectus, tincidunt at neque sed, vulputate consectetur mauris. Etiam eleifend convallis
-						felis,
-						a tempus magna volutpat vitae.</p>
-				</div>
-				<div class="six wide column">
-					<img src="/img/gallery/1.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="six wide column">
-					<img src="/img/gallery/1.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="eight wide column left aligned">
-					<p class="ui">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae quam et felis molestie
-						lacinia. Cras mauris dui, eleifend non vehicula sed, cursus sit amet est. Etiam non lorem in felis mattis
-						blandit ac ut purus. Nulla semper ipsum risus, sollicitudin pharetra risus luctus ut. Suspendisse et
-						finibus
-						erat, quis feugiat enim. Phasellus et sem finibus, semper mi a, ornare dui. Etiam ac ornare tellus.
-						Vestibulum mi lectus, tincidunt at neque sed, vulputate consectetur mauris. Etiam eleifend convallis
-						felis,
-						a tempus magna volutpat vitae.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+	{{#if active_bnc}}{{>events/bread-and-circuses}}{{/if}}
+	{{#if active_ff}}{{>events/folk-fluence}}{{/if}}
+	{{#if active_i}}{{>events/iridescence}}{{/if}}
+	{{#if active_sa}}{{>events/strings-attached}}{{/if}}
 
-	<div id="gallery" class="pastelprimary">
-		<div class="ui middle center aligned grid container">
-			<h1 class="ui header">Gallery</h1>
-			<div class="ui grid stackable center aligned ">
-				<div class="eight wide column">
-					<img src="/img/gallery/1.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="eight wide column">
-					<img src="/img/gallery/2.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="eight wide column">
-					<img src="/img/gallery/3.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="eight wide column">
-					<img src="/img/gallery/4.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="eight wide column">
-					<img src="/img/gallery/5.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="eight wide column">
-					<img src="/img/gallery/6.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="eight wide column">
-					<img src="/img/gallery/7.jpg" class="ui large bordered rounded image centered">
-				</div>
-				<div class="eight wide column">
-					<img src="/img/gallery/8.jpg" class="ui large bordered rounded image centered">
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="faq" class="">
-		<div class="ui middle aligned center aligned grid stackable container one columns">
-			<div class="column">
-				<h1 class="ui header">Frequently Asked Questions</h1>
-			</div>
-			<div class="ten wide column left aligned">
-				<h5 class="ui header">Q. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae quam et felis
-					molestie lacinia?</h5>
-				<p>Cras mauris dui, eleifend non vehicula sed, cursus sit amet est. Etiam non lorem in felis mattis
-					blandit ac ut purus. Nulla semper ipsum risus, sollicitudin pharetra risus luctus ut. Suspendisse et
-					finibus</p>
-				<h5 class="ui header">Q. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae quam et felis
-					molestie lacinia?</h5>
-				<p>Cras mauris dui, eleifend non vehicula sed, cursus sit amet est. Etiam non lorem in felis mattis
-					blandit ac ut purus. Nulla semper ipsum risus, sollicitudin pharetra risus luctus ut. Suspendisse et
-					finibus</p>
-				<h5 class="ui header">Q. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae quam et felis
-					molestie lacinia?</h5>
-				<p>Cras mauris dui, eleifend non vehicula sed, cursus sit amet est. Etiam non lorem in felis mattis
-					blandit ac ut purus. Nulla semper ipsum risus, sollicitudin pharetra risus luctus ut. Suspendisse et
-					finibus</p>
-			</div>
-
-		</div>
-	</div>
 </div>
 
 {{>footer}}

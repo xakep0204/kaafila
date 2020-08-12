@@ -3,8 +3,13 @@ var $header = $("header.hero");
 
 $(document).ready(function () {
 	$(".ui.toggle.button").click(function () {
-		if (!($(document).scrollTop() + 108 > $header.height())) {
-			$nav.toggleClass("scrolled");
+		if (!($(document).scrollTop() > 54)) {
+			if ($(".mobile.only.grid .ui.vertical.menu").css('display') == 'none') {
+				$nav.addClass("scrolled");
+			}
+			else {
+				$nav.removeClass("scrolled");
+			}
 		}
 		$(".mobile.only.grid .ui.vertical.menu").toggle(100);
 	});
@@ -18,10 +23,10 @@ $(document).ready(function () {
 	$(".vertical.menu #dropdowntext").click(function() {
 			$(".mobile.only.grid .ui.vertical.menu").toggle(100);
 	});
-
-	$nav.toggleClass("scrolled", $(this).scrollTop() + 108 > $header.height());
+	
+	$nav.toggleClass("scrolled", $(this).scrollTop() > 54);
 	$(document).scroll(function () {
-		$nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+		$nav.toggleClass("scrolled", $(this).scrollTop() > 54);
 	});
 	
 	$(".ui.borderless.menu a").click(function() {
@@ -32,17 +37,25 @@ $(document).ready(function () {
 		}, 700);
 	});
 
+	$(".header-content a").click(function() {
+		var target = $(this).attr('data-target');
+		
+		$('html, body').animate({
+				scrollTop: $(target).offset().top - 54
+		}, 700);
+	});
+	
 	$("#bnc").click(function() {
-		window.location.href = "/breadandcircuses"
+		window.location.href = "/bread-and-circuses"
 	})
 	$("#bnc-m").click(function() {
-		window.location.href = "/breadandcircuses"
+		window.location.href = "/bread-and-circuses"
 	})
 	$("#ff").click(function() {
-		window.location.href = "/folkfluence"
+		window.location.href = "/folk-fluence"
 	})
 	$("#ff-m").click(function() {
-		window.location.href = "/folkfluence"
+		window.location.href = "/folk-fluence"
 	})
 	$("#i").click(function() {
 		window.location.href = "/iridescence"
@@ -51,9 +64,9 @@ $(document).ready(function () {
 		window.location.href = "/iridescence"
 	})
 	$("#sa").click(function() {
-		window.location.href = "/stringsattached"
+		window.location.href = "/strings-attached"
 	})
 	$("#sa-m").click(function() {
-		window.location.href = "/stringsattached"
+		window.location.href = "/strings-attached"
 	})
 });
