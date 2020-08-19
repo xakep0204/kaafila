@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
             }
         });
         if (galleryImagesMain.length > 8) {
-            galleryImagesMore = galleryImagesMain.slice(7, galleryImagesMain.length-1);
+            galleryImagesMore = galleryImagesMain.slice(8, galleryImagesMain.length-1);
             galleryImages = galleryImagesMain.slice(0, 8);
         } else {
             galleryImages = galleryImagesMain;
