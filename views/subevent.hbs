@@ -115,7 +115,10 @@
 		font-size: 16px !important;
 	}
 
-	#faq h5, #about h2, #about h3, #about h4 {
+	#faq h5,
+	#about h2,
+	#about h3,
+	#about h4 {
 		margin-bottom: 0px !important;
 	}
 
@@ -212,16 +215,24 @@
 <div id="content">
 
 	<div id="title">
-		<div class="ui grid stackable container left aligned top aligned">
-			<div class="row">
-				<div class="four wide column left aligned">
-					<img src="https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in{{subeventImage}}?width=740"
-						class="ui large bordered rounded image centered">
-				</div>
-				<div class="ten wide column left aligned">
-					<h1 class="ui header">{{subeventName}}</h1>
-					<div class="ui button primary">Registrations Opening Soon!</div>
-				</div>
+		<div class="ui grid computer tablet only container middle aligned center aligned two columns">
+			<div class="column">
+				<img src="https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in{{subeventImage}}?width=450"
+					class="ui medium image centered">
+			</div>
+			<div class="column left aligned">
+				<h1 class="ui header">{{subeventName}}</h1>
+				<div class="ui button primary">Registrations Opening Soon!</div>
+			</div>
+		</div>
+		<div class="ui grid mobile only container middle aligned center aligned one columns">
+			<div class="column">
+				<img src="https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in{{subeventImage}}?width=450"
+					class="ui fluid image">
+			</div>
+			<div class="column left aligned">
+				<h1 class="ui header">{{subeventName}}</h1>
+				<div class="ui button primary">Registrations Opening Soon!</div>
 			</div>
 		</div>
 	</div>
