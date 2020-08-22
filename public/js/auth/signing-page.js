@@ -25,4 +25,4 @@ $(document).ready(function () {
   };
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-}
+});

@@ -25,12 +25,7 @@
 		width: 100%;
 		height: 60vh;
 		overflow: hidden;
-
-			{
-				{
-				headerGradient
-			}
-		}
+		{{headerGradient}}
 	}
 
 	.photo-wrap img {
@@ -41,6 +36,7 @@
 		top: 50%;
 		transform: translate(-50%, -50%);
 		z-index: 1;
+		filter: blur(12px)
 	}
 
 	@media screen and (max-aspect-ratio: 6/10) {
@@ -107,7 +103,6 @@
 	p.ui,
 	h5.ui {
 		font-size: 16px !important;
-		font-family: 'helvetica' !important;
 	}
 
 	#faq h5 {
@@ -145,12 +140,13 @@
 </style>
 
 {{>navbar}}
+
 <header class="hero v-header h-container">
 	<div id="{{cssID}}" class="photo-wrap">
+		{{!-- <img src="/img/banners/{{bannerName}}-banner.png" alt="kaafila_logo"> --}}
 	</div>
 	<div class="header-overlay"></div>
 	<div class="header-content text-md-center">
-		{{!-- <img src="/img/banners.png" alt="kaafila_logo"> --}}
 		<h1 class="ui header {{headerFont}}">
 			{{#if active_bnc}}
 			Bread <span class="princess-sofia">&</span> Circuses
@@ -162,7 +158,6 @@
 </header>
 
 <div id="content">
-
 	{{#if active_bnc}}{{>events/bread-and-circuses}}{{/if}}
 	{{#if active_ff}}{{>events/folk-fluence}}{{/if}}
 	{{#if active_i}}{{>events/iridescence}}{{/if}}

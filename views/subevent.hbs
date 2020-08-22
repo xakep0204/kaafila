@@ -25,12 +25,6 @@
 		width: 100%;
 		height: 60vh;
 		overflow: hidden;
-
-			{
-				{
-				headerGradient
-			}
-		}
 	}
 
 	.photo-wrap img {
@@ -119,10 +113,12 @@
 	p.ui,
 	h5.ui {
 		font-size: 16px !important;
-		font-family: 'helvetica' !important;
 	}
 
-	#faq h5 {
+	#faq h5,
+	#about h2,
+	#about h3,
+	#about h4 {
 		margin-bottom: 0px !important;
 	}
 
@@ -173,34 +169,114 @@
 	#title h1 {
 		font-size: 4rem;
 	}
+
+	#printRules #title h1 {
+		font-size: 3rem;
+	}
+
+	.button.primary {
+		background-color: #085078 !important;
+	}
+
+	.button.primary:hover {
+		background-color: #074769 !important;
+	}
+
+	.button.primary:focus {
+		background-color: #063e5c !important;
+	}
+
+	#printRules {
+		display: none;
+	}
 </style>
 
 {{>navbar}}
 
-<div id="content">
+<div id="printRules">
 	<div id="title">
-		<div class="ui left aligned grid container">
-			<div class="ui grid stackable center aligned top aligned">
-				<div class="row">
-					<div class="four wide column left aligned">
-						<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in{{subeventImage}}?width=740"
-							class="ui large bordered rounded image centered">
-					</div>
-					<div class="ten wide column left aligned">
-						<h1 class="ui header">{{subeventName}}</h1>
-					</div>
-				</div>
+		<div class="ui container">
+			<h1 style="text-align: center" class="ui center aligned">{{subeventName}}</h1>
+		</div>
+	</div>
+	<div id="about">
+		<div class="ui container">
+			<h1 style="text-align: center" class="ui center aligned">Rules and Regulations</h1>
+			{{#if bnc_mm}}{{>subevents/bnc-mm}}{{/if}}
+			{{#if bnc_oap}}{{>subevents/bnc-oap}}{{/if}}
+			{{#if ff_ff}}{{>subevents/ff-ff}}{{/if}}
+			{{#if i_sof}}{{>subevents/i-sof}}{{/if}}
+			{{#if sa_sas}}{{>subevents/sa-sas}}{{/if}}
+			{{#if sa_sff}}{{>subevents/sa-sff}}{{/if}}
+		</div>
+	</div>
+</div>
+
+<div id="content">
+
+	<div id="title">
+		<div class="ui grid computer tablet only container middle aligned center aligned two columns">
+			<div class="column">
+				<img src="https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in{{subeventImage}}?width=450"
+					class="ui medium image centered">
+			</div>
+			<div class="column left aligned">
+				<h1 class="ui header">{{subeventName}}</h1>
+				<div class="ui button primary">Registrations Opening Soon!</div>
+			</div>
+		</div>
+		<div class="ui grid mobile only container middle aligned center aligned one columns">
+			<div class="column">
+				<img src="https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in{{subeventImage}}?width=450"
+					class="ui fluid image">
+			</div>
+			<div class="column left aligned">
+				<h1 class="ui header">{{subeventName}}</h1>
+				<div class="ui button primary">Registrations Opening Soon!</div>
 			</div>
 		</div>
 	</div>
 
-	{{#if bnc_mm}}{{>subevents/bnc-mm}}{{/if}}
-	{{#if bnc_oap}}{{>subevents/bnc-oap}}{{/if}}
-	{{#if ff_ff}}{{>subevents/ff-ff}}{{/if}}
-	{{#if i_sof}}{{>subevents/i-sof}}{{/if}}
-	{{#if sa_sas}}{{>subevents/sa-sas}}{{/if}}
-	{{#if sa_sff}}{{>subevents/sa-sff}}{{/if}}
+	<div id="about">
+		<div class="ui container">
+			<div class="ui grid middle aligned two columns">
+				<div class="column">
+					<h1 class="ui">Rules and Regulations</h1>
+				</div>
+				<div class="column right aligned">
+					<button id="printRulesButton" class="ui button primary" onclick="window.print()">Print</button>
+				</div>
+			</div>
+			<br>
+			{{#if bnc_mm}}{{>subevents/bnc-mm}}{{/if}}
+			{{#if bnc_oap}}{{>subevents/bnc-oap}}{{/if}}
+			{{#if ff_ff}}{{>subevents/ff-ff}}{{/if}}
+			{{#if i_sof}}{{>subevents/i-sof}}{{/if}}
+			{{#if sa_sas}}{{>subevents/sa-sas}}{{/if}}
+			{{#if sa_sff}}{{>subevents/sa-sff}}{{/if}}
+		</div>
+	</div>
 
 </div>
 
 {{>footer}}
+
+<style>
+	@media print {
+		body * {
+			visibility: hidden;
+		}
+
+		#printRules,
+		#printRules * {
+			visibility: visible;
+		}
+
+		#printRules {
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+</style>

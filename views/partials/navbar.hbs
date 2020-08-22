@@ -19,8 +19,10 @@
 		color: white !important;
 		font-family: 'timeless';
 		font-weight: 700;
-		padding-left: .9em;
-		padding-right: .9em;
+		padding-left: .7em;
+		padding-right: .7em;
+		padding-top: .8em;
+		padding-bottom: .8em;
 	}
 
 	i.content.icon {
@@ -39,12 +41,12 @@
 	}
 
 	.computer .ui.borderless.menu .active.item {
-		border-top: 5px solid #085078;
+		border-top: 3px solid #085078;
 		background-color: transparent;
 	}
 
 	.computer .ui.borderless.menu.scrolled .active.item {
-		border-top: 5px solid white;
+		border-top: 3px solid white;
 		background-color: transparent;
 	}
 
@@ -75,6 +77,10 @@
 
 	.ui.borderless.menu .signin.item button {
 		background: #085078;
+	}
+
+	.ui.borderless.menu button.ui.button {
+		font-size: 1.1rem!important;
 	}
 
 	.ui.borderless.menu .signin.item button:hover {
@@ -137,7 +143,7 @@
 	}
 </style>
 
-<div class="ui computer only padded grid">
+<div id="navbar" class="ui computer only padded grid">
 	<div class="ui top fixed borderless fluid huge menu">
 		<div class="ui container">
 			<a class="header item" href="/">Kaafila</a>
@@ -150,29 +156,33 @@
 				<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
 				<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
 				<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
+				{{!-- <a class="item {{#if active_sa}}active{{/if}}" href="/snsartshaat">SNSN Arts Haat</a> --}}
 				{{!-- <a class="item" data-target="#contact">Contact</a> --}}
 				{{!-- {{#if userData.name}}
 				<a class="item signin" href="/profile">
 					<button class="ui button primary">{{userData.name}}</button>
 				</a>
-				{{else}}
+				{{else}} --}
 				<a class="item signin" href="/signin">
 					<button class="ui button primary">Sign in</button>
 				</a>
 				{{/if}} --}}
+				<a class="item signin" href="https://docs.google.com/forms/d/e/1FAIpQLSfBwgic_LdsGIyEJxtvEwS_I1DEIBaSMvStvY5xznOPpBtoSg/viewform?usp=sf_link">
+					<button class="ui button primary small">Register</button>
+				</a>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="ui mobile tablet only padded grid">
+<div id="navbar" class="ui mobile tablet only padded grid">
 	<div class="ui top fixed borderless huge fluid menu">
 		<a class="header item" href="/">Kaafila</a>
 		<div class="right menu">
-			{{!-- <a href="/signin">
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLSfBwgic_LdsGIyEJxtvEwS_I1DEIBaSMvStvY5xznOPpBtoSg/viewform?usp=sf_link">
 				<div class="item signin">
-					<button class="ui button primary">Sign in</button>
+					<button class="ui button primary">Register</button>
 				</div>
-			</a> --}}
+			</a>
 			<div class="item togglebutton">
 				<button class="ui icon toggle basic button">
 					<i class="content icon"></i>
