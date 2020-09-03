@@ -170,9 +170,6 @@
 		font-size: 4rem;
 	}
 
-	#printRules #title h1 {
-		font-size: 3rem;
-	}
 
 	.button.primary {
 		background-color: #085078 !important;
@@ -186,14 +183,18 @@
 		background-color: #063e5c !important;
 	}
 
-	#printRules {
+	.printRules #title h1 {
+		font-size: 3rem;
+	}
+
+	.printRules {
 		display: none;
 	}
 </style>
 
 {{>navbar}}
 
-<div id="printRules">
+<div class="printRules">
 	<div id="title">
 		<div class="ui container">
 			<h1 style="text-align: center" class="ui center aligned">{{subeventName}}</h1>
@@ -263,16 +264,11 @@
 
 <style>
 	@media print {
-		body * {
-			visibility: hidden;
+		body > *:not(.printRules) {
+			display: none!important;
 		}
 
-		#printRules,
-		#printRules * {
-			visibility: visible;
-		}
-
-		#printRules {
+		.printRules {
 			display: block;
 			position: absolute;
 			left: 0;
