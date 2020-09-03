@@ -32,13 +32,5 @@ router.get('/signout', (req, res) => {
     res.redirect('/');
 });
 
-router.get('/firebaseauth', passport.authenticate('firebaseauth', {
-    scope: ['profile']
-}));
-
-router.get('/firebaseauth/redirect', passport.authenticate('firebaseauth'), (req, res) => {
-    res.redirect('/profile');
-});
-
 
 module.exports = router;

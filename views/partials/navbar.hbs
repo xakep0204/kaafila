@@ -1,6 +1,6 @@
 <style>
 	body {
-		padding-top: 54px;
+		padding-top: 52px;
 		-webkit-font-smoothing: antialiased;
 		-moz-font-smoothing: grayscale;
 	}
@@ -54,6 +54,10 @@
 		background-color: rgba(0, 0, 0, .2);
 	}
 
+	.circular.active {
+		border: 3px solid white;
+	}
+
 	.ui.borderless.menu .togglebutton.item:hover,
 	.ui.borderless.menu .signin.item:hover,
 	.ui.borderless.menu .togglebutton.item:focus,
@@ -80,7 +84,16 @@
 	}
 
 	.ui.borderless.menu button.ui.button {
-		font-size: 1.1rem!important;
+		font-size: 1.1rem !important;
+	}
+
+	.ui.borderless.menu img.ui.circular {
+		height: 35px !important;
+		margin: -0.3em 0;
+	}
+	.mobile .ui.borderless.menu img.ui.circular {
+		height: 40px !important;
+		margin: -0.3em 0;
 	}
 
 	.ui.borderless.menu .signin.item button:hover {
@@ -156,20 +169,20 @@
 				<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
 				<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
 				<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
-				{{!-- <a class="item {{#if active_sa}}active{{/if}}" href="/snsartshaat">SNSN Arts Haat</a> --}}
+				<a class="item {{#if active_sa}}active{{/if}}" href="/snsartshaat">SNSN Arts Haat</a>
 				{{!-- <a class="item" data-target="#contact">Contact</a> --}}
 				{{!-- {{#if userData.name}}
 				<a class="item signin" href="/profile">
 					<button class="ui button primary">{{userData.name}}</button>
 				</a>
 				{{else}} --}
-				<a class="item signin" href="/signin">
-					<button class="ui button primary">Sign in</button>
-				</a>
 				{{/if}} --}}
-				<a class="item signin" href="https://docs.google.com/forms/d/e/1FAIpQLSfBwgic_LdsGIyEJxtvEwS_I1DEIBaSMvStvY5xznOPpBtoSg/viewform?usp=sf_link">
-					<button class="ui button primary small">Register</button>
+				<a class="item" href="/profile">
+					<img class="ui circular image {{#if active_p}}active{{/if}}" src="/img/profile.jpg">
 				</a>
+				{{!-- <a class="item signin" href="https://docs.google.com/forms/d/e/1FAIpQLSfBwgic_LdsGIyEJxtvEwS_I1DEIBaSMvStvY5xznOPpBtoSg/viewform?usp=sf_link">
+					<button class="ui button primary small">Register</button>
+				</a> --}}
 			</div>
 		</div>
 	</div>
@@ -178,9 +191,14 @@
 	<div class="ui top fixed borderless huge fluid menu">
 		<a class="header item" href="/">Kaafila</a>
 		<div class="right menu">
-			<a href="https://docs.google.com/forms/d/e/1FAIpQLSfBwgic_LdsGIyEJxtvEwS_I1DEIBaSMvStvY5xznOPpBtoSg/viewform?usp=sf_link">
+			{{!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBwgic_LdsGIyEJxtvEwS_I1DEIBaSMvStvY5xznOPpBtoSg/viewform?usp=sf_link">
 				<div class="item signin">
 					<button class="ui button primary">Register</button>
+				</div>
+			</a> --}}
+			<a href="/profile">
+				<div class="item signin">
+					<img class="ui circular image {{#if active_p}}active{{/if}}" src="/img/profile.jpg">
 				</div>
 			</a>
 			<div class="item togglebutton">

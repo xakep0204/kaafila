@@ -11,5 +11,6 @@ module.exports = {
   },
   session: {
       cookieKey: 'loremipsum'
-  }
+  },
+  serviceAccount: '/users/aditya/dev/kaafila-security/serviceAccount.json'
 };
