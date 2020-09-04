@@ -1,30 +1,30 @@
-.pastel1 {
-  background-color: rgba(239, 167, 145, .2);
+.k.pastel > div:nth-child(odd) {
+  background-color: #f0e9dc!important;
 }
-.pastel2 {
-  background-color: rgba(251, 227, 187, .2);
+.k.pastel > div:nth-child(even) {
+  background-color: #b8e6e2!important;
 }
-.pastel3 {
-  background-color: rgba(204, 182, 235, .2);
+.bnc.pastel > div:nth-child(odd) {
+  background-color: #d9d9d933!important;
 }
-.pastel4 {
-  background-color: rgba(182, 184, 235, .2);
+.bnc.pastel > div:nth-child(even) {
+  background-color: #c9784c33!important;
 }
-.pastel5 {
-  background-color: rgba(182, 208, 235, .2);
+.ff.pastel > div:nth-child(odd) {
+  background-color: #913f3f33!important;
 }
-.pastel6 {
-  background-color: rgba(182, 235, 230, .2);
+.ff.pastel > div:nth-child(even) {
+  background-color: #9cb93533!important;
 }
-.pastel7 {
-  background-color: rgba(182, 235, 214, .2);
+.i.pastel > div:nth-child(odd) {
+  background-color: #b791b633!important;
 }
-.pastel8 {
-  background-color: rgba(231, 239, 145, .2);
+.i.pastel > div:nth-child(even) {
+  background-color: #5bd0ba33!important;
 }
-.pastelprimary {
-  background-color: #01b6a733!important;
+.sa.pastel > div:nth-child(odd) {
+  background-color: #f3733533!important;
 }
-.pastelsecondary {
-  background-color: #01b6a76e!important;
+.sa.pastel > div:nth-child(even) {
+  background-color: #fdc83033!important;
 }

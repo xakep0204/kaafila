@@ -92,14 +92,6 @@
 		color: #46a3ff;
 	}
 
-	#content>div {
-		background: #f0e9dc !important;
-	}
-
-	#content>div:nth-child(even) {
-		background: #6eb4ac80 !important;
-	}
-
 	p.ui,
 	h5.ui {
 		font-size: 16px !important;
@@ -120,29 +112,29 @@
 
 	#event-bnc {
 		background: rgb(201, 120, 76);
-		background: linear-gradient(45deg, rgba(201, 120, 76, 1) 37%, rgba(217, 217, 217, 1) 100%);
+		background: linear-gradient(45deg, #c9784c 37%, #d9d9d9 100%);
 	}
 
 	#event-ff {
 		background: rgb(145, 63, 63);
-		background: linear-gradient(45deg, rgba(145, 63, 63, 1) 0%, rgba(156, 185, 53, 1) 100%);
+		background: linear-gradient(45deg, #913f3f 0%, #9cb935 100%);
 	}
 
 	#event-i {
 		background: rgb(183, 145, 182);
-		background: linear-gradient(45deg, rgba(183, 145, 182, 1) 41%, rgba(91, 208, 186, 1) 100%);
+		background: linear-gradient(45deg, #b791b6 41%, #5bd0ba 100%);
 	}
 
 	#event-sa {
 		background: #FDC830;
-		background: linear-gradient(45deg, rgb(243, 115, 53), rgb(253, 200, 48));
+		background: linear-gradient(45deg, #f37335, #fdc830);
 	}
 </style>
 
 {{>navbar}}
 
 <header class="hero v-header h-container">
-	<div id="{{cssID}}" class="photo-wrap">
+	<div id="event-{{cssID}}" class="photo-wrap">
 		{{!-- <img src="/img/banners/{{bannerName}}-banner.png" alt="kaafila_logo"> --}}
 	</div>
 	<div class="header-overlay"></div>
@@ -157,7 +149,7 @@
 	</div>
 </header>
 
-<div id="content">
+<div id="content" class="{{cssID}} pastel">
 	{{#if active_bnc}}{{>events/bread-and-circuses}}{{/if}}
 	{{#if active_ff}}{{>events/folk-fluence}}{{/if}}
 	{{#if active_i}}{{>events/iridescence}}{{/if}}

@@ -91,6 +91,7 @@
 		height: 35px !important;
 		margin: -0.3em 0;
 	}
+
 	.mobile .ui.borderless.menu img.ui.circular {
 		height: 40px !important;
 		margin: -0.3em 0;
@@ -169,20 +170,19 @@
 				<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
 				<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
 				<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
-				<a class="item {{#if active_sa}}active{{/if}}" href="/snsartshaat">SNSN Arts Haat</a>
-				{{!-- <a class="item" data-target="#contact">Contact</a> --}}
-				{{!-- {{#if userData.name}}
-				<a class="item signin" href="/profile">
+				<a class="item" href="/snsartshaat">SNSN Arts Haat</a>
+				{{#if userData.name}}
+				{{!-- <a class="item signin" href="/profile">
 					<button class="ui button primary">{{userData.name}}</button>
-				</a>
-				{{else}} --}
-				{{/if}} --}}
+				</a> --}}
 				<a class="item" href="/profile">
 					<img class="ui circular image {{#if active_p}}active{{/if}}" src="/img/profile.jpg">
 				</a>
-				{{!-- <a class="item signin" href="https://docs.google.com/forms/d/e/1FAIpQLSfBwgic_LdsGIyEJxtvEwS_I1DEIBaSMvStvY5xznOPpBtoSg/viewform?usp=sf_link">
-					<button class="ui button primary small">Register</button>
-				</a> --}}
+				{{else}}
+				<a class="item signin" href="/signin">
+					<button class="ui button primary small">Sign in</button>
+				</a>
+				{{/if}}
 			</div>
 		</div>
 	</div>
@@ -196,11 +196,20 @@
 					<button class="ui button primary">Register</button>
 				</div>
 			</a> --}}
+			{{#if userData.name}}
+			{{!-- <a class="item signin" href="/profile">
+					<button class="ui button primary">{{userData.name}}</button>
+				</a> --}}
 			<a href="/profile">
 				<div class="item signin">
 					<img class="ui circular image {{#if active_p}}active{{/if}}" src="/img/profile.jpg">
 				</div>
 			</a>
+			{{else}}
+			<a class="item signin" href="/signin">
+				<button class="ui button primary small">Sign in</button>
+			</a>
+			{{/if}}
 			<div class="item togglebutton">
 				<button class="ui icon toggle basic button">
 					<i class="content icon"></i>
@@ -213,7 +222,6 @@
 			<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
 			<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
 			<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
-			{{!-- <a class="item" data-target="#contact">Contact</a> --}}
 		</div>
 	</div>
 </div>

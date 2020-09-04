@@ -4,7 +4,7 @@ var router = express.Router();
 router.get('/bread-and-circuses', function(req, res, next) {
     res.render('event', {
         title: "Bread and Circuses - Kaafila",
-        cssID: 'event-bnc',
+        cssID: 'bnc',
         headerFont: 'rye',
         bannerName: "bread-and-circuses",
         eventCategories: [
@@ -30,7 +30,7 @@ router.get('/folk-fluence', function(req, res, next) {
     res.render('event', {
         title: "Folk Fluence - Kaafila",
         header: 'Folk Fluence',
-        cssID: 'event-ff',
+        cssID: 'ff',
         headerFont: 'ardagh',
         bannerName: "folk-fluence",
         eventCategories: [
@@ -55,7 +55,7 @@ router.get('/iridescence', function(req, res, next) {
     res.render('event', {
         title: "Iridescence - Kaafila",
         header: 'Iridescence',
-        cssID: 'event-i',
+        cssID: 'i',
         headerFont: 'apple-garamond',
         bannerName: "iridescence",
         eventCategories: [
@@ -80,7 +80,7 @@ router.get('/strings-attached', function(req, res, next) {
     res.render('event', {
         title: "Strings Attached - Kaafila",
         header: 'Strings Attached',
-        cssID: 'event-sa',
+        cssID: 'sa',
         headerFont: 'welcome',
         bannerName: "strings-attached",
         eventCategories: [
@@ -116,6 +116,7 @@ router.get('/bread-and-circuses/monologue-maestros', function(req, res, next) {
         subeventImage: "/img/banners/bnc-mm-banner.png",
         active_bnc: true,
         bnc_mm: true,
+        cssID: 'bnc',
         styles: [
             '/css/fonts.css',
             '/css/pastels.css',
@@ -132,6 +133,7 @@ router.get('/bread-and-circuses/one-act-play', function(req, res, next) {
         subeventImage: "/img/banners/bnc-oap-banner.png",
         active_bnc: true,
         bnc_oap: true,
+        cssID: 'bnc',
         styles: [
             '/css/fonts.css',
             '/css/pastels.css',
@@ -149,6 +151,7 @@ router.get('/folk-fluence/folk-fluence', function(req, res, next) {
         subeventImage: "/img/banners/ff-ff-banner.png",
         active_ff: true,
         ff_ff: true,
+        cssID: 'ff',
         styles: [
             '/css/fonts.css',
             '/css/pastels.css',
@@ -166,6 +169,7 @@ router.get('/iridescence/spirit-of-freedom', function(req, res, next) {
         subeventImage: "/img/banners/i-sof-banner.png",
         active_i: true,
         i_sof: true,
+        cssID: 'i',
         styles: [
             '/css/fonts.css',
             '/css/pastels.css',
@@ -183,6 +187,7 @@ router.get('/strings-attached/strings-attached-solos', function(req, res, next) 
         subeventImage: "/img/banners/sa-sas-banner.png",
         active_sa: true,
         sa_sas: true,
+        cssID: 'sa',
         styles: [
             '/css/fonts.css',
             '/css/pastels.css',
@@ -199,6 +204,7 @@ router.get('/strings-attached/songs-for-freedom', function(req, res, next) {
         subeventImage: "/img/banners/sa-sff-banner.png",
         active_sa: true,
         sa_sff: true,
+        cssID: 'sa',
         styles: [
             '/css/fonts.css',
             '/css/pastels.css',
