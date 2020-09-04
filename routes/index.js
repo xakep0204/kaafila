@@ -96,40 +96,6 @@ const authCheck = (req, res, next) => {
 	}
 };
 
-router.get("/snsartshaat", function (req, res, next) {
-	var artImages = [];
-
-	// fs.readdir(artDirectoryPath, function (err, files) {
-	// 	if (err) {
-	// 		return console.log("Unable to scan directory: " + err);
-	// 	}
-	// 	files.forEach(function (file) {
-	// 		if (
-	// 			file.slice(-3) == "jpg" ||
-	// 			file.slice(-3) == "png" ||
-	// 			file.slice(-3) == "JPG" ||
-	// 			file.slice(-3) == "gif"
-	// 		) {
-	// 			imageObject = { path: file, caption: file.slice(0, -4) };
-	// 			artImages.push(imageObject);
-	// 		}
-	// 	});
-	// 	// console.log("Main", galleryImagesMain.length, "null", galleryImages.length, "More", galleryImagesMore.length)
-	// 	res.render("snsartshaat", {
-	// 		title: "SNS Arts Haat - Kaafila",
-	// 		artImages: artImages,
-	// 		styles: ["/css/pastels.css"],
-	// 		scripts: ["/js/navbar.js", "/js/about.js"],
-	// 	});
-	// });
-	res.render("snsartshaat", {
-		title: "SNS Arts Haat - Kaafila",
-		artImages: artImages,
-		styles: ["/css/pastels.css"],
-		scripts: ["/js/navbar.js", "/js/about.js"],
-	});
-});
-
 router.get("/profile", (req, res) => {
 	res.render("profile", {
 		active_p: true,
