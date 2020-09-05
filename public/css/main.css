@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .k.pastel > div:nth-child(odd) {
   background-color: #f0e9dc!important;
 }
@@ -27,4 +31,21 @@
 }
 .sa.pastel > div:nth-child(even) {
   background-color: #fdc83033!important;
+}
+
+.button.primary {
+  background-color: #085078 !important;
+}
+
+.button.primary:hover {
+  background-color: #074769 !important;
+}
+
+.button.primary:focus {
+  background-color: #063e5c !important;
+}
+
+#content>div {
+  padding-top: 5em;
+  padding-bottom: 5em;
 }

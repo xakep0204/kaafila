@@ -5,11 +5,6 @@
 		padding-bottom: 3em;
 	}
 
-	#content>div {
-		padding-top: 5em;
-		padding-bottom: 5em;
-	}
-
 	#contact a,
 	#dev a {
 		color: #46a3ff;
@@ -19,8 +14,8 @@
 		background-color: black
 	}
 
-	.ui.form,
-	.ui.form .grid {
+	#updatesform,
+	#updatesform .grid {
 		width: 100% !important;
 	}
 
@@ -30,41 +25,21 @@
 		background: linear-gradient(to left, #6eb4ac, #085078);
 	}
 
-		{
-			{
-			 !-- #updates input {
-				background-color: #0000003d;
-				color: white;
-			}
-
-			--
-		}
-	}
-
-	#updates .button.primary {
-		background-color: #085078;
-		height: 38px !important;
-		vertical-align: middle !important;
-	}
-
-	#updates .button.primary:hover {
-		background-color: #074769;
-	}
-
-	#updates .button.primary:focus {
-		background-color: #063e5c;
-	}
-
 	#updates .mobile .column {
 		padding-left: 0px !important;
 		padding-right: 0px !important;
+	}
+
+	#updates .button.primary {
+		height: 38px !important;
+		vertical-align: middle !important;
 	}
 </style>
 
 {{!-- <div id="updates" class="ui vertical footer segment">
 	<div class="ui container">
 		<h2 class="ui inverted header">Subscribe to Updates!</h2>
-		<form class="ui form">
+		<form id="updatesform" class="ui form">
 			<div style="margin-top: 14px" class="ui grid top aligned computer tablet only">
 				<div style="width: 500px; margin-right: 12px !important;" class="field">
 					<div class="ui input">
@@ -91,7 +66,7 @@
 	</div>
 </div> --}}
 
-<div id="footerU">
+<div id="footer">
 
 	<div id="contact" class="ui inverted vertical footer segment">
 		<div class="ui container">

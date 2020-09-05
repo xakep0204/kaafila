@@ -4,7 +4,7 @@ function getCookie(name) {
 	return value != null ? unescape(value[1]) : null;
 }
 
-$(".ui.form").form({
+$("#signupform").form({
 	fields: {
 		schoolName: {
 			identifier: "schoolName",
@@ -66,8 +66,8 @@ $(".ui.form").form({
 	},
 });
 
-$(".ui.form").submit(function () {
-	if ($(".ui.form").form("is valid")) {
+$("#signupform").submit(function () {
+	if ($("#signupform").form("is valid")) {
 		email = $("#email").val();
 		password = $("#password").val();
 		firebase
