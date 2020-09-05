@@ -63,4 +63,4 @@ typings/
 .DS_Store
 public/img/gallery/
 public/img/snsartshaat
-routes/keys.js
+firebase-proj.js
