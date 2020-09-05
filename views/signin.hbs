@@ -42,21 +42,19 @@
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui input">
-            <input type="text" name="email" placeholder="Email address">
+            <input type="text" id="email" placeholder="Email address" value="contact@snsartsfestival.in">
           </div>
         </div>
         <div class="field">
           <div class="ui input">
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" id="password" placeholder="Password" value="loremipsum">
           </div>
           <div style="text-align: right;"><a href="">Forgot Password</a></div>
         </div>
-        <a href="/">
-          <button id="signin_email" class="ui fluid large primary submit button">Sign in</button>
-        </a>
-        <div id="signin_google" class="ui fluid large basic black submit button">
+        <button type="submit" id="signin_email" class="ui fluid large primary button">Sign in</button>
+        <button type="button" id="signin_google" class="ui fluid large basic black button">
           <i class="google icon"></i>Sign in with Google
-        </div>
+        </button>
       </div>
 
       <div class="ui error message"></div>

@@ -96,7 +96,7 @@
 		}
 	}
 
-	#content > div {
+	#content>div {
 		padding-top: 5em;
 		padding-bottom: 5em;
 	}
@@ -114,11 +114,27 @@
 	}
 
 	.ui.borderless.menu {
-		background: #085078!important;
-		background: -webkit-linear-gradient(to left, #85D8CE, #085078)!important;
-		background: linear-gradient(to left, #6eb4ac, #085078)!important;
+		background: #085078 !important;
+		background: -webkit-linear-gradient(to left, #85D8CE, #085078) !important;
+		background: linear-gradient(to left, #6eb4ac, #085078) !important;
 	}
 
+	table {
+		background-color: transparent!important;
+		border: none!important;
+	}
+
+	.button.primary {
+		background-color: #085078 !important;
+	}
+
+	.button.primary:hover {
+		background-color: #074769 !important;
+	}
+
+	.button.primary:focus {
+		background-color: #063e5c !important;
+	}
 </style>
 
 
@@ -132,15 +148,32 @@
 </header>
 
 {{!-- <h1 class="ui header">This: {{userData}}</h1> --}}
-<div id="content">
+<div id="content" class="pastel k">
 	<div id="registered-events">
 		<div class="ui container">
 			<h1 class="ui header">Registered Events</h1>
 		</div>
 	</div>
-	<div id="registered-events">
+	<div id="account-details">
 		<div class="ui container">
 			<h1 class="ui header">Account Details</h1>
+			<table class="ui table">
+				<tbody>
+					<tr>
+						<td class="six wide">School Name</td>
+						<td class="ten wide">{{userData.schoolName}}</td>
+					</tr>
+					<tr>
+						<td class="six wide">School Representative's Name</td>
+						<td class="ten wide">{{userData.schoolRepName}}</td>
+					</tr>
+					<tr>
+						<td class="six wide">Email Address</td>
+						<td class="ten wide">{{userData.email}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="/signout"><button class="ui button primary">Sign out</button></a>
 		</div>
 	</div>
 </div>

@@ -171,12 +171,9 @@
 				<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
 				<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
 				<a class="item" href="/snsartshaat">SNSN Arts Haat</a>
-				{{#if userData.name}}
-				{{!-- <a class="item signin" href="/profile">
-					<button class="ui button primary">{{userData.name}}</button>
-				</a> --}}
+				{{#if userData.email}}
 				<a class="item" href="/profile">
-					<img class="ui circular image {{#if active_p}}active{{/if}}" src="/img/profile.jpg">
+					<img class="ui circular image {{#if active_p}}active{{/if}}" src="{{userData.photoURL}}?width=40&height=40">
 				</a>
 				{{else}}
 				<a class="item signin" href="/signin">
@@ -196,13 +193,10 @@
 					<button class="ui button primary">Register</button>
 				</div>
 			</a> --}}
-			{{#if userData.name}}
-			{{!-- <a class="item signin" href="/profile">
-					<button class="ui button primary">{{userData.name}}</button>
-				</a> --}}
+			{{#if userData.email}}
 			<a href="/profile">
 				<div class="item signin">
-					<img class="ui circular image {{#if active_p}}active{{/if}}" src="/img/profile.jpg">
+					<img class="ui circular image {{#if active_p}}active{{/if}}" src="{{userData.photoURL}}?width=40&height=40">
 				</div>
 			</a>
 			{{else}}

@@ -39,8 +39,22 @@
   <script src="/js/jquery-3.5.1.min.js"></script>
   <script src="/js/semantic.min.js"></script>
   <script src="/js/fancybox.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+  <script>
+    var firebaseConfig = {
+    apiKey: "AIzaSyC3Gk69M84axY759IpCflLpqxXo4xo-cB8",
+    authDomain: "kaafila-dcfa0.firebaseapp.com",
+    databaseURL: "https://kaafila-dcfa0.firebaseio.com",
+    projectId: "kaafila-dcfa0",
+    storageBucket: "kaafila-dcfa0.appspot.com",
+    messagingSenderId: "1021581707523",
+    appId: "1:1021581707523:web:5b2adca1dcf33b523e8136",
+    measurementId: "G-HN4FK4NK0V"
+  };
+  firebase.initializeApp(firebaseConfig);
+  </script>
+  
   {{#each scripts}}
   <script src="{{this}}"></script>
   {{/each}}

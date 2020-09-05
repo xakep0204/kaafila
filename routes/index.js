@@ -2,11 +2,23 @@ var express = require("express");
 var router = express.Router();
 var path = require("path");
 var fs = require("fs");
+var admin = require("../firebase-proj");
 
 var galleryDirectoryPath = path.join(__dirname, "../public/img/gallery");
-var sponsorsDirectoryPath = path.join(__dirname, "../public/img/sponsors");
 
 router.get("/", function (req, res, next) {
+	var userData = {}
+	var webrender = () => {
+		res.render("index", {
+			title: "Kaafila - Shiv Nadar School Noida",
+			galleryImages: galleryImages,
+			galleryImagesMore: galleryImagesMore,
+			styles: ["/css/pastels.css"],
+			scripts: ["/js/navbar.js", "/js/about.js"],
+			userData: userData,
+		});
+	}
+
 	var galleryImagesMain = [];
 	var galleryImages = [];
 	var galleryImagesMore = [];
@@ -35,14 +47,33 @@ router.get("/", function (req, res, next) {
 		} else {
 			galleryImages = galleryImagesMain;
 		}
-		// console.log("Main", galleryImagesMain.length, "null", galleryImages.length, "More", galleryImagesMore.length)
-		res.render("index", {
-			title: "Kaafila - Shiv Nadar School Noida",
-			galleryImages: galleryImages,
-			galleryImagesMore: galleryImagesMore,
-			styles: ["/css/pastels.css"],
-			scripts: ["/js/navbar.js", "/js/about.js"],
-		});
+
+		const sessionCookie = req.cookies.session || "";
+		admin
+			.auth()
+			.verifySessionCookie(sessionCookie, true)
+			.then(function (decodedClaims) {
+				admin
+					.auth()
+					.getUser(decodedClaims.sub)
+					.then(function (userRecord) {
+						userData = {
+							email: userRecord.email,
+							schoolName: userRecord.displayName,
+							schoolRepName: "Manjima Chatterjee",
+							photoURL: userRecord.photoURL,
+						};
+						webrender();
+					})
+					.catch((err) => {
+						console.log(err);
+						webrender();
+					});
+			})
+			.catch(function (error) {
+				console.log(error);
+				webrender();
+			});
 	});
 });
 
@@ -70,7 +101,6 @@ router.get("/", function (req, res, next) {
 //             }
 //         });
 //     });
-
 //     res.render('about', {
 //         title: "About - Kaafila",
 //         active_a: true,
@@ -87,20 +117,5 @@ router.get("/", function (req, res, next) {
 //         ]
 //     });
 // });
-
-const authCheck = (req, res, next) => {
-	if (!req.user) {
-		res.redirect("/signin");
-	} else {
-		next();
-	}
-};
-
-router.get("/profile", (req, res) => {
-	res.render("profile", {
-		active_p: true,
-		user: req.user,
-	});
-});
 
 module.exports = router;

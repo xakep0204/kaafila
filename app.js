@@ -8,6 +8,7 @@ var hbs = require("express-handlebars");
 var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
 var eventRouter = require("./routes/event");
+var sahRouter = require("./routes/sah");
 
 var app = express();
 
@@ -35,6 +36,7 @@ app.engine(
 app.use("/", indexRouter);
 app.use("/", authRouter);
 app.use("/", eventRouter);
+app.use("/", sahRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
