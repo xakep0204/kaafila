@@ -15,7 +15,7 @@ router.get("/signin", csrfProtection, function (req, res, next) {
 				.auth()
 				.getUser(decodedClaims.sub)
 				.then(() => {
-					res.redirect("/");
+					res.redirect("/profile");
 				})
 				.catch(() => {});
 		})
@@ -39,7 +39,7 @@ router.get("/signup", csrfProtection, function (req, res, next) {
 				.auth()
 				.getUser(decodedClaims.sub)
 				.then(() => {
-					res.redirect("/");
+					res.redirect("/profile");
 				})
 				.catch(() => {});
 		})

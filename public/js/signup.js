@@ -183,39 +183,38 @@ $("#schoolinfoform").form({
 
 $("#schoolinfoform").submit(() => {
 	if ($("#schoolinfoform").form("is valid")) {
-    var user = firebase.auth().currentUser;
-    console.log({
-      uid: user.uid,
-      email: user.email,
-      schoolName: $("#schoolinfoform #schoolName").val(),
-      schoolRepName: $("#schoolinfoform #schoolRepName").val(),
-      photoURL: user.photoURL,
-    })
-		db.collection("schoolUsers")
-			.doc(user.uid)
-			.set({
-				email: user.email,
-				schoolName: $("#schoolinfoform #schoolName").val(),
-				schoolRepName: $("#schoolinfoform #schoolRepName").val(),
-				photoURL: user.photoURL,
-			})
-			.catch((error) => {
-				return firebase.auth().signOut();
+		var user = firebase.auth().currentUser;
+		user
+			.updateProfile({
+				displayName: $("#schoolinfoform #schoolName").val(),
 			})
 			.then(() => {
-				user.getIdToken().then((idToken) => {
-					const csrfToken = getCookie("csrfToken");
-					return $.post("/sessionLogin", {
-						idToken: idToken,
-						csrfToken: csrfToken,
-					});
-				})
-        .then(() => {
-          return firebase.auth().signOut();
-        })
-        .then(() => {
-          window.location.assign("/profile");
-        });
+				db.collection("schoolUsers")
+					.doc(user.uid)
+					.set({
+						email: user.email,
+						schoolName: $("#schoolinfoform #schoolName").val(),
+						schoolRepName: $("#schoolinfoform #schoolRepName").val(),
+						photoURL: user.photoURL,
+					})
+					.catch(() => {
+						return firebase.auth().signOut();
+					})
+					.then(() => {
+						user.getIdToken().then((idToken) => {
+							const csrfToken = getCookie("csrfToken");
+							return $.post("/sessionLogin", {
+								idToken: idToken,
+								csrfToken: csrfToken,
+							});
+						})
+						.then(() => {
+							return firebase.auth().signOut();
+						})
+						.then(() => {
+							window.location.assign("/profile");
+						});
+					})
 			})
 	}
 	return false;
