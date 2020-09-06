@@ -222,7 +222,7 @@
             "link": "/events/strings-attached/the-manta-sidhu-show"
           },
           {
-            "image": "sa-s-banner.png",
+            "image": "sa-sb-banner.png",
             "link": "/events/strings-attached/spaceband"
           }
         ]
@@ -255,9 +255,9 @@
       "pageID": "sa_tmss"
     },
     "spaceband": {
-      "name": "Spaceband",
-      "image": "sa-s-banner.png",
-      "pageID": "sa_s"
+      "name": "Space Band",
+      "image": "sa-sb-banner.png",
+      "pageID": "sa_sb"
     }
   }
 }
