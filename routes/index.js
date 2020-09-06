@@ -13,7 +13,7 @@ router.get("/", function (req, res, next) {
 			title: "Kaafila - Shiv Nadar School Noida",
 			galleryImages: galleryImages,
 			galleryImagesMore: galleryImagesMore,
-			scripts: ["/js/navbar.js", "/js/about.js"],
+			scripts: ["/js/navbar.js", "/js/index.js"],
 			userData: userData,
 		});
 	}
@@ -57,9 +57,6 @@ router.get("/", function (req, res, next) {
 					.getUser(decodedClaims.sub)
 					.then(function (userRecord) {
 						userData = {
-							email: userRecord.email,
-							schoolName: userRecord.displayName,
-							schoolRepName: "Manjima Chatterjee",
 							photoURL: userRecord.photoURL,
 						};
 						webrender();

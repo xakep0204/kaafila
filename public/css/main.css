@@ -49,3 +49,17 @@ body {
   padding-top: 5em;
   padding-bottom: 5em;
 }
+
+@media (max-width: 960px) {
+  #content>div {
+    padding-top: 5em;
+    padding-bottom: 5em;
+  }
+}
+
+@media (max-width: 768px) {
+  #content>div {
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
+}
