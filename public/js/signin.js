@@ -40,6 +40,7 @@ $("#signinform").form({
 });
 
 $("#signinform").submit(function () {
+	$("#signin_email").addClass("loading");
 	if ($("#signinform").form("is valid")) {
 		email = $("#email").val();
 		password = $("#password").val();
@@ -61,10 +62,12 @@ $("#signinform").submit(function () {
 						return firebase.auth().signOut();
 					})
 					.then(() => {
+						$("#signin_email").removeClass("loading");
 						window.location.assign("/profile");
 					});
 			})
 			.catch((error) => {
+				$("#signin_email").removeClass("loading");
 				if (error.code == "auth/user-not-found") {
 					$("#signinform").form("add errors", [
 						"Account doesn't exist, sign up instead",
@@ -131,6 +134,7 @@ $("#schoolinfoform").form({
 });
 
 $("#schoolinfoform").submit(() => {
+	$("#schoolinfo").addClass("loading");
 	if ($("#schoolinfoform").form("is valid")) {
 		var user = firebase.auth().currentUser;
 		user

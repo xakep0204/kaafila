@@ -75,6 +75,7 @@ $("#signupform").form({
 });
 
 $("#signupform").submit(function () {
+	$("#signup_email").addClass("loading");
 	if ($("#signupform").form("is valid")) {
 		email = $("#email").val();
 		password = $("#password").val();
@@ -86,8 +87,7 @@ $("#signupform").submit(function () {
 				user
 					.updateProfile({
 						displayName: $("#signupform #schoolName").val(),
-						photoURL:
-							"https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/profile-blank.png",
+						photoURL: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/profile-blank.png",
 					})
 					.then(() => {
 						user.sendEmailVerification().catch(() => {});
@@ -121,6 +121,7 @@ $("#signupform").submit(function () {
 					});
       })
       .catch((error) => {
+				$("#signup_email").removeClass("loading");
 				if (error.code == "auth/email-already-in-use") {
 					$("#signupform").form("add errors", ["Account already exists, sign in instead"]);
 				}
@@ -182,6 +183,7 @@ $("#schoolinfoform").form({
 });
 
 $("#schoolinfoform").submit(() => {
+	$("#schoolinfo").addClass("loading");
 	if ($("#schoolinfoform").form("is valid")) {
 		var user = firebase.auth().currentUser;
 		user

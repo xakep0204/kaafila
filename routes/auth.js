@@ -132,6 +132,7 @@ router.get("/profile", function (req, res, next) {
 							title: `${userRecord.displayName} - Kaafila`,
 							active_p: true,
 							userData: userData,
+							scripts: ['/js/profile.js']
 						});
 					});
 				})
@@ -142,6 +143,36 @@ router.get("/profile", function (req, res, next) {
 		.catch(function (error) {
 			res.redirect("/signin");
 		});
+});
+
+router.post("/updateuser", (req, res) => {
+	const csrfToken = req.body.csrfToken.toString();
+	if (csrfToken !== req.cookies.csrfToken) {
+		res.status(401).send("UNAUTHORIZED REQUEST!");
+		return;
+	}
+
+	const sessionCookie = req.cookies.session || "";
+	admin
+		.auth()
+		.verifySessionCookie(sessionCookie, true)
+		.then(function (decodedClaims) {
+			admin
+				.auth()
+				.updateUser(decodedClaims.sub, {
+					displayName: req.body.schoolName,
+				})
+				.then(() => {
+					db.collection('schoolUsers').doc(decodedClaims.sub).update({
+						schoolName: req.body.schoolName,
+						schoolRepName: req.body.schoolRepName,
+					}).then(() => {
+						res.status(200).send();
+					});
+				})
+				.catch(() => {});
+		})
+		.catch(() => {});
 });
 
 module.exports = router;
