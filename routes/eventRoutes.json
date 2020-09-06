@@ -1,0 +1,135 @@
+{
+  "bread-and-circuses": {
+    "name": "Bread & Circuses",
+    "cssID": "bnc",
+    "headerFont": "rye",
+    "eventCategories": [
+      {
+        "name": "Competitive Events",
+        "main": [
+          {
+            "image": "bnc-mm-banner.png",
+            "link": "/events/bread-and-circuses/monologue-maestros"
+          },
+          {
+            "image": "bnc-oap-banner.png",
+            "link": "/events/bread-and-circuses/one-act-play"
+          }
+        ]
+      },
+      {
+        "name": "Non-competitive Events",
+        "main": [
+          {
+            "image": "bnc-cl-banner.png",
+            "link": "/events/bread-and-circuses/colab-lab"
+          },
+          {
+            "image": "bnc-fi-banner.png",
+            "link": "/events/bread-and-circuses/fade-in"
+          }
+        ]
+      }
+    ],
+    "navID": "active_bnc",
+
+    "monologue-maestros": {
+      "name": "Monologue Maestros",
+      "image": "bnc-mm-banner.png",
+      "pageID": "bnc_mm"
+    },
+    "one-act-play": {
+      "name": "One Act Play",
+      "image": "bnc-oap-banner.png",
+      "pageID": "bnc_oap"
+    },
+    "colab-lab": {
+      "name": "Colab Lab",
+      "image": "bnc-cl-banner.png",
+      "pageID": "bnc_cl"
+    },
+    "fade-in": {
+      "name": "Fade In",
+      "image": "bnc-fi-banner.png",
+      "pageID": "bnc_fi"
+    }
+  },
+  "folk-fluence": {
+    "name": "Folk Fluence",
+    "cssID": "ff",
+    "headerFont": "ardagh",
+    "eventCategories": [
+      {
+        "name": "Competitive Events",
+        "main": [
+          {
+            "image": "ff-ff-banner.png",
+            "link": "/events/folk-fluence/folk-fluence"
+          }
+        ]
+      }
+    ],
+    "navID": "active_ff",
+
+    "folk-fluence": {
+      "name": "Folk Fluence",
+      "image": "ff-ff-banner.png",
+      "pageID": "ff_ff"
+    }
+  },
+  "iridescence": {
+    "name": "Iridescence",
+    "cssID": "i",
+    "headerFont": "apple-garamond",
+    "eventCategories": [
+      {
+        "name": "Competitive Events",
+        "main": [
+          {
+            "image": "i-sof-banner.png",
+            "link": "/events/iridescence/spirit-of-freedom"
+          }
+        ]
+      }
+    ],
+    "navID": "active_i",
+
+    "spirit-of-freedom": {
+      "name": "Spirit of Freedom",
+      "image": "i-sof-banner.png",
+      "pageID": "i_sof"
+    }
+  },
+  "strings-attached": {
+    "name": "Strings Attached",
+    "cssID": "sa",
+    "headerFont": "welcome",
+    "eventCategories": [
+      {
+        "name": "Competitive Events",
+        "main": [
+          {
+            "image": "sa-sas-banner.png",
+            "link": "/events/strings-attached/strings-attached-solos"
+          },
+          {
+            "image": "sa-sff-banner.png",
+            "link": "/events/strings-attached/songs-for-freedom"
+          }
+        ]
+      }
+    ],
+    "navID": "active_sa",
+
+    "strings-attached-solos": {
+      "name": "Strings Attached Solos",
+      "image": "sa-sas-banner.png",
+      "pageID": "sa_sas"
+    },
+    "songs-for-freedom": {
+      "name": "Songs for Freedom",
+      "image": "sa-sff-banner.png",
+      "pageID": "sa_sff"
+    }
+  }
+}

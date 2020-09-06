@@ -166,12 +166,12 @@
 			</a> --}}
 			<div class="right menu">
 				{{!-- <a class="item {{#if active_a}}active{{/if}}" href="/about">About</a> --}}
-				<a class="item {{#if active_bnc}}active{{/if}}" href="/bread-and-circuses">Bread & Circuses</a>
-				<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
-				<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
-				<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
-				<a class="item" href="/snsartshaat">SNSN Arts Haat</a>
-				{{#if userData.email}}
+				<a class="item {{#if active_bnc}}active{{/if}}" href="/events/bread-and-circuses">Bread & Circuses</a>
+				<a class="item {{#if active_ff}}active{{/if}}" href="/events/folk-fluence">Folk Fluence</a>
+				<a class="item {{#if active_i}}active{{/if}}" href="/events/iridescence">Iridescence</a>
+				<a class="item {{#if active_sa}}active{{/if}}" href="/events/strings-attached">Strings Attached</a>
+				{{!-- <a class="item" href="/snsartshaat">SNSN Arts Haat</a> --}}
+				{{#if userData.photoURL}}
 				<a class="item" href="/profile">
 					<img class="ui circular image {{#if active_p}}active{{/if}}" src="{{userData.photoURL}}?width=40&height=40">
 				</a>
@@ -193,7 +193,7 @@
 					<button class="ui button primary">Register</button>
 				</div>
 			</a> --}}
-			{{#if userData.email}}
+			{{#if userData.photoURL}}
 			<a href="/profile">
 				<div class="item signin">
 					<img class="ui circular image {{#if active_p}}active{{/if}}" src="{{userData.photoURL}}?width=40&height=40">
@@ -212,10 +212,10 @@
 		</div>
 		<div class="ui vertical borderless fluid menu">
 			{{!-- <a class="item {{#if active_a}}active{{/if}}" href="/about">About</a> --}}
-			<a class="item {{#if active_bnc}}active{{/if}}" href="/bread-and-circuses">Bread & Circuses</a>
-			<a class="item {{#if active_ff}}active{{/if}}" href="/folk-fluence">Folk Fluence</a>
-			<a class="item {{#if active_i}}active{{/if}}" href="/iridescence">Iridescence</a>
-			<a class="item {{#if active_sa}}active{{/if}}" href="/strings-attached">Strings Attached</a>
+			<a class="item {{#if active_bnc}}active{{/if}}" href="/events/bread-and-circuses">Bread & Circuses</a>
+			<a class="item {{#if active_ff}}active{{/if}}" href="/events/folk-fluence">Folk Fluence</a>
+			<a class="item {{#if active_i}}active{{/if}}" href="/events/iridescence">Iridescence</a>
+			<a class="item {{#if active_sa}}active{{/if}}" href="/events/strings-attached">Strings Attached</a>
 		</div>
 	</div>
 </div>

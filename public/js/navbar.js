@@ -38,27 +38,27 @@ $(document).ready(function () {
 	});
 	
 	$("#bnc").click(function() {
-		window.location.href = "/bread-and-circuses"
+		window.location.href = "/events/bread-and-circuses"
 	})
 	$("#bnc-m").click(function() {
-		window.location.href = "/bread-and-circuses"
+		window.location.href = "/events/bread-and-circuses"
 	})
 	$("#ff").click(function() {
-		window.location.href = "/folk-fluence"
+		window.location.href = "/events/folk-fluence"
 	})
 	$("#ff-m").click(function() {
-		window.location.href = "/folk-fluence"
+		window.location.href = "/events/folk-fluence"
 	})
 	$("#i").click(function() {
-		window.location.href = "/iridescence"
+		window.location.href = "/events/iridescence"
 	})
 	$("#i-m").click(function() {
-		window.location.href = "/iridescence"
+		window.location.href = "/events/iridescence"
 	})
 	$("#sa").click(function() {
-		window.location.href = "/strings-attached"
+		window.location.href = "/events/strings-attached"
 	})
 	$("#sa-m").click(function() {
-		window.location.href = "/strings-attached"
+		window.location.href = "/events/strings-attached"
 	})
 });
