@@ -1,12 +1,28 @@
 {{#if eventCategories}}
 {{#each eventCategories}}
 <div id="events">
-  <div class="ui middle stackable center aligned grid container">
+  <div class="ui middle aligned center aligned grid container computer tablet only">
     <div class="row">
       <h1 class="ui header">{{this.name}}</h1>
     </div>
     {{#each this.main}}
     <div class="four wide column">
+      <a href="{{this.link}}">
+        <div class="ui fluid card">
+          <div class="image">
+            <img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/banners/{{this.image}}?width=599">
+          </div>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
+  <div class="ui middle aligned center aligned grid container mobile only two columns">
+    <div class="row">
+      <h1 class="ui header">{{this.name}}</h1>
+    </div>
+    {{#each this.main}}
+    <div class="column">
       <a href="{{this.link}}">
         <div class="ui fluid card">
           <div class="image">

@@ -161,13 +161,29 @@
 	</div>
 	<div id="about">
 		<div class="ui container">
-			<h1 style="text-align: center" class="ui center aligned">Rules and Regulations</h1>
 			{{#if bnc_mm}}{{>subevents/bnc-mm}}{{/if}}
 			{{#if bnc_oap}}{{>subevents/bnc-oap}}{{/if}}
-			{{#if ff_ff}}{{>subevents/ff-ff}}{{/if}}
+			{{#if bnc_cl}}{{>subevents/bnc-cl}}{{/if}}
+			{{#if bnc_fi}}{{>subevents/bnc-fi}}{{/if}}
+			{{#if bnc_sttl}}{{>subevents/bnc-sttl}}{{/if}}
+			{{#if bnc_tsos}}{{>subevents/bnc-tsos}}{{/if}}
+
+			{{#if ff_cc}}{{>subevents/ff-cc}}{{/if}}
+			{{#if ff_ffs}}{{>subevents/ff-ffs}}{{/if}}
+			{{#if ff_fnb}}{{>subevents/ff-fnb}}{{/if}}
+			{{#if ff_kld}}{{>subevents/ff-kld}}{{/if}}
+
 			{{#if i_sof}}{{>subevents/i-sof}}{{/if}}
+			{{#if i_bcw}}{{>subevents/i-bcw}}{{/if}}
+			{{#if i_cc}}{{>subevents/i-cc}}{{/if}}
+			{{#if i_t}}{{>subevents/i-t}}{{/if}}
+
 			{{#if sa_sas}}{{>subevents/sa-sas}}{{/if}}
 			{{#if sa_sff}}{{>subevents/sa-sff}}{{/if}}
+			{{#if sa_cc}}{{>subevents/sa-cc}}{{/if}}
+			{{#if sa_kmw}}{{>subevents/sa-kmw}}{{/if}}
+			{{#if sa_s}}{{>subevents/sa-s}}{{/if}}
+			{{#if sa_tmss}}{{>subevents/sa-tmss}}{{/if}}
 		</div>
 	</div>
 </div>
@@ -199,21 +215,29 @@
 
 	<div id="about">
 		<div class="ui container">
-			<div class="ui grid middle aligned two columns">
-				<div class="column">
-					<h1 class="ui">Rules and Regulations</h1>
-				</div>
-				<div class="column right aligned">
-					<button id="printRulesButton" class="ui button primary" onclick="window.print()">Print</button>
-				</div>
-			</div>
-			<br>
 			{{#if bnc_mm}}{{>subevents/bnc-mm}}{{/if}}
 			{{#if bnc_oap}}{{>subevents/bnc-oap}}{{/if}}
-			{{#if ff_ff}}{{>subevents/ff-ff}}{{/if}}
+			{{#if bnc_cl}}{{>subevents/bnc-cl}}{{/if}}
+			{{#if bnc_fi}}{{>subevents/bnc-fi}}{{/if}}
+			{{#if bnc_sttl}}{{>subevents/bnc-sttl}}{{/if}}
+			{{#if bnc_tsos}}{{>subevents/bnc-tsos}}{{/if}}
+
+			{{#if ff_cc}}{{>subevents/ff-cc}}{{/if}}
+			{{#if ff_ffs}}{{>subevents/ff-ffs}}{{/if}}
+			{{#if ff_fnb}}{{>subevents/ff-fnb}}{{/if}}
+			{{#if ff_kld}}{{>subevents/ff-kld}}{{/if}}
+
 			{{#if i_sof}}{{>subevents/i-sof}}{{/if}}
+			{{#if i_bcw}}{{>subevents/i-bcw}}{{/if}}
+			{{#if i_cc}}{{>subevents/i-cc}}{{/if}}
+			{{#if i_t}}{{>subevents/i-t}}{{/if}}
+
 			{{#if sa_sas}}{{>subevents/sa-sas}}{{/if}}
 			{{#if sa_sff}}{{>subevents/sa-sff}}{{/if}}
+			{{#if sa_cc}}{{>subevents/sa-cc}}{{/if}}
+			{{#if sa_kmw}}{{>subevents/sa-kmw}}{{/if}}
+			{{#if sa_s}}{{>subevents/sa-s}}{{/if}}
+			{{#if sa_tmss}}{{>subevents/sa-tmss}}{{/if}}
 		</div>
 	</div>
 
@@ -223,7 +247,7 @@
 
 <style>
 	@media print {
-		body > *:not(.printRules) {
+		#content, #navbar, #footer, #printRulesButton {
 			display: none!important;
 		}
 

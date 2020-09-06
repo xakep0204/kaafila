@@ -25,6 +25,14 @@
             "link": "/events/bread-and-circuses/colab-lab"
           },
           {
+            "image": "bnc-tsos-banner.png",
+            "link": "/events/bread-and-circuses/the-sounds-of-stories"
+          },
+          {
+            "image": "bnc-sttl-banner.png",
+            "link": "/events/bread-and-circuses/stories-through-the-lens"
+          },
+          {
             "image": "bnc-fi-banner.png",
             "link": "/events/bread-and-circuses/fade-in"
           }
@@ -32,7 +40,6 @@
       }
     ],
     "navID": "active_bnc",
-
     "monologue-maestros": {
       "name": "Monologue Maestros",
       "image": "bnc-mm-banner.png",
@@ -48,8 +55,18 @@
       "image": "bnc-cl-banner.png",
       "pageID": "bnc_cl"
     },
+    "the-sounds-of-stories": {
+      "name": "The Sounds of Stories (Podcast Workshop)",
+      "image": "bnc-tsos-banner.png",
+      "pageID": "bnc_tsos"
+    },
+    "stories-through-the-lens": {
+      "name": "Stories through the Lens (Storytelling with a Phone Camera)",
+      "image": "bnc-sttl-banner.png",
+      "pageID": "bnc_sttl"
+    },
     "fade-in": {
-      "name": "Fade In",
+      "name": "Fade-In (Conversation with a Master of the Art)",
       "image": "bnc-fi-banner.png",
       "pageID": "bnc_fi"
     }
@@ -63,18 +80,49 @@
         "name": "Competitive Events",
         "main": [
           {
-            "image": "ff-ff-banner.png",
-            "link": "/events/folk-fluence/folk-fluence"
+            "image": "ff-ffs-banner.png",
+            "link": "/events/folk-fluence/folk-fluence-solos"
+          }
+        ]
+      },
+      {
+        "name": "Non-competitive Events",
+        "main": [
+          {
+            "image": "ff-fnb-banner.png",
+            "link": "/events/folk-fluence/flesh-n-bones"
+          },
+          {
+            "image": "ff-cc-banner.png",
+            "link": "/events/folk-fluence/career-conversations"
+          },
+          {
+            "image": "ff-kld-banner.png",
+            "link": "/events/folk-fluence/kalbeliya-lec-dem"
           }
         ]
       }
     ],
     "navID": "active_ff",
-
-    "folk-fluence": {
-      "name": "Folk Fluence",
-      "image": "ff-ff-banner.png",
-      "pageID": "ff_ff"
+    "folk-fluence-solos": {
+      "name": "Folk Fluence Solos",
+      "image": "ff-ffs-banner.png",
+      "pageID": "ff_ffs"
+    },
+    "flesh-n-bones": {
+      "name": "FLESH N BONES",
+      "image": "ff-fnb-banner.png",
+      "pageID": "ff_fnb"
+    },
+    "kalbeliya-lec-dem": {
+      "name": "Kalbeliya Lec-Dem",
+      "image": "ff-kld-banner.png",
+      "pageID": "ff_kld"
+    },
+    "career-conversations": {
+      "name": "Dance as a Career",
+      "image": "ff-cc-banner.png",
+      "pageID": "ff_cc"
     }
   },
   "iridescence": {
@@ -90,14 +138,45 @@
             "link": "/events/iridescence/spirit-of-freedom"
           }
         ]
+      },
+      {
+        "name": "Non-competitive Events",
+        "main": [
+          {
+            "image": "i-bcw-banner.png",
+            "link": "/events/iridescence/bamboo-craft-workshop"
+          },
+          {
+            "image": "i-cc-banner.png",
+            "link": "/events/iridescence/career-conversations"
+          },
+          {
+            "image": "i-t-banner.png",
+            "link": "/events/iridescence/tessellations"
+          }
+        ]
       }
     ],
     "navID": "active_i",
-
     "spirit-of-freedom": {
       "name": "Spirit of Freedom",
       "image": "i-sof-banner.png",
       "pageID": "i_sof"
+    },
+    "career-conversations": {
+      "name": "Webinar - Career Development in Visual Arts",
+      "image": "i-cc-banner.png",
+      "pageID": "i_cc"
+    },
+    "bamboo-craft-workshop": {
+      "name": "Bamboo Craft Lecture Demonstration",
+      "image": "i-bcw-banner.png",
+      "pageID": "i_bcw"
+    },
+    "tessellations": {
+      "name": "Tessellations - The Papercraft Workshop",
+      "image": "i-t-banner.png",
+      "pageID": "i_t"
     }
   },
   "strings-attached": {
@@ -111,16 +190,36 @@
           {
             "image": "sa-sas-banner.png",
             "link": "/events/strings-attached/strings-attached-solos"
-          },
+          }
+        ]
+      },
+      {
+        "name": "Non-competitive Events",
+        "main": [
           {
             "image": "sa-sff-banner.png",
             "link": "/events/strings-attached/songs-for-freedom"
+          },
+          {
+            "image": "sa-cc-banner.png",
+            "link": "/events/strings-attached/career-conversations"
+          },
+          {
+            "image": "sa-kmw-banner.png",
+            "link": "/events/strings-attached/khasi-music-workshop"
+          },
+          {
+            "image": "sa-tmss-banner.png",
+            "link": "/events/strings-attached/the-manta-sidhu-show"
+          },
+          {
+            "image": "sa-s-banner.png",
+            "link": "/events/strings-attached/spaceband"
           }
         ]
       }
     ],
     "navID": "active_sa",
-
     "strings-attached-solos": {
       "name": "Strings Attached Solos",
       "image": "sa-sas-banner.png",
@@ -130,6 +229,26 @@
       "name": "Songs for Freedom",
       "image": "sa-sff-banner.png",
       "pageID": "sa_sff"
+    },
+    "career-conversations": {
+      "name": "Careers in the Arts: Music",
+      "image": "sa-cc-banner.png",
+      "pageID": "sa_cc"
+    },
+    "khasi-music-workshop": {
+      "name": "Khasi Instruments and Music",
+      "image": "sa-kmw-banner.png",
+      "pageID": "sa_kmw"
+    },
+    "the-manta-sidhu-show": {
+      "name": "The Manta Sidhu Show",
+      "image": "sa-tmss-banner.png",
+      "pageID": "sa_tmss"
+    },
+    "spaceband": {
+      "name": "Spaceband",
+      "image": "sa-s-banner.png",
+      "pageID": "sa_s"
     }
   }
 }
