@@ -43,32 +43,38 @@
     "monologue-maestros": {
       "name": "Monologue Maestros",
       "image": "bnc-mm-banner.png",
-      "pageID": "bnc_mm"
+      "pageID": "bnc_mm",
+      "description": "Virtual solo theatrical performance"
     },
     "one-act-play": {
       "name": "One Act Play",
       "image": "bnc-oap-banner.png",
-      "pageID": "bnc_oap"
+      "pageID": "bnc_oap",
+      "description": "Collaborative virtual theatrical performance"
     },
     "colab-lab": {
       "name": "Colab Lab",
       "image": "bnc-cl-banner.png",
-      "pageID": "bnc_cl"
+      "pageID": "bnc_cl",
+      "description": "A week long student collaborative theatre project"
     },
     "the-sounds-of-stories": {
       "name": "The Sounds of Stories (Podcast Workshop)",
       "image": "bnc-tsos-banner.png",
-      "pageID": "bnc_tsos"
+      "pageID": "bnc_tsos",
+      "description": "Learn to script, design and record their own podcast-friendly audio stories"
     },
     "stories-through-the-lens": {
       "name": "Stories through the Lens (Storytelling with a Phone Camera)",
       "image": "bnc-sttl-banner.png",
-      "pageID": "bnc_sttl"
+      "pageID": "bnc_sttl",
+      "description": "Making short films, vlogs, reaction vines, cooking recipes or DIY videos, this workshop can give you hands-on experience in understanding lighting, the lens of the camera you are using, the aesthetics of film and useful editing techniques"
     },
     "fade-in": {
       "name": "Fade-In (Conversation with a Master of the Art)",
       "image": "bnc-fi-banner.png",
-      "pageID": "bnc_fi"
+      "pageID": "bnc_fi",
+      "description": "A free-wheeling candid chat with a legend of the theatre and films"
     }
   },
   "folk-fluence": {
@@ -111,27 +117,32 @@
     "folk-fluence-solos": {
       "name": "Folk Fluence Solos",
       "image": "ff-ffs-banner.png",
-      "pageID": "ff_ffs"
+      "pageID": "ff_ffs",
+      "description": "Individual interpretations of different Indian dance forms with respect to freedom"
     },
     "flesh-n-bones": {
       "name": "FLESH N BONES",
       "image": "ff-fnb-banner.png",
-      "pageID": "ff_fnb"
+      "pageID": "ff_fnb",
+      "description": "Self-developed Contemporary Movement technique"
     },
     "kalbeliya-lec-dem": {
       "name": "Kalbeliya Lec-Dem",
       "image": "ff-kld-banner.png",
-      "pageID": "ff_kld"
+      "pageID": "ff_kld",
+      "description": "Story and journey of Gulabo Sapera as well as Kalbeliya as a dance form"
     },
     "career-conversations": {
       "name": "Dance as a Career",
       "image": "ff-cc-banner.png",
-      "pageID": "ff_cc"
+      "pageID": "ff_cc",
+      "description": "Career opportunities that lie within the field of dance"
     },
     "why-do-we-dance": {
       "name": "Why Do We Dance",
       "image": "ff-wdwd-banner.png",
-      "pageID": "ff_wdwd"
+      "pageID": "ff_wdwd",
+      "description": "Expanding the idea of dance to movement"
     }
   },
   "iridescence": {
@@ -170,22 +181,26 @@
     "spirit-of-freedom": {
       "name": "Spirit of Freedom",
       "image": "i-sof-banner.png",
-      "pageID": "i_sof"
+      "pageID": "i_sof",
+      "description": "Different interpretations of freedom, each with its unique identity by reenactment of famous paintings that inspire"
     },
     "career-conversations": {
       "name": "Webinar - Career Development in Visual Arts",
       "image": "i-cc-banner.png",
-      "pageID": "i_cc"
+      "pageID": "i_cc",
+      "description": "Seek the essence of how a career in visual arts is.future artists to discover what visual art stands for"
     },
     "bamboo-craft-workshop": {
       "name": "Bamboo Craft Lecture Demonstration",
       "image": "i-bcw-banner.png",
-      "pageID": "i_bcw"
+      "pageID": "i_bcw",
+      "description": "Creating a plethora of products solely using bamboo"
     },
     "tessellations": {
       "name": "Tessellations - The Papercraft Workshop",
       "image": "i-t-banner.png",
-      "pageID": "i_t"
+      "pageID": "i_t",
+      "description": "Unique 3D paper art keeping the trajectory and the ideas behind  Mr Gonzalez’s artworks"
     }
   },
   "strings-attached": {
@@ -232,32 +247,38 @@
     "strings-attached-solos": {
       "name": "Strings Attached Solos",
       "image": "sa-sas-banner.png",
-      "pageID": "sa_sas"
+      "pageID": "sa_sas",
+      "description": "A virtual inter-school music competition"
     },
     "songs-for-freedom": {
       "name": "Songs for Freedom",
       "image": "sa-sff-banner.png",
-      "pageID": "sa_sff"
+      "pageID": "sa_sff",
+      "description": "Showcasing video entries of songs which are based on the theme of freedom"
     },
     "career-conversations": {
       "name": "Careers in the Arts: Music",
       "image": "sa-cc-banner.png",
-      "pageID": "sa_cc"
+      "pageID": "sa_cc",
+      "description": "Students looking to make a career in music will gain an insight into the world of possibilities that exist within the music industry"
     },
     "khasi-music-workshop": {
       "name": "Khasi Instruments and Music",
       "image": "sa-kmw-banner.png",
-      "pageID": "sa_kmw"
+      "pageID": "sa_kmw",
+      "description": "Exploration of traditional Khasi instruments and music."
     },
     "the-manta-sidhu-show": {
       "name": "The Manta Sidhu Show",
       "image": "sa-tmss-banner.png",
-      "pageID": "sa_tmss"
+      "pageID": "sa_tmss",
+      "description": "Performing and talking about composition, her own process and the importance of poetry music"
     },
     "spaceband": {
       "name": "Space Band",
       "image": "sa-sb-banner.png",
-      "pageID": "sa_sb"
+      "pageID": "sa_sb",
+      "description": "An online platform which calls upon artists to engage in collaborative online musical performances"
     }
   }
 }

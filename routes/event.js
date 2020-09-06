@@ -70,6 +70,7 @@ router.get("/events/:event/:subevent", function (req, res, next) {
 					title: `${routingData[subevent].name} - ${routingData.name} - Kaafila`,
 					subeventName: routingData[subevent].name,
 					subeventImage: routingData[subevent].image,
+					subeventDesc: routingData[subevent].description,
 					cssID: routingData.cssID,
 					[routingData.navID]: true,
 					[routingData[subevent].pageID]: true,
