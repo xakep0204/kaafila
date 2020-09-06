@@ -4,7 +4,7 @@ var path = require("path");
 var fs = require("fs");
 var admin = require("../firebase-proj");
 
-var galleryDirectoryPath = path.join(__dirname, "../../../dev.snsartsfestival/kaafila/public/img/gallery");
+var galleryDirectoryPath = path.join(__dirname, "../../../dev.snsartsfestival.in/kaafila/public/img/gallery");
 
 router.get("/", function (req, res, next) {
 	var userData = {}
