@@ -74,45 +74,4 @@ router.get("/", function (req, res, next) {
 	});
 });
 
-// router.get('/about', function(req, res, next) {
-//     var galleryImages = []
-//     fs.readdir(galleryDirectoryPath, function (err, files) {
-//         if (err) {
-//             return console.log('Unable to scan directory: ' + err);
-//         }
-//         files.forEach(function (file) {
-//             if (file.slice(-3) == 'jpg' || file.slice(-3) == 'png' || file.slice(-3) == 'JPG' || file.slice(-3) == 'gif') {
-//                 imageObject = {'path': file, 'caption': file.slice(0, -4)}
-//                 galleryImages.push(imageObject);
-//             }
-//         });
-//     });
-//     var sponsorsImages = []
-//     fs.readdir(sponsorsDirectoryPath, function (err, files) {
-//         if (err) {
-//             return console.log('Unable to scan directory: ' + err);
-//         }
-//         files.forEach(function (file) {
-//             if (file.slice(-3) == 'jpg' || file.slice(-3) == 'png' || file.slice(-3) == 'gif') {
-//                 sponsorsImages.push(file);
-//             }
-//         });
-//     });
-//     res.render('about', {
-//         title: "About - Kaafila",
-//         active_a: true,
-//         galleryImages: galleryImages,
-//         sponsorsImages: sponsorsImages,
-//         styles: [
-//             '/css/main.css',
-//             '/css/fancybox.min.css'
-//         ],
-//         scripts: [
-//             '/js/navbar.js',
-//             '/js/fancybox.min.js',
-//             '/js/about.js'
-//         ]
-//     });
-// });
-
 module.exports = router;

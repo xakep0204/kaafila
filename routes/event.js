@@ -24,7 +24,6 @@ router.get("/events/:event", function (req, res, next) {
 					bannerName: event,
 					eventCategories: routingData.eventCategories,
 					[routingData.navID]: true,
-					styles: ["/css/fonts.css", "/css/main.css"],
 					scripts: ["/js/navbar.js"],
 					userData: userData,
 				});
@@ -74,7 +73,6 @@ router.get("/events/:event/:subevent", function (req, res, next) {
 					cssID: routingData.cssID,
 					[routingData.navID]: true,
 					[routingData[subevent].pageID]: true,
-					styles: ["/css/fonts.css", "/css/main.css"],
 					scripts: ["/js/navbar.js"],
 					userData: userData,
 				});

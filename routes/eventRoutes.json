@@ -99,6 +99,10 @@
           {
             "image": "ff-kld-banner.png",
             "link": "/events/folk-fluence/kalbeliya-lec-dem"
+          },
+          {
+            "image": "ff-wdwd-banner.png",
+            "link": "/events/folk-fluence/why-do-we-dance"
           }
         ]
       }
@@ -123,6 +127,11 @@
       "name": "Dance as a Career",
       "image": "ff-cc-banner.png",
       "pageID": "ff_cc"
+    },
+    "why-do-we-dance": {
+      "name": "Why do we Dance",
+      "image": "ff-wdwd-banner.png",
+      "pageID": "ff_wdwd"
     }
   },
   "iridescence": {

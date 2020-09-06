@@ -23,7 +23,6 @@ router.get("/signin", csrfProtection, function (req, res, next) {
 			res.cookie("csrfToken", req.csrfToken());
 			res.render("signin", {
 				title: "Sign in - Kaafila",
-				styles: ["/css/navbar-logo.css"],
 				scripts: ["/js/signin.js"],
 			});
 		});
@@ -47,7 +46,6 @@ router.get("/signup", csrfProtection, function (req, res, next) {
 			res.cookie("csrfToken", req.csrfToken());
 			res.render("signup", {
 				title: "Sign up - Kaafila",
-				styles: ["/css/navbar-logo.css"],
 				scripts: ["/js/signup.js"],
 			});
 		});
@@ -133,7 +131,6 @@ router.get("/profile", function (req, res, next) {
 						res.render("profile", {
 							title: `${userRecord.displayName} - Kaafila`,
 							active_p: true,
-							styles: ["/css/navbar-logo.css", "/css/main.css"],
 							userData: userData,
 						});
 					});
