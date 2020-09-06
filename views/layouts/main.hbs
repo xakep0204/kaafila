@@ -42,6 +42,7 @@
   <script src="/js/fancybox.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
   <script>
     var firebaseConfig = {
     apiKey: "AIzaSyC3Gk69M84axY759IpCflLpqxXo4xo-cB8",
@@ -54,6 +55,7 @@
     measurementId: "G-HN4FK4NK0V"
   };
   firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
   </script>
   
   {{#each scripts}}

@@ -8,7 +8,7 @@ router.get("/snsartshaat", function (req, res, next) {
 	res.render("snsartshaat", {
 		title: "SNS Arts Haat - Kaafila",
 		artData: artData,
-		styles: ["/css/pastels.css"],
+		styles: ["/css/main.css"],
 		scripts: ["/js/navbar.js", "/js/about.js"],
 	});
 });

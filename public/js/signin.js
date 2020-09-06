@@ -4,6 +4,14 @@ function getCookie(name) {
 	return value != null ? unescape(value[1]) : null;
 }
 
+db = firebase.firestore();
+
+async function checkUser(uid) {
+  doc = db.collection('schoolUsers').doc(uid);
+  docref = await doc.get()
+  return docref.exists
+}
+
 $("#signinform").form({
 	fields: {
 		email: {
@@ -76,10 +84,68 @@ $("#signin_google").on("click", () => {
 		.auth()
 		.signInWithPopup(provider)
 		.then(function (result) {
-			var user = firebase.auth().currentUser;
-			user
-				.getIdToken()
-				.then((idToken) => {
+			user = firebase.auth().currentUser;
+      checkUser(user.uid).then((a) => {
+        if (!a) {
+          $("#schoolinfomodal").modal("show");
+        } else {
+          user.getIdToken().then((idToken) => {
+            const csrfToken = getCookie("csrfToken");
+            return $.post("/sessionLogin", {
+              idToken: idToken,
+              csrfToken: csrfToken,
+            });
+          })
+          .then(() => {
+            return firebase.auth().signOut();
+          })
+          .then(() => {
+            window.location.assign("/profile");
+          });
+        }
+      });
+		});
+});
+
+$("#schoolinfoform").form({
+	fields: {
+		schoolName: {
+			identifier: "schoolName",
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter your school's name",
+				},
+			],
+		},
+		schoolRepName: {
+			identifier: "schoolRepName",
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter your school representative's name",
+				},
+			],
+		},
+	},
+});
+
+$("#schoolinfoform").submit(() => {
+	if ($("#schoolinfoform").form("is valid")) {
+		var user = firebase.auth().currentUser;
+		db.collection("schoolUsers")
+			.doc(user.uid)
+			.set({
+				email: user.email,
+				schoolName: $("#schoolName").val(),
+				schoolRepName: $("#schoolRepName").val(),
+				photoURL: user.photoURL,
+			})
+			.catch((error) => {
+				return firebase.auth().signOut();
+			})
+			.then(() => {
+				user.getIdToken().then((idToken) => {
 					const csrfToken = getCookie("csrfToken");
 					return $.post("/sessionLogin", {
 						idToken: idToken,
@@ -92,7 +158,9 @@ $("#signin_google").on("click", () => {
 				.then(() => {
 					window.location.assign("/profile");
 				});
-		});
+			})
+	}
+	return false;
 });
 
 $("#forgotpassword").on("click", () => {
@@ -121,26 +189,24 @@ $("#forgotpasswordform").submit(() => {
 	$("#resetpassword").addClass("loading");
 	email = $("#forgotpasswordform #email").val();
 	firebase
-	.auth()
-	.signInWithEmailAndPassword(email, "sns")
-	.catch((error) => {
-		$("#resetpassword").removeClass("loading");
-		if (error.code == "auth/user-not-found") {
-			$("#forgotpasswordform").form("add errors", [
-				"Account doesn't exist, sign up instead",
-			]);
-		}
-		if (error.code == "auth/wrong-password") {
+		.auth()
+		.signInWithEmailAndPassword(email, "sns")
+		.catch((error) => {
+			$("#resetpassword").removeClass("loading");
+			if (error.code == "auth/user-not-found") {
+				$("#forgotpasswordform").form("add errors", [
+					"Account doesn't exist, sign up instead",
+				]);
+			}
+			if (error.code == "auth/wrong-password") {
 				firebase
-				.auth()
-				.sendPasswordResetEmail(email)
+					.auth()
+					.sendPasswordResetEmail(email)
 					.then(function () {
 						$("#forgotpasswordmodal").modal("hide");
 						$("#resetconfirmmodal").modal("show");
 					})
-					.catch(function (error) {
-						console.log(error);
-					});
+					.catch(() => {});
 			}
 		});
 	return false;

@@ -29,14 +29,6 @@ $(document).ready(function () {
 		$nav.toggleClass("scrolled", $(this).scrollTop() > 54);
 	});
 	
-	$(".ui.borderless.menu a").click(function() {
-		var target = $(this).attr('data-target');
-		
-		$('html, body').animate({
-				scrollTop: $(target).offset().top - 54
-		}, 700);
-	});
-
 	$(".header-content a").click(function() {
 		var target = $(this).attr('data-target');
 		

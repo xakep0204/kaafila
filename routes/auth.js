@@ -3,6 +3,7 @@ var router = express.Router();
 var csrf = require("csurf");
 var admin = require("../firebase-proj");
 var csrfProtection = csrf({ cookie: true });
+var db = admin.firestore();
 
 router.get("/signin", csrfProtection, function (req, res, next) {
 	const sessionCookie = req.cookies.session || "";
@@ -16,9 +17,7 @@ router.get("/signin", csrfProtection, function (req, res, next) {
 				.then(() => {
 					res.redirect("/");
 				})
-				.catch((err) => {
-					console.log(err);
-				});
+				.catch(() => {});
 		})
 		.catch(function (error) {
 			res.cookie("csrfToken", req.csrfToken());
@@ -42,9 +41,7 @@ router.get("/signup", csrfProtection, function (req, res, next) {
 				.then(() => {
 					res.redirect("/");
 				})
-				.catch((err) => {
-					console.log(err);
-				});
+				.catch(() => {});
 		})
 		.catch(function (error) {
 			res.cookie("csrfToken", req.csrfToken());
@@ -107,18 +104,16 @@ router.post("/sessionLogin", (req, res) => {
 });
 
 router.get("/profile", function (req, res, next) {
-	// res.render("profile", {
-	//   title: `${userRecord.displayName} - Kaafila`,
-	//   active_p: true,
-	//   styles: ["/css/navbar-logo.css", "/css/pastels.css"],
-	//   title: `Shiv Nadar School Noida - Kaafila`,
-	//   userData: {
-	//     email: 'contact@snsartsfestival.in',
-	//     schoolName: 'Shiv Nadar School',
-	//     schoolRepName: 'Manjima Chatterjee',
-	//     photoURL: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/profile-blank.png",
-	//   },
-	// });
+	async function getsrn(uid) {
+		doc = db.collection('schoolUsers').doc(uid);
+		docref = await doc.get()
+		if (!docref.exists) {
+			return 'NA'
+		} else {
+			return docref.data().schoolRepName;
+		}
+	}
+
 	const sessionCookie = req.cookies.session || "";
 	admin
 		.auth()
@@ -128,26 +123,26 @@ router.get("/profile", function (req, res, next) {
 				.auth()
 				.getUser(decodedClaims.sub)
 				.then(function (userRecord) {
-          userData = {
-            email: userRecord.email,
-            schoolName: userRecord.displayName,
-            schoolRepName: "Manjima Chatterjee",
-            photoURL: userRecord.photoURL,
-          }
-					res.render("profile", {
-						title: `${userRecord.displayName} - Kaafila`,
-						active_p: true,
-						styles: ["/css/navbar-logo.css", "/css/pastels.css"],
-						userData: userData,
+					getsrn(decodedClaims.sub).then((srn) => {
+						userData = {
+							email: userRecord.email,
+							schoolName: userRecord.displayName,
+							schoolRepName: srn,
+							photoURL: userRecord.photoURL,
+						};
+						res.render("profile", {
+							title: `${userRecord.displayName} - Kaafila`,
+							active_p: true,
+							styles: ["/css/navbar-logo.css", "/css/main.css"],
+							userData: userData,
+						});
 					});
 				})
 				.catch((err) => {
-					console.log(err);
-          res.redirect("/signin");
+					res.redirect("/signin");
 				});
 		})
 		.catch(function (error) {
-			console.log(error);
 			res.redirect("/signin");
 		});
 });

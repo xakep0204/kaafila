@@ -64,13 +64,11 @@ router.get("/", function (req, res, next) {
 						};
 						webrender();
 					})
-					.catch((err) => {
-						console.log(err);
+					.catch(() => {
 						webrender();
 					});
 			})
-			.catch(function (error) {
-				console.log(error);
+			.catch(() => {
 				webrender();
 			});
 	});
@@ -106,7 +104,7 @@ router.get("/", function (req, res, next) {
 //         galleryImages: galleryImages,
 //         sponsorsImages: sponsorsImages,
 //         styles: [
-//             '/css/pastels.css',
+//             '/css/main.css',
 //             '/css/fancybox.min.css'
 //         ],
 //         scripts: [

@@ -1,14 +1,21 @@
 <style>
-  /* body > .grid {
-  height: 100%;
-} */
-  #signin .column {
-    max-width: 480px;
+  #signup {
+    height: 100%;
   }
 
-  #signin .content img {
+  #signup .column {
+    max-width: 480px;
+    margin-top: -50px;
+  }
+
+  #signup h4 {
+    margin: 0;
+    margin-bottom: 15px;
+  }
+
+  #signup .content img {
     height: 70px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
 
   #signup_email {
@@ -30,19 +37,19 @@
 </style>
 
 {{>navbar-logo}}
-<div id="signin" class="ui middle aligned center aligned grid">
+<div id="signup" class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui image header">
       <div class="content">
-        <img src="/img/logo-main.png" alt="kaafila_logo">
         Sign up
       </div>
     </h2>
+    <h4>Currently open only for participating schools</h4>
     <form id="signupform" class="ui large form" method="POST">
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui input">
-            <input type="text" id="schoolName" placeholder="School Name" value='Shiv Nadar School'>
+            <input type="text" id="schoolName" placeholder="School Name">
           </div>
         </div>
         <div class="field">
@@ -76,5 +83,32 @@
     <div class="ui message">
       Already have an Account? <a href="/signin">Sign in</a>
     </div>
+  </div>
+</div>
+
+<div id="schoolinfomodal" class="ui modal">
+  <div class="header">
+    <h2>Enter Your School's Information</h2>
+  </div>
+  <div class="content">
+    <form id="schoolinfoform" class="ui small form">
+      <div class="ui stacked">
+        <div class="field">
+          <div class="ui input">
+            <input type="text" id="schoolName" placeholder="School Name" value='Shiv Nadar School'>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui input">
+            <input type="text" id="schoolRepName" placeholder="School Representative Name" value="Manjima Chatterjee">
+          </div>
+        </div>
+        <div class="ui fluid container column right aligned">
+          <button type="submit" id="schoolinfo" class="ui primary button">Submit</button>
+        </div>
+
+      <div class="ui error message"></div>
+
+    </form>
   </div>
 </div>

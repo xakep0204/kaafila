@@ -4,6 +4,14 @@ function getCookie(name) {
 	return value != null ? unescape(value[1]) : null;
 }
 
+db = firebase.firestore();
+
+async function checkUser(uid) {
+  doc = db.collection('schoolUsers').doc(uid);
+  docref = await doc.get()
+  return docref.exists
+}
+
 $("#signupform").form({
 	fields: {
 		schoolName: {
@@ -77,28 +85,45 @@ $("#signupform").submit(function () {
 				var user = firebase.auth().currentUser;
 				user
 					.updateProfile({
-						displayName: $("#schoolName").val(),
+						displayName: $("#signupform #schoolName").val(),
 						photoURL:
 							"https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/profile-blank.png",
 					})
 					.then(() => {
 						user.sendEmailVerification().catch(() => {});
-						user
-							.getIdToken()
-							.then((idToken) => {
-								const csrfToken = getCookie("csrfToken");
-								return $.post("/sessionLogin", {
-									idToken: idToken,
-									csrfToken: csrfToken,
-								});
+						db.collection("schoolUsers")
+							.doc(user.uid)
+							.set({
+								email: user.email,
+								schoolName: $("#signupform #schoolName").val(),
+								schoolRepName: $("#signupform #schoolRepName").val(),
+								photoURL: user.photoURL,
 							})
-							.then(() => {
+							.catch((error) => {
 								return firebase.auth().signOut();
 							})
 							.then(() => {
-								window.location.assign("/profile");
-							});
+                user.getIdToken()
+                .then((idToken) => {
+									const csrfToken = getCookie("csrfToken");
+									return $.post("/sessionLogin", {
+										idToken: idToken,
+										csrfToken: csrfToken,
+									});
+								})
+                .then(() => {
+                  return firebase.auth().signOut();
+                })
+                .then(() => {
+                  window.location.assign("/profile");
+                });
+							})
 					});
+      })
+      .catch((error) => {
+				if (error.code == "auth/email-already-in-use") {
+					$("#signupform").form("add errors", ["Account already exists, sign in instead"]);
+				}
 			});
 	}
 	return false;
@@ -110,21 +135,88 @@ $("#signup_google").on("click", () => {
 		.auth()
 		.signInWithPopup(provider)
 		.then(function (result) {
-			var user = firebase.auth().currentUser;
-			user
-				.getIdToken()
-				.then((idToken) => {
+      user = firebase.auth().currentUser;
+      checkUser(user.uid).then((a) => {
+        if (!a) {
+          $("#schoolinfomodal").modal("show");
+        } else {
+          user.getIdToken().then((idToken) => {
+            const csrfToken = getCookie("csrfToken");
+            return $.post("/sessionLogin", {
+              idToken: idToken,
+              csrfToken: csrfToken,
+            });
+          })
+          .then(() => {
+            return firebase.auth().signOut();
+          })
+          .then(() => {
+            window.location.assign("/profile");
+          });
+        }
+      });
+		});
+});
+
+$("#schoolinfoform").form({
+	fields: {
+		schoolName: {
+			identifier: "schoolName",
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter your school's name",
+				},
+			],
+		},
+		schoolRepName: {
+			identifier: "schoolRepName",
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter your school representative's name",
+				},
+			],
+		},
+	},
+});
+
+$("#schoolinfoform").submit(() => {
+	if ($("#schoolinfoform").form("is valid")) {
+    var user = firebase.auth().currentUser;
+    console.log({
+      uid: user.uid,
+      email: user.email,
+      schoolName: $("#schoolinfoform #schoolName").val(),
+      schoolRepName: $("#schoolinfoform #schoolRepName").val(),
+      photoURL: user.photoURL,
+    })
+		db.collection("schoolUsers")
+			.doc(user.uid)
+			.set({
+				email: user.email,
+				schoolName: $("#schoolinfoform #schoolName").val(),
+				schoolRepName: $("#schoolinfoform #schoolRepName").val(),
+				photoURL: user.photoURL,
+			})
+			.catch((error) => {
+				return firebase.auth().signOut();
+			})
+			.then(() => {
+				user.getIdToken().then((idToken) => {
 					const csrfToken = getCookie("csrfToken");
 					return $.post("/sessionLogin", {
 						idToken: idToken,
 						csrfToken: csrfToken,
 					});
 				})
-				.then(() => {
-					return firebase.auth().signOut();
-				})
-				.then(() => {
-					window.location.assign("/profile");
-				});
-		});
+        .then(() => {
+          return firebase.auth().signOut();
+        })
+        .then(() => {
+          window.location.assign("/profile");
+        });
+			})
+	}
+	return false;
 });

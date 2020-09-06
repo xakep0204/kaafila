@@ -26,7 +26,7 @@ router.get("/bread-and-circuses", function (req, res, next) {
 				},
 			],
 			active_bnc: true,
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -48,13 +48,11 @@ router.get("/bread-and-circuses", function (req, res, next) {
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
@@ -76,7 +74,7 @@ router.get("/folk-fluence", function (req, res, next) {
 				},
 			],
 			active_ff: true,
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -98,13 +96,11 @@ router.get("/folk-fluence", function (req, res, next) {
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
@@ -129,7 +125,7 @@ router.get("/iridescence", function (req, res, next) {
 				},
 			],
 			active_i: true,
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -151,13 +147,11 @@ router.get("/iridescence", function (req, res, next) {
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
@@ -191,7 +185,7 @@ router.get("/strings-attached", function (req, res, next) {
 				},
 			],
 			active_sa: true,
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -213,13 +207,11 @@ router.get("/strings-attached", function (req, res, next) {
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
@@ -234,7 +226,7 @@ router.get("/bread-and-circuses/monologue-maestros", function (req, res, next) {
 			active_bnc: true,
 			bnc_mm: true,
 			cssID: "bnc",
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -256,13 +248,11 @@ router.get("/bread-and-circuses/monologue-maestros", function (req, res, next) {
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
@@ -276,7 +266,7 @@ router.get("/bread-and-circuses/one-act-play", function (req, res, next) {
 			active_bnc: true,
 			bnc_oap: true,
 			cssID: "bnc",
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -298,13 +288,11 @@ router.get("/bread-and-circuses/one-act-play", function (req, res, next) {
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
@@ -319,7 +307,7 @@ router.get("/folk-fluence/folk-fluence", function (req, res, next) {
 			active_ff: true,
 			ff_ff: true,
 			cssID: "ff",
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -341,13 +329,11 @@ router.get("/folk-fluence/folk-fluence", function (req, res, next) {
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
@@ -362,7 +348,7 @@ router.get("/iridescence/spirit-of-freedom", function (req, res, next) {
 			active_i: true,
 			i_sof: true,
 			cssID: "i",
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -384,13 +370,11 @@ router.get("/iridescence/spirit-of-freedom", function (req, res, next) {
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
@@ -409,7 +393,7 @@ router.get("/strings-attached/strings-attached-solos", function (
 			active_sa: true,
 			sa_sas: true,
 			cssID: "sa",
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -431,13 +415,11 @@ router.get("/strings-attached/strings-attached-solos", function (
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
@@ -451,7 +433,7 @@ router.get("/strings-attached/songs-for-freedom", function (req, res, next) {
 			active_sa: true,
 			sa_sff: true,
 			cssID: "sa",
-			styles: ["/css/fonts.css", "/css/pastels.css"],
+			styles: ["/css/fonts.css", "/css/main.css"],
 			scripts: ["/js/navbar.js"],
 			userData: userData,
 		});
@@ -473,13 +455,11 @@ router.get("/strings-attached/songs-for-freedom", function (req, res, next) {
 					};
 					webrender();
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					webrender();
 				});
 		})
-		.catch(function (error) {
-			console.log(error);
+		.catch(() => {
 			webrender();
 		});
 });
