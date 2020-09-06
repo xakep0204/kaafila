@@ -22,7 +22,7 @@
         "main": [
           {
             "image": "bnc-cl-banner.png",
-            "link": "/events/bread-and-circuses/colab-lab"
+            "link": "/events/bread-and-circuses/collab-lab"
           },
           {
             "image": "bnc-tsos-banner.png",
@@ -52,8 +52,8 @@
       "pageID": "bnc_oap",
       "description": "Collaborative virtual theatrical performance"
     },
-    "colab-lab": {
-      "name": "Colab Lab",
+    "collab-lab": {
+      "name": "Collab Lab",
       "image": "bnc-cl-banner.png",
       "pageID": "bnc_cl",
       "description": "A week long student collaborative theatre project"
@@ -173,6 +173,10 @@
           {
             "image": "i-t-banner.png",
             "link": "/events/iridescence/tessellations"
+          },
+          {
+            "image": "i-aaacfsc-banner.png",
+            "link": "/events/iridescence/art-as-a-catalyst-for-social-change"
           }
         ]
       }
@@ -201,6 +205,12 @@
       "image": "i-t-banner.png",
       "pageID": "i_t",
       "description": "Unique 3D paper art keeping the trajectory and the ideas behind  Mr Gonzalez’s artworks"
+    },
+    "art-as-a-catalyst-for-social-change": {
+      "name": "Webinar - Art as a Catalyst for Social Change",
+      "image": "i-aaacfsc-banner.png",
+      "pageID": "i_aaacfsc",
+      "description": "Can public art empower individuals and communities and enable conversations leading to organic change within society?"
     }
   },
   "strings-attached": {
