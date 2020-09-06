@@ -38,14 +38,16 @@ $("#editdetailsform").form({
 $("#editdetailsform").submit(() => {
   $("#editdetails").addClass("loading");
 	if ($("#editdetailsform").form("is valid")) {
-    const csrfToken = getCookie("csrfToken");
+		const csrfToken = getCookie("csrfToken");
     $.post("/updateuser", {
-      schoolName: $("#schoolName").val(),
+			schoolName: $("#schoolName").val(),
       schoolRepName: $("#schoolRepName").val(),
       csrfToken: csrfToken
     }, () => {
-      window.location.assign("/profile")
+			window.location.assign("/profile")
     });
+	} else {
+		$("#editdetails").removeClass("loading");
 	}
 	return false;
 });

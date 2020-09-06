@@ -13,7 +13,7 @@ router.get("/", function (req, res, next) {
 			title: "Kaafila - Shiv Nadar School Noida",
 			galleryImages: galleryImages,
 			galleryImagesMore: galleryImagesMore,
-			scripts: ["/js/navbar.js", "/js/index.js"],
+			scripts: ["/js/index.js"],
 			userData: userData,
 		});
 	}
