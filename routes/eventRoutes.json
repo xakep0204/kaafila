@@ -44,13 +44,18 @@
       "name": "Monologue Maestros",
       "image": "bnc-mm-banner.png",
       "pageID": "bnc_mm",
-      "description": "Virtual solo theatrical performance"
+      "description": "Virtual solo theatrical performance",
+      "registration": {
+        "maxStudents": 12
+      }
     },
     "one-act-play": {
       "name": "One Act Play",
       "image": "bnc-oap-banner.png",
       "pageID": "bnc_oap",
-      "description": "Collaborative virtual theatrical performance"
+      "description": "Collaborative virtual theatrical performance",
+      "registrationDate": "2020-09-05",
+      "maxStudents": 12
     },
     "collab-lab": {
       "name": "Collab Lab",
@@ -62,13 +67,13 @@
       "name": "The Sounds of Stories (Podcast Workshop)",
       "image": "bnc-tsos-banner.png",
       "pageID": "bnc_tsos",
-      "description": "Learn to script, design and record their own podcast-friendly audio stories"
+      "description": "Learn to script, design and record your own podcast-friendly audio stories"
     },
     "stories-through-the-lens": {
       "name": "Stories through the Lens (Storytelling with a Phone Camera)",
       "image": "bnc-sttl-banner.png",
       "pageID": "bnc_sttl",
-      "description": "Making short films, vlogs, reaction vines, cooking recipes or DIY videos, this workshop can give you hands-on experience in understanding lighting, the lens of the camera you are using, the aesthetics of film and useful editing techniques"
+      "description": "Making short films, vlogs, or cooking recipes, this workshop can give you hands-on experience in the aesthetics of filming techniques"
     },
     "fade-in": {
       "name": "Fade-In (Conversation with a Master of the Art)",
@@ -124,7 +129,7 @@
       "name": "FLESH N BONES",
       "image": "ff-fnb-banner.png",
       "pageID": "ff_fnb",
-      "description": "Self-developed Contemporary Movement technique"
+      "description": "The Self-developed Contemporary Movement technique"
     },
     "kalbeliya-lec-dem": {
       "name": "Kalbeliya Lec-Dem",
@@ -192,7 +197,7 @@
       "name": "Webinar - Career Development in Visual Arts",
       "image": "i-cc-banner.png",
       "pageID": "i_cc",
-      "description": "Seek the essence of how a career in visual arts is.future artists to discover what visual art stands for"
+      "description": "Seek the essence of how a career in visual arts is and future artists to discover what visual art stands for"
     },
     "bamboo-craft-workshop": {
       "name": "Bamboo Craft Lecture Demonstration",
