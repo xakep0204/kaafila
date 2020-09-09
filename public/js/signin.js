@@ -77,8 +77,6 @@ $("#signinform").submit(function () {
 					$("#signinform").form("add errors", ["Wrong password"]);
 				}
 			});
-	} else {
-		$("#signin_email").removeClass("loading");
 	}
 	return false;
 });
@@ -171,8 +169,6 @@ $("#schoolinfoform").submit(() => {
 						});
 					})
 			});
-	} else {
-		$("#schoolinfo").removeClass("loading");
 	}
 	return false;
 });
@@ -200,32 +196,28 @@ $("#forgotpasswordform").form({
 });
 
 $("#forgotpasswordform").submit(() => {
-	if ($("#forgotpasswordform").form('is valid')) {
-		$("#resetpassword").addClass("loading");
-		email = $("#forgotpasswordform #email").val();
-		firebase
-			.auth()
-			.signInWithEmailAndPassword(email, "sns")
-			.catch((error) => {
-				$("#resetpassword").removeClass("loading");
-				if (error.code == "auth/user-not-found") {
-					$("#forgotpasswordform").form("add errors", [
-						"Account doesn't exist, sign up instead",
-					]);
-				}
-				if (error.code == "auth/wrong-password") {
-					firebase
-						.auth()
-						.sendPasswordResetEmail(email)
-						.then(function () {
-							$("#forgotpasswordmodal").modal("hide");
-							$("#resetconfirmmodal").modal("show");
-						})
-						.catch(() => {});
-				}
-			});
-	} else {
-		$("#resetpassword").removeClass("loading");
-	}
+	$("#resetpassword").addClass("loading");
+	email = $("#forgotpasswordform #email").val();
+	firebase
+		.auth()
+		.signInWithEmailAndPassword(email, "sns")
+		.catch((error) => {
+			$("#resetpassword").removeClass("loading");
+			if (error.code == "auth/user-not-found") {
+				$("#forgotpasswordform").form("add errors", [
+					"Account doesn't exist, sign up instead",
+				]);
+			}
+			if (error.code == "auth/wrong-password") {
+				firebase
+					.auth()
+					.sendPasswordResetEmail(email)
+					.then(function () {
+						$("#forgotpasswordmodal").modal("hide");
+						$("#resetconfirmmodal").modal("show");
+					})
+					.catch(() => {});
+			}
+		});
 	return false;
 });

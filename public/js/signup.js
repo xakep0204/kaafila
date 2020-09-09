@@ -126,8 +126,6 @@ $("#signupform").submit(function () {
 					$("#signupform").form("add errors", ["Account already exists, sign in instead"]);
 				}
 			});
-	}  else {
-		$("#signup_email").removeClass("loading");
 	}
 	return false;
 });
@@ -220,8 +218,6 @@ $("#schoolinfoform").submit(() => {
 						});
 					})
 			})
-	} else {
-		$("#schoolinfo").removeClass("loading");
 	}
 	return false;
 });
