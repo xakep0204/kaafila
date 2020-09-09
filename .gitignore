@@ -62,5 +62,5 @@ typings/
 
 .DS_Store
 public/img/gallery/
-public/img/snsartshaat/
+public/img/snsartshaat
 firebase-proj.js
