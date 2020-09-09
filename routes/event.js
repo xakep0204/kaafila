@@ -24,6 +24,7 @@ router.get("/events/:event", function (req, res, next) {
 					bannerName: event,
 					eventCategories: routingData.eventCategories,
 					[routingData.navID]: true,
+					scripts: ["/js/navbar.js"],
 					userData: userData,
 				});
 			} catch (err) {
@@ -73,6 +74,7 @@ router.get("/events/:event/:subevent", function (req, res, next) {
 					cssID: routingData.cssID,
 					[routingData.navID]: true,
 					[routingData[subevent].pageID]: true,
+					scripts: ["/js/navbar.js"],
 					userData: userData,
 				});
 			} catch (err) {
