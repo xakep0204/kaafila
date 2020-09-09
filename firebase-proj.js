@@ -1,6 +1,6 @@
 var admin = require("firebase-admin");
 
-const serviceAccount = require("/users/aditya/dev/kaafila-security/serviceAccount.json");
+const serviceAccount = require(process.env.SERVICE_ACCOUNT);
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),
 });
