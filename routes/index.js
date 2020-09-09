@@ -4,7 +4,8 @@ var path = require("path");
 var fs = require("fs");
 var admin = require("../firebase-proj");
 
-var galleryDirectoryPath = path.join(__dirname, "../public/img/gallery");
+var galleryDirectoryPath = path.join(__dirname, process.env.GALLERY_PATH);
+// var galleryDirectoryPath = path.join(__dirname, "../public/img/gallery");
 
 router.get("/", function (req, res, next) {
 	var userData = {}
@@ -13,7 +14,7 @@ router.get("/", function (req, res, next) {
 			title: "Kaafila - Shiv Nadar School Noida",
 			galleryImages: galleryImages,
 			galleryImagesMore: galleryImagesMore,
-			scripts: ["/js/navbar.js", "/js/index.js"],
+			scripts: ["/js/index.js"],
 			userData: userData,
 		});
 	}
