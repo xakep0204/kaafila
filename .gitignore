@@ -61,6 +61,7 @@ typings/
 .next
 
 .DS_Store
-public/img/gallery/ 
-public/img/snsartshaat/
-firebase-proj.js
+public/img
+
+spmlogs/
+spmdb/

@@ -1,4 +1,6 @@
 require('dotenv').config();
+const { stMonitor } = require('sematext-agent-express')
+stMonitor.start()
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -12,7 +14,6 @@ var eventRouter = require("./routes/event");
 
 var app = express();
 
-app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
