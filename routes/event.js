@@ -5,7 +5,6 @@ const { get } = require("./auth");
 var db = admin.firestore();
 var path = require("path");
 var fs = require("fs");
-const { lastRun } = require("gulp");
 
 async function getUserData(uid) {
 	doc = db.collection('schoolUsers').doc(uid);
