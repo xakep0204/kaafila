@@ -154,7 +154,6 @@ router.post("/registration/:subevent", function (req, res, next) {
 		.verifySessionCookie(sessionCookie, true)
 		.then(function (decodedClaims) {
 			data = JSON.parse(req.body.data)
-			console.log(data)
 			doc = db.collection('schoolUsers').doc(decodedClaims.sub);
 			doc.get().then((docRef) => {
 				registeredEvents = docRef.data().registeredEvents || {};
@@ -165,13 +164,24 @@ router.post("/registration/:subevent", function (req, res, next) {
 					doc2 = db.collection('events').doc(subevent);
 					doc2.get()
 						.then((docRef2) => {
-							participants = docRef2.data().participants + data.students.length;
-							doc2.update({
-								participants: participants
-							})
-							.then(() => {
-								res.sendStatus(200)
-							})
+							if (docRef2.exists) {
+								participants = docRef2.data().participants || 0;
+								participants += data.students.length;
+								doc2.update({
+									participants: participants
+								})
+								.then(() => {
+									res.sendStatus(200)
+								})
+							} else {
+								participants = data.students.length;
+								doc2.set({
+									participants: participants
+								})
+								.then(() => {
+									res.sendStatus(200)
+								})
+							}
 						})
 				}).catch((e) => {})
 			})
@@ -190,8 +200,6 @@ router.post("/submission/:subevent", function (req, res, next) {
 			doc.get()
 			.then((docRef) => {
 				registeredEvents = docRef.data().registeredEvents || {};
-				console.log(registeredEvents[subevent].students)
-				// res.sendStatus(200)
 				for (i=0; i < registeredEvents[subevent].students.length; i++) {
 					if (registeredEvents[subevent].students[i].name == req.body.name) {
 						registeredEvents[subevent].students[i].submission = req.body.submission;

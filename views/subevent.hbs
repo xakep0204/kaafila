@@ -115,11 +115,11 @@
 				{{#if registration}}
 					{{#if registration.alreadyRegistered}}
 						<div class="ui button green">Already Registered</div>
-					{{else if userData}}
+					{{else if userData.photoURL}}
 						<div id="registereventmodalbutton" data-name="{{subeventName}}" data-url="{{url}}" data-availableSeats="{{registration.availableSeats}}" class="ui button primary">Register</div>
 					{{else}}
 						<a href="/signin">
-							<div id="registereventmodalbutton" class="ui button primary">Register</div>
+							<div class="ui button primary">Register</div>
 						</a>
 					{{/if}}
 				{{/if}}
@@ -181,7 +181,7 @@
 
 </div>
 
-{{#if userData}}
+{{#if userData.photoURL}}
 {{#unless registration.alreadyRegistered}}
 <div id="registereventmodal" class="ui modal">
 	<div class="header">
