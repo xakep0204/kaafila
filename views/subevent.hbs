@@ -112,7 +112,7 @@
 			<div class="column left aligned">
 				<h1 class="ui header">{{subeventName}}</h1>
 				<h3 class="ui header">{{subeventDesc}}</h3>
-				{{#if registration}}
+				{{#if registration.availableSeats}}
 					{{#if registration.alreadyRegistered}}
 						<div class="ui button green">Already Registered</div>
 					{{else if userData.photoURL}}
