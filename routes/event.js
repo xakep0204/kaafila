@@ -6,6 +6,26 @@ var db = admin.firestore();
 var path = require("path");
 var fs = require("fs");
 
+async function getUserData(uid) {
+	doc = db.collection('schoolUsers').doc(uid);
+	docref = await doc.get()
+	if (!docref.exists) {
+		return {}
+	} else {
+		return docref.data()
+	}
+}
+
+async function getTakenSeats(subevent) {
+	doc = db.collection('events').doc(subevent);
+	docref = await doc.get()
+	if (!docref.exists) {
+		return 0
+	} else {
+		return docref.data().participants
+	}
+}
+
 router.get("/events/:event", function (req, res, next) {
 	var event = req.params.event;
 	var userData = {};
@@ -58,6 +78,8 @@ router.get("/events/:event/:subevent", function (req, res, next) {
 	var event = req.params.event;
 	var subevent = req.params.subevent;
 	var userData = {};
+	registration = {};
+	
 	var webrender = () => {
 		fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8", (err, jsonString) => {
 			if (err) {
@@ -65,15 +87,27 @@ router.get("/events/:event/:subevent", function (req, res, next) {
 			} try {
 				const eventRoutes = JSON.parse(jsonString);
 				var routingData = eventRoutes[event]
-				res.render("subevent", {
-					title: `${routingData[subevent].name} - ${routingData.name} - Kaafila`,
-					subeventName: routingData[subevent].name,
-					subeventImage: routingData[subevent].image,
-					subeventDesc: routingData[subevent].description,
-					cssID: routingData.cssID,
-					[routingData.navID]: true,
-					[routingData[subevent].pageID]: true,
-					userData: userData,
+				getTakenSeats(subevent).then((n) => {
+					if (routingData[subevent].registration) {
+						if (routingData[subevent].registration.maxSeats - n < routingData[subevent].registration.maxSeatsPerSchool) {
+							registration.availableSeats = routingData[subevent].registration.maxSeats - n
+						} else {
+							registration.availableSeats = routingData[subevent].registration.maxSeatsPerSchool
+						}
+					}
+					res.render("subevent", {
+						title: `${routingData[subevent].name} - ${routingData.name} - Kaafila`,
+						url: subevent,
+						subeventName: routingData[subevent].name,
+						subeventImage: routingData[subevent].image,
+						subeventDesc: routingData[subevent].description,
+						cssID: routingData.cssID,
+						[routingData.navID]: true,
+						[routingData[subevent].pageID]: true,
+						registration: registration,
+						userData: userData,
+						scripts: ["/js/subevent.js"]
+					});
 				});
 			} catch (err) {
 				return false;
@@ -92,7 +126,15 @@ router.get("/events/:event/:subevent", function (req, res, next) {
 					userData = {
 						photoURL: userRecord.photoURL,
 					};
-					webrender();
+					getUserData(decodedClaims.sub).then((data) => {
+						userData.schoolRepName = data.schoolRepName;
+						if (data.registeredEvents) {
+							if (subevent in data.registeredEvents) {
+								registration.alreadyRegistered = true
+							}
+						}
+						webrender();
+					});
 				})
 				.catch(() => {
 					webrender();
@@ -101,6 +143,77 @@ router.get("/events/:event/:subevent", function (req, res, next) {
 		.catch(() => {
 			webrender();
 		});
+});
+
+router.post("/registration/:subevent", function (req, res, next) {
+	var subevent = req.params.subevent
+	const sessionCookie = req.cookies.session || "";
+	admin
+		.auth()
+		.verifySessionCookie(sessionCookie, true)
+		.then(function (decodedClaims) {
+			data = JSON.parse(req.body.data)
+			doc = db.collection('schoolUsers').doc(decodedClaims.sub);
+			doc.get().then((docRef) => {
+				registeredEvents = docRef.data().registeredEvents || {};
+				registeredEvents[subevent] = data
+				doc.update({
+					registeredEvents: registeredEvents
+				}).then(() => {
+					doc2 = db.collection('events').doc(subevent);
+					doc2.get()
+						.then((docRef2) => {
+							if (docRef2.exists) {
+								participants = docRef2.data().participants || 0;
+								participants += data.students.length;
+								doc2.update({
+									participants: participants
+								})
+								.then(() => {
+									res.sendStatus(200)
+								})
+							} else {
+								participants = data.students.length;
+								doc2.set({
+									participants: participants
+								})
+								.then(() => {
+									res.sendStatus(200)
+								})
+							}
+						})
+				}).catch((e) => {})
+			})
+		})
+		.catch(() => {});
+});
+
+router.post("/submission/:subevent", function (req, res, next) {
+	var subevent = req.params.subevent
+	const sessionCookie = req.cookies.session || "";
+	admin
+		.auth()
+		.verifySessionCookie(sessionCookie, true)
+		.then(function (decodedClaims) {
+			doc = db.collection('schoolUsers').doc(decodedClaims.sub);
+			doc.get()
+			.then((docRef) => {
+				registeredEvents = docRef.data().registeredEvents || {};
+				for (i=0; i < registeredEvents[subevent].students.length; i++) {
+					if (registeredEvents[subevent].students[i].name == req.body.name) {
+						registeredEvents[subevent].students[i].submission = req.body.submission;
+					}
+				}
+				doc.update({
+					registeredEvents: registeredEvents,
+				})
+				.then(() => {
+					res.sendStatus(200)
+				})
+				.catch(() => {})
+			})
+		})
+		.catch(() => {});
 });
 
 module.exports = router;

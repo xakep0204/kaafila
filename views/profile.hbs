@@ -98,9 +98,13 @@
 		background: linear-gradient(to left, #6eb4ac, #085078) !important;
 	}
 
-	table {
+	th {
+		background-color: #ffffff5b !important;
+	}
+
+	table, .ui.accordion {
 		background-color: transparent !important;
-		border: none !important;
+		border: 0px!important;
 	}
 </style>
 
@@ -119,7 +123,32 @@
 	<div id="registered-events">
 		<div class="ui container">
 			<h1 class="ui header">Registered Events</h1>
-			<h3 class="ui header">No events registered for yet</h3>
+			{{#if userData.registeredEvents}}
+			{{#each userData.registeredEvents}}
+			<h2>{{this.name}}</h2>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+						<th colspan="2">Submission</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each this.students}}
+					<tr>
+						<td class="six wide">{{this.name}}</td>
+						<td class="two wide">Class {{this.class}}</td>
+						<td class="seven wide">{{this.submission}}</td>
+						<td><button onclick="editSubmission(this)" data-subevent="{{../this.name}}" data-student="{{this.name}}" data-url="{{@../key}}" class="ui button small basic icon"><i class="edit icon"></i></button></td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			{{/each}}
+		{{else}}
+		<h3 class="ui header">No events registered for yet</h3>
+		{{/if}}
 		</div>
 	</div>
 	<div id="account-details">
@@ -149,7 +178,32 @@
 	</div>
 </div>
 
-<div id="editdetailsmodal" class="ui modal">
+<div id="editsubmissionmodal" class="ui modal small">
+	<div class="header">
+		<h2>Edit Submission</h2>
+		<h3 id="modaldesc">Aditya Kulshrestha - Monologue Maestros</h3>
+	</div>
+	<div class="content">
+		<form id="editsubmissionform" class="ui small form">
+			<div class="ui stacked">
+				<h5>Upload your file on an online cloud platform (Google Drive, YouTube, Dropbox, etc.) and paste the public access link here.</h5>
+				<div class="field">
+          <label>Link to File</label>
+          <div class="ui input">
+            <input type="text" id="link" placeholder="Link to File">
+          </div>
+        </div>
+				<div class="ui fluid container column right aligned">
+					<button type="submit" id="editsubmission" class="ui primary button">Submit</button>
+				</div>
+      </div>
+
+			<div class="ui error message"></div>
+		</form>
+	</div>
+</div>
+
+<div id="editdetailsmodal" class="ui modal small">
 	<div class="header">
 		<h2>Edit Details</h2>
 	</div>
@@ -157,21 +211,23 @@
 		<form id="editdetailsform" class="ui small form">
 			<div class="ui stacked">
 				<div class="field">
-					<div class="ui input">
-						<input type="text" id="schoolName" placeholder="School Name">
-					</div>
-				</div>
-				<div class="field">
-					<div class="ui input">
-						<input type="text" id="schoolRepName" placeholder="School Representative Name">
-					</div>
-				</div>
+          <label>School Name</label>
+          <div class="ui input">
+            <input type="text" id="schoolName" placeholder="School Name">
+          </div>
+        </div>
+        <div class="field">
+          <label>School Representative Name</label>
+          <div class="ui input">
+            <input type="text" id="schoolRepName" placeholder="School Representative Name">
+          </div>
+        </div>
 				<div class="ui fluid container column right aligned">
 					<button type="submit" id="editdetails" class="ui primary button">Submit</button>
 				</div>
+      </div>
 
-				<div class="ui error message"></div>
-			</div>
+			<div class="ui error message"></div>
 		</form>
 	</div>
 </div>

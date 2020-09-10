@@ -8,6 +8,55 @@ $("#signout").on("click", () => {
   $("#signout").addClass("loading");
 });
 
+var subevent;
+var name;
+var postURL;
+
+function editSubmission(e) {
+	subevent = $(e).attr("data-subevent")
+	name = $(e).attr("data-student")
+	postURL = $(e).attr("data-url")
+	$("#modaldesc").html(`${name} - ${subevent}`)
+	$("#editsubmissionmodal").modal("show");
+}
+
+$("#editsubmissionform").form({
+	fields: {
+		link: {
+			identifier: "link",
+			rules: [
+				{
+					type: "url",
+					prompt: "Enter a valid URL",
+				},
+				{
+					type: "empty",
+					prompt: "Enter the link to your file",
+				},
+			],
+		},
+	},
+});
+
+$("#editsubmissionform").submit(() => {
+  $("#editsubmission").addClass("loading");
+	if ($("#editsubmissionform").form("is valid")) {
+		data = {
+			name: name,
+      submission: $("form #link").val(),
+    }
+    $.post(`/submission/${postURL}`, data, (status) => {
+			if (status == "OK") {
+				window.location.reload();
+      }
+		})
+	} else {
+		$("#editsubmission").removeClass("loading");
+	}
+	return false;
+});
+
+
 $("#editdetailsmodalbutton").on("click", () => {
 	$("#editdetailsmodal").modal("show");
 });

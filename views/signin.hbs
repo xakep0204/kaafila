@@ -46,13 +46,15 @@
     </h2>
     <h4>Currently open only for participating schools</h4>
     <form id="signinform" class="ui large form" method="POST">
-      <div class="ui stacked segment">
+      <div class="ui stacked segment left aligned">
         <div class="field">
+          <label>Email Address</label>
           <div class="ui input">
             <input type="text" id="email" placeholder="Email address">
           </div>
         </div>
         <div class="field">
+          <label>Password</label>
           <div class="ui input">
             <input type="password" id="password" placeholder="Password">
           </div>
@@ -73,7 +75,7 @@
   </div>
 </div>
 
-<div id="schoolinfomodal" class="ui modal">
+<div id="schoolinfomodal" class="ui modal small">
   <div class="header">
     <h2>Enter Your School's Information</h2>
   </div>
@@ -81,11 +83,13 @@
     <form id="schoolinfoform" class="ui small form">
       <div class="ui stacked">
         <div class="field">
+          <label>School Name</label>
           <div class="ui input">
             <input type="text" id="schoolName" placeholder="School Name">
           </div>
         </div>
         <div class="field">
+          <label>School Representative Name</label>
           <div class="ui input">
             <input type="text" id="schoolRepName" placeholder="School Representative Name">
           </div>
@@ -93,6 +97,7 @@
         <div class="ui fluid container column right aligned">
           <button type="submit" id="schoolinfo" class="ui primary button">Submit</button>
         </div>
+      </div>
 
       <div class="ui error message"></div>
 
@@ -100,7 +105,7 @@
   </div>
 </div>
 
-<div id="forgotpasswordmodal" class="ui modal">
+<div id="forgotpasswordmodal" class="ui modal small">
   <div class="header">
     <h2>Forgot Password</h2>
   </div>
@@ -108,6 +113,7 @@
     <form id="forgotpasswordform" class="ui small form" method="POST">
       <div class="ui stacked">
         <div class="field">
+          <label>Email Address</label>
           <div class="ui input">
             <input type="text" id="email" placeholder="Email address">
           </div>
@@ -123,7 +129,7 @@
   </div>
 </div>
 
-<div id="resetconfirmmodal" class="ui modal">
+<div id="resetconfirmmodal" class="ui modal mini">
   <div class="content">
     <div class="ui fluid container center aligned">
       <img class="ui centered image tiny" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/tick.png">

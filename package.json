@@ -18,7 +18,4 @@
     "morgan": "~1.9.1",
     "sematext-agent-express": "^2.0.2"
   },
-  "devDependencies": {
-    "gulp": "^4.0.2"
-  }
 }

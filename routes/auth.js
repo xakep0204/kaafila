@@ -5,6 +5,16 @@ var admin = require("../firebase-proj");
 var csrfProtection = csrf({ cookie: true });
 var db = admin.firestore();
 
+async function getUserData(uid) {
+	doc = db.collection('schoolUsers').doc(uid);
+	docref = await doc.get()
+	if (!docref.exists) {
+		return 'NA'
+	} else {
+		return docref.data();
+	}
+}
+
 router.get("/signin", csrfProtection, function (req, res, next) {
 	const sessionCookie = req.cookies.session || "";
 	admin
@@ -102,16 +112,6 @@ router.post("/sessionLogin", (req, res) => {
 });
 
 router.get("/profile", function (req, res, next) {
-	async function getsrn(uid) {
-		doc = db.collection('schoolUsers').doc(uid);
-		docref = await doc.get()
-		if (!docref.exists) {
-			return 'NA'
-		} else {
-			return docref.data().schoolRepName;
-		}
-	}
-
 	const sessionCookie = req.cookies.session || "";
 	admin
 		.auth()
@@ -121,12 +121,13 @@ router.get("/profile", function (req, res, next) {
 				.auth()
 				.getUser(decodedClaims.sub)
 				.then(function (userRecord) {
-					getsrn(decodedClaims.sub).then((srn) => {
+					getUserData(decodedClaims.sub).then((data) => {
 						userData = {
 							email: userRecord.email,
 							schoolName: userRecord.displayName,
-							schoolRepName: srn,
+							schoolRepName: data.schoolRepName,
 							photoURL: userRecord.photoURL,
+							registeredEvents: data.registeredEvents
 						};
 						res.render("profile", {
 							title: `${userRecord.displayName} - Kaafila`,

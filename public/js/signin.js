@@ -91,9 +91,7 @@ $("#signin_google").on("click", () => {
 		.then(function (result) {
 			user = firebase.auth().currentUser;
       checkUser(user.uid).then((a) => {
-        if (!a) {
-          $("#schoolinfomodal").modal("show");
-        } else {
+        if (a) {
           user.getIdToken().then((idToken) => {
             const csrfToken = getCookie("csrfToken");
             return $.post("/sessionLogin", {
@@ -107,6 +105,8 @@ $("#signin_google").on("click", () => {
           .then(() => {
             window.location.assign("/profile");
           });
+        } else {
+          $("#schoolinfomodal").modal("show");
         }
       });
 		});
