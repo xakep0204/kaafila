@@ -46,16 +46,15 @@
       "pageID": "bnc_mm",
       "description": "Virtual solo theatrical performance",
       "registration": {
-        "maxStudents": 12
+        "maxSeats": 12,
+        "maxSeatsPerSchool": 5
       }
     },
     "one-act-play": {
       "name": "One Act Play",
       "image": "bnc-oap-banner.png",
       "pageID": "bnc_oap",
-      "description": "Collaborative virtual theatrical performance",
-      "registrationDate": "2020-09-05",
-      "maxStudents": 12
+      "description": "Collaborative virtual theatrical performance"
     },
     "collab-lab": {
       "name": "Collab Lab",

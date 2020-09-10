@@ -1,110 +1,20 @@
 <style>
-	.v-header {
-		height: 60vh;
-		display: flex;
-		align-items: center;
-	}
-
-	.h-container {
-		max-width: 960px;
-		padding-left: 1rem;
-		padding-right: 1rem;
-		margin: auto;
-		margin-top: -52px;
-		text-align: center;
-	}
-
-	.photo-wrap {
-		position: absolute;
-		top: 0px;
-		left: 0;
-		width: 100%;
-		height: 60vh;
-		overflow: hidden;
-	}
-
-	.photo-wrap img {
-		width: auto;
-		display: block;
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 1;
-	}
-
-	@media screen and (max-aspect-ratio: 6/10) {
-		.photo-wrap img {
-			height: 100%;
-		}
-	}
-
-	@media screen and (min-aspect-ratio: 6/10) {
-		.photo-wrap img {
-			width: 100%;
-		}
-	}
-
-	.header-overlay {
-		height: 60vh;
-		position: absolute;
-		top: 0px;
-		left: 0;
-		width: 100vw;
-		z-index: 1;
-		background: black;
-		opacity: 0.2;
-	}
-
-	.header-content {
-		z-index: 2;
-		width: 100%;
-	}
-
-	.header-content h1,
-	.header-content h4 {
-		margin-bottom: 0;
-	}
-
-	.hero h1,
-	.hero h4 {
-		color: white !important;
-	}
-
-	.hero h1 {
-		font-size: 4em !important;
-	}
-
-	@media (max-width: 960px) {
-		.h-container {
-			padding-right: 3rem;
-			padding-left: 3rem;
-		}
-	}
-
 	p.ui,
 	h5.ui {
 		font-size: 16px !important;
 	}
+
 	#title h3 {
 		margin-top: 0;
 		margin-bottom: 2em;
 	}
+
 	#faq h5,
 	#about h2,
 	#about h3,
 	#about h4 {
 		margin-bottom: 0px !important;
 	}
-
-	/* @media (max-width: 576px) {
-		.v-header, .photo-wrap, .header-overlay {
-			height: 70vh;
-		}
-		.photo-wrap img {
-			height: 100%!important;
-		}
-	}*/
 
 	.ui.borderless.menu {
 		background: #085078;
@@ -121,26 +31,6 @@
 		background-color: rgba(0, 0, 0, .2) !important;
 	}
 
-	#event-bnc {
-		background: rgb(201, 120, 76);
-		background: linear-gradient(45deg, rgba(201, 120, 76, 1) 37%, rgba(217, 217, 217, 1) 100%);
-	}
-
-	#event-ff {
-		background: rgb(145, 63, 63);
-		background: linear-gradient(45deg, rgba(145, 63, 63, 1) 0%, rgba(156, 185, 53, 1) 100%);
-	}
-
-	#event-i {
-		background: rgb(183, 145, 182);
-		background: linear-gradient(45deg, rgba(183, 145, 182, 1) 41%, rgba(91, 208, 186, 1) 100%);
-	}
-
-	#event-sa {
-		background: #FDC830;
-		background: linear-gradient(45deg, rgb(243, 115, 53), rgb(253, 200, 48));
-	}
-
 	#title h1 {
 		font-size: 4rem;
 	}
@@ -151,6 +41,24 @@
 
 	.printRules {
 		display: none;
+	}
+
+	form div.right.aligned, #registerevent {
+		margin-right: 0!important;
+	}
+
+	form #students .two.fields, #studentAdd {
+		margin-bottom: 0.35em!important;
+		margin-top: 1.35em!important;
+	}
+
+	@media only screen and (max-width: 767px) {
+		form #students .two.fields .wide.field {
+			margin-bottom: 0.35em!important;
+		}
+		form #students .two.fields .wide.field:last-child {
+			margin-bottom: 0em!important;
+		}
 	}
 </style>
 
@@ -204,9 +112,20 @@
 			<div class="column left aligned">
 				<h1 class="ui header">{{subeventName}}</h1>
 				<h3 class="ui header">{{subeventDesc}}</h3>
-				<div class="ui button primary">Registrations Opening Soon!</div>
+				{{#if registration}}
+					{{#if registration.alreadyRegistered}}
+						<div class="ui button green">Already Registered</div>
+					{{else if userData}}
+						<div id="registereventmodalbutton" data-name="{{subeventName}}" data-url="{{url}}" data-availableSeats="{{registration.availableSeats}}" class="ui button primary">Register</div>
+					{{else}}
+						<a href="/signin">
+							<div id="registereventmodalbutton" class="ui button primary">Register</div>
+						</a>
+					{{/if}}
+				{{/if}}
 			</div>
 		</div>
+		
 		<div class="ui grid mobile only container middle aligned center aligned one columns">
 			<div class="column">
 				<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/banners/{{subeventImage}}?width=410"
@@ -215,7 +134,17 @@
 			<div class="column left aligned">
 				<h1 class="ui header">{{subeventName}}</h1>
 				<h3 class="ui header">{{subeventDesc}}</h3>
-				<div class="ui button primary">Registrations Opening Soon!</div>
+				{{#if registration}}
+					{{#if registration.alreadyRegistered}}
+						<div class="ui button green">Already Registered</div>
+					{{else if userData}}
+						<div id="registereventmodalbuttonm" data-name="{{subeventName}}" data-url="{{url}}" data-availableSeats="{{registration.availableSeats}}" class="ui button primary">Register</div>
+					{{else}}
+						<a href="/signin">
+							<div id="registereventmodalbuttonm" class="ui button primary">Register</div>
+						</a>
+					{{/if}}
+				{{/if}}
 			</div>
 		</div>
 	</div>
@@ -252,12 +181,99 @@
 
 </div>
 
+{{#if userData}}
+{{#unless registration.alreadyRegistered}}
+<div id="registereventmodal" class="ui modal">
+	<div class="header">
+		<h2>Register for {{subeventName}}</h2>
+	</div>
+	<div class="scrolling content">
+		<form id="registereventform" class="ui small form">
+			<div class="ui stacked">
+				<div class="field">
+					<label>Contact Person for the Event</label>
+					<div class="ui input">
+						<input type="text" id="contactPerson" placeholder="Contact Person for the Event"
+							value="{{userData.schoolRepName}}">
+					</div>
+				</div>
+				<div class="field">
+					<label>Phone Number of the Contact Person</label>
+					<div class="ui input">
+						<input type="text" id="phone" placeholder="Phone Number of the Contact Person">
+					</div>
+				</div>
+				<div id="students">
+					<div id="student1">
+						<div class="two fields">
+							<div class="eight wide field">
+								<label>Student Name</label>
+								<input type="text" class="form-control" id="student1Name" placeholder="Student Name">
+							</div>
+							<div class="four wide field">
+								<label>Student Class</label>
+								<select class="ui dropdown" id="student1Class">
+									<option value>Student Class</option>
+									{{#if classesAllowed}}
+									{{#each classesAllowed}}
+									<option value="{{this}}">Class {{this}}</option>
+									{{/each}}
+									{{else}}
+									<option value="1">Class 1</option>
+									<option value="2">Class 2</option>
+									<option value="3">Class 3</option>
+									<option value="4">Class 4</option>
+									<option value="5">Class 5</option>
+									<option value="6">Class 6</option>
+									<option value="7">Class 7</option>
+									<option value="8">Class 8</option>
+									<option value="9">Class 9</option>
+									<option value="10">Class 10</option>
+									<option value="11">Class 11</option>
+									<option value="12">Class 12</option>
+									<option value="NA">N/A</option>
+									{{/if}}
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="field">
+					<button id="studentAdd" type="button" class="ui tiny green button">Add Student</button>
+				</div>
+				<div class="ui fluid container right aligned">
+					<button type="submit" id="registerevent" class="ui primary button">Submit</button>
+				</div>
+			</div>
+
+			<div class="ui error message"></div>
+
+		</form>
+	</div>
+</div>
+
+<div id="registereventconfirmmodal" class="ui modal tiny">
+	<div class="content">
+		<div class="ui fluid container center aligned">
+			<img class="ui centered image tiny" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/tick.png">
+			<h2>Registered successfully for {{subeventName}}</h2>
+		</div>
+	</div>
+</div>
+{{/unless}}
+{{/if}}
+
 {{>footer}}
 
 <style>
 	@media print {
-		#content, #navbar, #footer, #printRulesButton {
-			display: none!important;
+
+		#content,
+		#navbar,
+		#footer,
+		#printRulesButton,
+		.ui.modal {
+			display: none !important;
 		}
 
 		.printRules {
