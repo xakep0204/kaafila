@@ -1,16 +1,16 @@
 var express = require("express");
-var router = express.Router();
 var admin = require("../firebase-proj");
-const { get } = require("./auth");
-var db = admin.firestore();
 var path = require("path");
-var fs = require("fs");
+var fs = require("fs").promises;
+
+var router = express.Router();
+var db = admin.firestore();
 
 async function getUserData(uid) {
 	doc = db.collection('schoolUsers').doc(uid);
 	docref = await doc.get()
 	if (!docref.exists) {
-		return {}
+		return null
 	} else {
 		return docref.data()
 	}
@@ -26,194 +26,146 @@ async function getTakenSeats(subevent) {
 	}
 }
 
-router.get("/events/:event", function (req, res, next) {
+async function renderEvent(req, res) {
 	var event = req.params.event;
-	var userData = {};
-	var webrender = () => {
-		fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8", (err, jsonString) => {
-			if (err) {
-				return false;
-			} try {
-				const eventRoutes = JSON.parse(jsonString);
-				var routingData = eventRoutes[event]
-				res.render("event", {
-					eventName: routingData.name,
-					title: `${routingData.name} - Kaafila`,
-					cssID: routingData.cssID,
-					headerFont: routingData.headerFont,
-					bannerName: event,
-					eventCategories: routingData.eventCategories,
-					[routingData.navID]: true,
-					userData: userData,
-				});
-			} catch (err) {
-				return false;
-			}
-		});
-	}
 	const sessionCookie = req.cookies.session || "";
-	admin
-		.auth()
-		.verifySessionCookie(sessionCookie, true)
-		.then(function (decodedClaims) {
-			admin
-				.auth()
-				.getUser(decodedClaims.sub)
-				.then(function (userRecord) {
-					userData = {
-						photoURL: userRecord.photoURL,
-					};
-					webrender();
-				})
-				.catch(() => {
-					webrender();
-				});
-		})
-		.catch(() => {
-			webrender();
-		});
-});
 
-router.get("/events/:event/:subevent", function (req, res, next) {
+	var userData = {};
+
+	try {
+		const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
+		routingData = JSON.parse(readRoutes)[event]
+	
+		const webrender = () => {
+			res.render("event", {
+				eventName: routingData.name,
+				title: `${routingData.name} - Kaafila`,
+				cssID: routingData.cssID,
+				headerFont: routingData.headerFont,
+				bannerName: event,
+				eventCategories: routingData.eventCategories,
+				[routingData.navID]: true,
+				userData: userData,
+			});
+		}
+	
+		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
+		const user = await admin.auth().getUser(firebaseUserClaims.sub)
+		userData.photoURL = user.photoURL
+		webrender();
+	} catch (err) {
+		if (err.code !== "auth/argument-error") { console.log(err); }
+		webrender();
+	}
+
+}
+
+async function renderSubevent(req, res) {
 	var event = req.params.event;
 	var subevent = req.params.subevent;
+	const sessionCookie = req.cookies.session || "";
+
 	var userData = {};
-	registration = {};
+	var registration = {};
 	
-	var webrender = () => {
-		fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8", (err, jsonString) => {
-			if (err) {
-				return false;
-			} try {
-				const eventRoutes = JSON.parse(jsonString);
-				var routingData = eventRoutes[event]
-				getTakenSeats(subevent).then((n) => {
-					if (routingData[subevent].registration) {
-						if (routingData[subevent].registration.maxSeats - n < routingData[subevent].registration.maxSeatsPerSchool) {
-							registration.availableSeats = routingData[subevent].registration.maxSeats - n
-						} else {
-							registration.availableSeats = routingData[subevent].registration.maxSeatsPerSchool
-						}
-					}
-					res.render("subevent", {
-						title: `${routingData[subevent].name} - ${routingData.name} - Kaafila`,
-						url: subevent,
-						subeventName: routingData[subevent].name,
-						subeventImage: routingData[subevent].image,
-						subeventDesc: routingData[subevent].description,
-						cssID: routingData.cssID,
-						[routingData.navID]: true,
-						[routingData[subevent].pageID]: true,
-						registration: registration,
-						userData: userData,
-						scripts: ["/js/subevent.js"]
-					});
-				});
-			} catch (err) {
-				return false;
+	try {
+		const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
+		routingData = JSON.parse(readRoutes)[event]
+		var registration = routingData[subevent].registration || {};
+	
+		const webrender = () => {
+			res.render("subevent", {
+				title: `${routingData[subevent].name} - ${routingData.name} - Kaafila`,
+				url: subevent,
+				subeventName: routingData[subevent].name,
+				subeventImage: routingData[subevent].image,
+				subeventDesc: routingData[subevent].description,
+				cssID: routingData.cssID,
+				[routingData.navID]: true,
+				pageID: "subevents/" + routingData[subevent].pageID,
+				formID: routingData[subevent].registration ? "subevents/forms/" + routingData[subevent].registration.formID : null,
+				registration: Object.keys(registration).length > 0 ? registration : null,
+				userData: Object.keys(userData).length > 0 ? userData : null,
+				scripts: ["/js/subevent.js"]
+			});
+		}
+	
+		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
+		const user = await admin.auth().getUser(firebaseUserClaims.sub)
+		userData.photoURL = user.photoURL
+		
+		if (Object.keys(registration).length > 0) {
+			registration.takenSeats = await getTakenSeats(subevent)
+		}
+		const userFirestoreData = await getUserData(firebaseUserClaims.sub)
+		userData.schoolRepName = userFirestoreData.schoolRepName;
+		if (userFirestoreData.registeredEvents) {
+			if (subevent in userFirestoreData.registeredEvents) {
+				registration.alreadyRegistered = true;
 			}
-		});
-	};
-	const sessionCookie = req.cookies.session || "";
-	admin
-		.auth()
-		.verifySessionCookie(sessionCookie, true)
-		.then(function (decodedClaims) {
-			admin
-				.auth()
-				.getUser(decodedClaims.sub)
-				.then(function (userRecord) {
-					userData = {
-						photoURL: userRecord.photoURL,
-					};
-					getUserData(decodedClaims.sub).then((data) => {
-						userData.schoolRepName = data.schoolRepName;
-						if (data.registeredEvents) {
-							if (subevent in data.registeredEvents) {
-								registration.alreadyRegistered = true
-							}
-						}
-						webrender();
-					});
-				})
-				.catch(() => {
-					webrender();
-				});
-		})
-		.catch(() => {
-			webrender();
-		});
-});
+		}
+		webrender();
+	} catch (err) {
+		if (err.code !== "auth/argument-error") { console.log(err); }
+		webrender();
+	}
 
-router.post("/registration/:subevent", function (req, res, next) {
-	var subevent = req.params.subevent
-	const sessionCookie = req.cookies.session || "";
-	admin
-		.auth()
-		.verifySessionCookie(sessionCookie, true)
-		.then(function (decodedClaims) {
-			data = JSON.parse(req.body.data)
-			doc = db.collection('schoolUsers').doc(decodedClaims.sub);
-			doc.get().then((docRef) => {
-				registeredEvents = docRef.data().registeredEvents || {};
-				registeredEvents[subevent] = data
-				doc.update({
-					registeredEvents: registeredEvents
-				}).then(() => {
-					doc2 = db.collection('events').doc(subevent);
-					doc2.get()
-						.then((docRef2) => {
-							if (docRef2.exists) {
-								participants = docRef2.data().participants || 0;
-								participants += data.students.length;
-								doc2.update({
-									participants: participants
-								})
-								.then(() => {
-									res.sendStatus(200)
-								})
-							} else {
-								participants = data.students.length;
-								doc2.set({
-									participants: participants
-								})
-								.then(() => {
-									res.sendStatus(200)
-								})
-							}
-						})
-				}).catch((e) => {})
-			})
-		})
-		.catch(() => {});
-});
+}
 
-router.post("/submission/:subevent", function (req, res, next) {
-	var subevent = req.params.subevent
+async function subeventRegistration(req, res) {
+	var subevent = req.params.subevent;
 	const sessionCookie = req.cookies.session || "";
-	admin
-		.auth()
-		.verifySessionCookie(sessionCookie, true)
-		.then(function (decodedClaims) {
-			doc = db.collection('schoolUsers').doc(decodedClaims.sub);
-			doc.get()
-			.then((docRef) => {
-				registeredEvents = docRef.data().registeredEvents || {};
-				for (i=0; i < registeredEvents[subevent].students.length; i++) {
-					if (registeredEvents[subevent].students[i].name == req.body.name) {
-						registeredEvents[subevent].students[i].submission = req.body.submission;
-					}
-				}
-				doc.update({
-					registeredEvents: registeredEvents,
-				})
-				.then(() => {
-					res.sendStatus(200)
-				})
-				.catch(() => {})
-			})
-		})
-		.catch(() => {});
-});
+	var data = JSON.parse(req.body.data);
+
+	try {
+		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
+		doc = db.collection('schoolUsers').doc(firebaseUserClaims);
+		docref = await doc.get()
+		registeredEvents = docref.data().registeredEvents || {};
+		registeredEvents[subevent] = data;
+		const updateDatabase = doc.update({registeredEvents: registeredEvents,})
+	
+		doc = db.collection('schoolUsers').doc(firebaseUserClaims);
+		docref = await doc.get()
+		if (docref.exists) {
+			participants = docref.data().participants || 0;
+			participants += data.students.length;
+			const updateDatabase = doc.update({participants: participants})
+			res.sendStatus(200);
+		} else {
+			participants = data.students.length;
+			doc.set({participants: participants})
+			res.sendStatus(200);
+		}
+	} catch (err) {
+		res.send(err)
+		console.log(err);
+	}
+}
+
+async function subeventSubmission(req, res) {
+	var subevent = req.params.subevent;
+	const sessionCookie = req.cookies.session || "";
+
+	try {
+		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
+		const docref = await db.collection('schoolUsers').doc(firebaseUserClaims).get();
+		registeredEvents = docref.data().registeredEvents || {};
+		for (i = 0; i < registeredEvents[subevent].students.length; i++) {
+			if (registeredEvents[subevent].students[i].name == req.body.name) {
+				registeredEvents[subevent].students[i].submission = req.body.submission;
+			}
+		}
+		const updateDatabase = await doc.update({registeredEvents: registeredEvents,});
+		res.sendStatus(200);
+	} catch (err) {
+		console.log(err);
+	}
+}
+
+router.get("/events/:event", (req, res) => renderEvent(req, res));
+router.get("/events/:event/:subevent", (req, res) => renderSubevent(req, res));
+router.post("/registration/:subevent", (req, res) => subeventRegistration(req, res));
+router.post("/submission/:subevent", (req, res) => subeventSubmission(req, res));
 
 module.exports = router;

@@ -1,18 +1,6 @@
-function getCookie(name) {
-	var re = new RegExp(name + "=([^;]+)");
-	var value = re.exec(document.cookie);
-	return value != null ? unescape(value[1]) : null;
-}
-
 db = firebase.firestore();
 
-async function checkUser(uid) {
-  doc = db.collection('schoolUsers').doc(uid);
-  docref = await doc.get()
-  return docref.exists
-}
-
-$("#signinform").form({
+$("#signInForm").form({
 	fields: {
 		email: {
 			identifier: "email",
@@ -38,81 +26,7 @@ $("#signinform").form({
 		},
 	},
 });
-
-$("#signinform").submit(function () {
-	$("#signin_email").addClass("loading");
-	if ($("#signinform").form("is valid")) {
-		email = $("#email").val();
-		password = $("#password").val();
-		firebase
-			.auth()
-			.signInWithEmailAndPassword(email, password)
-			.then(() => {
-				var user = firebase.auth().currentUser;
-				user
-					.getIdToken()
-					.then((idToken) => {
-						const csrfToken = getCookie("csrfToken");
-						return $.post("/sessionLogin", {
-							idToken: idToken,
-							csrfToken: csrfToken,
-						});
-					})
-					.then(() => {
-						return firebase.auth().signOut();
-					})
-					.then(() => {
-						$("#signin_email").removeClass("loading");
-						window.location.assign("/profile");
-					});
-			})
-			.catch((error) => {
-				$("#signin_email").removeClass("loading");
-				if (error.code == "auth/user-not-found") {
-					$("#signinform").form("add errors", [
-						"Account doesn't exist, sign up instead",
-					]);
-				}
-				if (error.code == "auth/wrong-password") {
-					$("#signinform").form("add errors", ["Wrong password"]);
-				}
-			});
-	} else {
-		$("#signin_email").removeClass("loading");
-	}
-	return false;
-});
-
-$("#signin_google").on("click", () => {
-	var provider = new firebase.auth.GoogleAuthProvider();
-	firebase
-		.auth()
-		.signInWithPopup(provider)
-		.then(function (result) {
-			user = firebase.auth().currentUser;
-      checkUser(user.uid).then((a) => {
-        if (a) {
-          user.getIdToken().then((idToken) => {
-            const csrfToken = getCookie("csrfToken");
-            return $.post("/sessionLogin", {
-              idToken: idToken,
-              csrfToken: csrfToken,
-            });
-          })
-          .then(() => {
-            return firebase.auth().signOut();
-          })
-          .then(() => {
-            window.location.assign("/profile");
-          });
-        } else {
-          $("#schoolinfomodal").modal("show");
-        }
-      });
-		});
-});
-
-$("#schoolinfoform").form({
+$("#schoolInfoForm").form({
 	fields: {
 		schoolName: {
 			identifier: "schoolName",
@@ -134,54 +48,7 @@ $("#schoolinfoform").form({
 		},
 	},
 });
-
-$("#schoolinfoform").submit(() => {
-	$("#schoolinfo").addClass("loading");
-	if ($("#schoolinfoform").form("is valid")) {
-		var user = firebase.auth().currentUser;
-		user
-			.updateProfile({
-				displayName: $("#schoolinfoform #schoolName").val(),
-			})
-			.then(() => {
-				db.collection("schoolUsers")
-					.doc(user.uid)
-					.set({
-						email: user.email,
-						schoolName: $("#schoolName").val(),
-						schoolRepName: $("#schoolRepName").val(),
-						photoURL: user.photoURL,
-					})
-					.catch((error) => {
-						return firebase.auth().signOut();
-					})
-					.then(() => {
-						user.getIdToken().then((idToken) => {
-							const csrfToken = getCookie("csrfToken");
-							return $.post("/sessionLogin", {
-								idToken: idToken,
-								csrfToken: csrfToken,
-							});
-						})
-						.then(() => {
-							return firebase.auth().signOut();
-						})
-						.then(() => {
-							window.location.assign("/profile");
-						});
-					})
-			});
-	} else {
-		$("#schoolinfo").removeClass("loading");
-	}
-	return false;
-});
-
-$("#forgotpassword").on("click", () => {
-	$("#forgotpasswordmodal").modal("show");
-});
-
-$("#forgotpasswordform").form({
+$("#forgotPasswordForm").form({
 	fields: {
 		email: {
 			identifier: "email",
@@ -199,33 +66,122 @@ $("#forgotpasswordform").form({
 	},
 });
 
-$("#forgotpasswordform").submit(() => {
-	if ($("#forgotpasswordform").form('is valid')) {
-		$("#resetpassword").addClass("loading");
-		email = $("#forgotpasswordform #email").val();
-		firebase
-			.auth()
-			.signInWithEmailAndPassword(email, "sns")
-			.catch((error) => {
-				$("#resetpassword").removeClass("loading");
-				if (error.code == "auth/user-not-found") {
-					$("#forgotpasswordform").form("add errors", [
-						"Account doesn't exist, sign up instead",
-					]);
-				}
-				if (error.code == "auth/wrong-password") {
-					firebase
-						.auth()
-						.sendPasswordResetEmail(email)
-						.then(function () {
-							$("#forgotpasswordmodal").modal("hide");
-							$("#resetconfirmmodal").modal("show");
-						})
-						.catch(() => {});
-				}
-			});
-	} else {
-		$("#resetpassword").removeClass("loading");
+async function signInEmail() {
+	try {
+		if ($("#signInForm").form("is valid")) {
+			$("#signInEmail").addClass("loading");
+			email = $("#email").val();
+			password = $("#password").val();
+			const firebaseSignIn = await firebase.auth().signInWithEmailAndPassword(email, password)
+			var user = await firebase.auth().currentUser;
+			const idToken = await user.getIdToken()
+			const csrfToken = getCookie("csrfToken");
+			const sendTokens = await $.post("/sessionLogin", {
+				idToken: idToken,
+				csrfToken: csrfToken,
+			}).promise();
+			const firebaseSignOut = await firebase.auth().signOut();
+			window.location.assign("/profile");
+		}
+	} catch (err) {
+		$("#signInEmail").removeClass("loading");
+		if (err.code === "auth/user-not-found") {
+			$("#signInForm").form("add errors", ["Account doesn't exist, sign up instead"]);
+		} else if (err.code === "auth/wrong-password") {
+			const firebaseMethods = await firebase.auth().fetchSignInMethodsForEmail(email)
+			console.log(firebaseMethods);
+			if (firebaseMethods.length === 1) {
+				$("#signInForm").form("add errors", ["Account associated with Google, sign in with Google instead.",]);
+			} else {
+				$("#signInForm").form("add errors", ["Wrong password"]);
+			}
+		} else {
+		}
+		console.log(err);
+	}
+}
+
+async function signInGoogle() {
+	try {
+		var provider = new firebase.auth.GoogleAuthProvider();
+		const firebaseSignIn = await firebase.auth().signInWithPopup(provider)
+		user = await firebase.auth().currentUser;
+		const docref = await db.collection('schoolUsers').doc(user.uid).get()
+		if (docref.exists) {
+			const idToken = await user.getIdToken()
+			const csrfToken = getCookie("csrfToken");
+			const sendTokens = await $.post("/sessionLogin", {
+				idToken: idToken,
+				csrfToken: csrfToken,
+			}).promise();
+			const firebaseSignOut = await firebase.auth().signOut();
+			window.location.assign("/profile");
+		}
+		else {
+			$("#schoolInfoModal").modal("show");
+		}
+	} catch (err) {
+		console.log(err)	
+	}
+}
+
+async function forgotPasswordForm() {
+	if ($("#forgotPasswordForm").form('is valid')) {
+		$("#resetPassword").addClass("loading");
+		email = $("#forgotPasswordForm #email").val();
+		try {
+			$("#resetPassword").removeClass("loading");
+			const firebaseMethods = await firebase.auth().fetchSignInMethodsForEmail(email)
+			if (firebaseMethods.length === 0) {
+				$("#forgotPasswordForm").form("add errors", ["Account doesn't exist, sign up instead",]);
+			} else {
+				const firebaseSendEmail = await firebase.auth().sendPasswordResetEmail(email)
+				$("#forgotPasswordmodal").modal("hide");
+				$("#resetconfirmmodal").modal("show");
+			}
+		} catch (err) {
+			console.log(err)
+		}
 	}
 	return false;
-});
+}
+
+async function schoolInfoForm() {
+	try {
+		if ($("#schoolInfoForm").form("is valid")) {
+			$("#schoolInfo").addClass("loading");
+			var user = await firebase.auth().currentUser;
+			const updateUserProfile = await user.updateProfile({ displayName: $("#schoolInfoForm #schoolName").val(), })
+			const updateUserDatabase = await db.collection("schoolUsers").doc(user.uid).set({
+				email: user.email,
+				schoolName: $("#schoolInfoForm #schoolName").val(),
+				schoolRepName: $("#schoolInfoForm #schoolRepName").val(),
+				photoURL: user.photoURL,
+			})
+			const idToken = await user.getIdToken()
+			const csrfToken = getCookie("csrfToken")
+			const sendTokens = await $.post("/sessionLogin", {
+				idToken: idToken,
+				csrfToken: csrfToken,
+			}).promise();
+			const firebaseSignOut = await firebase.auth().signOut();
+			window.location.assign("/profile");
+		}
+	} catch (err) {
+		const firebaseSignOut = await firebase.auth().signOut();
+		console.log(err)
+	}
+}
+
+function getCookie(name) {
+	var re = new RegExp(name + "=([^;]+)");
+	var value = re.exec(document.cookie);
+	return value != null ? unescape(value[1]) : null;
+}
+
+$("#signInForm").submit(() => {signInEmail(); return false;});
+$("#signInGoogle").on("click", () => signInGoogle())
+
+$("#schoolInfoForm").submit(() => {schoolInfoForm(); return false;});
+$("#forgotPasswordForm").submit(() => {forgotPasswordForm(); return false;});
+$("#forgotPassword").on("click", () => $("#forgotPasswordmodal").modal("show"));
