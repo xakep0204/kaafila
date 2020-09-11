@@ -9,7 +9,8 @@ function studentRemove(e) {
 
 members = [1];
 globalMembers = [1];
-availableSeats = $("#registereventmodalbutton").attr("data-availableSeats");
+
+
 formFields = {
 	contactPerson: {
 		identifier: "contactPerson",
@@ -17,6 +18,19 @@ formFields = {
 			{
 				type: "empty",
 				prompt: "Enter the contact person's name",
+			},
+		],
+	},
+	email: {
+		identifier: "email",
+		rules: [
+			{
+				type: "empty",
+				prompt: "Enter the contact person's email",
+			},
+			{
+				type: "email",
+				prompt: "Enter a valid email",
 			},
 		],
 	},
@@ -30,6 +44,15 @@ formFields = {
 			{
 				type: "regExp[/^[0-9]{10}$/]",
 				prompt: "Enter a valid phone number",
+			},
+		],
+	},
+	studentName: {
+		identifier: "studentName",
+		rules: [
+			{
+				type: "empty",
+				prompt: "Enter student's name",
 			},
 		],
 	},
@@ -59,6 +82,8 @@ $("#registereventmodalbutton").on("click", () => {
 $("#registereventmodalbuttonm").on("click", () => {
   $("#registereventmodal").modal("show");
 });
+
+
 
 for (i = 2; i <= availableSeats; i++) {
 	globalMembers.push(i);
@@ -121,7 +146,6 @@ $("#studentAdd").on('click', () => {
 $("#registereventform").submit(() => {
   $("#registerevent").addClass("loading");
   if ($("#registereventform").form('is valid')) {
-    name = $("#registereventmodalbutton").attr("data-name")
     data = {
       contactPerson: $("#registereventform #contactPerson").val(),
       phone: $("#registereventform #phone").val(),
