@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { stMonitor, stHttpLoggerMiddleware } = require('sematext-agent-express')
+const { stMonitor, stHttpLoggerMiddleware, stLogger } = require('sematext-agent-express')
 stMonitor.start()
 var createError = require("http-errors");
 var express = require("express");
