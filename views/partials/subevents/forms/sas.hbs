@@ -1,0 +1,79 @@
+<style>
+	.studentAdd {
+		margin-bottom: 1.35em!important;
+		margin-top: 0.75em!important;
+	}
+</style>
+
+<form id="registereventform" class="ui small form">
+	<div class="ui stacked">
+		<div class="field">
+			<label>Contact Person for the Event</label>
+			<div class="ui input">
+				<input type="text" id="contactPerson" placeholder="Contact Person for the Event">
+			</div>
+		</div>
+		<div class="field">
+			<label>Email of the Contact Person</label>
+			<div class="ui input">
+				<input type="text" id="email" placeholder="Email of the Contact Person">
+			</div>
+		</div>
+		<div class="field">
+			<label>Phone Number of the Contact Person</label>
+			<div class="ui input">
+				<input type="text" id="phone" placeholder="Phone Number of the Contact Person">
+			</div>
+		</div>
+		<div id="submission">
+			<div id="western-vocals">
+				<h4 class="ui dividing header">Western Vocals</h4>
+				<div id="students"></div>
+				<div class="field">
+					<button type="button" class="ui tiny green button studentAdd">Add Student</button>
+				</div>
+			</div>
+			<div id="hindustani-classical-vocals">
+				<h4 class="ui dividing header">Hindustani Classical Vocals</h4>
+				<div id="students"></div>
+				<div class="field">
+					<button type="button" class="ui tiny green button studentAdd">Add Student</button>
+				</div>
+			</div>
+			<div id="instrumental-guitar">
+				<h4 class="ui dividing header">Instrumental – Guitar</h4>
+				<div id="students"></div>
+				<div class="field">
+					<button type="button" class="ui tiny green button studentAdd">Add Student</button>
+				</div>
+			</div>
+			<div id="instrumental-keyboard">
+				<h4 class="ui dividing header">Instrumental – Piano/Keyboard</h4>
+				<div id="students"></div>
+				<div class="field">
+					<button type="button" class="ui tiny green button studentAdd">Add Student</button>
+				</div>
+			</div>
+			<div id="instrmental-percussion">
+				<h4 class="ui dividing header">Instrumental – Percussion</h4>
+				<div id="students"></div>
+				<div class="field">
+					<button type="button" class="ui tiny green button studentAdd">Add Student</button>
+				</div>
+			</div>
+			<div id="own-composition">
+				<h4 class="ui dividing header">Own composition</h4>
+				<div id="students"></div>
+				<div class="field">
+					<button type="button" class="ui tiny green button studentAdd">Add Student</button>
+				</div>
+			</div>
+		</div>
+		<div class="ui fluid container right aligned">
+			<button type="submit" id="registerevent" class="ui primary button">Submit</button>
+		</div>
+	</div>
+
+	<div class="ui error message"></div>
+
+</form>

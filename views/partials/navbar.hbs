@@ -167,7 +167,7 @@
 				<a class="item {{#if active_i}}active{{/if}}" href="/events/iridescence">Iridescence</a>
 				<a class="item {{#if active_sa}}active{{/if}}" href="/events/strings-attached">Strings Attached</a>
 				{{!-- <a class="item" href="/snsartshaat">SNSN Arts Haat</a> --}}
-				{{#if userData.photoURL}}
+				{{#if userData}}
 				<a class="item" href="/profile">
 					<img class="ui circular image {{#if active_p}}active{{/if}}" src="{{userData.photoURL}}?width=40&height=40">
 				</a>
@@ -189,7 +189,7 @@
 					<button class="ui button primary">Register</button>
 				</div>
 			</a> --}}
-			{{#if userData.photoURL}}
+			{{#if userData}}
 			<a href="/profile">
 				<div class="item signin">
 					<img class="ui circular image {{#if active_p}}active{{/if}}" src="{{userData.photoURL}}?width=40&height=40">

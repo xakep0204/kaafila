@@ -33,7 +33,7 @@ async function renderIndex(res, req) {
 				}
 			});
 			if (galleryImagesMain.length > 8) {
-				galleryImagesMore = galleryImagesMain.slice(8, galleryImagesMain.length - 1);
+				galleryImagesMore = galleryImagesMain.slice(8);
 				galleryImages = galleryImagesMain.slice(0, 8);
 			}
 			else {

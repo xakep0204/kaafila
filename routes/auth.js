@@ -55,7 +55,8 @@ async function renderProfile(req, res) {
 			schoolName: userRecord.displayName,
 			schoolRepName: userFirestoreData.schoolRepName,
 			photoURL: userRecord.photoURL,
-			registeredEvents: userFirestoreData.registeredEvents
+			registeredEvents: userFirestoreData.registeredEvents,
+			registeredEventsJS: JSON.stringify(userFirestoreData.registeredEvents)
 		};
 		res.render("profile", {
 			title: `${userRecord.displayName} - Kaafila`,
