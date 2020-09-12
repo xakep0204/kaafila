@@ -122,10 +122,10 @@
 <div id="content" class="pastel k">
 	<div id="registeredevents">
 		<div class="ui container">
-			<p class="ui left aligned">{{userData.registeredEventsJS}}</p>
 			<h1 class="ui header">Registered Events</h1>
 			{{#if userData.registeredEvents}}
 			{{#with userData.registeredEvents}}
+			
 			{{#if monologue-maestros}}
 			{{#with monologue-maestros}}
 			<h2>{{name}}</h2>
@@ -138,18 +138,188 @@
 					</tr>
 				</thead>
 				<tbody>
-					{{#each this.students}}
 					<tr>
-						<td class="six wide">{{this.name}}</td>
-						<td class="two wide">Class {{this.class}}</td>
-						<td class="seven wide">{{this.submission}}</td>
-						<td><button onclick="editSubmission(this)" data-subevent="{{../this.name}}" data-student="{{this.name}}" data-url="{{@../key}}" class="ui button small basic icon"><i class="edit icon"></i></button></td>
+						<td class="six wide">{{submission.name}}</td>
+						<td class="two wide">Class {{submission.class}}</td>
+						<td class="seven wide">{{#if submission.submission}}{{submission.submission}}{{else}}No submission yet{{/if}}</td>
+						<td><button onclick="editSubmission(this)" data-name="{{submission.name}}" data-url="monologue-maestros" data-subevent="Monologue Maestros" data-submissionpath="submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+			
+			{{#if one-act-play}}
+			{{#with one-act-play}}
+			<h2>{{name}}</h2>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Group</th>
+						<th colspan="2">Submission</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="six wide">{{groupName}}</td>
+						<td class="nine wide">{{#if submissionlink}}{{submissionlink}}{{else}}No submission yet{{/if}}</td>
+						<td><button onclick="editSubmission(this)" data-name="{{groupName}}" data-url="one-act-play" data-subevent="One Act Play" data-submissionpath="submissionlink" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
+			<h3 class="ui header">Group Members</h3>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each submission}}
+					<tr>
+						<td>{{this.name}}</td>
+						<td>Class {{this.class}}</td>
 					</tr>
 					{{/each}}
 				</tbody>
 			</table>
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
 			{{/with}}
 			{{/if}}
+
+			{{#if folk-fluence-solos}}
+			{{#with folk-fluence-solos}}
+			<h2>{{name}}</h2>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+						<th colspan="2">Submission</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each submission}}
+					<tr>
+						<td class="six wide">{{this.name}}</td>
+						<td class="two wide">Class {{this.class}}</td>
+						<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
+						<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="folk-fluence-solos" data-subevent="Folk Fluence Solos" data-submissionpath="submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+
+			{{#if strings-attached-solos}}
+			{{#with strings-attached-solos}}
+			<h2>{{name}}</h2>
+			{{#each submission}}
+			<h3>{{this.name}}</h3>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+						<th colspan="2">Submission</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each this.submission}}
+					<tr>
+						<td class="six wide">{{this.name}}</td>
+						<td class="two wide">Class {{this.class}}</td>
+						<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
+						<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="strings-attached-solos" data-subevent="Strings Attached Solos" data-submissionpath="submission.{{@../key}}.submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			{{/each}}
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+
+			{{#if collab-lab}}
+			{{#with collab-lab}}
+			<h2>{{name}}</h2>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each submission}}
+					<tr>
+						<td>{{this.name}}</td>
+						<td>Class {{this.class}}</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+
+			{{#if tessellations}}
+			{{#with tessellations}}
+			<h2>{{name}}</h2>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each submission}}
+					<tr>
+						<td>{{this.name}}</td>
+						<td>Class {{this.class}}</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+
 			{{/with}}
 			{{else}}
 			<h3 class="ui header">No events registered for yet</h3>
@@ -238,3 +408,7 @@
 </div>
 
 {{>footer}}
+
+<script>
+	var registeredEvents = JSON.parse('{{{userData.registeredEventsJS}}}')
+</script>

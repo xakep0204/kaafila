@@ -182,15 +182,18 @@ async function subeventSubmission(req, res) {
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
 		const docref = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get();
-		submissionPath = `registeredEvents.${subevent}.submissionDetails`
+		submissionPath = `registeredEvents.${subevent}`;
+		submissionData = JSON.parse(req.body.data);
 		if (docref.exists) {
-			const updateDatabase = await doc.update({[submissionPath]: req.body.data});
+			const updateDatabase = await doc.update({[submissionPath]: submissionData});
+			res.sendStatus(200);
+		} else {
+			res.send("No User Exists");
 		}
-		res.sendStatus(200);
 	} catch (err) {
 		if (err.code !== "auth/argument-error") { 
-			res.send(err)
 			console.log(err); 
+			res.send(err)
 		}
 	}
 }

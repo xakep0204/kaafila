@@ -92,7 +92,7 @@
 						<div class="ui button green">Already Registered</div>
 					{{else if registration.seatsFull}}
 					{{else if userData}}
-						<div id="registereventmodalbutton" class="ui button primary" data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
+						<div id="registereventmodalbutton" class="ui button primary" data-name="{{subeventName}}"data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}
 						<a href="/signin">
 							<div class="ui button primary">Register</div>
@@ -115,7 +115,7 @@
 						<div class="ui button green">Already Registered</div>
 					{{else if registration.seatsFull}}
 					{{else if userData}}
-						<div id="registereventmodalbutton" class="ui button primary" data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
+						<div id="registereventmodalbutton" class="ui button primary" data-name={{subeventName}} data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}
 						<a href="/signin">
 							<div class="ui button primary">Register</div>

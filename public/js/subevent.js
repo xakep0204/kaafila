@@ -1,4 +1,5 @@
 categories = ["western-vocals", "hindustani-classical-vocals", "instrumental-guitar", "instrumental-keyboard", "instrmental-percussion", "own-composition"]
+categoriesProper = ["Western Vocals", "Hindustani Classical Vocals", "Instrumental Guitar", "instrumental Keyboard", "Instrmental Percussion", "Own Composition"]
 categoriesAbbr = ["wv", "hcv", "ig", "ik", "ip", "oc"]
 var members;
 var globalMembers;
@@ -27,7 +28,7 @@ function studentRemoveSAS(e) {
 function stndForm() {
 	members = [1];
 	globalMembers = [1];
-	if (members.length == parseInt(registerationMeta.maxseatsperschool)) {
+	if (members.length == parseInt(registrationMeta.maxseatsperschool)) {
 		$("#studentAdd").attr("disabled", "");
 	}
 
@@ -87,7 +88,7 @@ function stndForm() {
 		},
 	};
 
-	for (i = 2; i <= parseInt(registerationMeta.maxseatsperschool); i++) {
+	for (i = 2; i <= parseInt(registrationMeta.maxseatsperschool); i++) {
 		globalMembers.push(i);
 		formFields[`student${i}Name`] = {
 			identifier: `student${i}Name`,
@@ -141,7 +142,7 @@ function stndForm() {
 		`);
 		$(".ui.dropdown").dropdown();
 		$("#registereventform").form({ fields: formFields });
-		if (members.length >= parseInt(registerationMeta.maxseatsperschool)) {
+		if (members.length >= parseInt(registrationMeta.maxseatsperschool)) {
 			$("#studentAdd").attr("disabled", "");
 		}
 	});
@@ -150,6 +151,7 @@ function stndForm() {
 		if ($("#registereventform").form('is valid')) {
 			$("#registerevent").addClass("loading");
 			data = {
+				name: registrationMeta.name,
 				contactPerson: $("#registereventform #contactPerson").val(),
 				email: $("#registereventform #email").val(),
 				phone: $("#registereventform #phone").val(),
@@ -164,7 +166,7 @@ function stndForm() {
 				})
 			});
 
-			$.post(`/registration`, {data: JSON.stringify(data), subevent: registerationMeta.subevent}, (status) => {
+			$.post(`/registration`, {data: JSON.stringify(data), subevent: registrationMeta.subevent}, (status) => {
 				if (status == "OK") {
 					$("#registereventmodal").modal("hide");
 					$("#registereventconfirmmodal").modal("show");
@@ -239,6 +241,7 @@ function mmForm() {
 		if ($("#registereventform").form('is valid')) {
 			$("#registerevent").addClass("loading");
 			data = {
+				name: registrationMeta.name,
 				contactPerson: $("#registereventform #contactPerson").val(),
 				email: $("#registereventform #email").val(),
 				phone: $("#registereventform #phone").val(),
@@ -249,7 +252,7 @@ function mmForm() {
 				participants: 1
 			}
 			
-			$.post(`/registration`, {data: JSON.stringify(data), subevent: registerationMeta.subevent}, (status) => {
+			$.post(`/registration`, {data: JSON.stringify(data), subevent: registrationMeta.subevent}, (status) => {
 				if (status == "OK") {
 					$("#registereventmodal").modal("hide");
 					$("#registereventconfirmmodal").modal("show");
@@ -323,7 +326,7 @@ function oapForm() {
 		},
 	};
 
-	for (i = 2; i <= parseInt(registerationMeta.maxseatsperschool); i++) {
+	for (i = 2; i <= parseInt(registrationMeta.maxseatsperschool); i++) {
 		globalMembers.push(i);
 		formFields[`student${i}Name`] = {
 			identifier: `student${i}Name`,
@@ -377,7 +380,7 @@ function oapForm() {
 		`);
 		$(".ui.dropdown").dropdown();
 		$("#registereventform").form({ fields: formFields });
-		if (members.length >= parseInt(registerationMeta.maxseatsperschool)) {
+		if (members.length >= parseInt(registrationMeta.maxseatsperschool)) {
 			$("#studentAdd").attr("disabled", "");
 		}
 	});
@@ -386,6 +389,7 @@ function oapForm() {
 		if ($("#registereventform").form('is valid')) {
 			$("#registerevent").addClass("loading");
 			data = {
+				name: registrationMeta.name,
 				contactPerson: $("#registereventform #contactPerson").val(),
 				email: $("#registereventform #email").val(),
 				phone: $("#registereventform #phone").val(),
@@ -401,7 +405,7 @@ function oapForm() {
 				})
 			});
 
-			$.post(`/registration`, {data: JSON.stringify(data), subevent: registerationMeta.subevent}, (status) => {
+			$.post(`/registration`, {data: JSON.stringify(data), subevent: registrationMeta.subevent}, (status) => {
 				if (status == "OK") {
 					$("#registereventmodal").modal("hide");
 					$("#registereventconfirmmodal").modal("show");
@@ -460,7 +464,7 @@ function sasForm() {
 	categoriesAbbr.map((val) => {
 		members[val] = [];
 		globalMembers[val] = [];
-		for (i = 1; i <= parseInt(registerationMeta.maxseatsperschool); i++) {
+		for (i = 1; i <= parseInt(registrationMeta.maxseatsperschool); i++) {
 			globalMembers[val].push(i);
 			formFields[`${val}-student${i}Name`] = {
 				identifier: `${val}-student${i}Name`,
@@ -517,7 +521,7 @@ function sasForm() {
 		`);
 		$(".ui.dropdown").dropdown();
 		$("#registereventform").form({ fields: formFields });
-		if (members[categoryAbbr].length >= parseInt(registerationMeta.maxseatsperschool)) {
+		if (members[categoryAbbr].length >= parseInt(registrationMeta.maxseatsperschool)) {
 			$(`#${category} .studentAdd`).attr("disabled", "");
 		}
 	});
@@ -528,6 +532,7 @@ function sasForm() {
 		} else if ($("#registereventform").form('is valid')) {
 			$("#registerevent").addClass("loading");
 			data = {
+				name: registrationMeta.name,
 				contactPerson: $("#registereventform #contactPerson").val(),
 				email: $("#registereventform #email").val(),
 				phone: $("#registereventform #phone").val(),
@@ -537,21 +542,23 @@ function sasForm() {
 			$("#submission > div").each((i,catE) => {
 				category = $(catE).attr('id');
 				if ($(`#${category} #students > div`).length > 0) {
-					data.submission[category] = []
+					data.submission[category] = {}
+					data.submission[category].name = categoriesProper[categories.indexOf(category)]
+					data.submission[category].submission = []
 					$(`#${category} #students > div`).each((j,studE) => {
 						studentID = $(studE).attr('id')
-						data.submission[category].push({
+						data.submission[category].submission.push({
 							name: $(`#${studentID}Name`).val(),
 							class: $(`#${studentID}Class`).val()
 						})
 					});
-					data.participants[category] = data.submission[category].length;
+					data.participants[category] = data.submission[category].submission.length;
 				} else {
 					data.participants[category] = 0;
 				}
 			});
 
-			$.post(`/registration`, {data: JSON.stringify(data), subevent: registerationMeta.subevent}, (status) => {
+			$.post(`/registration`, {data: JSON.stringify(data), subevent: registrationMeta.subevent}, (status) => {
 				if (status == "OK") {
 					$("#registereventmodal").modal("hide");
 					$("#registereventconfirmmodal").modal("show");
@@ -569,14 +576,14 @@ $("#registereventconfirmmodal").modal({ onHidden: () => window.location.assign("
 $("#registereventmodalbutton").on("click", () => $("#registereventmodal").modal("show"));
 $("#registereventmodalbuttonm").on("click", () => $("#registereventmodal").modal("show"));
 
-registerationMeta = {}
+registrationMeta = {}
 $.each(document.getElementById("registereventmodalbutton").attributes,function(i,a){
-	if (['id', 'class'].indexOf(a.name) === -1) { registerationMeta[a.name.slice(5)] = a.value }
+	if (['id', 'class'].indexOf(a.name) === -1) { registrationMeta[a.name.slice(5)] = a.value }
 })
-if (Object.keys(registerationMeta).length > 0) {
-	if (!("formid" in registerationMeta)) { registerationMeta.formid = "stnd" }
+if (Object.keys(registrationMeta).length > 0) {
+	if (!("formid" in registrationMeta)) { registrationMeta.formid = "stnd" }
 
-	switch (registerationMeta.formid) {
+	switch (registrationMeta.formid) {
 		case "stnd":
 			stndForm();
 			break;
