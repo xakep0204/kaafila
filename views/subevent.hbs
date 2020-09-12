@@ -72,31 +72,7 @@
 	</div>
 	<div id="about">
 		<div class="ui container">
-			{{#if bnc_mm}}{{>subevents/bnc-mm}}{{/if}}
-			{{#if bnc_oap}}{{>subevents/bnc-oap}}{{/if}}
-			{{#if bnc_cl}}{{>subevents/bnc-cl}}{{/if}}
-			{{#if bnc_fi}}{{>subevents/bnc-fi}}{{/if}}
-			{{#if bnc_sttl}}{{>subevents/bnc-sttl}}{{/if}}
-			{{#if bnc_tsos}}{{>subevents/bnc-tsos}}{{/if}}
-
-			{{#if ff_cc}}{{>subevents/ff-cc}}{{/if}}
-			{{#if ff_ffs}}{{>subevents/ff-ffs}}{{/if}}
-			{{#if ff_fnb}}{{>subevents/ff-fnb}}{{/if}}
-			{{#if ff_kld}}{{>subevents/ff-kld}}{{/if}}
-			{{#if ff_wdwd}}{{>subevents/ff-wdwd}}{{/if}}
-			{{#if i_aaacfsc}}{{>subevents/i-aaacfsc}}{{/if}}
-
-			{{#if i_sof}}{{>subevents/i-sof}}{{/if}}
-			{{#if i_bcw}}{{>subevents/i-bcw}}{{/if}}
-			{{#if i_cc}}{{>subevents/i-cc}}{{/if}}
-			{{#if i_t}}{{>subevents/i-t}}{{/if}}
-
-			{{#if sa_sas}}{{>subevents/sa-sas}}{{/if}}
-			{{#if sa_sff}}{{>subevents/sa-sff}}{{/if}}
-			{{#if sa_cc}}{{>subevents/sa-cc}}{{/if}}
-			{{#if sa_kmw}}{{>subevents/sa-kmw}}{{/if}}
-			{{#if sa_sb}}{{>subevents/sa-sb}}{{/if}}
-			{{#if sa_tmss}}{{>subevents/sa-tmss}}{{/if}}
+			{{> (lookup . 'pageID')}}
 		</div>
 	</div>
 </div>
@@ -106,17 +82,17 @@
 	<div id="title">
 		<div class="ui grid computer tablet only container middle aligned center aligned two columns">
 			<div class="column">
-				<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/banners/{{subeventImage}}?width=410"
-					class="ui medium image centered">
+				<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/banners/{{subeventImage}}?width=410" class="ui medium image centered">
 			</div>
 			<div class="column left aligned">
 				<h1 class="ui header">{{subeventName}}</h1>
 				<h3 class="ui header">{{subeventDesc}}</h3>
-				{{#if registration.availableSeats}}
+				{{#if registration}}
 					{{#if registration.alreadyRegistered}}
 						<div class="ui button green">Already Registered</div>
-					{{else if userData.photoURL}}
-						<div id="registereventmodalbutton" data-name="{{subeventName}}" data-url="{{url}}" data-availableSeats="{{registration.availableSeats}}" class="ui button primary">Register</div>
+					{{else if registration.seatsFull}}
+					{{else if userData}}
+						<div id="registereventmodalbutton" class="ui button primary" data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}
 						<a href="/signin">
 							<div class="ui button primary">Register</div>
@@ -134,14 +110,15 @@
 			<div class="column left aligned">
 				<h1 class="ui header">{{subeventName}}</h1>
 				<h3 class="ui header">{{subeventDesc}}</h3>
-				{{#if registration.maxSeats}}
+				{{#if registration}}
 					{{#if registration.alreadyRegistered}}
 						<div class="ui button green">Already Registered</div>
+					{{else if registration.seatsFull}}
 					{{else if userData}}
-						<div id="registereventmodalbuttonm" data-name="{{subeventName}}" data-url="{{url}}" data-availableSeats="{{registration.availableSeats}}" class="ui button primary">Register</div>
+						<div id="registereventmodalbutton" class="ui button primary" data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}
 						<a href="/signin">
-							<div id="registereventmodalbuttonm" class="ui button primary">Register</div>
+							<div class="ui button primary">Register</div>
 						</a>
 					{{/if}}
 				{{/if}}
@@ -151,96 +128,24 @@
 
 	<div id="about">
 		<div class="ui container">
-			{{#if bnc_mm}}{{>subevents/bnc-mm}}{{/if}}
-			{{#if bnc_oap}}{{>subevents/bnc-oap}}{{/if}}
-			{{#if bnc_cl}}{{>subevents/bnc-cl}}{{/if}}
-			{{#if bnc_fi}}{{>subevents/bnc-fi}}{{/if}}
-			{{#if bnc_sttl}}{{>subevents/bnc-sttl}}{{/if}}
-			{{#if bnc_tsos}}{{>subevents/bnc-tsos}}{{/if}}
-
-			{{#if ff_cc}}{{>subevents/ff-cc}}{{/if}}
-			{{#if ff_ffs}}{{>subevents/ff-ffs}}{{/if}}
-			{{#if ff_fnb}}{{>subevents/ff-fnb}}{{/if}}
-			{{#if ff_kld}}{{>subevents/ff-kld}}{{/if}}
-			{{#if ff_wdwd}}{{>subevents/ff-wdwd}}{{/if}}
-
-			{{#if i_sof}}{{>subevents/i-sof}}{{/if}}
-			{{#if i_bcw}}{{>subevents/i-bcw}}{{/if}}
-			{{#if i_cc}}{{>subevents/i-cc}}{{/if}}
-			{{#if i_t}}{{>subevents/i-t}}{{/if}}
-			{{#if i_aaacfsc}}{{>subevents/i-aaacfsc}}{{/if}}
-
-			{{#if sa_sas}}{{>subevents/sa-sas}}{{/if}}
-			{{#if sa_sff}}{{>subevents/sa-sff}}{{/if}}
-			{{#if sa_cc}}{{>subevents/sa-cc}}{{/if}}
-			{{#if sa_kmw}}{{>subevents/sa-kmw}}{{/if}}
-			{{#if sa_sb}}{{>subevents/sa-sb}}{{/if}}
-			{{#if sa_tmss}}{{>subevents/sa-tmss}}{{/if}}
+			{{> (lookup . 'pageID')}}
 		</div>
 	</div>
 
 </div>
 
-{{#if userData.photoURL}}
+{{#if userData}}
 {{#unless registration.alreadyRegistered}}
 <div id="registereventmodal" class="ui modal">
 	<div class="header">
 		<h2>Register for {{subeventName}}</h2>
 	</div>
 	<div class="scrolling content">
-		<form id="registereventform" class="ui small form">
-			<div class="ui stacked">
-				<div class="field">
-					<label>Contact Person for the Event</label>
-					<div class="ui input">
-						<input type="text" id="contactPerson" placeholder="Contact Person for the Event"
-							value="{{userData.schoolRepName}}">
-					</div>
-				</div>
-				<div class="field">
-					<label>Phone Number of the Contact Person</label>
-					<div class="ui input">
-						<input type="text" id="phone" placeholder="Phone Number of the Contact Person">
-					</div>
-				</div>
-				<div id="students">
-					<div id="student1">
-						<div class="two fields">
-							<div class="eight wide field">
-								<label>Student Name</label>
-								<input type="text" class="form-control" id="student1Name" placeholder="Student Name">
-							</div>
-							<div class="four wide field">
-								<label>Student Class</label>
-								<select class="ui dropdown" id="student1Class">
-									<option value>Student Class</option>
-									{{#if classesAllowed}}
-									{{#each classesAllowed}}
-									<option value="{{this}}">Class {{this}}</option>
-									{{/each}}
-									{{else}}
-									<option value="9">Class 9</option>
-									<option value="10">Class 10</option>
-									<option value="11">Class 11</option>
-									<option value="12">Class 12</option>
-									<option value="NA">N/A</option>
-									{{/if}}
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="field">
-					<button id="studentAdd" type="button" class="ui tiny green button">Add Student</button>
-				</div>
-				<div class="ui fluid container right aligned">
-					<button type="submit" id="registerevent" class="ui primary button">Submit</button>
-				</div>
-			</div>
-
-			<div class="ui error message"></div>
-
-		</form>
+		{{#if registration.formID}}
+		{{> (lookup . 'formID')}}
+		{{else}}
+		{{>subevents/forms/stnd}}
+		{{/if}}
 	</div>
 </div>
 
@@ -276,3 +181,11 @@
 		}
 	}
 </style>
+
+<script>
+	name = '{{subeventName}}'
+	takenSeats = parseInt('{{registration.takenSeats}}')	
+	maxSeats = parseInt('{{registration.maxSeats}}')	
+	maxSeatsPerSchool = parseInt('{{registration.maxSeatsPerSchool}}')	
+	postURL = '{{registration.url}}'
+</script>

@@ -120,12 +120,15 @@
 
 {{!-- <h1 class="ui header">This: {{userData}}</h1> --}}
 <div id="content" class="pastel k">
-	<div id="registered-events">
+	<div id="registeredevents">
 		<div class="ui container">
+			<p class="ui left aligned">{{userData.registeredEventsJS}}</p>
 			<h1 class="ui header">Registered Events</h1>
 			{{#if userData.registeredEvents}}
-			{{#each userData.registeredEvents}}
-			<h2>{{this.name}}</h2>
+			{{#with userData.registeredEvents}}
+			{{#if monologue-maestros}}
+			{{#with monologue-maestros}}
+			<h2>{{name}}</h2>
 			<table class="ui table">
 				<thead>
 					<tr>
@@ -145,10 +148,12 @@
 					{{/each}}
 				</tbody>
 			</table>
-			{{/each}}
-		{{else}}
-		<h3 class="ui header">No events registered for yet</h3>
-		{{/if}}
+			{{/with}}
+			{{/if}}
+			{{/with}}
+			{{else}}
+			<h3 class="ui header">No events registered for yet</h3>
+			{{/if}}
 		</div>
 	</div>
 	<div id="account-details">

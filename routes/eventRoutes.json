@@ -1,6 +1,7 @@
 {
   "bread-and-circuses": {
-    "name": "Bread & Circuses",
+    "title": "Bread & Circuses",
+    "name": "Bread <span class=\"princess-sofia\">&</span> Circuses",
     "cssID": "bnc",
     "headerFont": "rye",
     "eventCategories": [
@@ -43,45 +44,54 @@
     "monologue-maestros": {
       "name": "Monologue Maestros",
       "image": "bnc-mm-banner.png",
-      "pageID": "bnc_mm",
+      "pageID": "bnc-mm",
       "description": "Virtual solo theatrical performance",
       "registration": {
-        "maxSeats": 12,
-        "maxSeatsPerSchool": 5
+        "maxSeatsPerSchool": 1,
+        "formID": "mm"
       }
     },
     "one-act-play": {
       "name": "One Act Play",
       "image": "bnc-oap-banner.png",
-      "pageID": "bnc_oap",
-      "description": "Collaborative virtual theatrical performance"
+      "pageID": "bnc-oap",
+      "description": "Collaborative virtual theatrical performance",
+      "registration": {
+        "maxSeatsPerSchool": 15,
+        "formID": "oap"
+      }
     },
     "collab-lab": {
       "name": "Collab Lab",
       "image": "bnc-cl-banner.png",
-      "pageID": "bnc_cl",
-      "description": "A week long student collaborative theatre project"
+      "pageID": "bnc-cl",
+      "description": "A week long student collaborative theatre project",
+      "registration": {
+        "maxSeatsPerSchool": 2,
+        "maxSeats": 12
+      }
     },
     "the-sounds-of-stories": {
       "name": "The Sounds of Stories (Podcast Workshop)",
       "image": "bnc-tsos-banner.png",
-      "pageID": "bnc_tsos",
+      "pageID": "bnc-tsos",
       "description": "Learn to script, design and record your own podcast-friendly audio stories"
     },
     "stories-through-the-lens": {
       "name": "Stories through the Lens (Storytelling with a Phone Camera)",
       "image": "bnc-sttl-banner.png",
-      "pageID": "bnc_sttl",
+      "pageID": "bnc-sttl",
       "description": "Making short films, vlogs, or cooking recipes, this workshop can give you hands-on experience in the aesthetics of filming techniques"
     },
     "fade-in": {
       "name": "Fade-In (Conversation with a Master of the Art)",
       "image": "bnc-fi-banner.png",
-      "pageID": "bnc_fi",
+      "pageID": "bnc-fi",
       "description": "A free-wheeling candid chat with a legend of the theatre and films"
     }
   },
   "folk-fluence": {
+    "title": "Folk Fluence",
     "name": "Folk Fluence",
     "cssID": "ff",
     "headerFont": "ardagh",
@@ -121,35 +131,40 @@
     "folk-fluence-solos": {
       "name": "Folk Fluence Solos",
       "image": "ff-ffs-banner.png",
-      "pageID": "ff_ffs",
-      "description": "Individual interpretations of different Indian dance forms with respect to freedom"
+      "pageID": "ff-ffs",
+      "description": "Individual interpretations of different Indian dance forms with respect to freedom",
+      "registration": {
+        "maxSeatsPerSchool": 3,
+        "maxSeats": 12
+      }
     },
     "flesh-n-bones": {
       "name": "FLESH N BONES",
       "image": "ff-fnb-banner.png",
-      "pageID": "ff_fnb",
+      "pageID": "ff-fnb",
       "description": "The Self-developed Contemporary Movement technique"
     },
     "kalbeliya-lec-dem": {
       "name": "Kalbeliya Lec-Dem",
       "image": "ff-kld-banner.png",
-      "pageID": "ff_kld",
+      "pageID": "ff-kld",
       "description": "Story and journey of Gulabo Sapera as well as Kalbeliya as a dance form"
     },
     "career-conversations": {
       "name": "Dance as a Career",
       "image": "ff-cc-banner.png",
-      "pageID": "ff_cc",
+      "pageID": "ff-cc",
       "description": "Career opportunities that lie within the field of dance"
     },
     "why-do-we-dance": {
       "name": "Why Do We Dance",
       "image": "ff-wdwd-banner.png",
-      "pageID": "ff_wdwd",
+      "pageID": "ff-wdwd",
       "description": "Expanding the idea of dance to movement"
     }
   },
   "iridescence": {
+    "title": "Iridescence",
     "name": "Iridescence",
     "cssID": "i",
     "headerFont": "apple-garamond",
@@ -189,35 +204,40 @@
     "spirit-of-freedom": {
       "name": "Spirit of Freedom",
       "image": "i-sof-banner.png",
-      "pageID": "i_sof",
+      "pageID": "i-sof",
       "description": "Different interpretations of freedom, each with its unique identity by reenactment of famous paintings that inspire"
     },
     "career-conversations": {
       "name": "Webinar - Career Development in Visual Arts",
       "image": "i-cc-banner.png",
-      "pageID": "i_cc",
+      "pageID": "i-cc",
       "description": "Seek the essence of how a career in visual arts is and future artists to discover what visual art stands for"
     },
     "bamboo-craft-workshop": {
       "name": "Bamboo Craft Lecture Demonstration",
       "image": "i-bcw-banner.png",
-      "pageID": "i_bcw",
+      "pageID": "i-bcw",
       "description": "Creating a plethora of products solely using bamboo"
     },
     "tessellations": {
       "name": "Tessellations - The Papercraft Workshop",
       "image": "i-t-banner.png",
-      "pageID": "i_t",
-      "description": "Unique 3D paper art keeping the trajectory and the ideas behind  Mr Gonzalez’s artworks"
+      "pageID": "i-t",
+      "description": "Unique 3D paper art keeping the trajectory and the ideas behind  Mr Gonzalez’s artworks",
+      "registration": {
+        "maxSeatsPerSchool": 4,
+        "maxSeats": 20
+      }
     },
     "art-as-a-catalyst-for-social-change": {
       "name": "Webinar - Art as a Catalyst for Social Change",
       "image": "i-aaacfsc-banner.png",
-      "pageID": "i_aaacfsc",
+      "pageID": "i-aaacfsc",
       "description": "Can public art empower individuals and communities and enable conversations leading to organic change within society?"
     }
   },
   "strings-attached": {
+    "title": "Strings Attached",
     "name": "Strings Attached",
     "cssID": "sa",
     "headerFont": "welcome",
@@ -261,37 +281,41 @@
     "strings-attached-solos": {
       "name": "Strings Attached Solos",
       "image": "sa-sas-banner.png",
-      "pageID": "sa_sas",
-      "description": "A virtual inter-school music competition"
+      "pageID": "sa-sas",
+      "description": "A virtual inter-school music competition",
+      "registration": {
+        "maxSeatsPerSchool": 2,
+        "formID": "sas"
+      }
     },
     "songs-for-freedom": {
       "name": "Songs for Freedom",
       "image": "sa-sff-banner.png",
-      "pageID": "sa_sff",
+      "pageID": "sa-sff",
       "description": "Showcasing video entries of songs which are based on the theme of freedom"
     },
     "career-conversations": {
       "name": "Careers in the Arts: Music",
       "image": "sa-cc-banner.png",
-      "pageID": "sa_cc",
+      "pageID": "sa-cc",
       "description": "Students looking to make a career in music will gain an insight into the world of possibilities that exist within the music industry"
     },
     "khasi-music-workshop": {
       "name": "Khasi Instruments and Music",
       "image": "sa-kmw-banner.png",
-      "pageID": "sa_kmw",
+      "pageID": "sa-kmw",
       "description": "Exploration of traditional Khasi instruments and music."
     },
     "the-manta-sidhu-show": {
       "name": "The Manta Sidhu Show",
       "image": "sa-tmss-banner.png",
-      "pageID": "sa_tmss",
+      "pageID": "sa-tmss",
       "description": "Performing and talking about composition, her own process and the importance of poetry music"
     },
     "spaceband": {
       "name": "Space Band",
       "image": "sa-sb-banner.png",
-      "pageID": "sa_sb",
+      "pageID": "sa-sb",
       "description": "An online platform which calls upon artists to engage in collaborative online musical performances"
     }
   }

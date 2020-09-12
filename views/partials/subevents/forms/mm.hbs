@@ -1,0 +1,47 @@
+<form id="registereventform" class="ui small form">
+	<div class="ui stacked">
+		<div class="field">
+			<label>Contact Person for the Event</label>
+			<div class="ui input">
+				<input type="text" id="contactPerson" placeholder="Contact Person for the Event"
+					value="{{userData.schoolRepName}}">
+			</div>
+		</div>
+		<div class="field">
+			<label>Email of the Contact Person</label>
+			<div class="ui input">
+				<input type="text" id="email" placeholder="Email of the Contact Person">
+			</div>
+		</div>
+		<div class="field">
+			<label>Phone Number of the Contact Person</label>
+			<div class="ui input">
+				<input type="text" id="phone" placeholder="Phone Number of the Contact Person">
+			</div>
+		</div>
+		<div id="student">
+			<div class="two fields">
+				<div class="eight wide field">
+					<label>Student Name</label>
+					<input type="text" class="form-control" id="studentName" placeholder="Student Name">
+				</div>
+				<div class="four wide field">
+					<label>Student Class</label>
+					<select class="ui dropdown" id="studentClass">
+						<option value>Student Class</option>
+						<option value="9">Class 9</option>
+						<option value="10">Class 10</option>
+						<option value="11">Class 11</option>
+						<option value="12">Class 12</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="ui fluid container right aligned">
+			<button type="submit" id="registerevent" class="ui primary button">Submit</button>
+		</div>
+	</div>
+
+	<div class="ui error message"></div>
+
+</form>

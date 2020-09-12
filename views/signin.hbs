@@ -5,7 +5,8 @@
 
   #signin .column {
     max-width: 480px;
-    margin-top: -50px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 
   #signin h4 {
@@ -18,26 +19,17 @@
     margin-bottom: 40px;
   }
 
-  #signin_email {
-    background-color: #085078;
+  #signInEmail {
     margin-bottom: 2em;
   }
 
-  #signin_email:hover {
-    background-color: #074769;
-  }
-
-  #signin_email:focus {
-    background-color: #063e5c;
-  }
-
-  #signin_google {
+  #signInGoogle {
     font-weight: 700 !important;
   }
 </style>
 
 {{>navbar-logo}}
-<div id="signin" class="ui middle aligned center aligned grid">
+<div id="signin" class="ui top aligned center aligned grid">
   <div class="column">
     <h2 class="ui image header">
       <div class="content">
@@ -45,7 +37,7 @@
       </div>
     </h2>
     <h4>Currently open only for participating schools</h4>
-    <form id="signinform" class="ui large form" method="POST">
+    <form id="signInForm" class="ui large form" method="POST">
       <div class="ui stacked segment left aligned">
         <div class="field">
           <label>Email Address</label>
@@ -58,10 +50,10 @@
           <div class="ui input">
             <input type="password" id="password" placeholder="Password">
           </div>
-          <div id="forgotpassword" style="text-align: right;"><a>Forgot Password</a></div>
+          <div id="forgotPassword" style="text-align: right;"><a>Forgot Password</a></div>
         </div>
-        <button type="submit" id="signin_email" class="ui fluid large primary button">Sign in</button>
-        <button type="button" id="signin_google" class="ui fluid large basic black button"><i
+        <button type="submit" id="signInEmail" class="ui fluid large primary button">Sign in</button>
+        <button type="button" id="signInGoogle" class="ui fluid large basic black button"><i
             class="google icon"></i>Sign in with Google</button>
       </div>
 
@@ -75,12 +67,12 @@
   </div>
 </div>
 
-<div id="schoolinfomodal" class="ui modal small">
+<div id="schoolInfoModal" class="ui modal small">
   <div class="header">
     <h2>Enter Your School's Information</h2>
   </div>
   <div class="content">
-    <form id="schoolinfoform" class="ui small form">
+    <form id="schoolInfoForm" class="ui small form">
       <div class="ui stacked">
         <div class="field">
           <label>School Name</label>
@@ -95,7 +87,7 @@
           </div>
         </div>
         <div class="ui fluid container column right aligned">
-          <button type="submit" id="schoolinfo" class="ui primary button">Submit</button>
+          <button type="submit" id="schoolInfo" class="ui primary button">Submit</button>
         </div>
       </div>
 
@@ -105,12 +97,12 @@
   </div>
 </div>
 
-<div id="forgotpasswordmodal" class="ui modal small">
+<div id="forgotPasswordmodal" class="ui modal small">
   <div class="header">
     <h2>Forgot Password</h2>
   </div>
   <div class="content">
-    <form id="forgotpasswordform" class="ui small form" method="POST">
+    <form id="forgotPasswordForm" class="ui small form" method="POST">
       <div class="ui stacked">
         <div class="field">
           <label>Email Address</label>
@@ -119,7 +111,7 @@
           </div>
         </div>
         <div class="ui fluid container column right aligned">
-          <button type="submit" id="resetpassword" class="ui primary button">Reset Password</button>
+          <button type="submit" id="resetPassword" class="ui primary button">Reset Password</button>
         </div>
       </div>
 

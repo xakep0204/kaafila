@@ -1,12 +1,12 @@
 <style>
   #signup {
     height: 100%;
-    padding-top: 150px;
   }
 
   #signup .column {
     max-width: 480px;
-    margin-top: -50px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 
   #signup h4 {
@@ -19,26 +19,16 @@
     margin-bottom: 40px;
   }
 
-  #signup_email {
-    background-color: #085078;
-    margin-bottom: 2em;
+  #signUpEmail {
+    margin-bottom: 2em!important;
   }
-
-  #signup_email:hover {
-    background-color: #074769;
-  }
-
-  #signup_email:focus {
-    background-color: #063e5c;
-  }
-
-  #signup_google {
+  #signUpGoogle {
     font-weight: 700 !important;
   }
 </style>
 
 {{>navbar-logo}}
-<div id="signup" class="ui center aligned grid">
+<div id="signup" class="ui top aligned center aligned grid">
   <div class="column">
     <h2 class="ui image header">
       <div class="content">
@@ -46,7 +36,7 @@
       </div>
     </h2>
     <h4>Currently open only for participating schools</h4>
-    <form id="signupform" class="ui large form" method="POST">
+    <form id="signUpForm" class="ui large form">
       <div class="ui stacked segment left aligned">
         <div class="field">
           <label>School Name</label>
@@ -78,8 +68,8 @@
             <input type="password" id="confirmPassword" placeholder="Confirm Password">
           </div>
         </div>
-        <button id="signup_email" class="ui fluid large primary button" type="submit">Sign up</button>
-        <button id="signup_google" class="ui fluid large basic black button" type="button"><i class="google icon"></i>Sign up with Google</button>
+        <button id="signUpEmail" class="ui fluid large primary button" type="submit">Sign up</button>
+        <button id="signUpGoogle" class="ui fluid large basic black button" type="button"><i class="google icon"></i>Sign up with Google</button>
       </div>
 
       <div class="ui error message"></div>
@@ -92,12 +82,12 @@
   </div>
 </div>
 
-<div id="schoolinfomodal" class="ui modal small">
+<div id="schoolInfoModal" class="ui modal small">
   <div class="header">
     <h2>Enter Your School's Information</h2>
   </div>
   <div class="content">
-    <form id="schoolinfoform" class="ui small form">
+    <form id="schoolInfoForm" class="ui small form">
       <div class="ui stacked">
         <div class="field">
           <label>School Name</label>
@@ -112,7 +102,7 @@
           </div>
         </div>
         <div class="ui fluid container column right aligned">
-          <button type="submit" id="schoolinfo" class="ui primary button">Submit</button>
+          <button type="submit" id="schoolInfo" class="ui primary button">Submit</button>
         </div>
       </div>
 
