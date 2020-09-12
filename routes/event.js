@@ -33,34 +33,35 @@ async function renderEvent(req, res, next) {
 
 	var userData = {};
 
+	const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
+	routingData = JSON.parse(readRoutes)
+	if (!(event in routingData)) {
+		return next(createError(404))
+	} 
+	routingData = routingData[event]
+
+	const webrender = () => {
+		res.render("event", {
+			eventName: routingData.name,
+			title: `${routingData.title} - Kaafila`,
+			cssID: routingData.cssID,
+			pageID: "events/" + event,
+			headerFont: routingData.headerFont,
+			bannerName: event,
+			eventCategories: routingData.eventCategories,
+			[routingData.navID]: true,
+			userData: Object.keys(userData).length > 0 ? userData : null,
+		});
+	}
+
 	try {
-		const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
-		routingData = JSON.parse(readRoutes)
-		if (!(event in routingData)) {
-			return next(createError(404))
-		} 
-		routingData = routingData[event]
-	
-		const webrender = () => {
-			res.render("event", {
-				eventName: routingData.name,
-				title: `${routingData.title} - Kaafila`,
-				cssID: routingData.cssID,
-				pageID: "events/" + event,
-				headerFont: routingData.headerFont,
-				bannerName: event,
-				eventCategories: routingData.eventCategories,
-				[routingData.navID]: true,
-				userData: userData,
-			});
-		}
-	
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
 		const user = await admin.auth().getUser(firebaseUserClaims.sub)
 		userData.photoURL = user.photoURL
 		webrender();
 	} catch (err) {
 		if (err.code !== "auth/argument-error") { console.log(err); }
+		webrender();
 	}
 
 }
@@ -74,35 +75,35 @@ async function renderSubevent(req, res, next) {
 	var userData = {};
 	var registration = {};
 	
+	const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
+	routingData = JSON.parse(readRoutes)
+	if (!(event in routingData)) {
+		return next(createError(404))
+	} 
+	routingData = routingData[event]
+	if (!(subevent in routingData)) {
+		return next(createError(404))
+	}
+	var registration = routingData[subevent].registration || {};
+
+	const webrender = () => {
+		res.render("subevent", {
+			title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
+			url: subevent,
+			subeventName: routingData[subevent].name,
+			subeventImage: routingData[subevent].image,
+			subeventDesc: routingData[subevent].description,
+			cssID: routingData.cssID,
+			[routingData.navID]: true,
+			pageID: "subevents/" + routingData[subevent].pageID,
+			formID: routingData[subevent].registration ? "subevents/forms/" + routingData[subevent].registration.formID : null,
+			registration: Object.keys(registration).length > 0 ? registration : null,
+			userData: Object.keys(userData).length > 0 ? userData : null,
+			scripts: ["/js/subevent.js"]
+		});
+	}
+
 	try {
-		const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
-		routingData = JSON.parse(readRoutes)
-		if (!(event in routingData)) {
-			return next(createError(404))
-		} 
-		routingData = routingData[event]
-		if (!(subevent in routingData)) {
-			return next(createError(404))
-		}
-		var registration = routingData[subevent].registration || {};
-	
-		const webrender = () => {
-			res.render("subevent", {
-				title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
-				url: subevent,
-				subeventName: routingData[subevent].name,
-				subeventImage: routingData[subevent].image,
-				subeventDesc: routingData[subevent].description,
-				cssID: routingData.cssID,
-				[routingData.navID]: true,
-				pageID: "subevents/" + routingData[subevent].pageID,
-				formID: routingData[subevent].registration ? "subevents/forms/" + routingData[subevent].registration.formID : null,
-				registration: Object.keys(registration).length > 0 ? registration : null,
-				userData: Object.keys(userData).length > 0 ? userData : null,
-				scripts: ["/js/subevent.js"]
-			});
-		}
-	
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
 		const user = await admin.auth().getUser(firebaseUserClaims.sub)
 		userData.photoURL = user.photoURL
@@ -130,6 +131,7 @@ async function renderSubevent(req, res, next) {
 		webrender();
 	} catch (err) {
 		if (err.code !== "auth/argument-error") { console.log(err); }
+		webrender();
 	}
 
 }
