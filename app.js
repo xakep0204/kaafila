@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { stMonitor } = require('sematext-agent-express')
+const { stMonitor, stHttpLoggerMiddleware } = require('sematext-agent-express')
 stMonitor.start()
 var createError = require("http-errors");
 var express = require("express");
@@ -13,6 +13,15 @@ var authRouter = require("./routes/auth");
 var eventRouter = require("./routes/event");
 
 var app = express();
+app.use(stHttpLoggerMiddleware)
+
+app.get('/api', (req, res, next) => {
+  stLogger.info('Hello World.')
+  stLogger.debug('Hello debug.')
+  stLogger.warn('Some warning.')
+  stLogger.error('Some error.')
+  res.status(200).send('Hello World.')
+})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
