@@ -61,7 +61,6 @@ async function renderEvent(req, res, next) {
 		webrender();
 	} catch (err) {
 		if (err.code !== "auth/argument-error") { console.log(err); }
-		webrender();
 	}
 
 }
@@ -131,7 +130,6 @@ async function renderSubevent(req, res, next) {
 		webrender();
 	} catch (err) {
 		if (err.code !== "auth/argument-error") { console.log(err); }
-		webrender();
 	}
 
 }
