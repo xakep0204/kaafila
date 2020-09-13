@@ -205,7 +205,11 @@
       "name": "Spirit of Freedom",
       "image": "i-sof-banner.png",
       "pageID": "i-sof",
-      "description": "Different interpretations of freedom, each with its unique identity by reenactment of famous paintings that inspire"
+      "description": "Different interpretations of freedom, each with its unique identity by reenactment of famous paintings that inspire",
+      "registration": {
+        "maxSeatsPerSchool": 10,
+        "formID": "sof"
+      }
     },
     "career-conversations": {
       "name": "Webinar - Career Development in Visual Arts",

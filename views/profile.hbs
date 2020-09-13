@@ -200,34 +200,34 @@
 			{{/if}}
 
 			{{#if folk-fluence-solos}}
-			{{#with folk-fluence-solos}}
-			<h2>{{name}}</h2>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-						<th colspan="2">Submission</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each submission}}
-					<tr>
-						<td class="six wide">{{this.name}}</td>
-						<td class="two wide">Class {{this.class}}</td>
-						<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
-						<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="folk-fluence-solos" data-subevent="Folk Fluence Solos" data-submissionpath="submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
+				{{#with folk-fluence-solos}}
+				<h2>{{name}}</h2>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+							<th colspan="2">Submission</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td class="six wide">{{this.name}}</td>
+							<td class="two wide">Class {{this.class}}</td>
+							<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
+							<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="folk-fluence-solos" data-subevent="Folk Fluence Solos" data-submissionpath="submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
 			{{/if}}
 
 			{{#if strings-attached-solos}}
@@ -250,6 +250,40 @@
 						<td class="two wide">Class {{this.class}}</td>
 						<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
 						<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="strings-attached-solos" data-subevent="Strings Attached Solos" data-submissionpath="submission.{{@../key}}.submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			{{/each}}
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+
+			{{#if spirit-of-freedom}}
+			{{#with spirit-of-freedom}}
+			<h2>{{name}}</h2>
+			{{#each submission}}
+			<h3>{{this.name}}</h3>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+						<th colspan="2">Submission</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each this.submission}}
+					<tr>
+						<td class="six wide">{{this.name}}</td>
+						<td class="two wide">Class {{this.class}}</td>
+						<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
+						<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="spirit-of-freedom" data-subevent="Spirit of Freedom" data-submissionpath="submission.{{@../key}}.submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
 					</tr>
 					{{/each}}
 				</tbody>
