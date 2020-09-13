@@ -679,29 +679,51 @@ function sofForm() {
 		temp_members.sort((a, b) => {return a - b});
 		members[group].push(temp_members[0]);
 		members[group].sort((a, b) => {return a - b});
-		$(`#${group} #students`).append(`
-			<div id="${group}-student${temp_members[0]}">
-				<div class="two fields">
-					<div class="eight wide field">
-						<label>Student Name</label>
-						<input type="text" class="form-control" id="${group}-student${temp_members[0]}Name" placeholder="Student Name">
+		if (group === "group0910") {
+			$(`#${group} #students`).append(`
+				<div id="${group}-student${temp_members[0]}">
+					<div class="two fields">
+						<div class="eight wide field">
+							<label>Student Name</label>
+							<input type="text" class="form-control" id="${group}-student${temp_members[0]}Name" placeholder="Student Name">
+						</div>
+						<div class="four wide field">
+							<label>Student Class</label>
+							<select class="ui dropdown" id="${group}-student${temp_members[0]}Class">
+								<option value="">Student Class</option>
+								<option value="9">Class 9</option>
+								<option value="10">Class 10</option>
+							</select>
+						</div>
 					</div>
-					<div class="four wide field">
-						<label>Student Class</label>
-						<select class="ui dropdown" id="${group}-student${temp_members[0]}Class">
-							<option value="">Student Class</option>
-							<option value="9">Class 9</option>
-							<option value="10">Class 10</option>
-							<option value="11">Class 11</option>
-							<option value="12">Class 12</option>
-						</select>
+					<div class="field">
+						<button onclick="studentRemoveSOF(this)" data-student="${temp_members[0]}" type="button" class="ui tiny red button">Remove Student</button>
 					</div>
 				</div>
-				<div class="field">
-					<button onclick="studentRemoveSOF(this)" data-student="${temp_members[0]}" type="button" class="ui tiny red button">Remove Student</button>
+			`);
+		} else {
+			$(`#${group} #students`).append(`
+				<div id="${group}-student${temp_members[0]}">
+					<div class="two fields">
+						<div class="eight wide field">
+							<label>Student Name</label>
+							<input type="text" class="form-control" id="${group}-student${temp_members[0]}Name" placeholder="Student Name">
+						</div>
+						<div class="four wide field">
+							<label>Student Class</label>
+							<select class="ui dropdown" id="${group}-student${temp_members[0]}Class">
+								<option value="">Student Class</option>
+								<option value="11">Class 11</option>
+								<option value="12">Class 12</option>
+							</select>
+						</div>
+					</div>
+					<div class="field">
+						<button onclick="studentRemoveSOF(this)" data-student="${temp_members[0]}" type="button" class="ui tiny red button">Remove Student</button>
+					</div>
 				</div>
-			</div>
-		`);
+			`);
+		}
 		$(".ui.dropdown").dropdown();
 		$("#registereventform").form({ fields: formFields });
 		currTotalStudents = Object.keys(members).reduce((acc, cur) => acc + members[cur].length, 0)
