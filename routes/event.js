@@ -178,6 +178,7 @@ async function subeventRegistration(req, res) {
 async function subeventSubmission(req, res) {
 	var subevent = req.body.subevent;
 	const sessionCookie = req.cookies.session || "";
+	console.log(req.body.data); 
 
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
