@@ -15,7 +15,7 @@ var eventRouter = require("./routes/event");
 var app = express();
 app.use(stHttpLoggerMiddleware)
 
-app.use(logger("common"));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
