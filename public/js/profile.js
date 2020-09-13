@@ -64,8 +64,12 @@ function editSubmissionForm() {
 
 		var res = submissionPath.split(".");
     var fieldName = res.splice(res.length - 1, 1);
-    var objField = res.reduce((r, u) => r && r[u] ? r[u] : '', registeredEvents[url]);
+		var objField = res.reduce((r, u) => r && r[u] ? r[u] : '', registeredEvents[url]);
 		objField[fieldName] = $("input#link").val();
+		console.log(res);
+		console.log(fieldName);
+		console.log(objField);
+		console.log(registeredEvents[url]);
 		$.post(`/submission`, {data: JSON.stringify(registeredEvents[url]), subevent: url}, (status) => {
 			if (status == "OK") { window.location.reload() }
 			else { console.log(status); }
