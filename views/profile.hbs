@@ -142,7 +142,7 @@
 						<td class="six wide">{{submission.name}}</td>
 						<td class="two wide">Class {{submission.class}}</td>
 						<td class="seven wide">{{#if submission.submission}}{{submission.submission}}{{else}}No submission yet{{/if}}</td>
-						<td><button onclick="editSubmission(this)" data-name="{{submission.name}}" data-url="monologue-maestros" data-subevent="Monologue Maestros" data-submissionpath="submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+						<td><button onclick="editSubmission(this)" data-name="{{submission.name}}" data-url="monologue-maestros" data-subevent="Monologue Maestros" data-submissionpath="submission.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
 					</tr>
 				</tbody>
 			</table>
