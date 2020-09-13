@@ -1,6 +1,6 @@
-categories = ["western-vocals", "hindustani-classical-vocals", "instrumental-guitar", "instrumental-keyboard", "instrmental-percussion", "own-composition"]
-categoriesProper = ["Western Vocals", "Hindustani Classical Vocals", "Instrumental Guitar", "instrumental Keyboard", "Instrmental Percussion", "Own Composition"]
-categoriesAbbr = ["wv", "hcv", "ig", "ik", "ip", "oc"]
+categories = ["western-vocals", "hindustani-classical-vocals", "instrumental-strings", "instrumental-guitar", "instrumental-keyboard", "instrmental-percussion", "own-composition"]
+categoriesProper = ["Western Vocals", "Hindustani Classical Vocals", "Instrumental Strings", "Instrumental Guitar", "instrumental Keyboard", "Instrmental Percussion", "Own Composition"]
+categoriesAbbr = ["wv", "hcv", "is", "ig", "ik", "ip", "oc"]
 var members;
 var globalMembers;
 
