@@ -354,6 +354,90 @@
 			{{/with}}
 			{{/if}}
 
+			{{#if the-sounds-of-stories}}
+			{{#with the-sounds-of-stories}}
+			<h2>{{name}}</h2>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each submission}}
+					<tr>
+						<td>{{this.name}}</td>
+						<td>Class {{this.class}}</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+
+			{{#if stories-through-the-lens}}
+			{{#with stories-through-the-lens}}
+			<h2>{{name}}</h2>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each submission}}
+					<tr>
+						<td>{{this.name}}</td>
+						<td>Class {{this.class}}</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+
+			{{#if flesh-n-bones}}
+			{{#with flesh-n-bones}}
+			<h2>{{name}}</h2>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each submission}}
+					<tr>
+						<td>{{this.name}}</td>
+						<td>Class {{this.class}}</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+
 			{{/with}}
 			{{else}}
 			<h3 class="ui header">No events registered for yet</h3>

@@ -75,12 +75,13 @@
       }
     },
     "the-sounds-of-stories": {
-      "name": "The Sounds of Stories (Podcast Workshop)",
+      "name": "The Sounds of Stories",
       "image": "bnc-tsos-banner.png",
       "pageID": "bnc-tsos",
-      "description": "Learn to script, design and record your own podcast-friendly audio stories",
+      "description": "Storytelling Through Sounds",
       "registration": {
         "maxSeats": 12,
+        "maxSeatsPerSchool": 3,
         "userType": "school"
       }
     },
@@ -91,6 +92,7 @@
       "description": "Making short films, vlogs, or cooking recipes, this workshop can give you hands-on experience in the aesthetics of filming techniques",
       "registration": {
         "maxSeats": 20,
+        "maxSeatsPerSchool": 4,
         "userType": "school"
       }
     },
@@ -156,6 +158,7 @@
       "pageID": "ff-fnb",
       "description": "The Self-developed Contemporary Movement technique",
       "registration": {
+        "maxSeatsPerSchool": 3,
         "maxSeats": 20,
         "userType": "school"
       }
