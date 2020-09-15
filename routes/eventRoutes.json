@@ -158,7 +158,7 @@
       "pageID": "ff-fnb",
       "description": "The Self-developed Contemporary Movement technique",
       "registration": {
-        "maxSeatsPerSchool": 3,
+        "maxSeatsPerSchool": 5,
         "maxSeats": 20,
         "userType": "school"
       }
