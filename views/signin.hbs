@@ -36,9 +36,12 @@
         Sign in
       </div>
     </h2>
-    <h4>Currently open only for participating schools</h4>
-    <form id="signInForm" class="ui large form" method="POST">
-      <div class="ui stacked segment left aligned">
+    <div class="ui two item menu top attached tabular">
+      <div class="item active" data-tab="publicUsers">Individual Account</div>
+      <div class="item" data-tab="schoolUsers">School Account</div>
+    </div>
+    <div class="ui bottom attached stacked segment left aligned tab active" data-tab="publicUsers">
+      <form id="signInForm" class="ui form">
         <div class="field">
           <label>Email Address</label>
           <div class="ui input">
@@ -53,13 +56,30 @@
           <div id="forgotPassword" style="text-align: right;"><a>Forgot Password</a></div>
         </div>
         <button type="submit" id="signInEmail" class="ui fluid large primary button">Sign in</button>
-        <button type="button" id="signInGoogle" class="ui fluid large basic black button"><i
-            class="google icon"></i>Sign in with Google</button>
-      </div>
-
-      <div class="ui error message"></div>
-
-    </form>
+        <button type="button" id="signInGoogle" class="ui fluid large basic black button"><i class="google icon"></i>Sign in with Google</button>
+        <div class="ui error message"></div>
+      </form>
+    </div>
+    <div class="ui bottom attached stacked segment left aligned tab" data-tab="schoolUsers">
+      <form id="signInForm" class="ui form">
+        <div class="field">
+          <label>Email Address</label>
+          <div class="ui input">
+            <input type="text" id="email" placeholder="Email address">
+          </div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="ui input">
+            <input type="password" id="password" placeholder="Password">
+          </div>
+          <div id="forgotPassword" style="text-align: right;"><a>Forgot Password</a></div>
+        </div>
+        <button type="submit" id="signInEmail" class="ui fluid large primary button">Sign in</button>
+        <button type="button" id="signInGoogle" class="ui fluid large basic black button"><i class="google icon"></i>Sign in with Google</button>
+        <div class="ui error message"></div>
+      </form>
+    </div>
 
     <div class="ui message">
       New to us? <a href="/signup">Sign Up</a>
@@ -102,7 +122,7 @@
     <h2>Forgot Password</h2>
   </div>
   <div class="content">
-    <form id="forgotPasswordForm" class="ui small form" method="POST">
+    <form id="forgotPasswordForm" class="ui small form">
       <div class="ui stacked">
         <div class="field">
           <label>Email Address</label>
