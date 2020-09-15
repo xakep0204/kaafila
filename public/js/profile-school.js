@@ -81,6 +81,7 @@ function editDetailsForm() {
 		$.post("/updateuser", {
 			schoolName: $("#schoolName").val(),
 			schoolRepName: $("#schoolRepName").val(),
+			db: 'school',
 			csrfToken: csrfToken
 		}, () => {
 			window.location.assign("/profile");

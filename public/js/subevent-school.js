@@ -781,12 +781,12 @@ $("#registereventmodalbutton").on("click", () => $("#registereventmodal").modal(
 $("#registereventmodalbuttonm").on("click", () => $("#registereventmodal").modal("show"));
 
 registrationMeta = {}
-$.each(document.getElementById("registereventmodalbutton").attributes,function(i,a){
-	if (['id', 'class'].indexOf(a.name) === -1) { registrationMeta[a.name.slice(5)] = a.value }
-})
-if (Object.keys(registrationMeta).length > 0) {
+if (document.getElementById("registereventmodalbutton")) {
+	$.each(document.getElementById("registereventmodalbutton").attributes,function(i,a){
+		if (['id', 'class'].indexOf(a.name) === -1) { registrationMeta[a.name.slice(5)] = a.value }
+	})
 	if (!("formid" in registrationMeta)) { registrationMeta.formid = "stnd" }
-
+	
 	switch (registrationMeta.formid) {
 		case "stnd":
 			stndForm();
