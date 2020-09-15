@@ -87,20 +87,37 @@ async function renderSubevent(req, res, next) {
 	var registration = routingData[subevent].registration || {};
 
 	const webrender = (db) => {
-		res.render(`subevent-${db}`, {
-			title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
-			url: subevent,
-			subeventName: routingData[subevent].name,
-			subeventImage: routingData[subevent].image,
-			subeventDesc: routingData[subevent].description,
-			cssID: routingData.cssID,
-			[routingData.navID]: true,
-			pageID: "subevents/" + routingData[subevent].pageID,
-			formID: routingData[subevent].registration ? "subevents/forms/" + routingData[subevent].registration.formID : null,
-			registration: Object.keys(registration).length > 0 ? registration : null,
-			userData: Object.keys(userData).length > 0 ? userData : null,
-			scripts: [`/js/subevent-${db}.js`]
-		});
+		if (db) {
+			res.render(`subevent-${db}`, {
+				title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
+				url: subevent,
+				subeventName: routingData[subevent].name,
+				subeventImage: routingData[subevent].image,
+				subeventDesc: routingData[subevent].description,
+				cssID: routingData.cssID,
+				[routingData.navID]: true,
+				pageID: "subevents/" + routingData[subevent].pageID,
+				formID: routingData[subevent].registration ? "subevents/forms/" + routingData[subevent].registration.formID : null,
+				registration: Object.keys(registration).length > 0 ? registration : null,
+				userData: Object.keys(userData).length > 0 ? userData : null,
+				scripts: [`/js/subevent-${db}.js`]
+			});
+		} else {
+			res.render(`subevent-public`, {
+				title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
+				url: subevent,
+				subeventName: routingData[subevent].name,
+				subeventImage: routingData[subevent].image,
+				subeventDesc: routingData[subevent].description,
+				cssID: routingData.cssID,
+				[routingData.navID]: true,
+				pageID: "subevents/" + routingData[subevent].pageID,
+				formID: routingData[subevent].registration ? "subevents/forms/" + routingData[subevent].registration.formID : null,
+				registration: Object.keys(registration).length > 0 ? registration : null,
+				userData: Object.keys(userData).length > 0 ? userData : null,
+				scripts: [`/js/subevent-public.js`]
+			});
+		}
 	}
 
 	try {
