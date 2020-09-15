@@ -86,8 +86,8 @@ async function renderSubevent(req, res, next) {
 	}
 	var registration = routingData[subevent].registration || {};
 
-	const webrender = () => {
-		res.render("subevent", {
+	const webrender = (db) => {
+		res.render(`subevent-${db}`, {
 			title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
 			url: subevent,
 			subeventName: routingData[subevent].name,
@@ -99,36 +99,61 @@ async function renderSubevent(req, res, next) {
 			formID: routingData[subevent].registration ? "subevents/forms/" + routingData[subevent].registration.formID : null,
 			registration: Object.keys(registration).length > 0 ? registration : null,
 			userData: Object.keys(userData).length > 0 ? userData : null,
-			scripts: ["/js/subevent.js"]
+			scripts: [`/js/subevent-${db}.js`]
 		});
 	}
 
 	try {
-		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
-		const user = await admin.auth().getUser(firebaseUserClaims.sub)
-		userData.photoURL = user.photoURL
 		
-		if (Object.keys(registration).length > 0) {
-			const takenSeats = await getTakenSeats(subevent)
-			if (registration.maxSeats) {
+		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
+		const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
+		userData.photoURL = userRecord.photoURL
+
+		const checkPublicDatabase = await db.collection('publicUsers').doc(firebaseUserClaims.sub).get()
+		if (checkPublicDatabase.exists) {
+			const userFirestoreData = checkPublicDatabase.data();
+			registration = registration.userType == 'public' ? registration : {}
+			if (Object.keys(registration).length > 0) {
+				const takenSeats = await getTakenSeats(subevent)
 				if (takenSeats === registration.maxSeats) {
 					registration.seatsFull = true
-				} else if (registration.maxSeatsPerSchool) {
-					if (takenSeats + registration.maxSeatsPerSchool > registration.maxSeats) {
-						registration.maxSeatsPerSchool = registration.maxSeats - takenSeats
+				}
+			}
+			userData.name = userRecord.name;
+			if (userFirestoreData.registeredEvents) {
+				if (subevent in userFirestoreData.registeredEvents) {
+					registration.alreadyRegistered = true;
+				}
+			}
+			webrender('public');
+		} else {
+			const checkSchoolDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get()
+			if (checkSchoolDatabase.exists) {
+				const userFirestoreData = checkSchoolDatabase.data();
+				registration = registration.userType == 'school' ? registration : {}
+				if (Object.keys(registration).length > 0) {
+					const takenSeats = await getTakenSeats(subevent)
+					if (registration.maxSeats) {
+						if (takenSeats === registration.maxSeats) {
+							registration.seatsFull = true
+						} else if (registration.maxSeatsPerSchool) {
+							if (takenSeats + registration.maxSeatsPerSchool > registration.maxSeats) {
+								registration.maxSeatsPerSchool = registration.maxSeats - takenSeats
+							}
+						}
+					}
+				}
+				userData.schoolRepName = userFirestoreData.schoolRepName;
+				userData.schoolName = userRecord.displayName;
+				if (userFirestoreData.registeredEvents) {
+					if (subevent in userFirestoreData.registeredEvents) {
+						registration.alreadyRegistered = true;
 					}
 				}
 			}
+			webrender('school');
 		}
-		const userFirestoreData = await getUserData(firebaseUserClaims.sub)
-		userData.schoolRepName = userFirestoreData.schoolRepName;
-		userData.schoolName = userFirestoreData.schoolName;
-		if (userFirestoreData.registeredEvents) {
-			if (subevent in userFirestoreData.registeredEvents) {
-				registration.alreadyRegistered = true;
-			}
-		}
-		webrender();
+
 	} catch (err) {
 		if (err.code !== "auth/argument-error") { console.log(err); }
 		webrender();
@@ -137,35 +162,43 @@ async function renderSubevent(req, res, next) {
 }
 
 async function subeventRegistration(req, res) {
+	const maxSeatEvents = ['collab-lab', 'the-sounds-of-stories', 'stories-through-the-lens', 'flesh-n-bones', 'kalbeliya-lec-dem', 'ff-career-conversations', 'i-career-conversations', 'bamboo-craft-workshop', 'tessellations', 'art-as-a-catalyst-for-social-change', 'sa-career-conversations', 'khasi-music-workshop'];
 	const sessionCookie = req.cookies.session || "";
 	var subevent = req.body.subevent;
 	var data = JSON.parse(req.body.data);
 
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
-		doc = db.collection('schoolUsers').doc(firebaseUserClaims.sub);
-		docref = await doc.get()
-		registeredEvents = docref.data().registeredEvents || {};
-		registeredEvents[subevent] = data;
-		const updateDatabase = doc.update({registeredEvents: registeredEvents})
+		const checkPublicDatabase = await db.collection('publicUsers').doc(firebaseUserClaims.sub).get()
+		if (checkPublicDatabase.exists) {
+			registeredEvents = checkPublicDatabase.data().registeredEvents || {};
+			registeredEvents[subevent] = {name: data.name};
+			const updateDatabase = db.collection('publicUsers').doc(firebaseUserClaims.sub).update({registeredEvents: registeredEvents})
+		
+			doc = db.collection('events').doc(subevent);
+			docref = await doc.get()
 	
-		doc = db.collection('events').doc(subevent);
-		docref = await doc.get()
-
-		if (subevent == "strings-attached-solos") {
-			if (docref.exists) { 
-				participants = docref.data().participants || {} 
-				Object.keys(participants).forEach((val) => {
-					data.participants[val] += participants[val]
-				});
-			}
-			doc.set({participants: data.participants})
-			res.sendStatus(200);
-		} else {
-			if (docref.exists) { participants = docref.data().participants + data.participants || data.participants; } 
-			else { participants = data.participants; }
+			if (docref.exists) { participants = docref.data().participants + 1 || 1; } 
+			else { participants = 1; }
 			doc.set({participants: participants})
 			res.sendStatus(200);
+		} else {
+			const checkSchoolDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get()
+			if (checkSchoolDatabase.exists) {
+				registeredEvents = checkSchoolDatabase.data().registeredEvents || {};
+				registeredEvents[subevent] = data;
+				const updateDatabase = db.collection('schoolUsers').doc(firebaseUserClaims.sub).update({registeredEvents: registeredEvents})
+				
+				doc = db.collection('events').doc(subevent);
+				docref = await doc.get()
+		
+				if (maxSeatEvents.indexOf(subevent) != -1) {
+					if (docref.exists) { participants = docref.data().participants + data.participants || data.participants; } 
+					else { participants = data.participants; }
+					doc.set({participants: participants})
+				}
+				res.sendStatus(200);
+			}
 		}
 	} catch (err) {
 		if (err.code !== "auth/argument-error") { 
