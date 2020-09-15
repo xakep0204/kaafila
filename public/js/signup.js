@@ -1,58 +1,6 @@
 db = firebase.firestore();
 
-$("[data-tab='publicUsers'] #signUpForm").form({
-	fields: {
-		name: {
-			identifier: "name",
-			rules: [
-				{
-					type: "empty",
-					prompt: "Enter your full name",
-				},
-			],
-		},
-		email: {
-			identifier: "email",
-			rules: [
-				{
-					type: "empty",
-					prompt: "Enter your email",
-				},
-				{
-					type: "email",
-					prompt: "Enter a valid email",
-				},
-			],
-		},
-		password: {
-			identifier: "password",
-			rules: [
-				{
-					type: "empty",
-					prompt: "Please enter a password",
-				},
-				{
-					type: "minLength[8]",
-					prompt: "Your password must be at least {ruleValue} characters",
-				},
-			],
-		},
-		confirmPassword: {
-			identifier: "confirmPassword",
-			rules: [
-				{
-					type: "empty",
-					prompt: "Please confirm your password",
-				},
-				{
-					type: "match[password]",
-					prompt: "Passwords do not match",
-				},
-			],
-		},
-	},
-});
-$("[data-tab='schoolUsers'] #signUpForm").form({
+$("#signUpForm").form({
 	fields: {
 		schoolName: {
 			identifier: "schoolName",
@@ -136,102 +84,45 @@ $("#schoolInfoForm").form({
 	},
 });
 
-async function signUpEmailPublic() {
+async function signUpEmail() {
 	try {
-		if (!(await checkUserExistance($("[data-tab='publicUsers'] #email").val(), 'public'))) {
-			if ($("[data-tab='publicUsers'] #signUpForm").form("is valid")) {
-				$("[data-tab='publicUsers'] #signUpForm").addClass("loading");
-				email = $("[data-tab='publicUsers'] #email").val();
-				password = $("[data-tab='publicUsers'] #password").val();
-				const firebaseSignUp = await firebase.auth().createUserWithEmailAndPassword(email, password)
-				var user = await firebase.auth().currentUser;
-				const updateUserProfile = await user.updateProfile({
-					displayName: $("[data-tab='publicUsers'] #signUpForm #name").val(),
-					photoURL: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/profile-blank.png",
-				})
-				const sendVerificationEmail = user.sendEmailVerification()
-				const updateUserDatabase = await db.collection("publicUsers").doc(user.uid).set({
-					email: user.email,
-					photoURL: user.photoURL,
-				})
-				const idToken = await user.getIdToken()
-				const csrfToken = getCookie("csrfToken");
-				const sendTokens = await $.post("/sessionlogin", {
-					idToken: idToken,
-					csrfToken: csrfToken
-				}).promise();
-				const firebaseSignOut = firebase.auth().signOut();
-				window.location.assign("/profile");
-			}
-		}
-	} catch (err) {
-		$("[data-tab='publicUsers'] #signUpForm").removeClass("loading");
-		console.log(err);
-	}
-}
-
-async function signUpGooglePublic() {
-	try {
-		var provider = new firebase.auth.GoogleAuthProvider();
-		const firebaseSignUp = await firebase.auth().signInWithPopup(provider)
-		user = await firebase.auth().currentUser;
-		const idToken = await user.getIdToken()
-		const csrfToken = getCookie("csrfToken");
-		const sendTokens = await $.post("/sessionlogin", {
-			idToken: idToken,
-			csrfToken: csrfToken,
-		}).promise();
-		const docref = await db.collection('publicUsers').doc(user.uid).get()
-		if (!docref.exists) {
-			const updateUserDatabase = await db.collection("publicUsers").doc(user.uid).set({
+		if ($("#signUpForm").form("is valid")) {
+			$("#signUpEmail").addClass("loading");
+			email = $("#email").val();
+			password = $("#password").val();
+			const firebaseSignUp = await firebase.auth().createUserWithEmailAndPassword(email, password)
+			var user = await firebase.auth().currentUser;
+			const updateUserProfile = await user.updateProfile({
+				displayName: $("#signUpForm #schoolName").val(),
+				photoURL: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/profile-blank.png",
+			})
+			const sendVerificationEmail = user.sendEmailVerification()
+			const updateUserDatabase = await db.collection("schoolUsers").doc(user.uid).set({
 				email: user.email,
+				schoolName: $("#signUpForm #schoolName").val(),
+				schoolRepName: $("#signUpForm #schoolRepName").val(),
 				photoURL: user.photoURL,
 			})
+			const idToken = await user.getIdToken()
+			const csrfToken = getCookie("csrfToken");
+			const sendTokens = await $.post("/sessionLogin", {
+				idToken: idToken,
+				csrfToken: csrfToken
+			}).promise();
+			const firebaseSignOut = firebase.auth().signOut();
+			window.location.assign("/profile");
 		}
-		const firebaseSignOut = await firebase.auth().signOut();
-		window.location.assign("/profile");
 	} catch (err) {
-		console.log(err)	
+		$("#signUpEmail").removeClass("loading");
+		if (err.code == "auth/email-already-in-use") {
+			$("#signUpForm").form("add errors", ["Account already exists, sign in instead"]);
+		} else {
+			console.log(err);
+		}
 	}
 }
 
-async function signUpEmailSchool() {
-	try {
-		if (!(await checkUserExistance($("[data-tab='schoolUsers'] #email").val(), 'school'))) {
-			if ($("[data-tab='schoolUsers'] #signUpForm").form("is valid")) {
-				$("[data-tab='schoolUsers'] #signUpForm").addClass("loading");
-				email = $("[data-tab='schoolUsers'] #email").val();
-				password = $("[data-tab='schoolUsers'] #password").val();
-				const firebaseSignUp = await firebase.auth().createUserWithEmailAndPassword(email, password)
-				var user = await firebase.auth().currentUser;
-				const updateUserProfile = await user.updateProfile({
-					displayName: $("[data-tab='schoolUsers'] #signUpForm #schoolName").val(),
-					photoURL: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/profile-blank.png",
-				})
-				const sendVerificationEmail = user.sendEmailVerification()
-				const updateUserDatabase = await db.collection("schoolUsers").doc(user.uid).set({
-					email: user.email,
-					schoolName: $("[data-tab='schoolUsers'] #signUpForm #schoolName").val(),
-					schoolRepName: $("[data-tab='schoolUsers'] #signUpForm #schoolRepName").val(),
-					photoURL: user.photoURL,
-				})
-				const idToken = await user.getIdToken()
-				const csrfToken = getCookie("csrfToken");
-				const sendTokens = await $.post("/sessionlogin", {
-					idToken: idToken,
-					csrfToken: csrfToken
-				}).promise();
-				const firebaseSignOut = firebase.auth().signOut();
-				window.location.assign("/profile");
-			}
-		}
-	} catch (err) {
-		$("[data-tab='schoolUsers'] #signUpForm").removeClass("loading");
-		console.log(err);
-	}
-}
-
-async function signUpGoogleSchool() {
+async function signUpGoogle() {
 	try {
 		var provider = new firebase.auth.GoogleAuthProvider();
 		const firebaseSignUp = await firebase.auth().signInWithPopup(provider)
@@ -240,7 +131,7 @@ async function signUpGoogleSchool() {
 		if (docref.exists) {
 			const idToken = await user.getIdToken()
 			const csrfToken = getCookie("csrfToken");
-			const sendTokens = await $.post("/sessionlogin", {
+			const sendTokens = await $.post("/sessionLogin", {
 				idToken: idToken,
 				csrfToken: csrfToken,
 			}).promise();
@@ -269,45 +160,18 @@ async function schoolInfoForm() {
 			})
 			const idToken = await user.getIdToken()
 			const csrfToken = getCookie("csrfToken")
-			const sendTokens = await $.post("/sessionlogin", {
-				idToken: idToken, 
+			const sendTokens = await $.post("/sessionLogin", {
+				idToken: idToken,
 				csrfToken: csrfToken,
 			}).promise();
 			const firebaseSignOut = await firebase.auth().signOut();
 			window.location.assign("/profile");
 		}
 	} catch (err) {
-		const deleteUser = await firebase.auth().currentUser.delete();
+		const firebaseSignOut = await firebase.auth().signOut();
 		console.log(err)
 	}
 }
-
-async function checkUserExistance(email, db) {
-	if (!$(`[data-tab='${db}Users'] #signUpForm`).form("is valid", "email")) {
-		$(`[data-tab='${db}Users'] #signUpForm`).form("validate form");
-		return false;
-	} else {
-		$(`[data-tab='${db}Users'] #signUpForm`).addClass("loading");
-	}
-	dbs = ['school', 'public']
-	dbOtherRaw = dbs.filter(v => v != db)[0]
-	dbOther = dbOtherRaw.charAt(0).toUpperCase() + dbOtherRaw.slice(1)
-	const serverData = await $.post("/checkuser", {email: email}).promise();
-	$(`[data-tab='${db}Users'] #signUpForm`).removeClass("loading");
-	if (serverData.emailExists == false) {
-		$(`[data-tab='${db}Users'] #signUpForm`).form("validate form");
-		return false;
-	} else if (serverData.dbCollection == db) {
-		$(`[data-tab='${db}Users'] #signUpForm`).form("add errors", ["Account already exists, sign in instead"]);
-		return true;
-	} else if (serverData.dbCollection == dbOtherRaw) {
-		$(`[data-tab='${db}Users'] #signUpForm`).form("add errors", [`${dbOther} account already exists with the same email`]);
-		return true;
-	} else {
-		$(`[data-tab='${db}Users'] #signUpForm`).form("add errors", ["Account already exists, sign in instead"]);
-		return true;
-	}
-};
 
 function getCookie(name) {
 	var re = new RegExp(name + "=([^;]+)");
@@ -315,11 +179,7 @@ function getCookie(name) {
 	return value != null ? unescape(value[1]) : null;
 }
 
-$('.menu .item').tab();
-
-$("[data-tab='publicUsers'] #signUpForm").submit(() => {signUpEmailPublic(); return false;});
-$("[data-tab='publicUsers'] #signUpGoogle").on("click", () => signUpGooglePublic());
-$("[data-tab='schoolUsers'] #signUpForm").submit(() => {signUpEmailSchool(); return false;});
-$("[data-tab='schoolUsers'] #signUpGoogle").on("click", () => signUpGoogleSchool());
+$("#signUpForm").submit(() => {signUpEmail(); return false;});
+$("#signUpGoogle").on("click", () => signUpGoogle());
 
 $("#schoolInfoForm").submit(() => {schoolInfoForm(); return false;});

@@ -89,10 +89,10 @@
 				<h3 class="ui header">{{subeventDesc}}</h3>
 				{{#if registration}}
 					{{#if registration.alreadyRegistered}}
-					<a href="/profile"><div class="ui button green">Already Registered</div></a>
+						<div class="ui button green">Already Registered</div>
 					{{else if registration.seatsFull}}
 					{{else if userData}}
-						<div id="registerevent" class="ui button primary" data-name="{{subeventName}}" data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
+						<div id="registereventmodalbutton" class="ui button primary" data-name="{{subeventName}}"data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}
 						<a href="/signin">
 							<div class="ui button primary">Register</div>
@@ -112,10 +112,10 @@
 				<h3 class="ui header">{{subeventDesc}}</h3>
 				{{#if registration}}
 					{{#if registration.alreadyRegistered}}
-					<a href="/profile"><div class="ui button green">Already Registered</div></a>
+						<div class="ui button green">Already Registered</div>
 					{{else if registration.seatsFull}}
 					{{else if userData}}
-						<div id="registereventm" class="ui button primary" data-name={{subeventName}} data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
+						<div id="registereventmodalbutton" class="ui button primary" data-name={{subeventName}} data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}
 						<a href="/signin">
 							<div class="ui button primary">Register</div>
@@ -134,6 +134,21 @@
 
 </div>
 
+{{#if userData}}
+{{#unless registration.alreadyRegistered}}
+<div id="registereventmodal" class="ui modal">
+	<div class="header">
+		<h2>Register for {{subeventName}}</h2>
+	</div>
+	<div class="scrolling content">
+		{{#if registration.formID}}
+		{{> (lookup . 'formID')}}
+		{{else}}
+		{{>subevents/forms/stnd}}
+		{{/if}}
+	</div>
+</div>
+
 <div id="registereventconfirmmodal" class="ui modal tiny">
 	<div class="content">
 		<div class="ui fluid container center aligned">
@@ -142,6 +157,8 @@
 		</div>
 	</div>
 </div>
+{{/unless}}
+{{/if}}
 
 {{>footer}}
 
@@ -164,3 +181,11 @@
 		}
 	}
 </style>
+
+<script>
+	name = '{{subeventName}}'
+	takenSeats = parseInt('{{registration.takenSeats}}')	
+	maxSeats = parseInt('{{registration.maxSeats}}')	
+	maxSeatsPerSchool = parseInt('{{registration.maxSeatsPerSchool}}')	
+	postURL = '{{registration.url}}'
+</script>

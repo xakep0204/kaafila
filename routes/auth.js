@@ -5,6 +5,16 @@ var admin = require("../firebase-proj");
 var csrfProtection = csrf({ cookie: true });
 var db = admin.firestore();
 
+async function getUserData(uid) {
+	doc = db.collection('schoolUsers').doc(uid);
+	docref = await doc.get()
+	if (!docref.exists) {
+		return 'NA'
+	} else {
+		return docref.data();
+	}
+}
+
 async function renderSignUp(req, res) {
 	const sessionCookie = req.cookies.session || "";
 	try {
@@ -38,54 +48,24 @@ async function renderProfile(req, res) {
 
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
-		const checkPublicDatabase = await db.collection('publicUsers').doc(firebaseUserClaims.sub).get()
-		if (checkPublicDatabase.exists) {
-			const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
-			var userFirestoreData = checkPublicDatabase.data();
-			const eventFirestoreData = await db.collection('events').get()
-			eventFirestoreData.forEach(doc => { 
-				if (userFirestoreData.registeredEvents[doc.id]) {
-					userFirestoreData.registeredEvents[doc.id].joiningInfo = doc.data().joiningInfo; 
-				}
-			})
-			userData = {
-				name: userRecord.displayName,
-				email: userRecord.email,
-				photoURL: userRecord.photoURL,
-				registeredEvents: userFirestoreData.registeredEvents,
-				registeredEventsJS: JSON.stringify(userFirestoreData.registeredEvents)
-			};
-			res.render("profile-public", {
-				title: `${userRecord.displayName} - Kaafila`,
-				active_p: true,
-				userData: userData,
-				scripts: ['/js/profile-public.js']
-			});
-		} 
-		else {
-			const checkSchoolDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get()
-			if (checkSchoolDatabase.exists) {
-				const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
-				const userFirestoreData = checkSchoolDatabase.data();
-				userData = {
-					schoolName: userRecord.displayName,
-					schoolRepName: userFirestoreData.schoolRepName,
-					email: userRecord.email,
-					photoURL: userRecord.photoURL,
-					registeredEvents: userFirestoreData.registeredEvents,
-					registeredEventsJS: JSON.stringify(userFirestoreData.registeredEvents)
-				};
-				res.render("profile-school", {
-					title: `${userRecord.displayName} - Kaafila`,
-					active_p: true,
-					userData: userData,
-					scripts: ['/js/profile-school.js']
-				});
-			}
-		}
+		const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
+		const userFirestoreData = await getUserData(firebaseUserClaims.sub)
+		userData = {
+			email: userRecord.email,
+			schoolName: userRecord.displayName,
+			schoolRepName: userFirestoreData.schoolRepName,
+			photoURL: userRecord.photoURL,
+			registeredEvents: userFirestoreData.registeredEvents,
+			registeredEventsJS: JSON.stringify(userFirestoreData.registeredEvents)
+		};
+		res.render("profile", {
+			title: `${userRecord.displayName} - Kaafila`,
+			active_p: true,
+			userData: userData,
+			scripts: ['/js/profile.js']
+		});
 	} catch (err) {
 		res.redirect("/signin");
-		console.log(err);
 	}
 }
 
@@ -142,52 +122,14 @@ async function serverUpdateUser(req, res) {
 
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true);
-		if (req.body.db == 'school') {
-			const updateUserAccount = await admin.auth().updateUser(firebaseUserClaims.sub, {displayName: req.body.schoolName,});
-			const updateUserDatabase = await db.collection(`schoolUsers`).doc(firebaseUserClaims.sub).update({
-				schoolName: req.body.schoolName,
-				schoolRepName: req.body.schoolRepName,
-			})
-			res.status(200).send();
-		} else if (req.body.db == 'public') {
-			const updateUserAccount = await admin.auth().updateUser(firebaseUserClaims.sub, {displayName: req.body.name,});
-			const updateUserDatabase = await db.collection(`publicUsers`).doc(firebaseUserClaims.sub).update({
-				name: req.body.name,
-			})
-			res.status(200).send();
-		}
+		const updateUserAccount = await admin.auth().updateUser(firebaseUserClaims.sub, {displayName: req.body.schoolName,});
+		const updateUserDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).update({
+			schoolName: req.body.schoolName,
+			schoolRepName: req.body.schoolRepName,
+		})
+		res.status(200).send();
 	} catch (err) {
 		console.log(err);
-	}
-}
-
-async function serverCheckUser(req, res) {
-	const email = req.body.email;
-	var returnData = {
-		emailExists: false,
-		dbCollection: null,
-	}
-	try {
-		const firebaseUserClaims = await admin.auth().getUserByEmail(email);
-		returnData.emailExists = true
-
-		const checkPublicDatabase = await db.collection('publicUsers').doc(firebaseUserClaims.toJSON().uid).get()
-		if (checkPublicDatabase.exists) { returnData.dbCollection = "public" } 
-		else {
-			const checkSchoolDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.toJSON().uid).get()
-			if (checkSchoolDatabase.exists) { returnData.dbCollection = "school" }
-		}
-
-		returnData.googleAccount = firebaseUserClaims.toJSON().providerData.reduce((a, c) => { return  a || c.providerId == 'google.com' }, false)
-		res.json(returnData);
-	} catch (err) {
-		if (err.code == "auth/user-not-found") {
-			returnData = { emailExists: false }
-			res.json(returnData);
-		} else {
-			console.log(err);
-			res.json(err);
-		}
 	}
 }
 
@@ -195,8 +137,7 @@ router.get("/signin", csrfProtection, (req, res) => renderSignIn(req, res));
 router.get("/signup", csrfProtection, (req, res) => renderSignUp(req, res));
 router.get("/signout", (req, res) => serverSignOut(req, res));
 router.get("/profile", (req, res) => renderProfile(req, res));
-router.post("/sessionlogin", (req, res) => serverSignIn(req, res));
+router.post("/sessionLogin", (req, res) => serverSignIn(req, res));
 router.post("/updateuser", (req, res) => serverUpdateUser(req, res));
-router.post("/checkuser", (req, res) => serverCheckUser(req, res));
 
 module.exports = router;

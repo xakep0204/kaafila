@@ -1,32 +1,6 @@
 db = firebase.firestore();
 
-$("[data-tab='publicUsers'] #signInForm").form({
-	fields: {
-		email: {
-			identifier: "email",
-			rules: [
-				{
-					type: "empty",
-					prompt: "Enter your email",
-				},
-				{
-					type: "email",
-					prompt: "Enter a valid email",
-				},
-			],
-		},
-		password: {
-			identifier: "password",
-			rules: [
-				{
-					type: "empty",
-					prompt: "Please enter a password",
-				},
-			],
-		},
-	},
-});
-$("[data-tab='schoolUsers'] #signInForm").form({
+$("#signInForm").form({
 	fields: {
 		email: {
 			identifier: "email",
@@ -92,83 +66,42 @@ $("#forgotPasswordForm").form({
 	},
 });
 
-async function signInEmailPublic() {
+async function signInEmail() {
 	try {
-		if (!(await checkUserExistance($("[data-tab='publicUsers'] #email").val(), 'public'))) {
-			if ($("[data-tab='publicUsers'] #signInForm").form("is valid")) {
-				email = $("[data-tab='publicUsers'] #email").val();
-				password = $("[data-tab='publicUsers'] #password").val();
-				$(`[data-tab='publicUsers'] #signInForm`).addClass("loading");
-				const firebaseSignIn = await firebase.auth().signInWithEmailAndPassword(email, password)
-				var user = await firebase.auth().currentUser;
-				const idToken = await user.getIdToken()
-				const csrfToken = getCookie("csrfToken");
-				const sendTokens = await $.post("/sessionlogin", {
-					idToken: idToken,
-					csrfToken: csrfToken,
-				}).promise();
-				const firebaseSignOut = await firebase.auth().signOut();
-				window.location.assign("/profile");
+		if ($("#signInForm").form("is valid")) {
+			$("#signInEmail").addClass("loading");
+			email = $("#email").val();
+			password = $("#password").val();
+			const firebaseSignIn = await firebase.auth().signInWithEmailAndPassword(email, password)
+			var user = await firebase.auth().currentUser;
+			const idToken = await user.getIdToken()
+			const csrfToken = getCookie("csrfToken");
+			const sendTokens = await $.post("/sessionLogin", {
+				idToken: idToken,
+				csrfToken: csrfToken,
+			}).promise();
+			const firebaseSignOut = await firebase.auth().signOut();
+			window.location.assign("/profile");
+		}
+	} catch (err) {
+		$("#signInEmail").removeClass("loading");
+		if (err.code === "auth/user-not-found") {
+			$("#signInForm").form("add errors", ["Account doesn't exist, sign up instead"]);
+		} else if (err.code === "auth/wrong-password") {
+			const firebaseMethods = await firebase.auth().fetchSignInMethodsForEmail(email)
+			console.log(firebaseMethods);
+			if (firebaseMethods.length === 1) {
+				$("#signInForm").form("add errors", ["Account associated with Google, sign in with Google instead.",]);
+			} else {
+				$("#signInForm").form("add errors", ["Wrong password"]);
 			}
-		}
-	} catch (err) {
-		$(`[data-tab='publicUsers'] #signInForm`).removeClass("loading");
-		if (err.code === "auth/wrong-password") {
-			$("[data-tab='publicUsers'] #signInForm").form("add errors", ["Wrong password"]);
 		} else {
-			console.log(err);
 		}
+		console.log(err);
 	}
 }
 
-async function signInGooglePublic() {
-	try {
-		var provider = new firebase.auth.GoogleAuthProvider();
-		const firebaseSignIn = await firebase.auth().signInWithPopup(provider)
-		user = await firebase.auth().currentUser;
-		const idToken = await user.getIdToken()
-		const csrfToken = getCookie("csrfToken");
-		const sendTokens = await $.post("/sessionlogin", {
-			idToken: idToken,
-			csrfToken: csrfToken,
-		}).promise();
-		const firebaseSignOut = await firebase.auth().signOut();
-		window.location.assign("/profile");
-	} catch (err) {
-		console.log(err)	
-	}
-}
-
-async function signInEmailSchool() {
-	try {
-		if (!(await checkUserExistance($("[data-tab='schoolUsers'] #email").val(), 'school'))) {
-			if ($("[data-tab='schoolUsers'] #signInForm").form("is valid")) {
-				email = $("[data-tab='schoolUsers'] #email").val();
-				password = $("[data-tab='schoolUsers'] #password").val();
-				$(`[data-tab='schoolUsers'] #signInForm`).addClass("loading");
-				const firebaseSignIn = await firebase.auth().signInWithEmailAndPassword(email, password)
-				var user = await firebase.auth().currentUser;
-				const idToken = await user.getIdToken()
-				const csrfToken = getCookie("csrfToken");
-				const sendTokens = await $.post("/sessionlogin", {
-					idToken: idToken,	
-					csrfToken: csrfToken,
-				}).promise();
-				const firebaseSignOut = await firebase.auth().signOut();
-				window.location.assign("/profile");
-			}
-		}
-	} catch (err) {
-		$(`[data-tab='schoolUsers'] #signInForm`).removeClass("loading");
-		if (err.code === "auth/wrong-password") {
-			$("[data-tab='schoolUsers'] #signInForm").form("add errors", ["Wrong password"]);
-		} else {
-			console.log(err);
-		}
-	}
-}
-
-async function signInGoogleSchool() {
+async function signInGoogle() {
 	try {
 		var provider = new firebase.auth.GoogleAuthProvider();
 		const firebaseSignIn = await firebase.auth().signInWithPopup(provider)
@@ -177,7 +110,7 @@ async function signInGoogleSchool() {
 		if (docref.exists) {
 			const idToken = await user.getIdToken()
 			const csrfToken = getCookie("csrfToken");
-			const sendTokens = await $.post("/sessionlogin", {
+			const sendTokens = await $.post("/sessionLogin", {
 				idToken: idToken,
 				csrfToken: csrfToken,
 			}).promise();
@@ -227,7 +160,7 @@ async function schoolInfoForm() {
 			})
 			const idToken = await user.getIdToken()
 			const csrfToken = getCookie("csrfToken")
-			const sendTokens = await $.post("/sessionlogin", {
+			const sendTokens = await $.post("/sessionLogin", {
 				idToken: idToken,
 				csrfToken: csrfToken,
 			}).promise();
@@ -240,43 +173,14 @@ async function schoolInfoForm() {
 	}
 }
 
-async function checkUserExistance(email, db) {
-	if (!$(`[data-tab='${db}Users'] #signInForm`).form("is valid", "email")) {
-		$(`[data-tab='${db}Users'] #signInForm`).form("validate form");
-		return false;
-	} else {
-		$(`[data-tab='${db}Users'] #signInForm`).addClass("loading");
-	}
-	dbs = ['school', 'public']
-	dbOtherRaw = dbs.filter(v => v != db)[0]
-	dbOther = dbOtherRaw.charAt(0).toUpperCase() + dbOtherRaw.slice(1)
-	const serverData = await $.post("/checkuser", {email: email}).promise();
-	$(`[data-tab='${db}Users'] #signInForm`).removeClass("loading");
-	if (!serverData.emailExists) {
-		$(`[data-tab='${db}Users'] #signInForm`).form("add errors", ["Account doesn't exist, sign up instead"]);
-		return true;
-	} else if (serverData.dbCollection == dbOtherRaw) {
-		$(`[data-tab='${db}Users'] #signInForm`).form("add errors", [`${dbOther} account exists with the same email`]);
-		return true;
-	} else if (serverData.googleAccount) {
-		$(`[data-tab='${db}Users'] #signInForm`).form("add errors", ["Account associated with Google, sign in with Google instead."]);
-		return true;
-	}
-	return false;
-};
-
 function getCookie(name) {
 	var re = new RegExp(name + "=([^;]+)");
 	var value = re.exec(document.cookie);
 	return value != null ? unescape(value[1]) : null;
 }
 
-$('.menu .item').tab();
-
-$("[data-tab='publicUsers'] #signInForm").submit(() => {signInEmailPublic(); return false;});
-$("[data-tab='publicUsers'] #signInGoogle").on("click", () => signInGooglePublic())
-$("[data-tab='schoolUsers'] #signInForm").submit(() => {signInEmailSchool(); return false;});
-$("[data-tab='schoolUsers'] #signInGoogle").on("click", () => signInGoogleSchool())
+$("#signInForm").submit(() => {signInEmail(); return false;});
+$("#signInGoogle").on("click", () => signInGoogle())
 
 $("#schoolInfoForm").submit(() => {schoolInfoForm(); return false;});
 $("#forgotPasswordForm").submit(() => {forgotPasswordForm(); return false;});

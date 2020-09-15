@@ -48,8 +48,7 @@
       "description": "Virtual solo theatrical performance",
       "registration": {
         "maxSeatsPerSchool": 1,
-        "formID": "mm",
-        "userType": "school"
+        "formID": "mm"
       }
     },
     "one-act-play": {
@@ -59,8 +58,7 @@
       "description": "Collaborative virtual theatrical performance",
       "registration": {
         "maxSeatsPerSchool": 15,
-        "formID": "oap",
-        "userType": "school"
+        "formID": "oap"
       }
     },
     "collab-lab": {
@@ -70,31 +68,20 @@
       "description": "A week long student collaborative theatre project",
       "registration": {
         "maxSeatsPerSchool": 2,
-        "maxSeats": 12,
-        "userType": "school"
+        "maxSeats": 12
       }
     },
     "the-sounds-of-stories": {
-      "name": "The Sounds of Stories",
+      "name": "The Sounds of Stories (Podcast Workshop)",
       "image": "bnc-tsos-banner.png",
       "pageID": "bnc-tsos",
-      "description": "Storytelling Through Sounds",
-      "registration": {
-        "maxSeats": 12,
-        "maxSeatsPerSchool": 3,
-        "userType": "school"
-      }
+      "description": "Learn to script, design and record your own podcast-friendly audio stories"
     },
     "stories-through-the-lens": {
       "name": "Stories through the Lens (Storytelling with a Phone Camera)",
       "image": "bnc-sttl-banner.png",
       "pageID": "bnc-sttl",
-      "description": "Making short films, vlogs, or cooking recipes, this workshop can give you hands-on experience in the aesthetics of filming techniques",
-      "registration": {
-        "maxSeats": 20,
-        "maxSeatsPerSchool": 4,
-        "userType": "school"
-      }
+      "description": "Making short films, vlogs, or cooking recipes, this workshop can give you hands-on experience in the aesthetics of filming techniques"
     },
     "fade-in": {
       "name": "Fade-In (Conversation with a Master of the Art)",
@@ -127,7 +114,7 @@
           },
           {
             "image": "ff-cc-banner.png",
-            "link": "/events/folk-fluence/ff-career-conversations"
+            "link": "/events/folk-fluence/career-conversations"
           },
           {
             "image": "ff-kld-banner.png",
@@ -148,40 +135,26 @@
       "description": "Individual interpretations of different Indian dance forms with respect to freedom",
       "registration": {
         "maxSeatsPerSchool": 3,
-        "maxSeats": 12,
-        "userType": "school"
+        "maxSeats": 12
       }
     },
     "flesh-n-bones": {
       "name": "FLESH N BONES",
       "image": "ff-fnb-banner.png",
       "pageID": "ff-fnb",
-      "description": "The Self-developed Contemporary Movement technique",
-      "registration": {
-        "maxSeatsPerSchool": 3,
-        "maxSeats": 20,
-        "userType": "school"
-      }
+      "description": "The Self-developed Contemporary Movement technique"
     },
     "kalbeliya-lec-dem": {
       "name": "Kalbeliya Lec-Dem",
       "image": "ff-kld-banner.png",
       "pageID": "ff-kld",
-      "description": "Story and journey of Gulabo Sapera as well as Kalbeliya as a dance form",
-      "registration": {
-        "maxSeats": 20,
-        "userType": "public"
-      }
+      "description": "Story and journey of Gulabo Sapera as well as Kalbeliya as a dance form"
     },
-    "ff-career-conversations": {
+    "career-conversations": {
       "name": "Dance as a Career",
       "image": "ff-cc-banner.png",
       "pageID": "ff-cc",
-      "description": "Career opportunities that lie within the field of dance",
-      "registration": {
-        "maxSeats": 20,
-        "userType": "public"
-      }
+      "description": "Career opportunities that lie within the field of dance"
     },
     "why-do-we-dance": {
       "name": "Why Do We Dance",
@@ -214,7 +187,7 @@
           },
           {
             "image": "i-cc-banner.png",
-            "link": "/events/iridescence/i-career-conversations"
+            "link": "/events/iridescence/career-conversations"
           },
           {
             "image": "i-t-banner.png",
@@ -235,29 +208,20 @@
       "description": "Different interpretations of freedom, each with its unique identity by reenactment of famous paintings that inspire",
       "registration": {
         "maxSeatsPerSchool": 10,
-        "formID": "sof",
-        "userType": "school"
+        "formID": "sof"
       }
     },
-    "i-career-conversations": {
+    "career-conversations": {
       "name": "Webinar - Career Development in Visual Arts",
       "image": "i-cc-banner.png",
       "pageID": "i-cc",
-      "description": "Seek the essence of how a career in visual arts is and future artists to discover what visual art stands for",
-      "registration": {
-        "maxSeats": 20,
-        "userType": "public"
-      }
+      "description": "Seek the essence of how a career in visual arts is and future artists to discover what visual art stands for"
     },
     "bamboo-craft-workshop": {
       "name": "Bamboo Craft Lecture Demonstration",
       "image": "i-bcw-banner.png",
       "pageID": "i-bcw",
-      "description": "Creating a plethora of products solely using bamboo",
-      "registration": {
-        "maxSeats": 20,
-        "userType": "public"
-      }
+      "description": "Creating a plethora of products solely using bamboo"
     },
     "tessellations": {
       "name": "Tessellations - The Papercraft Workshop",
@@ -266,19 +230,14 @@
       "description": "Unique 3D paper art keeping the trajectory and the ideas behind  Mr. Hinojosa's artworks",
       "registration": {
         "maxSeatsPerSchool": 4,
-        "maxSeats": 20,
-        "userType": "school"
+        "maxSeats": 20
       }
     },
     "art-as-a-catalyst-for-social-change": {
       "name": "Webinar - Art as a Catalyst for Social Change",
       "image": "i-aaacfsc-banner.png",
       "pageID": "i-aaacfsc",
-      "description": "Can public art empower individuals and communities and enable conversations leading to organic change within society?",
-      "registration": {
-        "maxSeats": 20,
-        "userType": "public"
-      }
+      "description": "Can public art empower individuals and communities and enable conversations leading to organic change within society?"
     }
   },
   "strings-attached": {
@@ -305,7 +264,7 @@
           },
           {
             "image": "sa-cc-banner.png",
-            "link": "/events/strings-attached/sa-career-conversations"
+            "link": "/events/strings-attached/career-conversations"
           },
           {
             "image": "sa-kmw-banner.png",
@@ -330,8 +289,7 @@
       "description": "A virtual inter-school music competition",
       "registration": {
         "maxSeatsPerSchool": 2,
-        "formID": "sas",
-        "userType": "school"
+        "formID": "sas"
       }
     },
     "songs-for-freedom": {
@@ -340,25 +298,17 @@
       "pageID": "sa-sff",
       "description": "Showcasing video entries of songs which are based on the theme of freedom"
     },
-    "sa-career-conversations": {
+    "career-conversations": {
       "name": "Careers in the Arts: Music",
       "image": "sa-cc-banner.png",
       "pageID": "sa-cc",
-      "description": "Students looking to make a career in music will gain an insight into the world of possibilities that exist within the music industry",
-      "registration": {
-        "maxSeats": 20,
-        "userType": "public"
-      }
+      "description": "Students looking to make a career in music will gain an insight into the world of possibilities that exist within the music industry"
     },
     "khasi-music-workshop": {
       "name": "Khasi Instruments and Music",
       "image": "sa-kmw-banner.png",
       "pageID": "sa-kmw",
-      "description": "Exploration of traditional Khasi instruments and music.",
-      "registration": {
-        "maxSeats": 20,
-        "userType": "public"
-      }
+      "description": "Exploration of traditional Khasi instruments and music."
     },
     "the-manta-sidhu-show": {
       "name": "The Manta Sidhu Show",
