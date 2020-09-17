@@ -43,11 +43,13 @@ async function renderProfile(req, res) {
 			const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
 			var userFirestoreData = checkPublicDatabase.data();
 			const eventFirestoreData = await db.collection('events').get()
-			eventFirestoreData.forEach(doc => { 
-				if (userFirestoreData.registeredEvents[doc.id]) {
-					userFirestoreData.registeredEvents[doc.id].joiningInfo = doc.data().joiningInfo; 
-				}
-			})
+			if (userFirestoreData.registeredEvents) {
+				eventFirestoreData.forEach(doc => { 
+					if (userFirestoreData.registeredEvents[doc.id]) {
+						userFirestoreData.registeredEvents[doc.id].joiningInfo = doc.data().joiningInfo; 
+					}
+				})
+			}
 			userData = {
 				name: userRecord.displayName,
 				email: userRecord.email,
