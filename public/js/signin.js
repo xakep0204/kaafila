@@ -107,6 +107,13 @@ async function signInEmailPublic() {
 					idToken: idToken,
 					csrfToken: csrfToken,
 				}).promise();
+				const docref = await db.collection('publicUsers').doc(user.uid).get()
+				if (!docref.exists) {
+					const updateUserDatabase = await db.collection("publicUsers").doc(user.uid).set({
+						email: user.email,
+						photoURL: user.photoURL,
+					})
+				}
 				const firebaseSignOut = await firebase.auth().signOut();
 				window.location.assign("/profile");
 			}
@@ -132,6 +139,13 @@ async function signInGooglePublic() {
 			idToken: idToken,
 			csrfToken: csrfToken,
 		}).promise();
+		const docref = await db.collection('publicUsers').doc(user.uid).get()
+		if (!docref.exists) {
+			const updateUserDatabase = await db.collection("publicUsers").doc(user.uid).set({
+				email: user.email,
+				photoURL: user.photoURL,
+			})
+		}
 		const firebaseSignOut = await firebase.auth().signOut();
 		window.location.assign("/profile");
 	} catch (err) {

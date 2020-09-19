@@ -4,6 +4,7 @@ var csrf = require("csurf");
 var admin = require("../firebase-proj");
 var csrfProtection = csrf({ cookie: true });
 var db = admin.firestore();
+var createError = require("http-errors");
 
 async function renderSignUp(req, res) {
 	const sessionCookie = req.cookies.session || "";
@@ -33,12 +34,13 @@ async function renderSignIn(req, res) {
 	}
 }
 
-async function renderProfile(req, res) {
+async function renderProfile(req, res, next) {
 	const sessionCookie = req.cookies.session || "";
 
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
 		const checkPublicDatabase = await db.collection('publicUsers').doc(firebaseUserClaims.sub).get()
+		const checkSchoolDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get()
 		if (checkPublicDatabase.exists) {
 			const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
 			var userFirestoreData = checkPublicDatabase.data();
@@ -83,6 +85,8 @@ async function renderProfile(req, res) {
 					userData: userData,
 					scripts: ['/js/profile-school.js']
 				});
+			} else {
+				return next(createError(401, 'User not found in database'))
 			}
 		}
 	} catch (err) {
@@ -196,7 +200,7 @@ async function serverCheckUser(req, res) {
 router.get("/signin", csrfProtection, (req, res) => renderSignIn(req, res));
 router.get("/signup", csrfProtection, (req, res) => renderSignUp(req, res));
 router.get("/signout", (req, res) => serverSignOut(req, res));
-router.get("/profile", (req, res) => renderProfile(req, res));
+router.get("/profile", (req, res, next) => renderProfile(req, res, next));
 router.post("/sessionlogin", (req, res) => serverSignIn(req, res));
 router.post("/updateuser", (req, res) => serverUpdateUser(req, res));
 router.post("/checkuser", (req, res) => serverCheckUser(req, res));
