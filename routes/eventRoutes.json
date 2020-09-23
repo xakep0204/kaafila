@@ -317,7 +317,7 @@
           },
           {
             "image": "sa-sb-banner.png",
-            "link": "/events/strings-attached/spaceband"
+            "link": "/events/strings-attached/space-band"
           }
         ]
       }
@@ -366,8 +366,8 @@
       "pageID": "sa-tmss",
       "description": "Performing and talking about composition, her own process and the importance of poetry music"
     },
-    "spaceband": {
-      "name": "Space Band",
+    "space-band": {
+      "name": "Space/Band",
       "image": "sa-sb-banner.png",
       "pageID": "sa-sb",
       "description": "An online platform which calls upon artists to engage in collaborative online musical performances"
