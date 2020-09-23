@@ -159,7 +159,7 @@
       "description": "The Self-developed Contemporary Movement technique",
       "registration": {
         "maxSeatsPerSchool": 5,
-        "maxSeats": 20,
+        "maxSeats": 25,
         "userType": "school"
       }
     },
@@ -169,8 +169,8 @@
       "pageID": "ff-kld",
       "description": "Story and journey of Gulabo Sapera as well as Kalbeliya as a dance form",
       "registration": {
-        "maxSeats": 20,
-        "userType": "public"
+        "formID": "ws",
+        "userType": "school"
       }
     },
     "ff-career-conversations": {
@@ -179,8 +179,8 @@
       "pageID": "ff-cc",
       "description": "Career opportunities that lie within the field of dance",
       "registration": {
-        "maxSeats": 20,
-        "userType": "public"
+        "formID": "ws",
+        "userType": "school"
       }
     },
     "why-do-we-dance": {
@@ -209,8 +209,8 @@
         "name": "Non-competitive Events",
         "main": [
           {
-            "image": "i-bcw-banner.png",
-            "link": "/events/iridescence/bamboo-craft-workshop"
+            "image": "i-bcld-banner.png",
+            "link": "/events/iridescence/bamboo-craft-lec-dem"
           },
           {
             "image": "i-cc-banner.png",
@@ -245,18 +245,18 @@
       "pageID": "i-cc",
       "description": "Seek the essence of how a career in visual arts is and future artists to discover what visual art stands for",
       "registration": {
-        "maxSeats": 20,
-        "userType": "public"
+        "formID": "ws",
+        "userType": "school"
       }
     },
-    "bamboo-craft-workshop": {
+    "bamboo-craft-lec-dem": {
       "name": "Bamboo Craft Lecture Demonstration",
-      "image": "i-bcw-banner.png",
-      "pageID": "i-bcw",
+      "image": "i-bcld-banner.png",
+      "pageID": "i-bcld",
       "description": "Creating a plethora of products solely using bamboo",
       "registration": {
-        "maxSeats": 20,
-        "userType": "public"
+        "formID": "ws",
+        "userType": "school"
       }
     },
     "tessellations": {
@@ -276,8 +276,8 @@
       "pageID": "i-aaacfsc",
       "description": "Can public art empower individuals and communities and enable conversations leading to organic change within society?",
       "registration": {
-        "maxSeats": 20,
-        "userType": "public"
+        "formID": "ws",
+        "userType": "school"
       }
     }
   },
@@ -308,8 +308,8 @@
             "link": "/events/strings-attached/sa-career-conversations"
           },
           {
-            "image": "sa-kmw-banner.png",
-            "link": "/events/strings-attached/khasi-music-workshop"
+            "image": "sa-kmld-banner.png",
+            "link": "/events/strings-attached/khasi-music-lec-dem"
           },
           {
             "image": "sa-tmss-banner.png",
@@ -346,31 +346,39 @@
       "pageID": "sa-cc",
       "description": "Students looking to make a career in music will gain an insight into the world of possibilities that exist within the music industry",
       "registration": {
-        "maxSeats": 20,
-        "userType": "public"
+        "formID": "ws",
+        "userType": "school"
       }
     },
-    "khasi-music-workshop": {
+    "khasi-music-lec-dem": {
       "name": "Khasi Instruments and Music",
-      "image": "sa-kmw-banner.png",
-      "pageID": "sa-kmw",
+      "image": "sa-kmld-banner.png",
+      "pageID": "sa-kmld",
       "description": "Exploration of traditional Khasi instruments and music.",
       "registration": {
-        "maxSeats": 20,
-        "userType": "public"
+        "formID": "ws",
+        "userType": "school"
       }
     },
     "the-manta-sidhu-show": {
       "name": "The Manta Sidhu Show",
       "image": "sa-tmss-banner.png",
       "pageID": "sa-tmss",
-      "description": "Performing and talking about composition, her own process and the importance of poetry music"
+      "description": "Performing and talking about composition, her own process and the importance of poetry music",
+      "registration": {
+        "formID": "ws",
+        "userType": "school"
+      }
     },
     "space-band": {
       "name": "Space/Band",
       "image": "sa-sb-banner.png",
       "pageID": "sa-sb",
-      "description": "An online platform which calls upon artists to engage in collaborative online musical performances"
+      "description": "An online platform which calls upon artists to engage in collaborative online musical performances",
+      "registration": {
+        "formID": "sb",
+        "userType": "public"
+      }
     }
   }
 }

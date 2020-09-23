@@ -106,6 +106,12 @@
 		background-color: transparent !important;
 		border: 0px!important;
 	}
+
+	#registeredevents > div > div {
+		margin-bottom: 2rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid black;
+	}
 </style>
 
 
@@ -126,80 +132,175 @@
 			{{#if userData.registeredEvents}}
 			{{#with userData.registeredEvents}}
 			
-			{{#if monologue-maestros}}
-			{{#with monologue-maestros}}
-			<h2>{{name}}</h2>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-						<th colspan="2">Submission</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="six wide">{{submission.name}}</td>
-						<td class="two wide">Class {{submission.class}}</td>
-						<td class="seven wide">{{#if submission.submission}}{{submission.submission}}{{else}}No submission yet{{/if}}</td>
-						<td><button onclick="editSubmission(this)" data-name="{{submission.name}}" data-url="monologue-maestros" data-subevent="Monologue Maestros" data-submissionpath="submission.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
-					</tr>
-				</tbody>
-			</table>
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
+			{{#if collab-lab}}
+			<div id="c-bnc-cl">
+				{{#with collab-lab}}
+				<h2>{{name}}</h2>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
 			{{/if}}
-			
+
+			{{#if monologue-maestros}}
+			<div id="c-bnc-mm">
+				{{#with monologue-maestros}}
+				<h2>{{name}}</h2>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+							<th colspan="2">Submission</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="six wide">{{submission.name}}</td>
+							<td class="two wide">Class {{submission.class}}</td>
+							<td class="seven wide">{{#if submission.submission}}{{submission.submission}}{{else}}No submission yet{{/if}}</td>
+							<td><button onclick="editSubmission(this)" data-name="{{submission.name}}" data-url="monologue-maestros" data-subevent="Monologue Maestros" data-submissionpath="submission.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+				
 			{{#if one-act-play}}
-			{{#with one-act-play}}
-			<h2>{{name}}</h2>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Group</th>
-						<th colspan="2">Submission</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="six wide">{{groupName}}</td>
-						<td class="nine wide">{{#if submissionlink}}{{submissionlink}}{{else}}No submission yet{{/if}}</td>
-						<td><button onclick="editSubmission(this)" data-name="{{groupName}}" data-url="one-act-play" data-subevent="One Act Play" data-submissionpath="submissionlink" class="ui button small basic icon"><i class="upload icon"></i></button></td>
-					</tr>
-				</tbody>
-			</table>
-			<h3 class="ui header">Group Members</h3>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each submission}}
-					<tr>
-						<td>{{this.name}}</td>
-						<td>Class {{this.class}}</td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
+			<div id="c-bnc-oap">
+				{{#with one-act-play}}
+				<h2>{{name}}</h2>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Group</th>
+							<th colspan="2">Submission</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="six wide">{{groupName}}</td>
+							<td class="nine wide">{{#if submissionlink}}{{submissionlink}}{{else}}No submission yet{{/if}}</td>
+							<td><button onclick="editSubmission(this)" data-name="{{groupName}}" data-url="one-act-play" data-subevent="One Act Play" data-submissionpath="submissionlink" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+						</tr>
+					</tbody>
+				</table>
+				<h3 class="ui header">Group Members</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if stories-through-the-lens}}
+			<div id="c-bnc-sttl">
+				{{#with stories-through-the-lens}}
+				<h2>{{name}}</h2>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if the-sounds-of-stories}}
+			<div id="c-bnc-tsos">
+				{{#with the-sounds-of-stories}}
+				<h2>{{name}}</h2>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
 			{{/if}}
 
 			{{#if folk-fluence-solos}}
+			<div id="c-ff-ffs">
 				{{#with folk-fluence-solos}}
 				<h2>{{name}}</h2>
 				<table class="ui table">
@@ -228,214 +329,435 @@
 					{{phone}} <br>
 				</p>
 				{{/with}}
-			{{/if}}
-
-			{{#if strings-attached-solos}}
-			{{#with strings-attached-solos}}
-			<h2>{{name}}</h2>
-			{{#each submission}}
-			<h3>{{this.name}}</h3>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-						<th colspan="2">Submission</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each this.submission}}
-					<tr>
-						<td class="six wide">{{this.name}}</td>
-						<td class="two wide">Class {{this.class}}</td>
-						<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
-						<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="strings-attached-solos" data-subevent="Strings Attached Solos" data-submissionpath="submission.{{@../key}}.submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-			{{/each}}
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
-			{{/if}}
-
-			{{#if spirit-of-freedom}}
-			{{#with spirit-of-freedom}}
-			<h2>{{name}}</h2>
-			{{#each submission}}
-			<h3>{{this.name}}</h3>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-						<th colspan="2">Submission</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each this.submission}}
-					<tr>
-						<td class="six wide">{{this.name}}</td>
-						<td class="two wide">Class {{this.class}}</td>
-						<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
-						<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="spirit-of-freedom" data-subevent="Spirit of Freedom" data-submissionpath="submission.{{@../key}}.submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-			{{/each}}
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
-			{{/if}}
-
-			{{#if collab-lab}}
-			{{#with collab-lab}}
-			<h2>{{name}}</h2>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each submission}}
-					<tr>
-						<td>{{this.name}}</td>
-						<td>Class {{this.class}}</td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
-			{{/if}}
-
-			{{#if tessellations}}
-			{{#with tessellations}}
-			<h2>{{name}}</h2>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each submission}}
-					<tr>
-						<td>{{this.name}}</td>
-						<td>Class {{this.class}}</td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
-			{{/if}}
-
-			{{#if the-sounds-of-stories}}
-			{{#with the-sounds-of-stories}}
-			<h2>{{name}}</h2>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each submission}}
-					<tr>
-						<td>{{this.name}}</td>
-						<td>Class {{this.class}}</td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
-			{{/if}}
-
-			{{#if stories-through-the-lens}}
-			{{#with stories-through-the-lens}}
-			<h2>{{name}}</h2>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each submission}}
-					<tr>
-						<td>{{this.name}}</td>
-						<td>Class {{this.class}}</td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
+			</div>
 			{{/if}}
 
 			{{#if flesh-n-bones}}
-			{{#with flesh-n-bones}}
-			<h2>{{name}}</h2>
-			<table class="ui table">
-				<thead>
-					<tr>
-						<th>Name of Student</th>
-						<th>Class</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each submission}}
-					<tr>
-						<td>{{this.name}}</td>
-						<td>Class {{this.class}}</td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-			<h3 class="ui header">Contact Person</h3>
-			<p class="ui">
-				{{contactPerson}} <br>
-				{{email}} <br>
-				{{phone}} <br>
-			</p>
-			{{/with}}
+			<div id="c-ff-fnb">
+				{{#with flesh-n-bones}}
+				<h2>{{name}}</h2>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if kalbeliya-lec-dem}}
+			<div id="c-ff-kld">
+				{{#with kalbeliya-lec-dem}}
+				<h2>{{name}}</h2>
+				<h3 class="ui header">Joining Info</h3>
+				{{#if joiningInfo}}
+				{{joiningInfo}}
+				{{else}} 
+				<p class="ui">TBD</p> 
+				{{/if}}
+				<h3 class="ui header">Registered Students</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if ff-career-conversations}}
+			<div id="c-ff-cc">
+				{{#with ff-career-conversations}}
+				<h2>{{name}}</h2>
+				<h3 class="ui header">Joining Info</h3>
+				{{#if joiningInfo}}
+				{{joiningInfo}}
+				{{else}} 
+				<p class="ui">TBD</p> 
+				{{/if}}
+				<h3 class="ui header">Registered Students</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if art-as-a-catalyst-for-social-change}}
+			<div id="c-i-aaacfsc">
+				{{#with art-as-a-catalyst-for-social-change}}
+				<h2>{{name}}</h2>
+				<h3 class="ui header">Joining Info</h3>
+				{{#if joiningInfo}}
+				{{joiningInfo}}
+				{{else}} 
+				<p class="ui">TBD</p> 
+				{{/if}}
+				<h3 class="ui header">Registered Students</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if bamboo-craft-lec-dem}}
+			<div id="c-i-bcld">
+				{{#with bamboo-craft-lec-dem}}
+				<h2>{{name}}</h2>
+				<h3 class="ui header">Joining Info</h3>
+				{{#if joiningInfo}}
+				{{joiningInfo}}
+				{{else}} 
+				<p class="ui">TBD</p> 
+				{{/if}}
+				<h3 class="ui header">Registered Students</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if i-career-conversations}}
+			<div id="c-i-cc">
+				{{#with i-career-conversations}}
+				<h2>{{name}}</h2>
+				<h3 class="ui header">Joining Info</h3>
+				{{#if joiningInfo}}
+				{{joiningInfo}}
+				{{else}} 
+				<p class="ui">TBD</p> 
+				{{/if}}
+				<h3 class="ui header">Registered Students</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if spirit-of-freedom}}
+			<div id="c-i-sof">
+				{{#with spirit-of-freedom}}
+				<h2>{{name}}</h2>
+				{{#each submission}}
+				<h3>{{this.name}}</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+							<th colspan="2">Submission</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each this.submission}}
+						<tr>
+							<td class="six wide">{{this.name}}</td>
+							<td class="two wide">Class {{this.class}}</td>
+							<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
+							<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="spirit-of-freedom" data-subevent="Spirit of Freedom" data-submissionpath="submission.{{@../key}}.submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				{{/each}}
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if tessellations}}
+			<div id="c-i-t">
+				{{#with tessellations}}
+				<h2>{{name}}</h2>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if sa-career-conversations}}
+			<div id="c-sa-cc">
+				{{#with sa-career-conversations}}
+				<h2>{{name}}</h2>
+				<h3 class="ui header">Joining Info</h3>
+				{{#if joiningInfo}}
+				{{joiningInfo}}
+				{{else}} 
+				<p class="ui">TBD</p> 
+				{{/if}}
+				<h3 class="ui header">Registered Students</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if khasi-music-lec-dem}}
+			<div id="c-sa-kmld">
+				{{#with khasi-music-lec-dem}}
+				<h2>{{name}}</h2>
+				<h3 class="ui header">Joining Info</h3>
+				{{#if joiningInfo}}
+				{{joiningInfo}}
+				{{else}} 
+				<p class="ui">TBD</p> 
+				{{/if}}
+				<h3 class="ui header">Registered Students</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if strings-attached-solos}}
+			<div id="c-sa-sas">
+				{{#with strings-attached-solos}}
+				<h2>{{name}}</h2>
+				{{#each submission}}
+				<h3>{{this.name}}</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+							<th colspan="2">Submission</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each this.submission}}
+						<tr>
+							<td class="six wide">{{this.name}}</td>
+							<td class="two wide">Class {{this.class}}</td>
+							<td class="seven wide">{{#if this.submission}}{{this.submission}}{{else}}No submission yet{{/if}}</td>
+							<td><button onclick="editSubmission(this)" data-name="{{this.name}}" data-url="strings-attached-solos" data-subevent="Strings Attached Solos" data-submissionpath="submission.{{@../key}}.submission.{{@index}}.submission" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				{{/each}}
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
+			{{/if}}
+
+			{{#if the-manta-sidhu-show}}
+			<div id="c-sa-tmss">
+				{{#with the-manta-sidhu-show}}
+				<h2>{{name}}</h2>
+				<h3 class="ui header">Joining Info</h3>
+				{{#if joiningInfo}}
+				{{joiningInfo}}
+				{{else}} 
+				<p class="ui">TBD</p> 
+				{{/if}}
+				<h3 class="ui header">Registered Students</h3>
+				<table class="ui table">
+					<thead>
+						<tr>
+							<th>Name of Student</th>
+							<th>Class</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each submission}}
+						<tr>
+							<td>{{this.name}}</td>
+							<td>Class {{this.class}}</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+				<h3 class="ui header">Contact Person</h3>
+				<p class="ui">
+					{{contactPerson}} <br>
+					{{email}} <br>
+					{{phone}} <br>
+				</p>
+				{{/with}}
+			</div>
 			{{/if}}
 
 			{{/with}}
@@ -474,7 +796,7 @@
 <div id="editsubmissionmodal" class="ui modal small">
 	<div class="header">
 		<h2>Edit Submission</h2>
-		<h3 id="modaldesc">Aditya Kulshrestha - Monologue Maestros</h3>
+		<h3 id="modaldesc"></h3>
 	</div>
 	<div class="content">
 		<form id="editsubmissionform" class="ui small form">
