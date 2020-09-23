@@ -228,11 +228,11 @@ async function subeventRegistration(req, res) {
 async function subeventSubmission(req, res) {
 	var subevent = req.body.subevent;
 	const sessionCookie = req.cookies.session || "";
-	console.log(req.body.data); 
 
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
-		const docref = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get();
+		const doc = await db.collection('schoolUsers').doc(firebaseUserClaims.sub);
+		const docref = await doc.get();
 		submissionPath = `registeredEvents.${subevent}`;
 		submissionData = JSON.parse(req.body.data);
 		if (docref.exists) {
