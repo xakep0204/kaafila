@@ -1,8 +1,8 @@
 var members;
 var globalMembers;
-categories = ["western-vocals", "hindustani-classical-vocals", "instrumental-strings", "instrumental-guitar", "instrumental-keyboard", "instrmental-percussion", "own-composition"]
-categoriesProper = ["Western Vocals", "Hindustani Classical Vocals", "Instrumental Strings", "Instrumental Guitar", "instrumental Keyboard", "Instrmental Percussion", "Own Composition"]
-categoriesAbbr = ["wv", "hcv", "is", "ig", "ik", "ip", "oc"]
+categories = ["western-vocals", "hindustani-classical-vocals", "instrumental-guitar", "instrumental-keyboard", "instrmental-percussion", "instrumental-strings", "own-composition"]
+categoriesProper = ["Western Vocals", "Hindustani Classical Vocals", "Instrumental Guitar", "instrumental Keyboard", "Instrmental Percussion", "Instrumental Strings", "Own Composition"]
+categoriesAbbr = ["wv", "hcv", "ig", "ik", "ip", "is", "oc"]
 groups = ["group0910", "group1112"]
 groupsProper = ["Group 1 - Grades 9-10", "Group 2 - Grades 11-12"]
 
