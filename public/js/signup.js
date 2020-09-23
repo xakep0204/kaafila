@@ -86,7 +86,7 @@ $("[data-tab='schoolUsers'] #signUpForm").form({
 			],
 		},
 		password: {
-			identifier: "password",
+			identifier: "passwordSchool",
 			rules: [
 				{
 					type: "empty",
@@ -99,14 +99,14 @@ $("[data-tab='schoolUsers'] #signUpForm").form({
 			],
 		},
 		confirmPassword: {
-			identifier: "confirmPassword",
+			identifier: "confirmPasswordSchool",
 			rules: [
 				{
 					type: "empty",
 					prompt: "Please confirm your password",
 				},
 				{
-					type: "match[password]",
+					type: "match[passwordSchool]",
 					prompt: "Passwords do not match",
 				},
 			],
@@ -175,21 +175,23 @@ async function signUpGooglePublic() {
 		var provider = new firebase.auth.GoogleAuthProvider();
 		const firebaseSignUp = await firebase.auth().signInWithPopup(provider)
 		user = await firebase.auth().currentUser;
-		const idToken = await user.getIdToken()
-		const csrfToken = getCookie("csrfToken");
-		const sendTokens = await $.post("/sessionlogin", {
-			idToken: idToken,
-			csrfToken: csrfToken,
-		}).promise();
-		const docref = await db.collection('publicUsers').doc(user.uid).get()
-		if (!docref.exists) {
-			const updateUserDatabase = await db.collection("publicUsers").doc(user.uid).set({
-				email: user.email,
-				photoURL: user.photoURL,
-			})
+		if (!(await checkGoogleUserExistance(user.email, 'public'))) {
+			const idToken = await user.getIdToken()
+			const csrfToken = getCookie("csrfToken");
+			const sendTokens = await $.post("/sessionlogin", {
+				idToken: idToken,
+				csrfToken: csrfToken,
+			}).promise();
+			const docref = await db.collection('publicUsers').doc(user.uid).get()
+			if (!docref.exists) {
+				const updateUserDatabase = await db.collection("publicUsers").doc(user.uid).set({
+					email: user.email,
+					photoURL: user.photoURL,
+				})
+			}
+			const firebaseSignOut = await firebase.auth().signOut();
+			window.location.assign("/profile");
 		}
-		const firebaseSignOut = await firebase.auth().signOut();
-		window.location.assign("/profile");
 	} catch (err) {
 		console.log(err)	
 	}
@@ -201,7 +203,7 @@ async function signUpEmailSchool() {
 			if ($("[data-tab='schoolUsers'] #signUpForm").form("is valid")) {
 				$("[data-tab='schoolUsers'] #signUpForm").addClass("loading");
 				email = $("[data-tab='schoolUsers'] #email").val();
-				password = $("[data-tab='schoolUsers'] #password").val();
+				password = $("[data-tab='schoolUsers'] #passwordSchool").val();
 				const firebaseSignUp = await firebase.auth().createUserWithEmailAndPassword(email, password)
 				var user = await firebase.auth().currentUser;
 				const updateUserProfile = await user.updateProfile({
@@ -236,19 +238,21 @@ async function signUpGoogleSchool() {
 		var provider = new firebase.auth.GoogleAuthProvider();
 		const firebaseSignUp = await firebase.auth().signInWithPopup(provider)
 		user = await firebase.auth().currentUser;
-		const docref = await db.collection('schoolUsers').doc(user.uid).get()
-		if (docref.exists) {
-			const idToken = await user.getIdToken()
-			const csrfToken = getCookie("csrfToken");
-			const sendTokens = await $.post("/sessionlogin", {
-				idToken: idToken,
-				csrfToken: csrfToken,
-			}).promise();
-			const firebaseSignOut = await firebase.auth().signOut();
-			window.location.assign("/profile");
-		}
-		else {
-			$("#schoolInfoModal").modal("show");
+		if (!(await checkGoogleUserExistance(user.email, 'school'))) {
+			const docref = await db.collection('schoolUsers').doc(user.uid).get()
+			if (docref.exists) {
+				const idToken = await user.getIdToken()
+				const csrfToken = getCookie("csrfToken");
+				const sendTokens = await $.post("/sessionlogin", {
+					idToken: idToken,
+					csrfToken: csrfToken,
+				}).promise();
+				const firebaseSignOut = await firebase.auth().signOut();
+				window.location.assign("/profile");
+			}
+			else {
+				$("#schoolInfoModal").modal("show");
+			}
 		}
 	} catch (err) {
 		console.log(err)	
@@ -305,6 +309,26 @@ async function checkUserExistance(email, db) {
 		return true;
 	} else {
 		$(`[data-tab='${db}Users'] #signUpForm`).form("add errors", ["Account already exists, sign in instead"]);
+		return true;
+	}
+};
+
+async function checkGoogleUserExistance(email, db) {
+	$(`[data-tab='${db}Users'] #signUpForm`).addClass("loading");
+	dbs = ['school', 'public']
+	dbOtherRaw = dbs.filter(v => v != db)[0]
+	dbOther = dbOtherRaw.charAt(0).toUpperCase() + dbOtherRaw.slice(1)
+	const serverData = await $.post("/checkuser", {email: email}).promise();
+	$(`[data-tab='${db}Users'] #signUpForm`).removeClass("loading");
+	if (serverData.emailExists == false) {
+		return false;
+	} else if (serverData.dbCollection == db) {
+		return false;
+	} else if (serverData.dbCollection == dbOtherRaw) {
+		$(`[data-tab='${db}Users'] #signUpForm`).form("add errors", [`${dbOther} account already exists with the same email`]);
+		return true;
+	} else {
+		console.log(serverData);
 		return true;
 	}
 };

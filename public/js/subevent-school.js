@@ -775,6 +775,156 @@ function sofForm() {
 	})
 }
 
+function wsForm() {
+	members = [1];
+	globalMembers = [1];
+	formFields = {
+		contactPerson: {
+			identifier: "contactPerson",
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter the contact person's name",
+				},
+			],
+		},
+		email: {
+			identifier: "email",
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter the contact person's email",
+				},
+				{
+					type: "email",
+					prompt: "Enter a valid email",
+				},
+			],
+		},
+		phone: {
+			identifier: "phone",
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter contact person's phone number",
+				},
+				{
+					type: "regExp[/^[0-9]{10}$/]",
+					prompt: "Enter a valid phone number",
+				},
+			],
+		},
+		student1Name: {
+			identifier: "student1Name",
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter student's name",
+				},
+			],
+		},
+		student1Class: {
+			identifier: "student1Class",
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter student's class",
+				},
+			],
+		},
+	};
+
+	for (i = 2; i <= 100; i++) {
+		globalMembers.push(i);
+		formFields[`student${i}Name`] = {
+			identifier: `student${i}Name`,
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter student's name",
+				},
+			],
+		};
+		formFields[`student${i}Class`] = {
+			identifier: `student${i}Class`,
+			rules: [
+				{
+					type: "empty",
+					prompt: "Enter student's class",
+				},
+			],
+		};
+	}
+	
+	$("#registereventform").form({ fields: formFields });
+	
+	$("#studentAdd").on('click', () => {
+		temp_members = globalMembers.filter(function (x) { return members.indexOf(x) < 0 });
+		temp_members.sort((a, b) => {return a - b});
+		members.push(temp_members[0]);
+		members.sort((a, b) => {return a - b});
+		$("#students").append(`
+			<div id="student${temp_members[0]}">
+				<div class="two fields">
+					<div class="eight wide field">
+						<label>Student Name</label>
+						<input type="text" class="form-control" id="student${temp_members[0]}Name" placeholder="Student Name">
+					</div>
+					<div class="four wide field">
+						<label>Student Class</label>
+						<select class="ui dropdown" id="student${temp_members[0]}Class">
+							<option value="">Student Class</option>
+							<option value="9">Class 9</option>
+							<option value="10">Class 10</option>
+							<option value="11">Class 11</option>
+							<option value="12">Class 12</option>
+						</select>
+					</div>
+				</div>
+				<div class="field">
+					<button onclick="studentRemove(this)" data-student="${temp_members[0]}" type="button" class="ui tiny red button">Remove Student</button>
+				</div>
+			</div>
+		`);
+		$(".ui.dropdown").dropdown();
+		$("#registereventform").form({ fields: formFields });
+		if (members.length >= parseInt(registrationMeta.maxseatsperschool)) {
+			$("#studentAdd").attr("disabled", "");
+		}
+	});
+	
+	$("#registereventform").submit(() => {
+		if ($("#registereventform").form('is valid')) {
+			$("#registerevent").addClass("loading");
+			data = {
+				name: registrationMeta.name,
+				contactPerson: $("#registereventform #contactPerson").val(),
+				email: $("#registereventform #email").val(),
+				phone: $("#registereventform #phone").val(),
+				submission: [],
+				participants: $("#students > div").length
+			}
+			$("#students > div").each((i,e) => {
+				studentID = $(e).attr('id')
+				data.submission.push({
+					name: $(`#${studentID}Name`).val(),
+					class: $(`#${studentID}Class`).val()
+				})
+			});
+
+			$.post(`/registration`, {data: JSON.stringify(data), subevent: registrationMeta.subevent}, (status) => {
+				if (status == "OK") {
+					$("#registereventmodal").modal("hide");
+					$("#registereventconfirmmodal").modal("show");
+				} else {
+					console.log(status);
+				}
+			})
+		}
+		return false;
+	})
+}
+
 $(".ui.dropdown").dropdown();
 $("#registereventconfirmmodal").modal({ onHidden: () => window.location.assign("/profile") });
 $("#registereventmodalbutton").on("click", () => $("#registereventmodal").modal("show"));
@@ -802,6 +952,9 @@ if (document.getElementById("registereventmodalbutton")) {
 			break;
 		case "sof":
 			sofForm();
+			break;
+		case "ws":
+			wsForm();
 			break;
 	}
 }

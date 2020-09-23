@@ -3,8 +3,7 @@
 		<div class="field">
 			<label>Contact Person for the Event</label>
 			<div class="ui input">
-				<input type="text" id="contactPerson" placeholder="Contact Person for the Event"
-					value="{{userData.schoolRepName}}">
+				<input type="text" id="contactPerson" placeholder="Contact Person for the Event">
 			</div>
 		</div>
 		<div class="field">
@@ -19,17 +18,24 @@
 				<input type="text" id="phone" placeholder="Phone Number of the Contact Person">
 			</div>
 		</div>
-		<div id="students">
-			<div id="student1">
+		<div class="field">
+			<label>Band Name</label>
+			<div class="ui input">
+				<input type="text" id="bandName" placeholder="Band Name">
+			</div>
+		</div>
+		<h4 class="ui dividing header">Band Members</h4>
+		<div id="members">
+			<div id="member1">
 				<div class="two fields">
 					<div class="eight wide field">
-						<label>Student Name</label>
-						<input type="text" class="form-control" id="studentName" placeholder="Student Name">
+						<label>Member Name</label>
+						<input type="text" class="form-control" id="member1Name" placeholder="Member Name" value="{{userData.name}}">
 					</div>
 					<div class="four wide field">
-						<label>Student Class</label>
-						<select class="ui dropdown" id="studentClass">
-							<option value>Student Class</option>
+						<label>Member Class</label>
+						<select class="ui dropdown" id="member1Class">
+							<option value="">Member Class</option>
 							<option value="9">Class 9</option>
 							<option value="10">Class 10</option>
 							<option value="11">Class 11</option>
@@ -40,7 +46,7 @@
 			</div>
 		</div>
 		<div class="field">
-			<button id="studentAdd" type="button" class="ui tiny green button">Add Student</button>
+			<button id="memberAdd" type="button" class="ui tiny green button">Add Member</button>
 		</div>
 		<div class="ui fluid container right aligned">
 			<button type="submit" id="registerevent" class="ui primary button">Submit</button>

@@ -44,14 +44,7 @@ async function renderProfile(req, res, next) {
 		if (checkPublicDatabase.exists) {
 			const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
 			var userFirestoreData = checkPublicDatabase.data();
-			const eventFirestoreData = await db.collection('events').get()
-			if (userFirestoreData.registeredEvents) {
-				eventFirestoreData.forEach(doc => { 
-					if (userFirestoreData.registeredEvents[doc.id]) {
-						userFirestoreData.registeredEvents[doc.id].joiningInfo = doc.data().joiningInfo; 
-					}
-				})
-			}
+			
 			userData = {
 				name: userRecord.displayName,
 				email: userRecord.email,
@@ -71,6 +64,14 @@ async function renderProfile(req, res, next) {
 			if (checkSchoolDatabase.exists) {
 				const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
 				const userFirestoreData = checkSchoolDatabase.data();
+				if (userFirestoreData.registeredEvents) {
+					const eventFirestoreData = await db.collection('events').get()
+					eventFirestoreData.forEach(doc => { 
+						if (userFirestoreData.registeredEvents[doc.id]) {
+							userFirestoreData.registeredEvents[doc.id].joiningInfo = doc.data().joiningInfo; 
+						}
+					})
+				}
 				userData = {
 					schoolName: userRecord.displayName,
 					schoolRepName: userFirestoreData.schoolRepName,

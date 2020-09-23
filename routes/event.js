@@ -85,7 +85,7 @@ async function renderSubevent(req, res, next) {
 		return next(createError(404))
 	}
 	var registration = routingData[subevent].registration || {};
-
+	
 	const webrender = (db) => {
 		if (db) {
 			res.render(`subevent-${db}`, {
@@ -179,7 +179,7 @@ async function renderSubevent(req, res, next) {
 }
 
 async function subeventRegistration(req, res) {
-	const maxSeatEvents = ['collab-lab', 'the-sounds-of-stories', 'stories-through-the-lens', 'flesh-n-bones', 'kalbeliya-lec-dem', 'ff-career-conversations', 'i-career-conversations', 'bamboo-craft-workshop', 'tessellations', 'art-as-a-catalyst-for-social-change', 'sa-career-conversations', 'khasi-music-workshop'];
+	const maxSeatEvents = ['collab-lab', 'the-sounds-of-stories', 'stories-through-the-lens', 'flesh-n-bones', 'bamboo-craft-workshop', 'tessellations'];
 	const sessionCookie = req.cookies.session || "";
 	var subevent = req.body.subevent;
 	var data = JSON.parse(req.body.data);
@@ -189,15 +189,18 @@ async function subeventRegistration(req, res) {
 		const checkPublicDatabase = await db.collection('publicUsers').doc(firebaseUserClaims.sub).get()
 		if (checkPublicDatabase.exists) {
 			registeredEvents = checkPublicDatabase.data().registeredEvents || {};
-			registeredEvents[subevent] = {name: data.name};
+			registeredEvents[subevent] = data;
 			const updateDatabase = db.collection('publicUsers').doc(firebaseUserClaims.sub).update({registeredEvents: registeredEvents})
 		
-			doc = db.collection('events').doc(subevent);
-			docref = await doc.get()
-	
-			if (docref.exists) { participants = docref.data().participants + 1 || 1; } 
-			else { participants = 1; }
-			doc.set({participants: participants})
+			
+			if (maxSeatEvents.indexOf(subevent) != -1) {
+				doc = db.collection('events').doc(subevent);
+				docref = await doc.get()
+				if (docref.exists) { participants = docref.data().participants + data.participants || data.participants; } 
+				else { participants = data.participants; }
+				doc.set({participants: participants})
+			}
+
 			res.sendStatus(200);
 		} else {
 			const checkSchoolDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get()
@@ -206,10 +209,10 @@ async function subeventRegistration(req, res) {
 				registeredEvents[subevent] = data;
 				const updateDatabase = db.collection('schoolUsers').doc(firebaseUserClaims.sub).update({registeredEvents: registeredEvents})
 				
-				doc = db.collection('events').doc(subevent);
-				docref = await doc.get()
-		
+				
 				if (maxSeatEvents.indexOf(subevent) != -1) {
+					doc = db.collection('events').doc(subevent);
+					docref = await doc.get()
 					if (docref.exists) { participants = docref.data().participants + data.participants || data.participants; } 
 					else { participants = data.participants; }
 					doc.set({participants: participants})
@@ -231,15 +234,32 @@ async function subeventSubmission(req, res) {
 
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
-		const doc = await db.collection('schoolUsers').doc(firebaseUserClaims.sub);
-		const docref = await doc.get();
-		submissionPath = `registeredEvents.${subevent}`;
-		submissionData = JSON.parse(req.body.data);
-		if (docref.exists) {
-			const updateDatabase = await doc.update({[submissionPath]: submissionData});
-			res.sendStatus(200);
+		const checkPublicDatabase = await db.collection('publicUsers').doc(firebaseUserClaims.sub).get()
+		if (checkPublicDatabase.exists) {
+			const doc = await db.collection('publicUsers').doc(firebaseUserClaims.sub);
+			const docref = await doc.get();
+			submissionPath = `registeredEvents.${subevent}`;
+			submissionData = JSON.parse(req.body.data);
+			if (docref.exists) {
+				const updateDatabase = await doc.update({[submissionPath]: submissionData});
+				res.sendStatus(200);
+			} else {
+				res.send("No User Exists");
+			}
 		} else {
-			res.send("No User Exists");
+			const checkSchoolDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get()
+			if (checkSchoolDatabase.exists) {
+				const doc = await db.collection('schoolUsers').doc(firebaseUserClaims.sub);
+				const docref = await doc.get();
+				submissionPath = `registeredEvents.${subevent}`;
+				submissionData = JSON.parse(req.body.data);
+				if (docref.exists) {
+					const updateDatabase = await doc.update({[submissionPath]: submissionData});
+					res.sendStatus(200);
+				} else {
+					res.send("No User Exists");
+				}
+			}
 		}
 	} catch (err) {
 		if (err.code !== "auth/argument-error") { 

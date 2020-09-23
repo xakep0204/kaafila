@@ -123,26 +123,52 @@
 		<div class="ui container">
 			<h1 class="ui header">Registered Events</h1>
 			{{#if userData.registeredEvents}}
+			{{#with userData.registeredEvents}}
+
+			{{#if space-band}}
+			{{#with space-band}}
+			<h2>{{name}}</h2>
 			<table class="ui table">
 				<thead>
 					<tr>
-						<th>Event</th>
-						<th>Joining info</th>
+						<th>Name of Band</th>
+						<th colspan="2">Submission</th>
 					</tr>
 				</thead>
 				<tbody>
-					{{#each userData.registeredEvents}}
 					<tr>
-						<td class="three wide">{{this.name}}</td>
-						{{#if this.joiningInfo}}
-						<td class="five wide">{{{this.joiningInfo}}}</td>
-						{{else}}
-						<td class="five wide">TBD</td>
-						{{/if}}
+						<td class="six wide">{{bandName}}</td>
+						<td class="nine wide">{{#if submissionlink}}{{submissionlink}}{{else}}No submission yet{{/if}}</td>
+						<td><button onclick="editSubmission(this)" data-name="{{bandName}}" data-url="space-band" data-subevent="Space Band" data-submissionpath="submissionlink" class="ui button small basic icon"><i class="upload icon"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
+			<h3 class="ui header">Band Members</h3>
+			<table class="ui table">
+				<thead>
+					<tr>
+						<th>Name of Student</th>
+						<th>Class</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each submission}}
+					<tr>
+						<td>{{this.name}}</td>
+						<td>Class {{this.class}}</td>
 					</tr>
 					{{/each}}
 				</tbody>
 			</table>
+			<h3 class="ui header">Contact Person</h3>
+			<p class="ui">
+				{{contactPerson}} <br>
+				{{email}} <br>
+				{{phone}} <br>
+			</p>
+			{{/with}}
+			{{/if}}
+			{{/with}}
 			{{else}}
 			<h3 class="ui header">No events registered for yet</h3>
 			{{/if}}
@@ -168,6 +194,31 @@
 				<a href="/signout"><button id="signout" class="ui button primary">Sign out</button></a>
 			</div>
 		</div>
+	</div>
+</div>
+
+<div id="editsubmissionmodal" class="ui modal small">
+	<div class="header">
+		<h2>Edit Submission</h2>
+		<h3 id="modaldesc"></h3>
+	</div>
+	<div class="content">
+		<form id="editsubmissionform" class="ui small form">
+			<div class="ui stacked">
+				<h5>Upload your file on an online cloud platform (Google Drive, YouTube, Dropbox, etc.) and paste the public access link here.</h5>
+				<div class="field">
+          <label>Link to File</label>
+          <div class="ui input">
+            <input type="text" id="link" placeholder="Link to File">
+          </div>
+        </div>
+				<div class="ui fluid container column right aligned">
+					<button type="submit" id="editsubmission" class="ui primary button">Submit</button>
+				</div>
+      </div>
+
+			<div class="ui error message"></div>
+		</form>
 	</div>
 </div>
 
