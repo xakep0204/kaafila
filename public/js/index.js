@@ -12,3 +12,7 @@ $('#gallery-more-button button').click(() => {
   $('#gallery-more-button').css("display", "none");
 
 });
+
+$(document).ready(() => {
+  $("#deadlinemodal").modal('show');
+})
