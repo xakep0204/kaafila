@@ -1,338 +1,100 @@
 {
-  "bread-and-circuses": {
-    "title": "Bread & Circuses",
-    "name": "Bread <span class=\"princess-sofia\">&</span> Circuses",
-    "cssID": "bnc",
-    "headerFont": "rye",
-    "eventCategories": [
-      {
-        "name": "Competitive Events",
-        "main": [
-          {
-            "image": "bnc-mm-banner.png",
-            "link": "/events/bread-and-circuses/monologue-maestros"
-          },
-          {
-            "image": "bnc-oap-banner.png",
-            "link": "/events/bread-and-circuses/one-act-play"
-          }
-        ]
-      },
-      {
-        "name": "Non-competitive Events",
-        "main": [
-          {
-            "image": "bnc-cl-banner.png",
-            "link": "/events/bread-and-circuses/collab-lab"
-          },
-          {
-            "image": "bnc-tsos-banner.png",
-            "link": "/events/bread-and-circuses/the-sounds-of-stories"
-          },
-          {
-            "image": "bnc-sttl-banner.png",
-            "link": "/events/bread-and-circuses/stories-through-the-lens"
-          },
-          {
-            "image": "bnc-fi-banner.png",
-            "link": "/events/bread-and-circuses/fade-in"
-          }
-        ]
-      }
-    ],
-    "navID": "active_bnc",
+  "bread-and-circuses":{
     "monologue-maestros": {
       "name": "Monologue Maestros",
       "image": "bnc-mm-banner.png",
       "pageID": "bnc-mm",
-      "description": "Virtual solo theatrical performance",
-      "registration": {
-        "maxSeatsPerSchool": 1,
-        "formID": "mm",
-        "userType": "school"
-      }
+      "description": "Virtual solo theatrical performance"
     },
     "one-act-play": {
       "name": "One Act Play",
       "image": "bnc-oap-banner.png",
       "pageID": "bnc-oap",
-      "description": "Collaborative virtual theatrical performance",
-      "registration": {
-        "maxSeatsPerSchool": 15,
-        "formID": "oap",
-        "userType": "school"
-      }
+      "description": "Collaborative virtual theatrical performance"
     },
     "collab-lab": {
       "name": "Collab Lab",
       "image": "bnc-cl-banner.png",
       "pageID": "bnc-cl",
-      "description": "A week long student collaborative theatre project",
-      "registration": {
-        "maxSeatsPerSchool": 2,
-        "maxSeats": 12,
-        "userType": "school"
-      }
+      "description": "A week long student collaborative theatre project"
     },
     "the-sounds-of-stories": {
       "name": "The Sounds of Stories",
       "image": "bnc-tsos-banner.png",
       "pageID": "bnc-tsos",
-      "description": "Storytelling Through Sounds",
-      "registration": {
-        "maxSeats": 12,
-        "maxSeatsPerSchool": 3,
-        "userType": "school"
-      }
+      "description": "Storytelling Through Sounds"
     },
     "stories-through-the-lens": {
       "name": "Stories through the Lens (Storytelling with a Phone Camera)",
       "image": "bnc-sttl-banner.png",
       "pageID": "bnc-sttl",
-      "description": "Making short films, vlogs, or cooking recipes, this workshop can give you hands-on experience in the aesthetics of filming techniques",
-      "registration": {
-        "maxSeats": 20,
-        "maxSeatsPerSchool": 4,
-        "userType": "school"
-      }
-    },
-    "fade-in": {
-      "name": "Fade-In (Conversation with a Master of the Art)",
-      "image": "bnc-fi-banner.png",
-      "pageID": "bnc-fi",
-      "description": "A free-wheeling candid chat with a legend of the theatre and films"
+      "description": "Making short films, vlogs, or cooking recipes, this workshop can give you hands-on experience in the aesthetics of filming techniques"
     }
   },
-  "folk-fluence": {
-    "title": "Folk Fluence",
-    "name": "Folk Fluence",
-    "cssID": "ff",
-    "headerFont": "ardagh",
-    "eventCategories": [
-      {
-        "name": "Competitive Events",
-        "main": [
-          {
-            "image": "ff-ffs-banner.png",
-            "link": "/events/folk-fluence/folk-fluence-solos"
-          }
-        ]
-      },
-      {
-        "name": "Non-competitive Events",
-        "main": [
-          {
-            "image": "ff-fnb-banner.png",
-            "link": "/events/folk-fluence/flesh-n-bones"
-          },
-          {
-            "image": "ff-cc-banner.png",
-            "link": "/events/folk-fluence/ff-career-conversations"
-          },
-          {
-            "image": "ff-kld-banner.png",
-            "link": "/events/folk-fluence/kalbeliya-lec-dem"
-          },
-          {
-            "image": "ff-wdwd-banner.png",
-            "link": "/events/folk-fluence/why-do-we-dance"
-          }
-        ]
-      }
-    ],
-    "navID": "active_ff",
+  "folk-fluence":{
     "folk-fluence-solos": {
       "name": "Folk Fluence Solos",
       "image": "ff-ffs-banner.png",
       "pageID": "ff-ffs",
-      "description": "Individual interpretations of different Indian dance forms with respect to freedom",
-      "registration": {
-        "maxSeatsPerSchool": 3,
-        "maxSeats": 12,
-        "userType": "school"
-      }
+      "description": "Individual interpretations of different Indian dance forms with respect to freedom"
     },
     "flesh-n-bones": {
       "name": "FLESH N BONES",
       "image": "ff-fnb-banner.png",
       "pageID": "ff-fnb",
-      "description": "The Self-developed Contemporary Movement technique",
-      "registration": {
-        "maxSeatsPerSchool": 5,
-        "maxSeats": 25,
-        "userType": "school"
-      }
+      "description": "The Self-developed Contemporary Movement technique"
     },
     "kalbeliya-lec-dem": {
       "name": "Kalbeliya Lec-Dem",
       "image": "ff-kld-banner.png",
       "pageID": "ff-kld",
-      "description": "Story and journey of Gulabo Sapera as well as Kalbeliya as a dance form",
-      "registration": {
-        "formID": "ws",
-        "userType": "school"
-      }
+      "description": "Story and journey of Gulabo Sapera as well as Kalbeliya as a dance form"
     },
     "ff-career-conversations": {
       "name": "Dance as a Career",
       "image": "ff-cc-banner.png",
       "pageID": "ff-cc",
-      "description": "Career opportunities that lie within the field of dance",
-      "registration": {
-        "formID": "ws",
-        "userType": "school"
-      }
-    },
-    "why-do-we-dance": {
-      "name": "Why Do We Dance",
-      "image": "ff-wdwd-banner.png",
-      "pageID": "ff-wdwd",
-      "description": "Expanding the idea of dance to movement"
+      "description": "Career opportunities that lie within the field of dance"
     }
   },
-  "iridescence": {
-    "title": "Iridescence",
-    "name": "Iridescence",
-    "cssID": "i",
-    "headerFont": "apple-garamond",
-    "eventCategories": [
-      {
-        "name": "Competitive Events",
-        "main": [
-          {
-            "image": "i-sof-banner.png",
-            "link": "/events/iridescence/spirit-of-freedom"
-          }
-        ]
-      },
-      {
-        "name": "Non-competitive Events",
-        "main": [
-          {
-            "image": "i-bcld-banner.png",
-            "link": "/events/iridescence/bamboo-craft-lec-dem"
-          },
-          {
-            "image": "i-cc-banner.png",
-            "link": "/events/iridescence/i-career-conversations"
-          },
-          {
-            "image": "i-t-banner.png",
-            "link": "/events/iridescence/tessellations"
-          },
-          {
-            "image": "i-aaacfsc-banner.png",
-            "link": "/events/iridescence/art-as-a-catalyst-for-social-change"
-          }
-        ]
-      }
-    ],
-    "navID": "active_i",
+  "iridescence":{
     "spirit-of-freedom": {
       "name": "Spirit of Freedom",
       "image": "i-sof-banner.png",
       "pageID": "i-sof",
-      "description": "Different interpretations of freedom, each with its unique identity by reenactment of famous paintings that inspire",
-      "registration": {
-        "maxSeatsPerSchool": 10,
-        "formID": "sof",
-        "userType": "school"
-      }
+      "description": "Different interpretations of freedom, each with its unique identity by reenactment of famous paintings that inspire"
     },
     "i-career-conversations": {
       "name": "Webinar - Career Development in Visual Arts",
       "image": "i-cc-banner.png",
       "pageID": "i-cc",
-      "description": "Seek the essence of how a career in visual arts is and future artists to discover what visual art stands for",
-      "registration": {
-        "formID": "ws",
-        "userType": "school"
-      }
+      "description": "Seek the essence of how a career in visual arts is and future artists to discover what visual art stands for"
     },
     "bamboo-craft-lec-dem": {
       "name": "Bamboo Craft Lecture Demonstration",
       "image": "i-bcld-banner.png",
       "pageID": "i-bcld",
-      "description": "Creating a plethora of products solely using bamboo",
-      "registration": {
-        "formID": "ws",
-        "userType": "school"
-      }
+      "description": "Creating a plethora of products solely using bamboo"
     },
     "tessellations": {
       "name": "Tessellations - The Papercraft Workshop",
       "image": "i-t-banner.png",
       "pageID": "i-t",
-      "description": "Unique 3D paper art keeping the trajectory and the ideas behind  Mr. Hinojosa's artworks",
-      "registration": {
-        "maxSeatsPerSchool": 4,
-        "maxSeats": 20,
-        "userType": "school"
-      }
+      "description": "Unique 3D paper art keeping the trajectory and the ideas behind  Mr. Hinojosa's artworks"
     },
     "art-as-a-catalyst-for-social-change": {
       "name": "Webinar - Art as a Catalyst for Social Change",
       "image": "i-aaacfsc-banner.png",
       "pageID": "i-aaacfsc",
-      "description": "Can public art empower individuals and communities and enable conversations leading to organic change within society?",
-      "registration": {
-        "formID": "ws",
-        "userType": "school"
-      }
+      "description": "Can public art empower individuals and communities and enable conversations leading to organic change within society?"
     }
   },
-  "strings-attached": {
-    "title": "Strings Attached",
-    "name": "Strings Attached",
-    "cssID": "sa",
-    "headerFont": "welcome",
-    "eventCategories": [
-      {
-        "name": "Competitive Events",
-        "main": [
-          {
-            "image": "sa-sas-banner.png",
-            "link": "/events/strings-attached/strings-attached-solos"
-          }
-        ]
-      },
-      {
-        "name": "Non-competitive Events",
-        "main": [
-          {
-            "image": "sa-sff-banner.png",
-            "link": "/events/strings-attached/songs-for-freedom"
-          },
-          {
-            "image": "sa-cc-banner.png",
-            "link": "/events/strings-attached/sa-career-conversations"
-          },
-          {
-            "image": "sa-kmld-banner.png",
-            "link": "/events/strings-attached/khasi-music-lec-dem"
-          },
-          {
-            "image": "sa-tmss-banner.png",
-            "link": "/events/strings-attached/the-manta-sidhu-show"
-          },
-          {
-            "image": "sa-sb-banner.png",
-            "link": "/events/strings-attached/space-band"
-          }
-        ]
-      }
-    ],
-    "navID": "active_sa",
+  "strings-attached":{
     "strings-attached-solos": {
       "name": "Strings Attached Solos",
       "image": "sa-sas-banner.png",
       "pageID": "sa-sas",
-      "description": "A virtual inter-school music competition",
-      "registration": {
-        "maxSeatsPerSchool": 2,
-        "formID": "sas",
-        "userType": "school"
-      }
+      "description": "A virtual inter-school music competition"
     },
     "songs-for-freedom": {
       "name": "Songs for Freedom",
@@ -344,11 +106,7 @@
       "name": "Careers in the Arts: Music",
       "image": "sa-cc-banner.png",
       "pageID": "sa-cc",
-      "description": "Students looking to make a career in music will gain an insight into the world of possibilities that exist within the music industry",
-      "registration": {
-        "formID": "ws",
-        "userType": "school"
-      }
+      "description": "Students looking to make a career in music will gain an insight into the world of possibilities that exist within the music industry"
     },
     "khasi-music-lec-dem": {
       "name": "Khasi Instruments and Music",
@@ -364,21 +122,13 @@
       "name": "The Manta Sidhu Show",
       "image": "sa-tmss-banner.png",
       "pageID": "sa-tmss",
-      "description": "Performing and talking about composition, her own process and the importance of poetry music",
-      "registration": {
-        "formID": "ws",
-        "userType": "school"
-      }
+      "description": "Performing and talking about composition, her own process and the importance of poetry music"
     },
     "space-band": {
       "name": "Space/Band",
       "image": "sa-sb-banner.png",
       "pageID": "sa-sb",
-      "description": "An online platform which calls upon artists to engage in collaborative online musical performances",
-      "registration": {
-        "formID": "sb",
-        "userType": "public"
-      }
+      "description": "An online platform which calls upon artists to engage in collaborative online musical performances"
     }
   }
 }

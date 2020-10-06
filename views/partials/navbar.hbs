@@ -160,46 +160,54 @@
 <div id="navbar" class="ui computer only padded grid">
 	<div class="ui top fixed borderless fluid huge menu">
 		<div class="ui container">
-			<a class="header item" href="/">Kaafila</a>
+			<a class="header item" href="/">Kaafila Admin</a>
 			<div class="right menu">
-				<a class="item {{#if active_bnc}}active{{/if}}" href="/events/bread-and-circuses">Bread & Circuses</a>
-				<a class="item {{#if active_ff}}active{{/if}}" href="/events/folk-fluence">Folk Fluence</a>
-				<a class="item {{#if active_i}}active{{/if}}" href="/events/iridescence">Iridescence</a>
-				<a class="item {{#if active_sa}}active{{/if}}" href="/events/strings-attached">Strings Attached</a>
-				{{!-- <a class="item" href="/snsartshaat">SNSN Arts Haat</a> --}}
-				{{#if userData}}
-				<a class="item" href="/profile">
-					<img class="ui circular image {{#if active_p}}active{{/if}}" src="{{userData.photoURL}}?width=40&height=40">
+				<div class="ui dropdown item">
+					Bread & Circuses <i class="dropdown icon"></i>
+					<div class="menu hidden">
+						{{#each navbarData.bread-and-circuses}}
+						<a href="/events/bread-and-circuses/{{@key}}" class="item">{{this.name}}</a>
+						{{/each}}
+					</div>
+				</div>
+				<div class="ui dropdown item">
+					Folk Fluence <i class="dropdown icon"></i>
+					<div class="menu hidden">
+						{{#each navbarData.folk-fluence}}
+						<a href="/events/folk-fluence/{{@key}}" class="item">{{this.name}}</a>
+						{{/each}}
+					</div>
+				</div>
+				<div class="ui dropdown item">
+					Iridescence <i class="dropdown icon"></i>
+					<div class="menu hidden">
+						{{#each navbarData.iridescence}}
+						<a href="/events/iridescence/{{@key}}" class="item">{{this.name}}</a>
+						{{/each}}
+					</div>
+				</div>
+				<div class="ui dropdown item">
+					Strings Attached <i class="dropdown icon"></i>
+					<div class="menu hidden">
+						{{#each navbarData.strings-attached}}
+						<a href="/events/strings-attached/{{@key}}" class="item">{{this.name}}</a>
+						{{/each}}
+					</div>
+				</div>
+				<a class="item signin" href="/signout">
+					<button class="ui button primary">Sign out</button>
 				</a>
-				{{else}}
-				<a class="item signin" href="/signin">
-					<button class="ui button primary small">Sign in</button>
-				</a>
-				{{/if}}
 			</div>
 		</div>
 	</div>
 </div>
 <div id="navbar" class="ui mobile tablet only padded grid">
 	<div class="ui top fixed borderless huge fluid menu">
-		<a class="header item" href="/">Kaafila</a>
+		<a class="header item" href="/">Kaafila Admin</a>
 		<div class="right menu">
-			{{!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBwgic_LdsGIyEJxtvEwS_I1DEIBaSMvStvY5xznOPpBtoSg/viewform?usp=sf_link">
-				<div class="item signin">
-					<button class="ui button primary">Register</button>
-				</div>
-			</a> --}}
-			{{#if userData}}
-			<a href="/profile">
-				<div class="item signin">
-					<img class="ui circular image {{#if active_p}}active{{/if}}" src="{{userData.photoURL}}?width=40&height=40">
-				</div>
+			<a class="item signin" href="/signout">
+				<button class="ui button primary">Sign out</button>
 			</a>
-			{{else}}
-			<a class="item signin" href="/signin">
-				<button class="ui button primary small">Sign in</button>
-			</a>
-			{{/if}}
 			<div class="item togglebutton">
 				<button class="ui icon toggle basic button">
 					<i class="content icon"></i>
@@ -207,11 +215,38 @@
 			</div>
 		</div>
 		<div class="ui vertical borderless fluid menu">
-			{{!-- <a class="item {{#if active_a}}active{{/if}}" href="/about">About</a> --}}
-			<a class="item {{#if active_bnc}}active{{/if}}" href="/events/bread-and-circuses">Bread & Circuses</a>
-			<a class="item {{#if active_ff}}active{{/if}}" href="/events/folk-fluence">Folk Fluence</a>
-			<a class="item {{#if active_i}}active{{/if}}" href="/events/iridescence">Iridescence</a>
-			<a class="item {{#if active_sa}}active{{/if}}" href="/events/strings-attached">Strings Attached</a>
+			<div class="ui dropdown item">
+				Bread & Circuses <i class="dropdown icon"></i>
+				<div class="menu hidden">
+					{{#each navbarData.bread-and-circuses}}
+					<a href="/events/bread-and-circuses/{{@key}}" class="item">{{this.name}}</a>
+					{{/each}}
+				</div>
+			</div>
+			<div class="ui dropdown item">
+				Folk Fluence <i class="dropdown icon"></i>
+				<div class="menu hidden">
+					{{#each navbarData.folk-fluence}}
+					<a href="/events/folk-fluence/{{@key}}" class="item">{{this.name}}</a>
+					{{/each}}
+				</div>
+			</div>
+			<div class="ui dropdown item">
+				Iridescence <i class="dropdown icon"></i>
+				<div class="menu hidden">
+					{{#each navbarData.iridescence}}
+					<a href="/events/iridescence/{{@key}}" class="item">{{this.name}}</a>
+					{{/each}}
+				</div>
+			</div>
+			<div class="ui dropdown item">
+				Strings Attached <i class="dropdown icon"></i>
+				<div class="menu hidden">
+					{{#each navbarData.strings-attached}}
+					<a href="/events/strings-attached/{{@key}}" class="item">{{this.name}}</a>
+					{{/each}}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

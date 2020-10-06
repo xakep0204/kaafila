@@ -27,5 +27,4 @@ typings/
 # project
 .env
 .DS_Store
-public/img/gallery/ 
-public/img/snsartshaat/
+public/img/

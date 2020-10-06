@@ -1,62 +1,104 @@
 var express = require("express");
 var path = require("path");
+var csrf = require("csurf");
+var csrfProtection = csrf({ cookie: true });
 var fs = require("fs").promises;
 var admin = require("../firebase-proj");
 
 var router = express.Router();
-var galleryDirectoryPath = path.join(__dirname, process.env.GALLERY_PATH);
+var db = admin.firestore();
 
-async function renderIndex(res, req) {
-	var userData = {};
-	var galleryImagesMain = [];
-	var galleryImages = [];
-	var galleryImagesMore = [];
+async function renderIndex(req, res) {
 	const sessionCookie = req.cookies.session || "";
+	var registrationData = {}
+
+	const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
+	routingData = JSON.parse(readRoutes)
 
 	const webrender = () => {
-		res.render("index", {
-			title: "Kaafila - Shiv Nadar School Noida",
-			galleryImages: galleryImages,
-			galleryImagesMore: galleryImagesMore,
-			userData: Object.keys(userData).length > 0 ? userData : null,
+		res.render("schools", {
+			title: "Schools - Kaafila Admin",
+			navbarData: routingData,
+			registrationData: Object.keys(registrationData).length > 0 ? registrationData : null,
 			scripts: ["/js/index.js"],
 		});
 	};
 
-	const processGalleryFiles = async () => {
-		try {
-			const files = await fs.readdir(galleryDirectoryPath)
-			files.forEach((file) => {
-				if (["jpg", "png", "JPG", "gif"].includes(file.slice(-3))) {
-					imageObject = { path: file, caption: file.slice(0, -4) };
-					galleryImagesMain.push(imageObject);
-				}
-			});
-			if (galleryImagesMain.length > 8) {
-				galleryImagesMore = galleryImagesMain.slice(8);
-				galleryImages = galleryImagesMain.slice(0, 8);
-			}
-			else {
-				galleryImages = galleryImagesMain;
-			}
-		} catch (err) {
-			return console.log("Unable to scan directory: " + err);
-		}
-		
-	}
-
 	try {
-		const loadGallery = await processGalleryFiles()
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
-		const user = await admin.auth().getUser(firebaseUserClaims.sub)
-		userData = {photoURL: user.photoURL,};
-		webrender();
+		if (firebaseUserClaims.sub == '8rFDlNwp3TMJukwDayYgkjNjf8Q2') {
+			const firestoreData = await db.collection('schoolUsers').get()
+			firestoreData.forEach(doc => { 
+				registrationData[doc.id] = doc.data(); 
+			})
+
+			webrender();
+		} 
+		else {
+			res.redirect('/signin')
+		}
 	} catch (err) {
-		if (err.code !== "auth/argument-error") { console.log(err); }
-		webrender();
+		res.redirect('/signin')
+		console.log(err);
 	}
 }
 
-router.get("/", (req, res, next) => renderIndex(res, req));
+async function renderSubevent(req, res, next) {
+	var event = req.params.event;
+	var subevent = req.params.subevent;
+	const sessionCookie = req.cookies.session || "";
+
+	var registrationData = {};
+	
+	const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
+	routingData = JSON.parse(readRoutes)
+	
+	const webrender = () => {
+		res.render(`subevent`, {
+			title: `${routingData[event][subevent].name} - Kaafila Admin`,
+			navbarData: routingData,
+			url: subevent,
+			[subevent]: true,
+			name: routingData[event][subevent].name,
+			registrationData: Object.keys(registrationData).length > 0 ? registrationData : null,
+			scripts: [`/js/index.js`]
+		});
+	}
+
+	try {
+		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
+		if (firebaseUserClaims.sub == '8rFDlNwp3TMJukwDayYgkjNjf8Q2') {
+			if (subevent == "space-band") { 
+				const firestoreData = await db.collection('publicUsers').get() 
+				firestoreData.forEach(doc => { 
+					if (doc.data().registeredEvents) {
+						if (doc.data().registeredEvents[subevent]) {
+							registrationData[doc.id] = doc.data().registeredEvents[subevent]; 
+						}
+					}
+				})
+			} else {
+				const firestoreData = await db.collection('schoolUsers').get()
+				firestoreData.forEach(doc => { 
+					if (doc.data().registeredEvents) {
+						if (doc.data().registeredEvents[subevent]) {
+							registrationData[doc.id] = doc.data().registeredEvents[subevent]; 
+							registrationData[doc.id].schoolName = doc.data().schoolName; 
+						}
+					}
+				})
+			}
+
+			webrender();
+		} 
+	} catch (err) {
+		if (err.code !== "auth/argument-error") { console.log(err); }
+		res.redirect('/signin')
+	}
+
+}
+
+router.get("/", (req, res) => renderIndex(req, res));
+router.get("/events/:event/:subevent", (req, res, next) => renderSubevent(req, res, next));
 
 module.exports = router;

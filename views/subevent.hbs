@@ -1,0 +1,643 @@
+{{>navbar}}
+
+<style>
+	.ui.borderless.menu {
+		background: #085078 !important;
+		background: -webkit-linear-gradient(to left, #85D8CE, #085078) !important;
+		background: linear-gradient(to left, #6eb4ac, #085078) !important;
+	}
+
+	th {
+		background-color: #ffffff5b !important;
+	}
+
+	table, .ui.accordion {
+		background-color: transparent !important;
+		border: 0px!important;
+	}
+
+	#registeredevents > div > div {
+		margin-bottom: 2rem;
+		padding-bottom: 1rem;
+	}
+</style>
+
+
+<div id="content">
+	<div id="registeredevents">
+		<div class="ui container">
+			<h1 class="ui header">{{name}}</h1>
+			{{#if registrationData}}
+			{{registrationData.a}}
+
+
+			{{#if collab-lab}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if monologue-maestros}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Submission</th>
+							<th>Student</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td ><a href="{{this.submission.submission}}">{{this.submission.submission}}</a></td>
+							<td>{{this.submission.name}} (Class {{this.submission.class}})</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+				
+			{{#if one-act-play}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Submission</th>
+							<th>Group Info</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>{{submissionLink}}</td>
+							<td>
+								<strong>{{groupName}}</strong><br><br>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if stories-through-the-lens}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if the-sounds-of-stories}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if folk-fluence-solos}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Submissions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}}) - {{#if this.submission}} <a href="{{this.submission}}">{{this.submission}}</a>{{else}}No submission yet{{/if}}<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if flesh-n-bones}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if kalbeliya-lec-dem}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if ff-career-conversations}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if art-as-a-catalyst-for-social-change}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if bamboo-craft-lec-dem}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if i-career-conversations}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if spirit-of-freedom}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Submissions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each submission}}
+								<strong>{{this.name}}</strong><br>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}}){{#if this.submission}} - <a href="{{this.submission}}">{{this.submission}}</a>{{/if}}<br>
+								{{/each}}
+								<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if tessellations}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if sa-career-conversations}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if khasi-music-lec-dem}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if strings-attached-solos}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Submissions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each submission}}
+								<strong>{{this.name}}</strong><br>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}}){{#if this.submission}} - <a href="{{this.submission}}">{{this.submission}}</a>{{/if}}<br>
+								{{/each}}
+								<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if the-manta-sidhu-show}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Contact Info</th>
+							<th>Students</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{schoolName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{#if space-band}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Band Name</th>
+							<th>Contact Info</th>
+							<th>Submission</th>
+							<th>Members</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{bandName}}</td>
+							<td>
+								{{this.contactPerson}} <br>
+								{{this.email}} <br>
+								{{this.phone}} <br>
+							</td>
+							<td><a href="{{this.submissionlink}}">{{this.submissionlink}}</a></td>
+							<td>
+								{{#each this.submission}}
+								&#9632; &nbsp; {{this.name}} (Class {{this.class}})<br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+
+			{{else}}
+			<h3 class="ui header">No schools registered yet</h3>
+			{{/if}}
+		</div>
+	</div>
+</div>
+
+<script>
+	var registeredEvents = JSON.parse('{{{userData.registeredEventsJS}}}')
+</script>

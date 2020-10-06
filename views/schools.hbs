@@ -1,0 +1,67 @@
+{{>navbar}}
+
+<style>
+	.ui.borderless.menu {
+		background: #085078 !important;
+		background: -webkit-linear-gradient(to left, #85D8CE, #085078) !important;
+		background: linear-gradient(to left, #6eb4ac, #085078) !important;
+	}
+
+	th {
+		background-color: #ffffff5b !important;
+	}
+
+	table, .ui.accordion {
+		background-color: transparent !important;
+		border: 0px!important;
+	}
+
+	#registeredevents > div > div {
+		margin-bottom: 2rem;
+		padding-bottom: 1rem;
+		border-bottom: 1px solid black;
+	}
+</style>
+
+
+<div id="content">
+	<div id="registeredevents">
+		<div class="ui container">
+			<h1 class="ui header">Registered Schools</h1>
+			{{#if registrationData}}
+			<div id="school-data">
+				<table class="ui fixed celled table sortable">
+					<thead>
+						<tr>
+							<th id="th-school-name">Name of School</th>
+							<th>Name of School Representative</th>
+							<th>Email</th>
+							<th>Registered Events</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each registrationData}}
+						<tr>
+							<td>{{this.schoolName}}</td>
+							<td>{{this.schoolRepName}}</td>
+							<td>{{this.email}}</td>
+							<td>
+								{{#each this.registeredEvents}}
+								&#9632; &nbsp; {{this.name}} <br>
+								{{/each}}
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{else}}
+			<h3 class="ui header">No schools registered yet</h3>
+			{{/if}}
+		</div>
+	</div>
+</div>
+
+<script>
+	var registeredEvents = JSON.parse('{{{userData.registeredEventsJS}}}')
+</script>

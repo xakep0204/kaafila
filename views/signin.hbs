@@ -36,116 +36,17 @@
         Sign in
       </div>
     </h2>
-    <div class="ui two item menu top attached tabular">
-      <div class="item active" data-tab="publicUsers">Individual Account</div>
-      <div class="item" data-tab="schoolUsers">School Account</div>
-    </div>
-    <div class="ui bottom attached stacked segment left aligned tab active" data-tab="publicUsers">
+    <div class="ui bottom attached stacked segment left aligned">
       <form id="signInForm" class="ui form">
-        <div class="field">
-          <label>Email Address</label>
-          <div class="ui input">
-            <input type="text" id="email" placeholder="Email address">
-          </div>
-        </div>
         <div class="field">
           <label>Password</label>
           <div class="ui input">
             <input type="password" id="password" placeholder="Password">
           </div>
-          <div id="forgotPassword" style="text-align: right;"><a>Forgot Password</a></div>
         </div>
         <button type="submit" id="signInEmail" class="ui fluid large primary button">Sign in</button>
-        <button type="button" id="signInGoogle" class="ui fluid large basic black button"><i class="google icon"></i>Sign in with Google</button>
         <div class="ui error message"></div>
       </form>
-    </div>
-    <div class="ui bottom attached stacked segment left aligned tab" data-tab="schoolUsers">
-      <form id="signInForm" class="ui form">
-        <div class="field">
-          <label>Email Address</label>
-          <div class="ui input">
-            <input type="text" id="email" placeholder="Email address">
-          </div>
-        </div>
-        <div class="field">
-          <label>Password</label>
-          <div class="ui input">
-            <input type="password" id="password" placeholder="Password">
-          </div>
-          <div id="forgotPassword" style="text-align: right;"><a>Forgot Password</a></div>
-        </div>
-        <button type="submit" id="signInEmail" class="ui fluid large primary button">Sign in</button>
-        <button type="button" id="signInGoogle" class="ui fluid large basic black button"><i class="google icon"></i>Sign in with Google</button>
-        <div class="ui error message"></div>
-      </form>
-    </div>
-
-    <div class="ui message">
-      New to us? <a href="/signup">Sign Up</a>
-    </div>
-  </div>
-</div>
-
-<div id="schoolInfoModal" class="ui modal small">
-  <div class="header">
-    <h2>Enter Your School's Information</h2>
-  </div>
-  <div class="content">
-    <form id="schoolInfoForm" class="ui small form">
-      <div class="ui stacked">
-        <div class="field">
-          <label>School Name</label>
-          <div class="ui input">
-            <input type="text" id="schoolName" placeholder="School Name">
-          </div>
-        </div>
-        <div class="field">
-          <label>School Representative Name</label>
-          <div class="ui input">
-            <input type="text" id="schoolRepName" placeholder="School Representative Name">
-          </div>
-        </div>
-        <div class="ui fluid container column right aligned">
-          <button type="submit" id="schoolInfo" class="ui primary button">Submit</button>
-        </div>
-      </div>
-
-      <div class="ui error message"></div>
-
-    </form>
-  </div>
-</div>
-
-<div id="forgotPasswordmodal" class="ui modal small">
-  <div class="header">
-    <h2>Forgot Password</h2>
-  </div>
-  <div class="content">
-    <form id="forgotPasswordForm" class="ui small form">
-      <div class="ui stacked">
-        <div class="field">
-          <label>Email Address</label>
-          <div class="ui input">
-            <input type="text" id="email" placeholder="Email address">
-          </div>
-        </div>
-        <div class="ui fluid container column right aligned">
-          <button type="submit" id="resetPassword" class="ui primary button">Reset Password</button>
-        </div>
-      </div>
-
-      <div class="ui error message"></div>
-
-    </form>
-  </div>
-</div>
-
-<div id="resetconfirmmodal" class="ui modal mini">
-  <div class="content">
-    <div class="ui fluid container center aligned">
-      <img class="ui centered image tiny" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/tick.png">
-      <h2>Password Reset Mail Sent</h2>
     </div>
   </div>
 </div>

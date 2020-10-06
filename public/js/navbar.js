@@ -1,7 +1,8 @@
 var $nav = $(".ui.borderless.menu");
-var $header = $("header.hero");
 
 $(document).ready(function () {
+	$(".ui.dropdown").dropdown();
+
 	$(".ui.toggle.button").click(function () {
 		if (!($(document).scrollTop() > 54)) {
 			if ($(".mobile.only.grid .ui.vertical.menu").css('display') == 'none') {
@@ -24,16 +25,4 @@ $(document).ready(function () {
 			$(".mobile.only.grid .ui.vertical.menu").toggle(100);
 	});
 	
-	$nav.toggleClass("scrolled", $(this).scrollTop() > 54);
-	$(document).scroll(function () {
-		$nav.toggleClass("scrolled", $(this).scrollTop() > 54);
-	});
-	
-	$(".header-content a").click(function() {
-		var target = $(this).attr('data-target');
-		
-		$('html, body').animate({
-				scrollTop: $(target).offset().top - 54
-		}, 700);
-	});
 });

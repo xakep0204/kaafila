@@ -8,7 +8,6 @@ var logger = require("morgan");
 var hbs = require("express-handlebars");
 var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
-var eventRouter = require("./routes/event");
 
 var app = express();
 
@@ -33,7 +32,6 @@ app.engine(
 
 app.use("/", indexRouter);
 app.use("/", authRouter);
-app.use("/", eventRouter);
 
 app.use(function (req, res, next) {
 	next(createError(404));
