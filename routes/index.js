@@ -39,7 +39,7 @@ async function renderIndex(req, res) {
 		}
 	} catch (err) {
 		res.redirect('/signin')
-		console.log(err);
+		if (err.code !== "auth/argument-error") { console.log(err); }
 	}
 }
 
