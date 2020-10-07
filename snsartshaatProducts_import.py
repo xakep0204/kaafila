@@ -3,8 +3,8 @@ from firebase_admin import credentials, firestore
 cred = credentials.Certificate('/users/aditya/dev/kaafila-security/serviceAccount.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
-doc_ref = db.collection('snsartshaatProducts')
-filename = "/users/aditya/dev/kaafila/snsartshaatProducts.csv"
+doc_ref = db.collection('snsnartshaatProducts')
+filename = "/users/aditya/dev/kaafila/snsnartshaatProducts.csv"
 fields = []
 rows = []
 products = []

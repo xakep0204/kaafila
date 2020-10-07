@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
 async function renderHaat(req, res, next) {
 	artist = {};
 	productData = {};
-	const ProdRef = db.collection('snsartshaatProducts');
+	const ProdRef = db.collection('snsnartshaatProducts');
 	const snapshot = await ProdRef.get();
 	snapshot.forEach(doc => {
 		artist_name = doc.data().artistName;
@@ -30,12 +30,12 @@ async function renderHaat(req, res, next) {
 		else if (!artist[artist_name] && doc.data().itemPrice == 0){
 		artist[artist_name] = {
 			name: artist_name,
-			picture: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsartshaat/"+doc.data().itemImg,
+			picture: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/"+doc.data().itemImg,
 			products: []
 			};
 		}
 		else if (artist[artist_name] && doc.data().itemPrice == 0){
-			artist[artist_name].picture = "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsartshaat/" + doc.data().itemImg;
+			artist[artist_name].picture = "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/" + doc.data().itemImg;
 		}
 		else if (artist[artist_name] && doc.data().itemPrice != 0){
 			artist[artist_name].products.push(Object.assign(doc.data(), {'id': doc.id}));
@@ -43,7 +43,7 @@ async function renderHaat(req, res, next) {
 
 	});
 
-	res.render("snsartshaat", {
+	res.render("snsnartshaat", {
 		title: "SNSN Arts Haat - Kaafila",
 		artist: artist,
 		scripts: ["/js/haat.js"],
@@ -56,7 +56,7 @@ async function confirmOrder(req, res, next) {
 		data = JSON.parse(req.body.data);
 
 		for (id in data.products) {
-			const updateDB = await db.collection("snsartshaatProducts").doc(id).update({sold: {name: data.person.name, email: data.person.email, phone: data.person.phone}})
+			const updateDB = await db.collection("snsnartshaatProducts").doc(id).update({sold: {name: data.person.name, email: data.person.email, phone: data.person.phone}})
 		}
 		res.status(200).send();
 

@@ -7,7 +7,7 @@ function infoFormSubmit() {
 		itemsHTML = ""
 		for (id in cartItems) {
 			itemsHTML += `<tr>
-			<td style="-webkit-transition: background .1s ease,color .1s ease;transition: background .1s ease,color .1s ease;padding: .78571429em .78571429em;text-align: inherit;border-top: 1px solid rgba(34,36,38,.1);"><img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsartshaat/${cartItems[id].img}?width=256&amp;height=256" class="ui image tiny" style="border-style: none;position: relative;display: block;vertical-align: middle;max-width: none;background-color: transparent;width: 80px;height: auto;font-size: .85714286rem;"></td>
+			<td style="-webkit-transition: background .1s ease,color .1s ease;transition: background .1s ease,color .1s ease;padding: .78571429em .78571429em;text-align: inherit;border-top: 1px solid rgba(34,36,38,.1);"><img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/${cartItems[id].img}?width=256&amp;height=256" class="ui image tiny" style="border-style: none;position: relative;display: block;vertical-align: middle;max-width: none;background-color: transparent;width: 80px;height: auto;font-size: .85714286rem;"></td>
 			<td style="-webkit-transition: background .1s ease,color .1s ease;transition: background .1s ease,color .1s ease;padding: .78571429em .78571429em;text-align: inherit;border-top: 1px solid rgba(34,36,38,.1);">
 				<h4 style="font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;line-height: 1.28571429em;margin: calc(2rem - .14285714em) 0 1rem;font-weight: 700;padding: 0;font-size: 1.07142857rem;margin-top: 0;margin-bottom: 0;">${cartItems[id].name}</h4>
 			</td>
@@ -134,7 +134,7 @@ $('.cartbutton').click(function () {
 	console.log(cartItems);
 	html = ''
 	for (id in cartItems) {
-		html += `<tr><td><img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsartshaat/${cartItems[id].img}?width=256&height=256" class="ui image tiny"></td><td><h4>${cartItems[id].name}</h4></td></td><td><h4>₹ ${cartItems[id].price}</h4></td></tr>`
+		html += `<tr><td><img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/${cartItems[id].img}?width=256&height=256" class="ui image tiny"></td><td><h4>${cartItems[id].name}</h4></td></td><td><h4>₹ ${cartItems[id].price}</h4></td></tr>`
 	}
 
 	$("#cart-modal tbody").html(html)
