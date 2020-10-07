@@ -11,6 +11,7 @@ var hbs = require("express-handlebars");
 var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
 var eventRouter = require("./routes/event");
+var haatRouter = require("./routes/haat");
 
 var app = express();
 app.use(stHttpLoggerMiddleware)
@@ -37,6 +38,7 @@ app.engine(
 app.use("/", indexRouter);
 app.use("/", authRouter);
 app.use("/", eventRouter);
+app.use("/", haatRouter);
 
 app.use(function (req, res, next) {
 	next(createError(404));

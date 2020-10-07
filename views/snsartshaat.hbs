@@ -1,4 +1,4 @@
-{{>navbar-logo}}
+{{>navbar-cart}}
 <style>
 	.v-header {
 		height: 40vh;
@@ -98,6 +98,7 @@
 		background: linear-gradient(to left, #6eb4ac, #085078)!important;
 	}
 
+
 </style>
 
 
@@ -107,22 +108,110 @@
 	<div class="header-overlay"></div>
 	<div class="header-content text-md-center">
 		<h1 class="ui inverted header">SNS Arts Haat</h1>
-		<h3 class="ui inverted header">Providing artists $$money$$</h3>
 	</div>
 </header>
 
-{{!-- <h1 class="ui header">This: {{userData}}</h1> --}}
 <div id="content"  class="pastel k">
-	<div id="registered-events">
-		<div class="ui container">
-			<h1 class="ui header">Registered Events</h1>
+	{{#each artist}}
+	<div> {{!-- For pastel colours to work --}}
+		<div class="ui center aligned container">
+			<h2 class="ui header"><img src="{{this.picture}}?width=256&height=256" class="ui circular image"> {{this.name}}</h2>
+			<div class="ui grid stackable center aligned three columns">
+				{{#each this.products}}
+				<div class="column">
+					<div class="ui card fluid">
+						<div class="image">
+							<a href="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsartshaat/{{this.itemImg}}" data-fancybox="{{../this.name}}-gallery" data-caption="{{../this.name}} - {{this.itemName}}" class="artist-fancybox">
+								<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsartshaat/{{this.itemImg}}?width=500&height=500" class="ui fluid image centered">
+							</a>
+						</div>
+						<div class="content">
+							{{#if this.itemName}}
+							<h3 class="ui left aligned header">{{this.itemName}}</h3><br>
+							{{/if}}
+							<div class="ui grid fluid two columns middle aligned">
+								<div class="column left aligned">
+									<h3>
+										<i class="rupee sign icon"></i> {{this.itemPrice}}
+									</h3>
+								</div>
+								<div class="column right aligned">
+									<div class="ui primary button small">Add to Cart</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{/each}}
+			</div>
 		</div>
 	</div>
-	<div id="registered-events">
-		<div class="ui container">
-			<h1 class="ui header">Account Details</h1>
+	{{/each}}
+</div>
+
+<div class="ui modal small" id="cart-modal">
+  <div class="header">Cart</div>
+  <div class="content">
+		<table class="ui basic table">
+			<thead>
+				<th class="thirteen wide">Item Name</th>
+				<th class="three wide">Price</th>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+  </div>
+  <div class="actions">
+    <div class="ui button primary" id="cart-confirm">Confirm</div>
+  </div>
+</div>
+
+<div class="ui modal small" id="person-modal">
+  <div class="header">Enter Your Info</div>
+  <div class="content">
+		<form id="confirminfoform" class="ui small form">
+			<div class="ui stacked">
+				<div class="field">
+          <label>Full Name</label>
+          <div class="ui input">
+            <input type="text" id="fullName" placeholder="Full Name">
+          </div>
+        </div>
+				<div class="field">
+          <label>Email</label>
+          <div class="ui input">
+            <input type="text" id="email" placeholder="Email">
+          </div>
+        </div>
+				<div class="field">
+          <label>Phone</label>
+          <div class="ui input">
+            <input type="text" id="phone" placeholder="Phone">
+          </div>
+        </div>
+				<div class="ui fluid container column right aligned">
+					<button type="submit" id="confirminfo" class="ui primary button">Submit</button>
+				</div>
+      </div>
+
+			<div class="ui error message"></div>
+		</form>
+  </div>
+</div>
+
+<div id="cart-confirm-modal" class="ui modal tiny">
+	<div class="content">
+		<div class="ui fluid container center aligned">
+			<img class="ui centered image tiny" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/tick.png">
+			<h2>Order Confirmed</h2>
 		</div>
 	</div>
 </div>
+
+<script>
+	productData = '{{{productData}}}';
+	console.log(JSON.parse(productData).person);
+	console.log(JSON.parse(JSON.parse(productData)));
+</script>
 
 {{>footer}}

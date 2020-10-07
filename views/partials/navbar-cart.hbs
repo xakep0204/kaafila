@@ -1,0 +1,60 @@
+<style>
+	body {
+		padding-top: 52px;
+		-webkit-font-smoothing: antialiased;
+		-moz-font-smoothing: grayscale;
+	}
+
+	.ui.borderless.menu {
+		background-color: transparent;
+		box-shadow: none;
+		flex-wrap: wrap;
+		border: none;
+		padding-left: 0;
+		padding-right: 0;
+		transition: background 200ms linear;
+	}
+
+	.ui.borderless.menu .item {
+		color: white !important;
+		font-family: 'timeless';
+		font-weight: 700;
+		padding-left: .7em;
+		padding-right: .7em;
+		padding-top: .8em;
+		padding-bottom: .8em;
+	}
+
+	.ui.borderless.menu .item:hover {
+		background-color: rgba(255, 255, 255, .2);
+	}
+
+	.ui.borderless.menu .header.item {
+		font-size: 20px;
+		font-weight: 600;
+		font-family: 'anaktoria';
+	}
+
+	.ui.borderless.menu {
+		background: #085078!important;
+		background: -webkit-linear-gradient(to left, #85D8CE, #085078)!important;
+		background: linear-gradient(to left, #6eb4ac, #085078)!important;
+	}
+
+</style>
+
+<div id="navbar" class="ui computer only padded grid">
+	<div class="ui top fixed borderless fluid huge menu">
+		<div class="ui container">
+			<a class="header item" href="/">Kaafila</a>
+			<div class="right menu">
+				<a class="item" id="cart-icon"><i class="cart icon"></i></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="navbar" class="ui mobile tablet only padded grid">
+	<div class="ui top fixed borderless huge fluid menu">
+		<a class="header item" href="/">Kaafila</a>
+	</div>
+</div>

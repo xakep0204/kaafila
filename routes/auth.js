@@ -40,7 +40,6 @@ async function renderProfile(req, res, next) {
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
 		const checkPublicDatabase = await db.collection('publicUsers').doc(firebaseUserClaims.sub).get()
-		const checkSchoolDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get()
 		if (checkPublicDatabase.exists) {
 			const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
 			var userFirestoreData = checkPublicDatabase.data();
