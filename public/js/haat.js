@@ -109,11 +109,13 @@ $('.artist-fancybox').fancybox({
   ]
 });
 
+$("#cart-confirm-modal").modal({ onHidden: () => window.location.assign("/snsnartshaat") });
+
 $("#cart-confirm").click(() => { 
   $("#cart-modal").modal('hide');
   $("#person-modal").modal('show');
 })
-$("#cart-icon").click(() => { 
+$(".cart-icon").click(() => { 
 	$("#cart-modal").modal('show'); 
 })
 $("#confirminfoform").submit(() => infoFormSubmit());

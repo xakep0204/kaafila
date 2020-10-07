@@ -1,5 +1,26 @@
 {{>navbar-cart}}
 <style>
+	.hero h1 {
+		font-size: 7.5em !important;
+	}
+	@media (max-width: 768px) {
+		.hero h1 {
+			font-size: 6em !important;
+		}
+	}
+	@media (max-width: 590px) {
+		.hero h1 {
+			font-size: 4em !important;
+		}
+	}
+
+	@media (max-width: 960px) {
+		.h-container {
+			padding-right: 3rem;
+			padding-left: 3rem;
+		}
+	}
+
 	.v-header {
 		height: 40vh;
 		display: flex;
@@ -81,7 +102,6 @@
 	}
 
 	.hero h1 {
-		font-size: 6rem !important;
 		color: white !important;
 	}
 
