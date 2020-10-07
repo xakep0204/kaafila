@@ -18,17 +18,15 @@ async function renderHaat(req, res, next) {
 	const ProdRef = db.collection('snsartshaatProducts');
 	const snapshot = await ProdRef.get();
 	snapshot.forEach(doc => {
-		productData[doc.id] = doc.data();
-		let artist_name = doc.data().artistName;
-		if(!artist[artist_name] && doc.data().itemPrice != 0) {
+		artist_name = doc.data().artistName;
+		if (!artist[artist_name] && doc.data().itemPrice != 0) {
 			artist[artist_name] = {
 			name: artist_name,
 			picture: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/favicon.png",
 			products: []
 			};
-			artist[artist_name].products.push(doc.data());
+			artist[artist_name].products.push(Object.assign(doc.data(), {'id': doc.id}));
 		}
-
 		else if (!artist[artist_name] && doc.data().itemPrice == 0){
 		artist[artist_name] = {
 			name: artist_name,
@@ -40,15 +38,14 @@ async function renderHaat(req, res, next) {
 			artist[artist_name].picture = "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsartshaat/" + doc.data().itemImg;
 		}
 		else if (artist[artist_name] && doc.data().itemPrice != 0){
-			artist[artist_name].products.push(doc.data());
+			artist[artist_name].products.push(Object.assign(doc.data(), {'id': doc.id}));
 		}
 
 	});
 
 	res.render("snsartshaat", {
-		title: "SNS Arts Haat - Kaafila",
+		title: "SNSN Arts Haat - Kaafila",
 		artist: artist,
-		productData: JSON.stringify(productData),
 		scripts: ["/js/haat.js"],
 		
 	});
@@ -57,14 +54,27 @@ async function renderHaat(req, res, next) {
 async function confirmOrder(req, res, next) {
 	try {
 		data = JSON.parse(req.body.data);
-		const info = await transporter.sendMail({
+
+		for (id in data.products) {
+			const updateDB = await db.collection("snsartshaatProducts").doc(id).update({sold: {name: data.person.name, email: data.person.email, phone: data.person.phone}})
+		}
+		res.status(200).send();
+
+
+		const sendBuyerEmail = await transporter.sendMail({
 			from: 'no-reply@snsartsfestival.in',
 			to: data.person.email,
-			subject: "Hello ✔",
-			text: JSON.stringify(data.products),
+			subject: "✅ Order Confirmed",
+			html: `Dear ${data.person.name},<br>Thanks for ordering from SNSN Arts Haat. Here are the details of your order<br><br>` + data.html,
 		});
 
-		res.status(200).send();
+		const sendSchoolEmail = await transporter.sendMail({
+			from: 'no-reply@snsartsfestival.in',
+			to: 'snsartsfestival@gmail.com',
+			subject: "📦 New Order",
+			html: `${data.person.name}<br>${data.person.email}<br>${data.person.phone}<br><br>` + data.html,
+		});
+
 	} catch (err) {
 		console.log(err);
 	}
