@@ -85,6 +85,12 @@ async function renderSubevent(req, res, next) {
 		return next(createError(404))
 	}
 	var registration = routingData[subevent].registration || {};
+	if (Object.keys(registration).length > 0) {
+		const takenSeats = await getTakenSeats(subevent)
+		if (takenSeats >= registration.maxSeats) {
+			registration.seatsFull = true
+		}
+	}
 	
 	const webrender = (db) => {
 		if (db) {
@@ -130,12 +136,6 @@ async function renderSubevent(req, res, next) {
 		if (checkPublicDatabase.exists) {
 			const userFirestoreData = checkPublicDatabase.data();
 			registration = registration.userType == 'public' ? registration : {}
-			if (Object.keys(registration).length > 0) {
-				const takenSeats = await getTakenSeats(subevent)
-				if (takenSeats === registration.maxSeats) {
-					registration.seatsFull = true
-				}
-			}
 			userData.name = userRecord.name;
 			if (userFirestoreData.registeredEvents) {
 				if (subevent in userFirestoreData.registeredEvents) {
@@ -151,7 +151,7 @@ async function renderSubevent(req, res, next) {
 				if (Object.keys(registration).length > 0) {
 					const takenSeats = await getTakenSeats(subevent)
 					if (registration.maxSeats) {
-						if (takenSeats === registration.maxSeats) {
+						if (takenSeats >= registration.maxSeats) {
 							registration.seatsFull = true
 						} else if (registration.maxSeatsPerSchool) {
 							if (takenSeats + registration.maxSeatsPerSchool > registration.maxSeats) {
