@@ -21,7 +21,7 @@ function infoFormSubmit() {
 			itemsHTML = ""
 			for (id in cartEmailItems[artist]) {
 				itemsHTML += `<tr>
-					<td style="-webkit-transition: background .1s ease,color .1s ease;transition: background .1s ease,color .1s ease;padding: .78571429em .78571429em;text-align: inherit;border-top: 1px solid rgba(34,36,38,.1);"><img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/${cartEmailItems[artist][id].img}?width=256&amp;height=256&amp;func=fit&amp;bg_color=000" class="ui image tiny" style="border-style: none;position: relative;display: block;vertical-align: middle;max-width: none;background-color: transparent;width: 80px;height: auto;font-size: .85714286rem;"></td>
+					<td style="-webkit-transition: background .1s ease,color .1s ease;transition: background .1s ease,color .1s ease;padding: .78571429em .78571429em;text-align: inherit;border-top: 1px solid rgba(34,36,38,.1);"><img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/${cartEmailItems[artist][id].img}?width=256&amp;height=256" class="ui image tiny" style="border-style: none;position: relative;display: block;vertical-align: middle;max-width: none;background-color: transparent;width: 80px;height: auto;font-size: .85714286rem;"></td>
 					<td style="-webkit-transition: background .1s ease,color .1s ease;transition: background .1s ease,color .1s ease;padding: .78571429em .78571429em;text-align: inherit;border-top: 1px solid rgba(34,36,38,.1);">
 						<h4 style="font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;line-height: 1.28571429em;margin: calc(2rem - .14285714em) 0 1rem;font-weight: 300;padding: 0;margin-top: 0;margin-bottom: 0;">${cartEmailItems[artist][id].name}</h4>
 					</td>
