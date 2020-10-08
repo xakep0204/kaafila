@@ -64,14 +64,14 @@ async function confirmOrder(req, res, next) {
 		const sendBuyerEmail = await transporter.sendMail({
 			from: 'no-reply@snsartsfestival.in',
 			to: data.person.email,
-			subject: "✅ Order Confirmed",
+			subject: "Order Confirmed",
 			html: `Dear ${data.person.name},<br>Thanks for ordering from SNSN Arts Haat. Here are the details of your order<br><br>` + data.html,
 		});
 
 		const sendSchoolEmail = await transporter.sendMail({
 			from: 'no-reply@snsartsfestival.in',
 			to: 'snsartsfestival@gmail.com',
-			subject: "📦 New Order",
+			subject: "New Order",
 			html: `${data.person.name}<br>${data.person.email}<br>${data.person.phone}<br><br>` + data.html,
 		});
 
