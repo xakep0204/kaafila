@@ -136,13 +136,13 @@
 	<div> {{!-- For pastel colours to work --}}
 		<div class="ui center aligned container">
 			<h2 class="ui header"><img src="{{this.picture}}?width=256&height=256" class="ui circular image"> {{this.name}}</h2>
-			<div class="ui grid stackable center aligned three columns">
+			<div class="ui fluid grid stackable center aligned three columns">
 				{{#each this.products}}
 				<div class="column">
 					<div class="ui card fluid">
 						<div class="image">
-							<a href="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/{{this.itemImg}}" data-fancybox="{{../this.name}}-gallery" data-caption="{{../this.name}} - {{this.itemName}}" class="artist-fancybox">
-								<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/{{this.itemImg}}?width=500&height=500" class="ui fluid image centered">
+							<a href="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/{{this.itemImg}}" data-fancybox="{{../this.name}}-gallery" data-caption="{{../this.name}}{{#if this.itemName}} - {{this.itemName}}{{/if}}" class="artist-fancybox">
+								<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/{{this.itemImg}}?width=400&height=400" class="ui fluid image centered">
 							</a>
 						</div>
 						<div class="content">
@@ -155,9 +155,9 @@
 								</div>
 								<div class="column right aligned">
 									{{#if this.sold}}
-									<div class="ui red disabled button small" data-id="{{this.id}}" data-name="{{this.itemName}}" data-img="{{this.itemImg}}" data-price="{{this.itemPrice}}">Sold</div>
+									<div class="ui red disabled button small">Sold</div>
 									{{else}}
-									<div class="ui primary button small cartbutton" data-id="{{this.id}}" data-name="{{this.itemName}}" data-img="{{this.itemImg}}" data-price="{{this.itemPrice}}">Add to Cart</div>
+									<div class="ui primary button small cartbutton" data-id="{{this.id}}" data-artist="{{../this.name}}" data-name="{{this.itemName}}" data-img="{{this.itemImg}}" data-price="{{this.itemPrice}}">Add to Cart</div>
 									{{/if}}
 								</div>
 							</div>
@@ -203,19 +203,19 @@
 				<div class="field">
           <label>Full Name</label>
           <div class="ui input">
-            <input type="text" id="fullName" placeholder="Full Name">
+            <input type="text" id="name" placeholder="Full Name" value="Aditya Kulshrestha">
           </div>
         </div>
 				<div class="field">
           <label>Email</label>
           <div class="ui input">
-            <input type="text" id="email" placeholder="Email">
+            <input type="text" id="email" placeholder="Email" value="adi.kul358@gmail.com">
           </div>
         </div>
 				<div class="field">
           <label>Phone</label>
           <div class="ui input">
-            <input type="text" id="phone" placeholder="Phone">
+            <input type="text" id="phone" placeholder="Phone" value="7840869129">
           </div>
         </div>
 				<div class="ui fluid container column right aligned">
