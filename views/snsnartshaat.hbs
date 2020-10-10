@@ -1,4 +1,5 @@
 {{>navbar-cart}}
+
 <style>
 	.hero h1 {
 		font-size: 7.5em !important;
@@ -118,9 +119,12 @@
 		background: linear-gradient(to left, #6eb4ac, #085078)!important;
 	}
 
+	#content h1 {
+		margin-top: 10px;
+		margin-bottom: 40px;
+	}
 
 </style>
-
 
 <header class="hero v-header h-container">
 	<div class="photo-wrap">
@@ -135,7 +139,8 @@
 	{{#each artist}}
 	<div> {{!-- For pastel colours to work --}}
 		<div class="ui center aligned container">
-			<h2 class="ui header"><img src="{{this.picture}}?width=256&height=256" class="ui circular image"> {{this.name}}</h2>
+			<img src="{{this.picture}}?width=256&height=256" class="ui circular image centered small">
+			<h1 class="ui header">{{this.name}}</h1>
 			<div class="ui fluid grid stackable center aligned three columns">
 				{{#each this.products}}
 				<div class="column">
