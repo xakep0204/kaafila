@@ -8,18 +8,41 @@ var galleryDirectoryPath = path.join(__dirname, process.env.GALLERY_PATH);
 
 async function renderIndex(res, req) {
 	var userData = {};
+	const sessionCookie = req.cookies.session || "";
+
+	const webrender = () => {
+		res.render("index", {
+			title: "Kaafila - Shiv Nadar School Noida",
+			userData: Object.keys(userData).length > 0 ? userData : null,
+			scripts: ["/js/index.js"],
+		});
+	};
+
+	try {
+		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
+		const user = await admin.auth().getUser(firebaseUserClaims.sub)
+		userData = {photoURL: user.photoURL,};
+		webrender();
+	} catch (err) {
+		if (err.code !== "auth/argument-error") { console.log(err); }
+		webrender();
+	}
+}
+
+async function renderAbout(res, req) {
+	var userData = {};
 	var galleryImagesMain = [];
 	var galleryImages = [];
 	var galleryImagesMore = [];
 	const sessionCookie = req.cookies.session || "";
 
 	const webrender = () => {
-		res.render("index", {
-			title: "Kaafila - Shiv Nadar School Noida",
+		res.render("about", {
+			title: "About - Kaafila",
 			galleryImages: galleryImages,
 			galleryImagesMore: galleryImagesMore,
 			userData: Object.keys(userData).length > 0 ? userData : null,
-			scripts: ["/js/index.js"],
+			scripts: ["/js/about.js"],
 		});
 	};
 
@@ -58,5 +81,6 @@ async function renderIndex(res, req) {
 }
 
 router.get("/", (req, res, next) => renderIndex(res, req));
+router.get("/about", (req, res, next) => renderAbout(res, req));
 
 module.exports = router;
