@@ -90,14 +90,14 @@
 				{{#if registration}}
 					{{#if registration.alreadyRegistered}}
 					<a href="/profile"><div class="ui button green">Already Registered</div></a>
-					{{else if registration.seatsFull}}
+					{{!-- {{else if registration.seatsFull}}
 					<div class="ui button red">Registerations Closed</div>
 					{{else if userData}}
 					<div id="registereventmodalbutton" class="ui button primary" data-name="{{subeventName}}"data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}
 					<a href="/signin">
 						<div class="ui button primary">Register</div>
-					</a>
+					</a> --}}
 					{{/if}}
 				{{/if}}
 			</div>
@@ -114,14 +114,14 @@
 				{{#if registration}}
 					{{#if registration.alreadyRegistered}}
 					<a href="/profile"><div class="ui button green">Already Registered</div></a>
-					{{else if registration.seatsFull}}
+					{{!-- {{else if registration.seatsFull}}
 					<div class="ui button red">Registerations Closed</div>
 					{{else if userData}}
 					<div id="registereventmodalbuttonm" class="ui button primary" data-name="{{subeventName}}"data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}
 					<a href="/signin">
 						<div class="ui button primary">Register</div>
-					</a>
+					</a> --}}
 					{{/if}}
 				{{/if}}
 			</div>
@@ -136,7 +136,7 @@
 
 </div>
 
-{{#if userData}}
+{{!-- {{#if userData}}
 {{#unless registration.alreadyRegistered}}
 <div id="registereventmodal" class="ui modal">
 	<div class="header">
@@ -160,7 +160,7 @@
 	</div>
 </div>
 {{/unless}}
-{{/if}}
+{{/if}} --}}
 
 {{>footer}}
 
