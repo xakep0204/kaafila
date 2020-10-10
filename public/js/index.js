@@ -11,5 +11,5 @@ $(document).ready(() => {
 
   $('.menu .item').tab();
   
-  // $("#deadlinemodal").modal('show');
+  $("#deadlinemodal").modal('show');
 })
