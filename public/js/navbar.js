@@ -2,6 +2,7 @@ var $nav = $(".ui.borderless.menu");
 var $header = $("header.hero");
 
 $(document).ready(function () {
+	$(".ui.dropdown").dropdown();
 	$(".ui.toggle.button").click(function () {
 		if (!($(document).scrollTop() > 54)) {
 			if ($(".mobile.only.grid .ui.vertical.menu").css('display') == 'none') {
