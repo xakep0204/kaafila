@@ -16,6 +16,11 @@
 		margin-bottom: 0px !important;
 	}
 
+	#video h5 {
+		margin-top: 120px;
+		margin-bottom: 120px;
+	}
+
 	.ui.borderless.menu {
 		background: #085078;
 		background: -webkit-linear-gradient(to left, #85D8CE, #085078);
@@ -137,11 +142,7 @@
 		</div>
 	</div>
 
-	<div id="about">
-		<div class="ui container">
-			{{> (lookup . 'pageID')}}
-		</div>
-	</div>
+	{{> (lookup . 'pageID')}}
 
 </div>
 
