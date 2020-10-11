@@ -7,26 +7,6 @@ var fs = require("fs").promises;
 var router = express.Router();
 var db = admin.firestore();
 
-async function getUserData(uid) {
-	doc = db.collection('schoolUsers').doc(uid);
-	docref = await doc.get()
-	if (!docref.exists) {
-		return null
-	} else {
-		return docref.data()
-	}
-}
-
-async function getTakenSeats(subevent) {
-	doc = db.collection('events').doc(subevent);
-	docref = await doc.get()
-	if (!docref.exists) {
-		return 0
-	} else {
-		return docref.data().participants
-	}
-}
-
 async function renderEvent(req, res, next) {
 	var event = req.params.event;
 	const sessionCookie = req.cookies.session || "";
@@ -67,65 +47,53 @@ async function renderEvent(req, res, next) {
 }
 
 async function renderSubevent(req, res, next) {
+	const webrender = (db) => {
+		if (db) {
+			res.render(`subevent`, {
+				title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
+				url: subevent,
+				subeventName: routingData[subevent].name,
+				subeventImage: routingData[subevent].image,
+				subeventDesc: routingData[subevent].description,
+				cssID: routingData.cssID,
+				[routingData.navID]: true,
+				pageID: "subevents/" + routingData[subevent].pageID,
+				formID: routingData[subevent].registration[db] ? "subevents/forms/" + routingData[subevent].registration[db].formID : null,
+				registration: registration,
+				userData: Object.keys(userData).length > 0 ? userData : null,
+				scripts: [`/js/subevent-${db}.js`],
+				regOut: registration ? JSON.stringify(registration) : "nope"
+			});
+		} else {
+			res.render(`subevent`, {
+				title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
+				url: subevent,
+				subeventName: routingData[subevent].name,
+				subeventImage: routingData[subevent].image,
+				subeventDesc: routingData[subevent].description,
+				cssID: routingData.cssID,
+				[routingData.navID]: true,
+				pageID: "subevents/" + routingData[subevent].pageID,
+				registration: registration,
+				userData: Object.keys(userData).length > 0 ? userData : null,
+			});
+		}
+	}
+
 	var event = req.params.event;
 	var subevent = req.params.subevent;
-
 	const sessionCookie = req.cookies.session || "";
-
 	var userData = {};
 	var registration = {};
 	
 	const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
 	routingData = JSON.parse(readRoutes)
-	if (!(event in routingData)) {
-		return next(createError(404))
-	} 
+	if (!(event in routingData)) { return next(createError(404)) } 
 	routingData = routingData[event]
-	if (!(subevent in routingData)) {
-		return next(createError(404))
-	}
-	var registration = routingData[subevent].registration || {};
-	if (Object.keys(registration).length > 0) {
-		const takenSeats = await getTakenSeats(subevent)
-		if (takenSeats >= registration.maxSeats) {
-			registration.seatsFull = true
-		}
-	}
-	
-	const webrender = (db) => {
-		if (db) {
-			res.render(`subevent-${db}`, {
-				title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
-				url: subevent,
-				subeventName: routingData[subevent].name,
-				subeventImage: routingData[subevent].image,
-				subeventDesc: routingData[subevent].description,
-				cssID: routingData.cssID,
-				[routingData.navID]: true,
-				pageID: "subevents/" + routingData[subevent].pageID,
-				formID: routingData[subevent].registration ? "subevents/forms/" + routingData[subevent].registration.formID : null,
-				registration: Object.keys(registration).length > 0 ? registration : null,
-				userData: Object.keys(userData).length > 0 ? userData : null,
-				scripts: [`/js/subevent-${db}.js`]
-			});
-		} else {
-			res.render(`subevent-public`, {
-				title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
-				url: subevent,
-				subeventName: routingData[subevent].name,
-				subeventImage: routingData[subevent].image,
-				subeventDesc: routingData[subevent].description,
-				cssID: routingData.cssID,
-				[routingData.navID]: true,
-				pageID: "subevents/" + routingData[subevent].pageID,
-				formID: routingData[subevent].registration ? "subevents/forms/" + routingData[subevent].registration.formID : null,
-				registration: Object.keys(registration).length > 0 ? registration : null,
-				userData: Object.keys(userData).length > 0 ? userData : null,
-				scripts: [`/js/subevent-public.js`]
-			});
-		}
-	}
+	if (!(subevent in routingData)) { return next(createError(404)) }
 
+	var registration = routingData[subevent].registration || null;
+	
 	try {
 		
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
@@ -135,31 +103,55 @@ async function renderSubevent(req, res, next) {
 		const checkPublicDatabase = await db.collection('publicUsers').doc(firebaseUserClaims.sub).get()
 		if (checkPublicDatabase.exists) {
 			const userFirestoreData = checkPublicDatabase.data();
-			registration = registration.userType == 'public' ? registration : {}
+			registration = registration.public
 			userData.name = userRecord.name;
+
 			if (userFirestoreData.registeredEvents) {
 				if (subevent in userFirestoreData.registeredEvents) {
 					registration.alreadyRegistered = true;
+				} else if (registration) {
+					doc = db.collection('events').doc(subevent);
+					docref = await doc.get()
+					if (!docref.exists) {
+						takenSeats = 0
+					} else {
+						takenSeats = docref.data().participants ? docref.data().participants : 0
+						registration.closed = docref.data().closed ? docref.data().closed : false
+					}
+			
+					if (takenSeats >= registration.maxSeats) {
+						registration.seatsFull = true
+					}
 				}
 			}
+
 			webrender('public');
+
 		} else {
 			const checkSchoolDatabase = await db.collection('schoolUsers').doc(firebaseUserClaims.sub).get()
 			if (checkSchoolDatabase.exists) {
 				const userFirestoreData = checkSchoolDatabase.data();
-				registration = registration.userType == 'school' ? registration : {}
-				if (Object.keys(registration).length > 0) {
-					const takenSeats = await getTakenSeats(subevent)
-					if (registration.maxSeats) {
-						if (takenSeats >= registration.maxSeats) {
-							registration.seatsFull = true
-						} else if (registration.maxSeatsPerSchool) {
-							if (takenSeats + registration.maxSeatsPerSchool > registration.maxSeats) {
-								registration.maxSeatsPerSchool = registration.maxSeats - takenSeats
-							}
+				registration = registration.school
+
+				if (registration) {
+					doc = db.collection('events').doc(subevent);
+					docref = await doc.get()
+					if (!docref.exists) {
+						takenSeats = 0
+					} else {
+						takenSeats = docref.data().participants ? docref.data().participants : 0
+						registration.closed = docref.data().closed ? docref.data().closed : false
+					}
+			
+					if (takenSeats >= registration.maxSeats) {
+						registration.seatsFull = true
+					} else if (!registration.closed) {
+						if (takenSeats + registration.maxSeatsPerSchool > registration.maxSeats) {
+							registration.maxSeatsPerSchool = registration.maxSeats - takenSeats
 						}
 					}
 				}
+
 				userData.schoolRepName = userFirestoreData.schoolRepName;
 				userData.schoolName = userRecord.displayName;
 				if (userFirestoreData.registeredEvents) {
@@ -172,7 +164,7 @@ async function renderSubevent(req, res, next) {
 		}
 
 	} catch (err) {
-		if (err.code !== "auth/argument-error") { console.log(err); }
+		if (!(err.code in ["auth/argument-error", "auth/session-cookie-revoked"])) { console.log(err); }
 		webrender();
 	}
 

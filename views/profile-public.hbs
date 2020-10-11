@@ -168,12 +168,35 @@
 			</p>
 			{{/with}}
 			{{/if}}
+			
+			{{#if kalbeliya-lec-dem}}
+			{{#with kalbeliya-lec-dem}}
+			<h2>{{name}}</h2>
+			<div class="ui button green">Registered</div>
+			{{/with}}
+			{{/if}}
+
+			{{#if the-manta-sidhu-show}}
+			{{#with the-manta-sidhu-show}}
+			<h2>{{name}}</h2>
+			<div class="ui button green">Registered</div>
+			{{/with}}
+			{{/if}}
+
+			{{#if bamboo-craft-lec-dem}}
+			{{#with bamboo-craft-lec-dem}}
+			<h2>{{name}}</h2>
+			<div class="ui button green">Registered</div>
+			{{/with}}
+			{{/if}}
+
 			{{/with}}
 			{{else}}
 			<h3 class="ui header">No events registered for yet</h3>
 			{{/if}}
 		</div>
 	</div>
+
 	<div id="account-details">
 		<div class="ui container">
 			<h1 class="ui header">Account Details</h1>

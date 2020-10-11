@@ -1,11 +1,15 @@
 var members;
 var globalMembers;
 
-async function registerPublicEvent() {
-	$("#registerevent").addClass("loading");
-	data = { name: registrationMeta.name }
+function stndForm() {
+	$(".registereventmodalbutton").addClass("loading");
+	data = {
+		name: registrationMeta.name,
+	}
+	
 	$.post(`/registration`, {data: JSON.stringify(data), subevent: registrationMeta.subevent}, (status) => {
 		if (status == "OK") {
+			$(".registereventmodalbutton").removeClass("loading");
 			$("#registereventconfirmmodal").modal("show");
 		} else {
 			console.log(status);
@@ -177,22 +181,25 @@ function sbForm() {
 
 $(".ui.dropdown").dropdown();
 $("#registereventconfirmmodal").modal({ onHidden: () => window.location.assign("/profile") });
-$("#registereventmodalbutton").on("click", () => $("#registereventmodal").modal("show"));
-$("#registereventmodalbuttonm").on("click", () => $("#registereventmodal").modal("show"));
+
 
 registrationMeta = {}
-if (document.getElementById("registereventmodalbutton")) {
-	$.each(document.getElementById("registereventmodalbutton").attributes,function(i,a){
+if (document.getElementsByClassName("registereventmodalbutton")) {
+	$.each(document.getElementsByClassName("registereventmodalbutton")[0].attributes,function(i,a){
 		if (['id', 'class'].indexOf(a.name) === -1) { registrationMeta[a.name.slice(5)] = a.value }
 	})
 	if (!("formid" in registrationMeta)) { registrationMeta.formid = "stnd" }
 	
 	switch (registrationMeta.formid) {
 		case "stnd":
-			stndForm();
+			$(".registereventmodalbutton").on("click", () => stndForm());
 			break;
 		case "sb":
 			sbForm();
 			break;
 	}
+}
+
+if (registrationMeta.formid !== 'stnd') {
+	$(".registereventmodalbutton").on("click", () => $("#registereventmodal").modal("show"));
 }

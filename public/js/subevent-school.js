@@ -927,8 +927,7 @@ function wsForm() {
 
 $(".ui.dropdown").dropdown();
 $("#registereventconfirmmodal").modal({ onHidden: () => window.location.assign("/profile") });
-$("#registereventmodalbutton").on("click", () => $("#registereventmodal").modal("show"));
-$("#registereventmodalbuttonm").on("click", () => $("#registereventmodal").modal("show"));
+$(".registereventmodalbutton").on("click", () => $("#registereventmodal").modal("show"));
 
 registrationMeta = {}
 if (document.getElementById("registereventmodalbutton")) {

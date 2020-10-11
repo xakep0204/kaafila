@@ -47,9 +47,10 @@
       "pageID": "bnc-mm",
       "description": "Virtual solo theatrical performance",
       "registration": {
-        "maxSeatsPerSchool": 1,
-        "formID": "mm",
-        "userType": "school"
+        "school": {
+          "maxSeatsPerSchool": 1,
+          "formID": "mm"
+        }
       }
     },
     "one-act-play": {
@@ -58,9 +59,10 @@
       "pageID": "bnc-oap",
       "description": "Collaborative virtual theatrical performance",
       "registration": {
-        "maxSeatsPerSchool": 15,
-        "formID": "oap",
-        "userType": "school"
+        "school": {
+          "maxSeatsPerSchool": 15,
+          "formID": "oap"
+        }
       }
     },
     "collab-lab": {
@@ -69,9 +71,10 @@
       "pageID": "bnc-cl",
       "description": "A week long student collaborative theatre project",
       "registration": {
-        "maxSeatsPerSchool": 2,
-        "maxSeats": 12,
-        "userType": "school"
+        "school": {
+          "maxSeatsPerSchool": 2,
+          "maxSeats": 12
+        }
       }
     },
     "the-sounds-of-stories": {
@@ -80,9 +83,10 @@
       "pageID": "bnc-tsos",
       "description": "Storytelling Through Sounds",
       "registration": {
-        "maxSeats": 12,
-        "maxSeatsPerSchool": 3,
-        "userType": "school"
+        "school": {
+          "maxSeats": 12,
+          "maxSeatsPerSchool": 3
+        }
       }
     },
     "stories-through-the-lens": {
@@ -91,9 +95,10 @@
       "pageID": "bnc-sttl",
       "description": "Making short films, vlogs, or cooking recipes, this workshop can give you hands-on experience in the aesthetics of filming techniques",
       "registration": {
-        "maxSeats": 20,
-        "maxSeatsPerSchool": 4,
-        "userType": "school"
+        "school": {
+          "maxSeats": 20,
+          "maxSeatsPerSchool": 4
+        }
       }
     },
     "fade-in": {
@@ -147,9 +152,10 @@
       "pageID": "ff-ffs",
       "description": "Individual interpretations of different Indian dance forms with respect to freedom",
       "registration": {
-        "maxSeatsPerSchool": 3,
-        "maxSeats": 12,
-        "userType": "school"
+        "school": {
+          "maxSeatsPerSchool": 3,
+          "maxSeats": 12
+        }
       }
     },
     "flesh-n-bones": {
@@ -158,9 +164,10 @@
       "pageID": "ff-fnb",
       "description": "The Self-developed Contemporary Movement technique",
       "registration": {
-        "maxSeatsPerSchool": 5,
-        "maxSeats": 25,
-        "userType": "school"
+        "school": {
+          "maxSeatsPerSchool": 5,
+          "maxSeats": 25
+        }
       }
     },
     "kalbeliya-lec-dem": {
@@ -169,8 +176,10 @@
       "pageID": "ff-kld",
       "description": "Story and journey of Gulabo Sapera as well as Kalbeliya as a dance form",
       "registration": {
-        "formID": "ws",
-        "userType": "school"
+        "school": {
+          "formID": "ws"
+        },
+        "public": {}
       }
     },
     "ff-career-conversations": {
@@ -179,8 +188,9 @@
       "pageID": "ff-cc",
       "description": "Career opportunities that lie within the field of dance",
       "registration": {
-        "formID": "ws",
-        "userType": "school"
+        "school": {
+          "formID": "ws"
+        }
       }
     },
     "why-do-we-dance": {
@@ -234,9 +244,10 @@
       "pageID": "i-sof",
       "description": "Different interpretations of freedom, each with its unique identity by reenactment of famous paintings that inspire",
       "registration": {
-        "maxSeatsPerSchool": 10,
-        "formID": "sof",
-        "userType": "school"
+        "school": {
+          "maxSeatsPerSchool": 10,
+          "formID": "sof"
+        }
       }
     },
     "i-career-conversations": {
@@ -245,8 +256,9 @@
       "pageID": "i-cc",
       "description": "Seek the essence of how a career in visual arts is and future artists to discover what visual art stands for",
       "registration": {
-        "formID": "ws",
-        "userType": "school"
+        "school": {
+          "formID": "ws"
+        }
       }
     },
     "bamboo-craft-lec-dem": {
@@ -255,8 +267,10 @@
       "pageID": "i-bcld",
       "description": "Creating a plethora of products solely using bamboo",
       "registration": {
-        "formID": "ws",
-        "userType": "school"
+        "school": {
+          "formID": "ws"
+        },
+        "public": {}
       }
     },
     "tessellations": {
@@ -265,9 +279,10 @@
       "pageID": "i-t",
       "description": "Unique 3D paper art keeping the trajectory and the ideas behind  Mr. Hinojosa's artworks",
       "registration": {
-        "maxSeatsPerSchool": 4,
-        "maxSeats": 20,
-        "userType": "school"
+        "school": {
+          "maxSeatsPerSchool": 4,
+          "maxSeats": 20
+        }
       }
     },
     "art-as-a-catalyst-for-social-change": {
@@ -276,8 +291,9 @@
       "pageID": "i-aaacfsc",
       "description": "Can public art empower individuals and communities and enable conversations leading to organic change within society?",
       "registration": {
-        "formID": "ws",
-        "userType": "school"
+        "school": {
+          "formID": "ws"
+        }
       }
     }
   },
@@ -329,9 +345,10 @@
       "pageID": "sa-sas",
       "description": "A virtual inter-school music competition",
       "registration": {
-        "maxSeatsPerSchool": 2,
-        "formID": "sas",
-        "userType": "school"
+        "school": {
+          "maxSeatsPerSchool": 2,
+          "formID": "sas"
+        }
       }
     },
     "songs-for-freedom": {
@@ -346,8 +363,9 @@
       "pageID": "sa-cc",
       "description": "Students looking to make a career in music will gain an insight into the world of possibilities that exist within the music industry",
       "registration": {
-        "formID": "ws",
-        "userType": "school"
+        "school": {
+          "formID": "ws"
+        }
       }
     },
     "khasi-music-lec-dem": {
@@ -356,8 +374,9 @@
       "pageID": "sa-kmld",
       "description": "Exploration of traditional Khasi instruments and music.",
       "registration": {
-        "formID": "ws",
-        "userType": "school"
+        "school": {
+          "formID": "ws"
+        }
       }
     },
     "the-manta-sidhu-show": {
@@ -366,8 +385,10 @@
       "pageID": "sa-tmss",
       "description": "Performing and talking about composition, her own process and the importance of poetry music",
       "registration": {
-        "formID": "ws",
-        "userType": "school"
+        "school": {
+          "formID": "ws"
+        },
+        "public": {}
       }
     },
     "space-band": {
@@ -376,8 +397,9 @@
       "pageID": "sa-sb",
       "description": "An online platform which calls upon artists to engage in collaborative online musical performances",
       "registration": {
-        "formID": "sb",
-        "userType": "public"
+        "public": {
+          "formID": "sb"
+        }
       }
     }
   }
