@@ -162,9 +162,10 @@
 		<div class="ui container">
 			<a class="header item" href="/">Kaafila</a>
 			<div class="right menu">
+				<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
 				<div class="ui dropdown item">
 					Events <i class="dropdown icon"></i>
-					<div class="menu hidden">
+					<div class="menu">
 						<a class="item" href="/events/bread-and-circuses">Bread & Circuses</a>
 						<a class="item" href="/events/folk-fluence">Folk Fluence</a>
 						<a class="item" href="/events/iridescence">Iridescence</a>
@@ -172,7 +173,6 @@
 					</div>
 				</div>
 				<a class="item" href="/snsnartshaat">SNSN Arts Haat</a>
-				<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
 				{{#if userData}}
 				<a class="item" href="/profile">
 					<img class="ui circular image {{#if active_p}}active{{/if}}" src="{{userData.photoURL}}?width=40&height=40">
@@ -213,6 +213,7 @@
 			</div>
 		</div>
 		<div class="ui vertical borderless fluid menu">
+			<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
 			<div class="ui dropdown item">
 				Events <i class="dropdown icon"></i>
 				<div class="menu hidden">
@@ -223,7 +224,6 @@
 				</div>
 			</div>
 			<a class="item" href="/snsnartshaat">SNSN Arts Haat</a>
-			<a class="item {{#if active_a}}active{{/if}}" href="/about">About</a>
 		</div>
 	</div>
 </div>
