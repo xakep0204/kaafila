@@ -316,10 +316,6 @@
         "name": "Non-competitive Events",
         "main": [
           {
-            "image": "sa-sff-banner.png",
-            "link": "/events/strings-attached/songs-for-freedom"
-          },
-          {
             "image": "sa-cc-banner.png",
             "link": "/events/strings-attached/sa-career-conversations"
           },
@@ -350,12 +346,6 @@
           "formID": "sas"
         }
       }
-    },
-    "songs-for-freedom": {
-      "name": "Songs for Freedom",
-      "image": "sa-sff-banner.png",
-      "pageID": "sa-sff",
-      "description": "Showcasing video entries of songs which are based on the theme of freedom"
     },
     "sa-career-conversations": {
       "name": "Careers in the Arts: Music",
