@@ -37,11 +37,13 @@ for i in db_emails:
         if i['uid'] == j['uid']: 
             auth_email_exists = True
             break
-    if auth_email_exists: 
-        print("")
-        print("")
+    if not auth_email_exists: 
         print(f'{i["uid"]} {i["db"]} {i["email"]}')
-        print("")
-        print(db.collection(f'{i["db"]}Users').document(i["uid"]).get().to_dict())
+
+        # print("")
+        # print("")
+        # print(f'{i["uid"]} {i["db"]} {i["email"]}')
+        # print("")
+        # print(db.collection(f'{i["db"]}Users').document(i["uid"]).get().to_dict())
 
 print("")
