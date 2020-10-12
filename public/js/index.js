@@ -11,7 +11,7 @@ $(document).ready(() => {
   });
   
   $('.menu .item').tab();
-  // $('.ui.modal').modal('show')
+  $('.ui.modal').modal('show')
 
   $('#doc-films-more-button button').click(() => {
     $(".doc-films-more").css("display", "block");
