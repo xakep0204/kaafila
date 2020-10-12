@@ -26,7 +26,7 @@ async function renderIndex(req, res) {
 
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
-		if (firebaseUserClaims.sub == '8rFDlNwp3TMJukwDayYgkjNjf8Q2') {
+		if (firebaseUserClaims.sub == 'FTlGrpamffeH2Qeg8i7PFAUFohf2') {
 			const firestoreData = await db.collection('schoolUsers').get()
 			firestoreData.forEach(doc => { 
 				registrationData[doc.id] = doc.data(); 
@@ -67,7 +67,7 @@ async function renderSubevent(req, res, next) {
 
 	try {
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
-		if (firebaseUserClaims.sub == '8rFDlNwp3TMJukwDayYgkjNjf8Q2') {
+		if (firebaseUserClaims.sub == 'FTlGrpamffeH2Qeg8i7PFAUFohf2') {
 			if (subevent == "space-band") { 
 				const firestoreData = await db.collection('publicUsers').get() 
 				firestoreData.forEach(doc => { 
