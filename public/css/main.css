@@ -63,3 +63,38 @@ body {
     padding-bottom: 4em;
   }
 }
+
+.responsive-ratio {
+	position: relative;
+	margin: 0 auto;
+	overflow: visible;
+}
+
+.responsive-ratio:after {
+	padding-bottom: 56.5%;
+	display: block;
+	content: '';
+}
+
+.no-generatedcontent .responsive-ratio {
+  width: 100%;
+  padding-bottom: 56.5%;
+}
+	
+.Responsive-Embed iframe,
+.Responsive-Embed object,
+.Responsive-Embed embed,
+.Responsive-Embed video,
+.Responsive-Embed img,
+.responsive-ratio .fit,
+.responsive-ratio.fit-content > * {
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.responsive-ratio.dynamic:after {
+  padding-bottom: 50%;
+}
