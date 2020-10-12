@@ -190,7 +190,8 @@
       "registration": {
         "school": {
           "formID": "ws"
-        }
+        },
+        "public": {}
       }
     },
     "why-do-we-dance": {
@@ -258,7 +259,8 @@
       "registration": {
         "school": {
           "formID": "ws"
-        }
+        },
+        "public": {}
       }
     },
     "bamboo-craft-lec-dem": {
@@ -293,7 +295,8 @@
       "registration": {
         "school": {
           "formID": "ws"
-        }
+        },
+        "public": {}
       }
     }
   },
@@ -355,7 +358,8 @@
       "registration": {
         "school": {
           "formID": "ws"
-        }
+        },
+        "public": {}
       }
     },
     "khasi-music-lec-dem": {
@@ -366,7 +370,8 @@
       "registration": {
         "school": {
           "formID": "ws"
-        }
+        },
+        "public": {}
       }
     },
     "the-manta-sidhu-show": {
