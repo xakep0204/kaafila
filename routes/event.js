@@ -59,6 +59,7 @@ async function renderSubevent(req, res, next) {
 				[routingData.navID]: true,
 				pageID: "subevents/" + routingData[subevent].pageID,
 				formID: routingData[subevent].registration[db] ? "subevents/forms/" + routingData[subevent].registration[db].formID : null,
+				regOut: JSON.stringify(registration),
 				registration: registration,
 				userData: Object.keys(userData).length > 0 ? userData : null,
 				scripts: [`/js/subevent-${db}.js`],
@@ -74,6 +75,7 @@ async function renderSubevent(req, res, next) {
 				cssID: routingData.cssID,
 				[routingData.navID]: true,
 				pageID: "subevents/" + routingData[subevent].pageID,
+				regOut: JSON.stringify(registration),
 				registration: registration,
 				userData: Object.keys(userData).length > 0 ? userData : null,
 			});
@@ -159,12 +161,27 @@ async function renderSubevent(req, res, next) {
 						registration.alreadyRegistered = true;
 					}
 				}
+				
 			}
 			webrender('school');
 		}
 
 	} catch (err) {
 		if (!(err.code in ["auth/argument-error", "auth/session-cookie-revoked"])) { console.log(err); }
+		if (registration) {
+			doc = db.collection('events').doc(subevent);
+			docref = await doc.get()
+			if (!docref.exists) {
+				takenSeats = 0
+			} else {
+				takenSeats = docref.data().participants ? docref.data().participants : 0
+				registration.closed = docref.data().closed ? docref.data().closed : false
+			}
+	
+			if (takenSeats >= registration.maxSeats) {
+				registration.seatsFull = true
+			}
+		}
 		webrender();
 	}
 
