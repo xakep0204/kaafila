@@ -1,4 +1,4 @@
-<div id="about">
+{{!-- <div id="about">
   <div class="ui container">
     <div class="ui grid middle aligned two columns">
       <div class="column">
@@ -67,6 +67,103 @@
       3. When accessing the stream, please use your personal device to ensure complete cyber safety.
     </p>
   </div>
+</div> --}}
+
+<div id="entries">
+  <div class="ui container center aligned">
+    <h1 class="ui header">Entries</h1>
+    <div class="ui grid three columns stackable center aligned top aligned">
+      <div class="column">
+        <div class="ui card fluid">
+          <div class="content center aligned">
+            <div class="responsive-ratio dynamic fit-content">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/xZl7JmC_lJU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3 class="ui header">Amity International School</h3>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui card fluid">
+          <div class="content center aligned">
+            <div class="responsive-ratio dynamic fit-content">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/gDJMAe8mixk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3 class="ui header">Vasant Valley School</h3>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui card fluid">
+          <div class="content center aligned">
+            <div class="responsive-ratio dynamic fit-content">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/K0dZXRPn440" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3 class="ui header">Shiv Nadar School Noida</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="ui primary button vote" id="oap-vote" style="margin-top: 10px;">Vote Entry</button>
+  </div>
+</div>
+
+<div class="ui modal small" id="oap-vote-modal">
+  <div class="header">Enter Your Info</div>
+  <div class="content">
+		<form id="confirminfoform" class="ui small form">
+			<div class="ui stacked">
+				<div class="field">
+          <label>Full Name</label>
+          <div class="ui input">
+            <input type="text" id="name" placeholder="Full Name">
+          </div>
+        </div>
+				<div class="field">
+          <label>Email</label>
+          <div class="ui input">
+            <input type="text" id="email" placeholder="Email">
+          </div>
+        </div>
+				<div class="field">
+          <label>Entry to Vote</label>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden" id="amity-international-school">
+              <label>Amity International School</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden" id="vasant-valley-school">
+              <label>Vasant Valley School</label>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden" id="vasant-valley-school">
+              <label>Shiv Nadar School Noida</label>
+            </div>
+          </div>
+				</div>
+				<div class="ui fluid container column right aligned">
+					<button type="button" id="votesubmit" class="ui primary button">Submit</button>
+				</div>
+      </div>
+
+			<div class="ui error message"></div>
+		</form>
+  </div>
+</div>
+
+<div id="confirmmodal" class="ui modal tiny">
+	<div class="content">
+		<div class="ui fluid container center aligned">
+			<img class="ui centered image tiny" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/tick.png">
+			<h2>Vote Submitted</h2>
+			<h4 style="margin-top: 0!important;">Thanks for voting!</h4>
+		</div>
+	</div>
 </div>
 
 <div id="judges">

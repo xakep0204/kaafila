@@ -62,7 +62,7 @@ async function renderSubevent(req, res, next) {
 				regOut: JSON.stringify(registration),
 				registration: registration,
 				userData: Object.keys(userData).length > 0 ? userData : null,
-				scripts: [`/js/subevent-${db}.js`],
+				scripts: [`/js/subevent-${db}.js`, `/js/subevent.js`],
 				regOut: registration ? JSON.stringify(registration) : "nope"
 			});
 		} else {
@@ -78,6 +78,7 @@ async function renderSubevent(req, res, next) {
 				regOut: JSON.stringify(registration),
 				registration: registration,
 				userData: Object.keys(userData).length > 0 ? userData : null,
+				scripts: [`/js/subevent.js`],
 			});
 		}
 	}
