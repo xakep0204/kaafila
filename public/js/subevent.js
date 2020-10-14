@@ -89,7 +89,13 @@ $(".confirminfoform").form({
 });
 
 $(".vote").click(function () {
-  $(`#${this.id}-modal`).modal("show");
+  id = $(this).attr('data-id')
+  $(`[data-id='${id}-modal']`).modal("show");
+})
+
+$(".conceptnote").click(function () {
+  id = $(this).attr('data-id')
+  $(`[data-id='${id}-modal']`).modal("show");
 })
 
 $(".confirminfoform").submit(function () { 

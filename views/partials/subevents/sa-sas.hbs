@@ -128,9 +128,10 @@
       <div class="column">
         <div class="ui card fluid">
           <div class="content center aligned">
-            <div class="responsive-ratio dynamic fit-content">
+            {{!-- <div class="responsive-ratio dynamic fit-content">
               <iframe width="560" height="315" src="{{this}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            </div> --}}
+            <div class="ui embed" data-url="{{this}}" data-placeholder="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/video-image.png"></div>
             <h3 class="ui header" style="margin-bottom: 5px;">{{@key}}</h3>
             <h4 class="ui header" style="margin-top: 0px; font-weight: 500">{{@../key}}</h4>
           </div>
@@ -139,8 +140,8 @@
       {{/each}}
       {{/each}}
     </div>
-    {{#if voteStatus}}
-    <button class="ui primary button vote" id="{{@key}}-vote" style="margin-top: 10px;">Vote Entry</button>
+    {{#if ../voteStatus}}
+    <button class="ui primary button vote" data-id="{{@key}}-vote" style="margin-top: 10px;">Vote Entry</button>
     {{/if}}
     {{/each}}
   </div>
@@ -148,7 +149,7 @@
 
 {{#if voteStatus}}
 {{#each entries}}
-<div class="ui modal small" id="{{@key}}-vote-modal">
+<div class="ui modal small" data-id="{{@key}}-vote-modal">
   <div class="header">Enter Your Info</div>
   <div class="scrolling content">
 		<form id="{{@key}}-vote-form" class="ui small form confirminfoform">

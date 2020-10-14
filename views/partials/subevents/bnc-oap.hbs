@@ -78,9 +78,10 @@
       <div class="column">
         <div class="ui card fluid">
           <div class="content center aligned">
-            <div class="responsive-ratio dynamic fit-content">
+            {{!-- <div class="responsive-ratio dynamic fit-content">
               <iframe width="560" height="315" src="{{this}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            </div> --}}
+            <div class="ui embed" data-url="{{this}}" data-placeholder="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/video-image.png"></div>
             <h3 class="ui header">{{@key}}</h3>
           </div>
         </div>
@@ -88,62 +89,10 @@
       {{/each}}
     </div>
     {{#if voteStatus}}
-    <button class="ui primary button vote" id="oap-vote" style="margin-top: 10px;">Vote Entry</button>
+    <button class="ui primary button vote" data-id="oap-vote" style="margin-top: 10px;">Vote Entry</button>
     {{/if}}
   </div>
 </div>
-
-{{#if voteStatus}}
-<div class="ui modal small" id="oap-vote-modal">
-  <div class="header">Enter Your Info</div>
-  <div class="scrolling content">
-		<form id="oap-vote-form" class="ui small form confirminfoform">
-			<div class="ui stacked">
-				<div class="field">
-          <label>Full Name</label>
-          <div class="ui input">
-            <input type="text" name="name" placeholder="Full Name">
-          </div>
-        </div>
-				<div class="field">
-          <label>Email</label>
-          <div class="ui input">
-            <input type="text" name="email" placeholder="Email">
-          </div>
-        </div>
-				<div class="field">
-          <input type="hidden" id="leastCheckedCount">
-          <label>Entry to Vote</label>
-          {{#each entries}}
-          <div class="inline field">
-            <div class="ui checkbox">
-              <input type="checkbox" tabindex="0" class="hidden" name="{{@key}}">
-              <label>{{@key}}</label>
-            </div>
-          </div>
-          {{/each}}
-				</div>
-				<div class="ui fluid container column right aligned">
-					<button type="submit" class="ui primary button votesubmit" data-event="one-act-play">Submit</button>
-				</div>
-      </div>
-
-			<div class="ui error message"></div>
-		</form>
-  </div>
-</div>
-
-<div id="confirmmodal" class="ui modal tiny">
-	<div class="content">
-		<div class="ui fluid container center aligned">
-			<img class="ui centered image tiny" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/tick.png">
-			<h2>Vote Submitted</h2>
-			<h4 style="margin-top: 0!important;">Thanks for voting!</h4>
-		</div>
-	</div>
-</div>
-{{/if}}
-
 {{/if}}
 
 <div id="judges">
@@ -230,3 +179,57 @@
     </div>
   </div>
 </div>
+
+{{#if entries}}
+{{#if voteStatus}}
+<div class="ui modal small" data-id="oap-vote-modal">
+  <div class="header">Enter Your Info</div>
+  <div class="scrolling content">
+		<form id="oap-vote-form" class="ui small form confirminfoform">
+			<div class="ui stacked">
+				<div class="field">
+          <label>Full Name</label>
+          <div class="ui input">
+            <input type="text" name="name" placeholder="Full Name">
+          </div>
+        </div>
+				<div class="field">
+          <label>Email</label>
+          <div class="ui input">
+            <input type="text" name="email" placeholder="Email">
+          </div>
+        </div>
+				<div class="field">
+          <input type="hidden" id="leastCheckedCount">
+          <label>Entry to Vote</label>
+          {{#each entries}}
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden" name="{{@key}}">
+              <label>{{@key}}</label>
+            </div>
+          </div>
+          {{/each}}
+				</div>
+				<div class="ui fluid container column right aligned">
+					<button type="submit" class="ui primary button votesubmit" data-event="one-act-play">Submit</button>
+				</div>
+      </div>
+
+			<div class="ui error message"></div>
+		</form>
+  </div>
+</div>
+
+<div id="confirmmodal" class="ui modal tiny">
+	<div class="content">
+		<div class="ui fluid container center aligned">
+			<img class="ui centered image tiny" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/tick.png">
+			<h2>Vote Submitted</h2>
+			<h4 style="margin-top: 0!important;">Thanks for voting!</h4>
+		</div>
+	</div>
+</div>
+{{/if}}
+
+{{/if}}

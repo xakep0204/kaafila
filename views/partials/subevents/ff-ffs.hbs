@@ -62,7 +62,7 @@
       <div class="column">
         <div class="ui card fluid">
           <div class="content center aligned">
-            <div class="ui embed" data-url="{{this}}"></div>
+            <div class="ui embed" data-url="{{this}}" data-placeholder="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/video-image.png"></div>
             <h3 class="ui header" style="margin-bottom: 5px;">{{@key}}</h3>
             <h4 class="ui header" style="margin-top: 0px; font-weight: 500">{{@../key}}</h4>
           </div>
@@ -72,64 +72,11 @@
       {{/each}}
     </div>
     {{#if voteStatus}}
-    <button class="ui primary button vote" id="ffs-vote" style="margin-top: 10px;">Vote Entry</button>
+    <button class="ui primary button vote" data-id="ffs-vote" style="margin-top: 10px;">Vote Entry</button>
     {{/if}}
   </div>
 </div>
-
-{{#if voteStatus}}
-<div class="ui modal small" id="ffs-vote-modal">
-  <div class="header">Enter Your Info</div>
-  <div class="scrolling content">
-		<form id="ffs-vote-modal" class="ui small form confirminfoform">
-			<div class="ui stacked">
-				<div class="field">
-          <label>Full Name</label>
-          <div class="ui input">
-            <input type="text" name="name" placeholder="Full Name">
-          </div>
-        </div>
-				<div class="field">
-          <label>Email</label>
-          <div class="ui input">
-            <input type="text" name="email" placeholder="Email">
-          </div>
-        </div>
-				<div class="field">
-          <label>Entry to Vote</label>
-          {{#each entries}}
-          {{#each this}}
-          <div class="inline field">
-            <div class="ui checkbox">
-              <input type="checkbox" tabindex="0" class="hidden" name="{{@key}} - {{@../key}}">
-              <label>{{@key}} - {{@../key}}</label>
-            </div>
-          </div>
-          {{/each}}
-          {{/each}}
-				</div>
-				<div class="ui fluid container column right aligned">
-					<button type="submit" class="ui primary button votesubmit" data-event="folk-fluence-solos">Submit</button>
-				</div>
-      </div>
-
-			<div class="ui error message"></div>
-		</form>
-  </div>
-</div>
-
-<div id="confirmmodal" class="ui modal tiny">
-	<div class="content">
-		<div class="ui fluid container center aligned">
-			<img class="ui centered image tiny" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/tick.png">
-			<h2>Vote Submitted</h2>
-			<h4 style="margin-top: 0!important;">Thanks for voting!</h4>
-		</div>
-	</div>
-</div>
 {{/if}}
-{{/if}}
-
 
 <div id="mentors">
   <div class="ui container center aligned">
@@ -251,3 +198,57 @@
     </div>
   </div>
 </div>
+
+{{#if entries}}
+{{#if voteStatus}}
+<div class="ui modal small" data-id="ffs-vote-modal">
+  <div class="header">Enter Your Info</div>
+  <div class="scrolling content">
+		<form id="ffs-vote-modal" class="ui small form confirminfoform">
+			<div class="ui stacked">
+				<div class="field">
+          <label>Full Name</label>
+          <div class="ui input">
+            <input type="text" name="name" placeholder="Full Name">
+          </div>
+        </div>
+				<div class="field">
+          <label>Email</label>
+          <div class="ui input">
+            <input type="text" name="email" placeholder="Email">
+          </div>
+        </div>
+				<div class="field">
+          <label>Entry to Vote</label>
+          {{#each entries}}
+          {{#each this}}
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden" name="{{@key}} - {{@../key}}">
+              <label>{{@key}} - {{@../key}}</label>
+            </div>
+          </div>
+          {{/each}}
+          {{/each}}
+				</div>
+				<div class="ui fluid container column right aligned">
+					<button type="submit" class="ui primary button votesubmit" data-event="folk-fluence-solos">Submit</button>
+				</div>
+      </div>
+
+			<div class="ui error message"></div>
+		</form>
+  </div>
+</div>
+
+<div id="confirmmodal" class="ui modal tiny">
+	<div class="content">
+		<div class="ui fluid container center aligned">
+			<img class="ui centered image tiny" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/tick.png">
+			<h2>Vote Submitted</h2>
+			<h4 style="margin-top: 0!important;">Thanks for voting!</h4>
+		</div>
+	</div>
+</div>
+{{/if}}
+{{/if}}
