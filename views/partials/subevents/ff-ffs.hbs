@@ -71,10 +71,13 @@
       {{/each}}
       {{/each}}
     </div>
+    {{#if voteStatus}}
     <button class="ui primary button vote" id="ffs-vote" style="margin-top: 10px;">Vote Entry</button>
+    {{/if}}
   </div>
 </div>
 
+{{#if voteStatus}}
 <div class="ui modal small" id="ffs-vote-modal">
   <div class="header">Enter Your Info</div>
   <div class="scrolling content">
@@ -124,6 +127,7 @@
 		</div>
 	</div>
 </div>
+{{/if}}
 {{/if}}
 
 

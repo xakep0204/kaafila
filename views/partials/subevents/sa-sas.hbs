@@ -139,11 +139,14 @@
       {{/each}}
       {{/each}}
     </div>
+    {{#if voteStatus}}
     <button class="ui primary button vote" id="{{@key}}-vote" style="margin-top: 10px;">Vote Entry</button>
+    {{/if}}
     {{/each}}
   </div>
 </div>
 
+{{#if voteStatus}}
 {{#each entries}}
 <div class="ui modal small" id="{{@key}}-vote-modal">
   <div class="header">Enter Your Info</div>
@@ -195,4 +198,5 @@
 		</div>
 	</div>
 </div>
+{{/if}}
 {{/if}}
