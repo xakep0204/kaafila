@@ -78,8 +78,8 @@ function infoFormSubmit() {
 
 $("#confirminfoform").form({
 	fields: {
-		fullName: {
-			identifier: "fullName",
+		name: {
+			identifier: "name",
 			rules: [
 				{
 					type: "empty",

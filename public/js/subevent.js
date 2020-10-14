@@ -63,7 +63,7 @@ $.each($(".confirminfoform"), function () {
 
 $(".confirminfoform").form({
 	fields: {
-		fullName: {
+		name: {
 			identifier: "name",
 			rules: [
 				{
