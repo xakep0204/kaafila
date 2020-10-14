@@ -69,40 +69,23 @@
   </div>
 </div> --}}
 
+{{#if entries}}
 <div id="entries">
   <div class="ui container center aligned">
     <h1 class="ui header">Entries</h1>
     <div class="ui grid three columns stackable center aligned top aligned">
+      {{#each entries}}
       <div class="column">
         <div class="ui card fluid">
           <div class="content center aligned">
             <div class="responsive-ratio dynamic fit-content">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/xZl7JmC_lJU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe width="560" height="315" src="{{this}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <h3 class="ui header">Amity International School</h3>
+            <h3 class="ui header">{{@key}}</h3>
           </div>
         </div>
       </div>
-      <div class="column">
-        <div class="ui card fluid">
-          <div class="content center aligned">
-            <div class="responsive-ratio dynamic fit-content">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/gDJMAe8mixk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <h3 class="ui header">Vasant Valley School</h3>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui card fluid">
-          <div class="content center aligned">
-            <div class="responsive-ratio dynamic fit-content">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/K0dZXRPn440" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <h3 class="ui header">Shiv Nadar School Noida</h3>
-          </div>
-        </div>
-      </div>
+      {{/each}}
     </div>
     <button class="ui primary button vote" id="oap-vote" style="margin-top: 10px;">Vote Entry</button>
   </div>
@@ -110,44 +93,35 @@
 
 <div class="ui modal small" id="oap-vote-modal">
   <div class="header">Enter Your Info</div>
-  <div class="content">
-		<form id="confirminfoform" class="ui small form">
+  <div class="scrolling content">
+		<form id="oap-vote-form" class="ui small form confirminfoform">
 			<div class="ui stacked">
 				<div class="field">
           <label>Full Name</label>
           <div class="ui input">
-            <input type="text" id="name" placeholder="Full Name">
+            <input type="text" name="name" placeholder="Full Name">
           </div>
         </div>
 				<div class="field">
           <label>Email</label>
           <div class="ui input">
-            <input type="text" id="email" placeholder="Email">
+            <input type="text" name="email" placeholder="Email">
           </div>
         </div>
 				<div class="field">
+          <input type="hidden" id="leastCheckedCount">
           <label>Entry to Vote</label>
+          {{#each entries}}
           <div class="inline field">
             <div class="ui checkbox">
-              <input type="checkbox" tabindex="0" class="hidden" id="amity-international-school">
-              <label>Amity International School</label>
+              <input type="checkbox" tabindex="0" class="hidden" name="{{@key}}">
+              <label>{{@key}}</label>
             </div>
           </div>
-          <div class="inline field">
-            <div class="ui checkbox">
-              <input type="checkbox" tabindex="0" class="hidden" id="vasant-valley-school">
-              <label>Vasant Valley School</label>
-            </div>
-          </div>
-          <div class="inline field">
-            <div class="ui checkbox">
-              <input type="checkbox" tabindex="0" class="hidden" id="vasant-valley-school">
-              <label>Shiv Nadar School Noida</label>
-            </div>
-          </div>
+          {{/each}}
 				</div>
 				<div class="ui fluid container column right aligned">
-					<button type="button" id="votesubmit" class="ui primary button">Submit</button>
+					<button type="submit" class="ui primary button votesubmit" data-event="one-act-play">Submit</button>
 				</div>
       </div>
 
@@ -165,6 +139,7 @@
 		</div>
 	</div>
 </div>
+{{/if}}
 
 <div id="judges">
   <div class="ui container center aligned">

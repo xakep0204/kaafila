@@ -101,9 +101,9 @@
 					{{#if registration.alreadyRegistered}}
 					<a href="/profile"><div class="ui button green">Already Registered</div></a>
 					{{else if registration.closed}}
-					<div class="ui button red">Registerations Closed</div>
+					{{!-- <div class="ui button red">Registerations Closed</div> --}}
 					{{else if registration.seatsFull}}
-					<div class="ui button red">Seats Full</div>
+					{{!-- <div class="ui button red">Seats Full</div> --}}
 					{{else if userData}}
 					<div class="ui button primary registereventmodalbutton" data-name="{{subeventName}}" data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}
@@ -127,9 +127,9 @@
 					{{#if registration.alreadyRegistered}}
 					<a href="/profile"><div class="ui button green">Already Registered</div></a>
 					{{else if registration.closed}}
-					<div class="ui button red">Registerations Closed</div>
+					{{!-- <div class="ui button red">Registerations Closed</div> --}}
 					{{else if registration.seatsFull}}
-					<div class="ui button red">Seats Full</div>
+					{{!-- <div class="ui button red">Seats Full</div> --}}
 					{{else if userData}}
 					<div class="ui button primary registereventmodalbutton" data-name="{{subeventName}}"data-subevent="{{url}}" {{#each registration}}data-{{@key}}="{{this}}"{{/each}}>Register</div>
 					{{else}}

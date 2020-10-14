@@ -61,6 +61,7 @@ async function renderSubevent(req, res, next) {
 				formID: routingData[subevent].registration[db] ? "subevents/forms/" + routingData[subevent].registration[db].formID : null,
 				regOut: JSON.stringify(registration),
 				registration: registration,
+				entries: entries,
 				userData: Object.keys(userData).length > 0 ? userData : null,
 				scripts: [`/js/subevent-${db}.js`, `/js/subevent.js`],
 				regOut: registration ? JSON.stringify(registration) : "nope"
@@ -77,6 +78,7 @@ async function renderSubevent(req, res, next) {
 				pageID: "subevents/" + routingData[subevent].pageID,
 				regOut: JSON.stringify(registration),
 				registration: registration,
+				entries: entries,
 				userData: Object.keys(userData).length > 0 ? userData : null,
 				scripts: [`/js/subevent.js`],
 			});
@@ -96,7 +98,11 @@ async function renderSubevent(req, res, next) {
 	if (!(subevent in routingData)) { return next(createError(404)) }
 
 	var registration = routingData[subevent].registration || null;
-	
+
+	doc = db.collection('entries').doc(subevent);
+	docref = await doc.get();
+	entries = docref.exists ? docref.data() : null
+
 	try {
 		
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
@@ -279,9 +285,55 @@ async function subeventSubmission(req, res) {
 	}
 }
 
+async function checkVoteEmail(req, res) {
+	const email = req.body.email;
+	const subevent = req.body.subevent;
+	try {
+		const getVoteData = await db.collection('votes').doc(email).get()
+		if (getVoteData.exists) { 
+			if (getVoteData.data()[subevent]) {
+				res.json({data: true})
+			} else {
+				res.json({data: false})
+			}
+		} 
+		else {
+			res.json({data: false})
+		}
+	} catch (err) {
+		console.log(err);
+	}
+}
+
+async function publicVote(req, res) {
+	const data = JSON.parse(req.body.data)
+
+	const email = data.email;
+	const name = data.name;
+	const votes = data.votes;
+	const subevent = data.subevent;
+	try {
+		const individualVoteDoc = await db.collection('votes').doc(email)
+		const individualVoteDocRef = await individualVoteDoc.get()
+		if (individualVoteDocRef.exists) { 
+			individualVoteDoc.update({[subevent]: votes})
+		} else {
+			individualVoteDoc.set({
+				name: name,
+				[subevent]: votes
+			})
+		}
+		res.sendStatus(200)
+	} catch (err) {
+		console.log(err);
+	}
+}
+
 router.get("/events/:event", (req, res, next) => renderEvent(req, res, next));
 router.get("/events/:event/:subevent", (req, res, next) => renderSubevent(req, res, next));
 router.post("/registration", (req, res) => subeventRegistration(req, res));
 router.post("/submission", (req, res) => subeventSubmission(req, res));
+router.post("/checkvoteemail", (req, res) => checkVoteEmail(req, res));
+router.post("/publicvote", (req, res) => publicVote(req, res));
 
 module.exports = router;
