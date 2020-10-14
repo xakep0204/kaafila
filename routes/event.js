@@ -61,6 +61,7 @@ async function renderSubevent(req, res, next) {
 				formID: routingData[subevent].registration[db] ? "subevents/forms/" + routingData[subevent].registration[db].formID : null,
 				regOut: JSON.stringify(registration),
 				registration: registration,
+				watchLink: watchLink,
 				voteStatus: voteStatus,
 				entries: entries,
 				userData: Object.keys(userData).length > 0 ? userData : null,
@@ -79,6 +80,7 @@ async function renderSubevent(req, res, next) {
 				pageID: "subevents/" + routingData[subevent].pageID,
 				regOut: JSON.stringify(registration),
 				registration: registration,
+				watchLink: watchLink,
 				voteStatus: voteStatus,
 				entries: entries,
 				userData: Object.keys(userData).length > 0 ? userData : null,
@@ -107,7 +109,8 @@ async function renderSubevent(req, res, next) {
 
 	doc = await db.collection('votes').doc('master').get();
 	voteStatus = doc.data()[subevent]
-	console.log(voteStatus);
+	doc = await db.collection('events').doc(subevent).get();
+	watchLink = doc.data().watchLink
 
 	try {
 		
