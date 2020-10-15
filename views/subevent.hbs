@@ -103,7 +103,7 @@
 					<br>
 					<br>
 					<a href="{{joinLink}}" target="_blank">
-						<div class="ui button green big">{{joinText}}</div>
+						<div class="ui button green big">{{#if joinText}}{{joinText}}{{else}}Join Here{{/if}}</div>
 					</a>
 					{{else}}
 					<a href="/profile"><div class="ui button green">Already Registered</div></a>
@@ -124,7 +124,7 @@
 				<br>
 				<br>
 				<a href="{{watchLink}}" target="_blank">
-					<div class="ui button primary big">{{watchText}}</div>
+					<div class="ui button primary big">{{#if watchText}}{{watchText}}{{else}}Watch Here{{/if}}</div>
 				</a>
 				{{/if}}
 			</div>
@@ -157,7 +157,7 @@
 				<br>
 				<br>
 				<a href="{{watchLink}}" target="_blank">
-					<div class="ui button primary big">{{watchText}}</div>
+					<div class="ui button primary big">{{#if watchText}}{{watchText}}{{else}}Watch Here{{/if}}</div>
 				</a>
 				{{/if}}
 			</div>
