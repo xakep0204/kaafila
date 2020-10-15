@@ -101,6 +101,11 @@ async function renderSubevent(req, res, next) {
 	const sessionCookie = req.cookies.session || "";
 	var userData = {};
 	var registration = {};
+	watchLink = null;
+	watchText = null;
+	joinLink = null;
+	joinText = null;
+	voteStatus = null;
 	
 	const readRoutes = await fs.readFile(path.join(__dirname, "eventRoutes.json"), "utf8")
 	routingData = JSON.parse(readRoutes)
@@ -109,21 +114,25 @@ async function renderSubevent(req, res, next) {
 	if (!(subevent in routingData)) { return next(createError(404)) }
 
 	var registration = routingData[subevent].registration || null;
+	if (registration) {
+		registration.closed = true
+	}
 
 	const readEntries = await fs.readFile(path.join(__dirname, "entries.json"), "utf8")
 	entriesData = JSON.parse(readEntries)
 	entries = entriesData[event][subevent] ? entriesData[event][subevent] : null
 
-	doc = await db.collection('votes').doc('master').get();
-	voteStatus = doc.data()[subevent]
-	doc = await db.collection('events').doc(subevent);
-	docref = await doc.get();
-	watchLink = docref.exists ? docref.data().watchLink : null
-	watchText = docref.exists ? docref.data().watchText : null
-	joinLink = docref.exists ? docref.data().joinLink : null
-	joinText = docref.exists ? docref.data().joinText : null
-
+	
 	try {
+
+		doc = await db.collection('votes').doc('master').get();
+		voteStatus = doc.data()[subevent]
+		doc = await db.collection('events').doc(subevent);
+		docref = await doc.get();
+		watchLink = docref.exists ? docref.data().watchLink : null
+		watchText = docref.exists ? docref.data().watchText : null
+		joinLink = docref.exists ? docref.data().joinLink : null
+		joinText = docref.exists ? docref.data().joinText : null
 		
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
 		const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
@@ -195,21 +204,23 @@ async function renderSubevent(req, res, next) {
 
 	} catch (err) {
 		if (!(err.code in ["auth/argument-error", "auth/session-cookie-revoked"])) { console.log(err); }
-		if (registration) {
-			doc = db.collection('events').doc(subevent);
-			docref = await doc.get()
-			if (!docref.exists) {
-				takenSeats = 0
-			} else {
-				takenSeats = docref.data().participants ? docref.data().participants : 0
-				registration.closed = docref.data().closed ? docref.data().closed : false
-			}
+		// if (registration) {
+		// 	doc = db.collection('events').doc(subevent);
+		// 	docref = await doc.get()
+		// 	if (!docref.exists) {
+		// 		takenSeats = 0
+		// 	} else {
+		// 		takenSeats = docref.data().participants ? docref.data().participants : 0
+		// 		registration.closed = docref.data().closed ? docref.data().closed : false
+		// 	}
 	
-			if (takenSeats >= registration.maxSeats) {
-				registration.seatsFull = true
-			}
+		// 	if (takenSeats >= registration.maxSeats) {
+		// 		registration.seatsFull = true
+		// 	}
+		// }
+		if (err.details = 'Quota exceeded.') {
+			webrender();
 		}
-		webrender();
 	}
 
 }
