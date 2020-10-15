@@ -109,9 +109,9 @@ async function renderSubevent(req, res, next) {
 
 	var registration = routingData[subevent].registration || null;
 
-	doc = db.collection('entries').doc(subevent);
-	docref = await doc.get();
-	entries = docref.exists ? docref.data() : null
+	const readEntries = await fs.readFile(path.join(__dirname, "entries.json"), "utf8")
+	entriesData = JSON.parse(readEntries)
+	entries = entriesData[event][subevent] ? entriesData[event][subevent] : null
 
 	doc = await db.collection('votes').doc('master').get();
 	voteStatus = doc.data()[subevent]
