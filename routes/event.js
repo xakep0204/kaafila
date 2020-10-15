@@ -31,6 +31,7 @@ async function renderEvent(req, res, next) {
 			eventCategories: routingData.eventCategories,
 			[routingData.navID]: true,
 			userData: Object.keys(userData).length > 0 ? userData : null,
+			scripts: ['/js/event.js']
 		});
 	}
 
