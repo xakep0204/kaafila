@@ -6,7 +6,7 @@ function getCookie(name) {
 
 function leastCheckedCount(formElement, val) {
   formId = formElement.attr('id')
-  if ($(`#${formId} .ui.checkbox.checked`).length == val) {
+  if ($(`[id='${formId}'] .ui.checkbox.checked`).length == val) {
     return true
   } else {
     formElement.form("add errors", [`Please check ${val} entry(ies)`])
@@ -30,9 +30,9 @@ async function voteFormSubmit(formElement) {
   if (formElement.form('is valid', 'email')) {
     previousVote = await checkPreviousVote(formElement)
     if (formElement.form('is valid') && leastCheckedCount(formElement, 2) && !previousVote) {
-      $(`#${formId} .votesubmit`).addClass("loading")
+      $(`[id='${formId}'] .votesubmit`).addClass("loading")
       votes = []
-      $.each($(`#${formId} .ui.checkbox.checked`), function () {
+      $.each($(`[id='${formId}'] .ui.checkbox.checked`), function () {
         votes.push($(this).children().first().attr('name'))
       })
       
@@ -49,7 +49,7 @@ async function voteFormSubmit(formElement) {
       $.post("/publicvote", {
         data: JSON.stringify(postData)
       }, () => {
-        $(`#${formId} .votesubmit`).removeClass("loading");
+        $(`[id='${formId}'] .votesubmit`).removeClass("loading");
         $("#confirmmodal").modal('show');
       });
     }
