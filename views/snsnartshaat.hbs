@@ -139,7 +139,7 @@
 	{{#each artist}}
 	<div> {{!-- For pastel colours to work --}}
 		<div class="ui center aligned container">
-			<img src="{{this.picture}}?width=256&height=256" class="ui circular image centered small">
+			<img src="{{this.picture}}?w=256&h=256" class="ui circular image centered small">
 			<h1 class="ui header">{{this.name}}</h1>
 			<div class="ui fluid grid stackable center aligned three columns">
 				{{#each this.products}}
@@ -147,7 +147,7 @@
 					<div class="ui card fluid">
 						<div class="image">
 							<a href="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/{{this.itemImg}}" data-fancybox="{{../this.name}}-gallery" data-caption="{{../this.name}}{{#if this.itemName}} - {{this.itemName}}{{/if}}" class="artist-fancybox">
-								<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/{{this.itemImg}}?width=400&height=400" class="ui fluid image centered">
+								<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/{{this.itemImg}}?w=400&h=400" class="ui fluid image centered">
 							</a>
 						</div>
 						<div class="content">
