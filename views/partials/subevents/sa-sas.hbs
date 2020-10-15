@@ -146,7 +146,33 @@
     {{/each}}
   </div>
 </div>
+{{/if}}
 
+<div id="judges">
+  <div class="ui container center aligned">
+    <h1 class="ui header">Judge</h1>
+    <br>
+    <div class="ui grid stackable fluid center aligned top aligned">
+      <div class="column four wide">
+        <img class="ui image fluid rounded" src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/judges/sa-sas-anirudh-verma.png?w=400&h=400">
+      </div>
+      <div class="column eight wide left aligned">
+        <h2 class="ui">Anirudh Varma​</h2>
+        <p class="ui">
+          Anirudh Varma is a 25 year old contemporary pianist, composer, producer & performance studies scholar, based out of New Delhi, India. He is a Grade 8 Pianist, from the Associated Board of Royal Schools of Music. He is the curator & creative director of Delhi based contemporary Indian classical ensemble: The Anirudh Varma Collective. The ensemble curated by Anirudh has been the subject of academic research and writing for students and researchers across the globe.
+        </p>
+        <p class="ui">
+          Anirudh’s performance repertoire is unique in nature, since he is equally accomplished in both Indian Classical, Western Classical and Contemporary American Jazz music. His performance are a seamless collaboration of these three genres of music. His performances include works by Jazz composers such as, George Gershwin, Erroll Garner, Esparanza Spalding, and Stevie Wonder to name a few. He has been researching on the connection that American Jazz and Indian Classical Music form, and incorporates the same in his performances.
+        </p>
+        <p class="ui">
+          He released his debut piano EP, Melancholic Rhapsody in February 2016, and went on to release his full length debut album, ‘Perspectives’, featuring over 65 musicians from across India. Both these records have released to critical acclaim. He has performed at, The Jaipur Literature Festival 2020, Curtain Raiser Event, Jashn-e- Rekhta 2020, pre event, Calcutta School of Music, Serendipity Arts Foundation and HCL Concerts, amongst many others.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{#if entries}}
 {{#if voteStatus}}
 {{#each entries}}
 <div class="ui modal small" data-id="{{@key}}-vote-modal">
