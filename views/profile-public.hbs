@@ -168,11 +168,17 @@
 			</p>
 			{{/with}}
 			{{/if}}
-			
+			{{registeredEventsJS}}
 			{{#if kalbeliya-lec-dem}}
 			{{#with kalbeliya-lec-dem}}
 			<h2>{{name}}</h2>
+			{{#if joinLink}}
+			<a href="{{joinLink}}" target="_blank">
+				<div class="ui button green big">{{joinText}}</div>
+			</a>
+			{{else}}
 			<div class="ui button green">Registered</div>
+			{{/if}}
 			{{/with}}
 			{{/if}}
 
@@ -180,40 +186,76 @@
 			{{#if bamboo-craft-lec-dem}}
 			{{#with bamboo-craft-lec-dem}}
 			<h2>{{name}}</h2>
+			{{#if joinLink}}
+			<a href="{{joinLink}}" target="_blank">
+				<div class="ui button green big">{{joinText}}</div>
+			</a>
+			{{else}}
 			<div class="ui button green">Registered</div>
+			{{/if}}
 			{{/with}}
 			{{/if}}
 
 			{{#if khasi-music-lec-dem}}
 			{{#with khasi-music-lec-dem}}
 			<h2>{{name}}</h2>
+			{{#if joinLink}}
+			<a href="{{joinLink}}" target="_blank">
+				<div class="ui button green big">{{joinText}}</div>
+			</a>
+			{{else}}
 			<div class="ui button green">Registered</div>
+			{{/if}}
 			{{/with}}
 			{{/if}}
 
 			{{#if the-manta-sidhu-show}}
 			{{#with the-manta-sidhu-show}}
 			<h2>{{name}}</h2>
+			{{#if joinLink}}
+			<a href="{{joinLink}}" target="_blank">
+				<div class="ui button green big">{{joinText}}</div>
+			</a>
+			{{else}}
 			<div class="ui button green">Registered</div>
+			{{/if}}
 			{{/with}}
 			{{/if}}
 
 			{{#if ff-career-conversations}}
 			{{#with ff-career-conversations}}
 			<h2>{{name}}</h2>
+			{{#if joinLink}}
+			<a href="{{joinLink}}" target="_blank">
+				<div class="ui button green big">{{joinText}}</div>
+			</a>
+			{{else}}
 			<div class="ui button green">Registered</div>
+			{{/if}}
 			{{/with}}
 			{{/if}}
 			{{#if i-career-conversations}}
 			{{#with i-career-conversations}}
 			<h2>{{name}}</h2>
+			{{#if joinLink}}
+			<a href="{{joinLink}}" target="_blank">
+				<div class="ui button green big">{{joinText}}</div>
+			</a>
+			{{else}}
 			<div class="ui button green">Registered</div>
+			{{/if}}
 			{{/with}}
 			{{/if}}
 			{{#if sa-career-conversations}}
 			{{#with sa-career-conversations}}
 			<h2>{{name}}</h2>
+			{{#if joinLink}}
+			<a href="{{joinLink}}" target="_blank">
+				<div class="ui button green big">{{joinText}}</div>
+			</a>
+			{{else}}
 			<div class="ui button green">Registered</div>
+			{{/if}}
 			{{/with}}
 			{{/if}}
 

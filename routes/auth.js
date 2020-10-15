@@ -43,6 +43,15 @@ async function renderProfile(req, res, next) {
 		if (checkPublicDatabase.exists) {
 			const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
 			var userFirestoreData = checkPublicDatabase.data();
+			if (userFirestoreData.registeredEvents) {
+				const eventFirestoreData = await db.collection('events').get()
+				eventFirestoreData.forEach(doc => { 
+					if (userFirestoreData.registeredEvents[doc.id]) {
+						userFirestoreData.registeredEvents[doc.id].joinLink = doc.data().joinLink; 
+						userFirestoreData.registeredEvents[doc.id].joinText = doc.data().joinText; 
+					}
+				})
+			}
 			
 			userData = {
 				name: userRecord.displayName,
@@ -67,7 +76,8 @@ async function renderProfile(req, res, next) {
 					const eventFirestoreData = await db.collection('events').get()
 					eventFirestoreData.forEach(doc => { 
 						if (userFirestoreData.registeredEvents[doc.id]) {
-							userFirestoreData.registeredEvents[doc.id].joiningInfo = doc.data().joiningInfo; 
+							userFirestoreData.registeredEvents[doc.id].joinLink = doc.data().joinLink; 
+							userFirestoreData.registeredEvents[doc.id].joinText = doc.data().joinText; 
 						}
 					})
 				}

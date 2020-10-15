@@ -99,7 +99,15 @@
 				{{!-- {{regOut}} --}}
 				{{#if registration}}
 					{{#if registration.alreadyRegistered}}
+					{{#if joinLink}}
+					<br>
+					<br>
+					<a href="{{joinLink}}" target="_blank">
+						<div class="ui button green big">{{joinText}}</div>
+					</a>
+					{{else}}
 					<a href="/profile"><div class="ui button green">Already Registered</div></a>
+					{{/if}}
 					{{else if registration.closed}}
 					{{!-- <div class="ui button red">Registerations Closed</div> --}}
 					{{else if registration.seatsFull}}

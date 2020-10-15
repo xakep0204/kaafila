@@ -63,6 +63,8 @@ async function renderSubevent(req, res, next) {
 				registration: registration,
 				watchLink: watchLink,
 				watchText: watchText,
+				joinLink: joinLink,
+				joinText: joinText,
 				voteStatus: voteStatus,
 				entries: entries,
 				userData: Object.keys(userData).length > 0 ? userData : null,
@@ -83,6 +85,8 @@ async function renderSubevent(req, res, next) {
 				registration: registration,
 				watchLink: watchLink,
 				watchText: watchText,
+				joinLink: joinLink,
+				joinText: joinText,
 				voteStatus: voteStatus,
 				entries: entries,
 				userData: Object.keys(userData).length > 0 ? userData : null,
@@ -115,6 +119,8 @@ async function renderSubevent(req, res, next) {
 	docref = await doc.get();
 	watchLink = docref.exists ? docref.data().watchLink : null
 	watchText = docref.exists ? docref.data().watchText : null
+	joinLink = docref.exists ? docref.data().joinLink : null
+	joinText = docref.exists ? docref.data().joinText : null
 
 	try {
 		
