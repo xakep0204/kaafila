@@ -81,12 +81,7 @@
             <h3 class="ui header" style="margin-bottom: 5px;">{{@key}}</h3>
             <h4 class="ui header" style="margin-top: 0px; font-weight: 500">{{@../key}}</h4>
             {{#if this.pdf}}
-            <button class="ui primary small button conceptnote right floated" data-id="{{@key}}-{{@../key}}">Concept Note</button>
-            <div class="ui modal large" data-id="{{@key}}-{{@../key}}-modal">
-              <div class="content">
-                <div class="ui embed" data-url="{{this.pdf}}"></div>
-              </div>
-            </div>
+            <button class="ui primary small button conceptnote right floated" data-pdfLink="{{this.pdf}}">Concept Note</button>
             {{/if}}
           </div>
         </div>
@@ -181,6 +176,12 @@
         </p>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="ui modal large" id="conceptnote-modal">
+  <div class="content">
+    <div class="ui embed" data-url="" id="conceptnote-embed"></div>
   </div>
 </div>
 

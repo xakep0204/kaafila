@@ -94,8 +94,9 @@ $(".vote").click(function () {
 })
 
 $(".conceptnote").click(function () {
-  id = $(this).attr('data-id')
-  $(`[data-id='${id}-modal']`).modal("show");
+  $(`#conceptnote-modal .ui.embed`).attr("data-url", $(this).attr('data-pdfLink'))
+  $(`#conceptnote-modal .ui.embed`).embed()
+  $(`#conceptnote-modal`).modal("show");
 })
 
 $(".confirminfoform").submit(function () { 
