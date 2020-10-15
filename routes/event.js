@@ -62,6 +62,7 @@ async function renderSubevent(req, res, next) {
 				regOut: JSON.stringify(registration),
 				registration: registration,
 				watchLink: watchLink,
+				watchText: watchText,
 				voteStatus: voteStatus,
 				entries: entries,
 				userData: Object.keys(userData).length > 0 ? userData : null,
@@ -81,6 +82,7 @@ async function renderSubevent(req, res, next) {
 				regOut: JSON.stringify(registration),
 				registration: registration,
 				watchLink: watchLink,
+				watchText: watchText,
 				voteStatus: voteStatus,
 				entries: entries,
 				userData: Object.keys(userData).length > 0 ? userData : null,
@@ -109,8 +111,10 @@ async function renderSubevent(req, res, next) {
 
 	doc = await db.collection('votes').doc('master').get();
 	voteStatus = doc.data()[subevent]
-	doc = await db.collection('events').doc(subevent).get();
-	watchLink = doc.data().watchLink
+	doc = await db.collection('events').doc(subevent);
+	docref = await doc.get();
+	watchLink = docref.exists ? docref.data().watchLink : null
+	watchText = docref.exists ? docref.data().watchText : null
 
 	try {
 		
