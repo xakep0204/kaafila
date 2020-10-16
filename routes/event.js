@@ -53,6 +53,7 @@ async function renderSubevent(req, res, next) {
 			res.render(`subevent`, {
 				title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
 				url: subevent,
+				khasi: (subevent == "khasi-music-lec-dem") ? true : false,
 				subeventName: routingData[subevent].name,
 				subeventImage: routingData[subevent].image,
 				subeventDesc: routingData[subevent].description,
@@ -76,6 +77,7 @@ async function renderSubevent(req, res, next) {
 			res.render(`subevent`, {
 				title: `${routingData[subevent].name} - ${routingData.title} - Kaafila`,
 				url: subevent,
+				khasi: (subevent == "khasi-music-lec-dem") ? true : false,
 				subeventName: routingData[subevent].name,
 				subeventImage: routingData[subevent].image,
 				subeventDesc: routingData[subevent].description,
