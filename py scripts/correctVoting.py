@@ -23,8 +23,8 @@ c = 0
 print()
 for doc in docs.stream():
   if doc.id != 'master': 
+    c += 1
     for subevent in doc.to_dict():
-      c += 1
       if subevent != 'name': 
         updateVote = False
         subeventEdit = []
@@ -34,9 +34,8 @@ for doc in docs.stream():
           if vote in corrections.keys(): 
             updateVote = True
             voteEdit = corrections[vote]
+            print()
+            print(doc.id)
             print(f'{vote} -> {corrections[vote]}')
           subeventEdit.append(voteEdit)
-        # if updateVote:
-          # print(doc.id, {subevent: subeventEdit})
-          # docs.document(doc.id).update({f'{subevent}': subeventEdit})
 print(c)

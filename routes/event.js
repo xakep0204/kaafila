@@ -122,17 +122,22 @@ async function renderSubevent(req, res, next) {
 	entriesData = JSON.parse(readEntries)
 	entries = entriesData[event][subevent] ? entriesData[event][subevent] : null
 
+	const readLinks = await fs.readFile(path.join(__dirname, "links.json"), "utf8")
+	linksData = JSON.parse(readLinks)
+	links = linksData[subevent] ? linksData[subevent] : null
+	watchLink = links ? links.watchLink : null
+	watchText = links ? links.watchText : null
+	joinLink = links ? links.joinLink : null
+	joinText = links ? links.joinText : null
 	
 	try {
-
+		
 		doc = await db.collection('votes').doc('master').get();
 		voteStatus = doc.data()[subevent]
-		doc = await db.collection('events').doc(subevent);
-		docref = await doc.get();
-		watchLink = docref.exists ? docref.data().watchLink : null
-		watchText = docref.exists ? docref.data().watchText : null
-		joinLink = docref.exists ? docref.data().joinLink : null
-		joinText = docref.exists ? docref.data().joinText : null
+		// watchLink = docref.exists ? docref.data().watchLink : null
+		// watchText = docref.exists ? docref.data().watchText : null
+		// joinLink = docref.exists ? docref.data().joinLink : null
+		// joinText = docref.exists ? docref.data().joinText : null
 		
 		const firebaseUserClaims = await admin.auth().verifySessionCookie(sessionCookie, true)
 		const userRecord = await admin.auth().getUser(firebaseUserClaims.sub)
