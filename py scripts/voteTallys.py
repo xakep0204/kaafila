@@ -26,7 +26,5 @@ for subevent in votes_main:
   csv_file = open(f"votes/{subevent}.csv", "a")
   csv_file.write("Entry,Votes,Vote Percentage")
   for vote in votes_main[subevent]:
-    total_votes += votes_main[subevent][vote]
-  for vote in votes_main[subevent]:
-    csv_file.write(f"\n{vote},{votes_main[subevent][vote]},{round(votes_main[subevent][vote]/total_votes, 4)}")
+    csv_file.write(f"\n{vote},{votes_main[subevent][vote]},{round(votes_main[subevent][vote]/total_votes, 6)}")
   csv_file.close() 
