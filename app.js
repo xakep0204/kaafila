@@ -12,6 +12,7 @@ var indexRouter = require("./routes/index");
 var authRouter = require("./routes/auth");
 var eventRouter = require("./routes/event");
 var haatRouter = require("./routes/haat");
+var handlebarsHelpers = require('./handlebars-helpers')
 
 var app = express();
 app.use(stHttpLoggerMiddleware)
@@ -32,6 +33,7 @@ app.engine(
 		defaultView: "default",
 		layoutsDir: __dirname + "/views/layouts/",
 		partialDir: __dirname + "/views/partials/",
+		helpers: handlebarsHelpers,
 	}),
 );
 

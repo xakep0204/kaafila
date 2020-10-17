@@ -15,6 +15,33 @@ async function renderIndex(res, req) {
 			title: "Kaafila - Shiv Nadar School Noida",
 			userData: Object.keys(userData).length > 0 ? userData : null,
 			scripts: ["/js/index.js"],
+			docFilms: [
+				"https://www.youtube.com/embed/videoseries?list=PLM4S2hGZDSE580Mx38MTFMxSDBE3BuSVV",
+				"https://www.youtube.com/embed/videoseries?list=PLhDK1gM1gf0NaEiinSi_-_2O4MlIrU9aN",
+				"https://www.youtube.com/embed/qHg2AR8_UeM",
+				"https://www.youtube.com/embed/cf5FvgJ7Lhk",
+				"https://www.youtube.com/embed/VefL3LCoq10",
+				"https://www.youtube.com/embed/2pJD5HtlKwg",
+				"https://www.youtube.com/embed/3_I2eT6jrIc",
+				"https://www.youtube.com/embed/Xy2wXYm8i3k",
+				"https://www.youtube.com/embed/ak_a1RJ2DZc",
+				"https://www.youtube.com/embed/iFXgou31qHw",
+				"https://www.youtube.com/embed/7_Y2ILelYTg",
+				"https://www.youtube.com/embed/mBR5Pwf1doA",
+			],
+			sffSongs: [
+				"https://youtube.com/embed/9ulxZmYJ53o",
+				"https://youtube.com/embed/O0NxwolCX0o",
+				"https://youtube.com/embed/MiKCgK-Vvgk",
+				"https://youtube.com/embed/BWEEmVGI1O8",
+				"https://youtube.com/embed/bDVSkZNNUJo",
+				"https://youtube.com/embed/LcpdH5tDPFk",
+				"https://youtube.com/embed/5SorKYIRwp4",
+				"https://youtube.com/embed/c8A_lzdqfRg",
+				"https://youtube.com/embed/pR_p2DiMbBA",
+				"https://youtube.com/embed/Z8jG5HSS8M8"
+			],
+			
 		});
 	};
 
@@ -40,7 +67,6 @@ async function renderAbout(res, req) {
 		res.render("about", {
 			title: "About - Kaafila",
 			galleryImages: galleryImages,
-			galleryImagesMore: galleryImagesMore,
 			userData: Object.keys(userData).length > 0 ? userData : null,
 			scripts: ["/js/about.js"],
 		});
@@ -52,16 +78,9 @@ async function renderAbout(res, req) {
 			files.forEach((file) => {
 				if (["jpg", "png", "JPG", "gif"].includes(file.slice(-3))) {
 					imageObject = { path: file, caption: file.slice(0, -4) };
-					galleryImagesMain.push(imageObject);
+					galleryImages.push(imageObject);
 				}
 			});
-			if (galleryImagesMain.length > 8) {
-				galleryImagesMore = galleryImagesMain.slice(8);
-				galleryImages = galleryImagesMain.slice(0, 8);
-			}
-			else {
-				galleryImages = galleryImagesMain;
-			}
 		} catch (err) {
 			return console.log("Unable to scan directory: " + err);
 		}

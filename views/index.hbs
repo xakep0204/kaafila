@@ -308,51 +308,16 @@
 
 	<div id="sff">
 		<div class="ui center aligned container">
-			{{!-- <div class="ui grid middle aligned center aligned two columns">
-				<div class="column">
-					<img src="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/banners/sa-sff-banner.png" class="ui image medium centered">
-				</div>
-				<div class="column">
-					<h1 class="ui header">Songs for Freedom</h1>
-				</div>
-			</div> --}}
 			<h1 class="ui header">Songs for Freedom</h1>
 			<p class="ui">We will release 2-3 songs for Freedom every day until the Festival. Enjoy watching!</p>
 			<br>
 			<div class="ui grid middle aligned center aligned four columns stackable">
-				<div class="column">
-					<div class="ui embed" data-url="https://youtube.com/embed/9ulxZmYJ53o"></div>
+				{{#each sffSongs}}
+				<div class="column {{moreSection @index 'sff' 4}}">
+					<div class="ui embed" data-url="{{this}}" data-placeholder="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/banners/sff-landscape-banner.jpg"></div>
 				</div>
-				<div class="column">
-					<div class="ui embed" data-url="https://youtube.com/embed/O0NxwolCX0o"></div>
-				</div>
-				<div class="column">
-					<div class="ui embed" data-url="https://youtube.com/embed/MiKCgK-Vvgk"></div>
-				</div>
-				<div class="column">
-					<div class="ui embed" data-url="https://youtube.com/embed/BWEEmVGI1O8"></div>
-				</div>
-				<div id="sff-more-button" class="row">
-					<button class="ui button large primary">See More</button>
-				</div>
-				<div class="column sff-more">
-					<div class="ui embed" data-url="https://youtube.com/embed/bDVSkZNNUJo"></div>
-				</div>
-				<div class="column sff-more">
-					<div class="ui embed" data-url="https://youtube.com/embed/LcpdH5tDPFk"></div>
-				</div>
-				<div class="column sff-more">
-					<div class="ui embed" data-url="https://youtube.com/embed/5SorKYIRwp4"></div>
-				</div>
-				<div class="column sff-more">
-					<div class="ui embed" data-url="https://youtube.com/embed/c8A_lzdqfRg"></div>
-				</div>
-				<div class="column sff-more">
-					<div class="ui embed" data-url="https://youtube.com/embed/pR_p2DiMbBA"></div>
-				</div>
-				<div class="column sff-more">
-					<div class="ui embed" data-url="https://youtube.com/embed/Z8jG5HSS8M8"></div>
-				</div>
+				{{/each}}
+				{{{moreButton docFilms 'sff' 4}}}
 			</div>
 		</div>
 	</div>
@@ -362,69 +327,12 @@
 			<h1 class="ui header">Documentary Films</h1>
 			<br>
 			<div class="ui grid middle aligned center aligned three columns stackable">
-				<div class="column">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLM4S2hGZDSE580Mx38MTFMxSDBE3BuSVV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
+				{{#each docFilms}}
+				<div class="column {{moreSection @index 'doc-films' 3}}">
+					<div class="ui embed" data-source="false" data-url="{{this}}"></div>
 				</div>
-				<div class="column">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLhDK1gM1gf0NaEiinSi_-_2O4MlIrU9aN" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="column">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/qHg2AR8_UeM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div id="doc-films-more-button" class="row">
-					<button class="ui button large primary">See More</button>
-				</div>
-				<div class="column doc-films-more">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/cf5FvgJ7Lhk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="column doc-films-more">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/VefL3LCoq10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="column doc-films-more">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/2pJD5HtlKwg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="column doc-films-more">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/3_I2eT6jrIc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="column doc-films-more">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/Xy2wXYm8i3k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="column doc-films-more">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/ak_a1RJ2DZc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="column doc-films-more">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/iFXgou31qHw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="column doc-films-more">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/7_Y2ILelYTg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
-				<div class="column doc-films-more">
-					<div class="responsive-ratio dynamic fit-content">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/mBR5Pwf1doA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					</div>
-				</div>
+				{{/each}}
+				{{{moreButton docFilms 'doc-films' 3}}}
 			</div>
 		</div>
 	</div>
