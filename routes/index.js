@@ -41,7 +41,20 @@ async function renderIndex(res, req) {
 				"https://youtube.com/embed/pR_p2DiMbBA",
 				"https://youtube.com/embed/Z8jG5HSS8M8"
 			],
-			
+			sbSongs: [
+				{
+					name: "Step By Step School",
+					link: "https://youtube.com/embed/vbjQDZHkMSM",
+				},
+				{
+					name: "Shiv Nadar School Faridabad",
+					link: "https://youtube.com/embed/btNMlLzjNkI",
+				},
+				{
+					name: "Shiv Nadar School Faridabad",
+					link: "https://youtube.com/embed/57nYPIjP1Rc",
+				}
+			]
 		});
 	};
 

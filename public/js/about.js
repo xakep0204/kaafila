@@ -8,8 +8,8 @@ $(document).ready(() => {
     ]
   });
   
-  $('#gallery-more-button button').click(() => {
-    $(".gallery-more").css("display", "block");
-    $('#gallery-more-button').css("display", "none");
+  $('.more-button').click(function () {
+    $(`.${this.id}-more`).removeClass("more-section");
+    $(this).css("display", "none");
   });
 })

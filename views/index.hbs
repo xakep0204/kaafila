@@ -109,11 +109,6 @@
 		margin-bottom: 0px !important;
 	}
 
-	#doc-films .doc-films-more,
-	#sff .sff-more {
-		display: none;
-	}
-
 	#schedule .column {
 		max-width: 700px;
 	}
@@ -291,17 +286,13 @@
 		<div class="ui center aligned container">
 			<h1 class="ui header">Space/Band</h1>
 			<h3 class="ui header" style="font-weight: 300; margin-bottom:0; margin-top: 40px">Featured Bands of the Day</h3>
-			<div class="ui grid two columns stackable middle aligned">
+			<div class="ui grid equal width stackable middle aligned">
+				{{#each sbSongs}}
 				<div class="column">
-					<h2 class="ui header" style="margin-top:10px;">Step By Step School</h2>
-					<br>
-					<div class="ui embed" data-url="https://youtube.com/embed/vbjQDZHkMSM"></div>
+					<h2 class="ui header" style="margin-top:10px;">{{this.name}}</h2>
+					<div class="ui embed" data-url="{{this.link}}"></div>
 				</div>
-				<div class="column">
-					<h2 class="ui header" style="margin-top:10px;">Shiv Nadar School Faridabad</h2>
-					<br>
-					<div class="ui embed" data-url="https://youtube.com/embed/btNMlLzjNkI"></div>
-				</div>
+				{{/each}}
 			</div>
 		</div>
 	</div>
@@ -317,7 +308,7 @@
 					<div class="ui embed" data-url="{{this}}" data-placeholder="https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/banners/sff-landscape-banner.jpg"></div>
 				</div>
 				{{/each}}
-				{{{moreButton docFilms 'sff' 4}}}
+				{{{moreButton sffSongs 'sff' 4}}}
 			</div>
 		</div>
 	</div>

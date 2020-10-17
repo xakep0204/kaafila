@@ -98,3 +98,7 @@ body {
 .responsive-ratio.dynamic:after {
   padding-bottom: 50%;
 }
+
+.more-section {
+  display: none!important;
+}

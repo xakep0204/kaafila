@@ -1,12 +1,12 @@
 var helpers = {
   moreSection: function (itemIndex, sectionName, itemsVisible) {
     if (itemIndex >= itemsVisible) { 
-      return `${sectionName}-more` 
+      return `${sectionName}-more more-section` 
     }
   },
   moreButton: function (items, sectionName, itemsVisible) {
     if (items.length > itemsVisible) {
-      return `<div id="${sectionName}-more-button" class="row"><button class="ui button large primary">See More</button></div>`
+      return `<div id="${sectionName}" class="row more-button"><button class="ui button large primary">See More</button></div>`
     }
   },
 }
