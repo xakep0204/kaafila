@@ -9,6 +9,12 @@ var helpers = {
       return `<div id="${sectionName}" class="row more-button"><button class="ui button large primary">See More</button></div>`
     }
   },
+  pagePartial: function (id) {
+    return `subevents/${id}`
+  },
+  formPartial: function (id) {
+    return `subevents/forms/${id}`
+  },
 }
 
 module.exports = helpers;

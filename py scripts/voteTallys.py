@@ -9,8 +9,7 @@ docs = db.collection(u'votes')
 votes_main = {}
 c = 0
   
-print()
-for doc in docs.stream():
+for doc in docs.get():
   if doc.id != 'master': 
     c += 1
     for subevent in doc.to_dict():
