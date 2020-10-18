@@ -43,6 +43,14 @@ async function renderIndex(res, req) {
 			],
 			sbSongs: [
 				{
+					name: "Shiv Nadar School Gurgaon",
+					link: "https://drive.google.com/file/d/1v71wBtBsupcWuQ56OpkbA13gxC6Unf62/preview",
+				},
+				{
+					name: "Delhi Public School",
+					link: "https://youtube.com/embed/H2ja7pRWhkE",
+				},
+				{
 					name: "Step By Step School",
 					link: "https://youtube.com/embed/vbjQDZHkMSM",
 				},
