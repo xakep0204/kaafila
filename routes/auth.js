@@ -207,12 +207,17 @@ async function serverCheckUser(req, res) {
 	}
 }
 
-router.get("/signin", csrfProtection, (req, res) => renderSignIn(req, res));
-router.get("/signup", csrfProtection, (req, res) => renderSignUp(req, res));
-router.get("/signout", (req, res) => serverSignOut(req, res));
-router.get("/profile", (req, res, next) => renderProfile(req, res, next));
-router.post("/sessionlogin", (req, res) => serverSignIn(req, res));
-router.post("/updateuser", (req, res) => serverUpdateUser(req, res));
-router.post("/checkuser", (req, res) => serverCheckUser(req, res));
+// router.get("/signin", csrfProtection, (req, res) => renderSignIn(req, res));
+// router.get("/signup", csrfProtection, (req, res) => renderSignUp(req, res));
+// router.get("/signout", (req, res) => serverSignOut(req, res));
+// router.get("/profile", (req, res, next) => renderProfile(req, res, next));
+// router.post("/sessionlogin", (req, res) => serverSignIn(req, res));
+// router.post("/updateuser", (req, res) => serverUpdateUser(req, res));
+// router.post("/checkuser", (req, res) => serverCheckUser(req, res));
+
+router.get("/signin", (req, res) => res.redirect("/"));
+router.get("/signup", (req, res) => res.redirect("/"));
+router.get("/signout", (req, res) => res.redirect("/"));
+router.get("/profile", (req, res) => res.redirect("/"));
 
 module.exports = router;
