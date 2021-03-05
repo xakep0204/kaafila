@@ -97,7 +97,6 @@
 				{{#*inline "titleSection"}}
 				<h1 class="ui header">{{subeventName}}</h1>
 				<h3 class="ui header">{{subeventDesc}}</h3>
-				{{!-- {{regOut}} --}}
 				{{#if registration}}
 					{{#if registration.alreadyRegistered}}
 					<a href="/profile"><div class="ui button green">Already Registered</div></a>
@@ -128,6 +127,7 @@
 				</a>
 				{{/if}}
 				{{/inline}}
+				{{> titleSection}}
 			</div>
 		</div>
 		
@@ -137,7 +137,7 @@
 					class="ui fluid image">
 			</div>
 			<div class="column left aligned">
-				{{>titleSection}}
+				{{> titleSection}}
 			</div>
 		</div>
 	</div>

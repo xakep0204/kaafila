@@ -17,5 +17,8 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "nodemailer": "^6.4.13"
+  },
+  "nodemonConfig": {
+    "watch": ["views/", "*.hbs"]
   }
 }

@@ -105,7 +105,8 @@
       "name": "Fade-In (Conversation with a Master of the Art)",
       "image": "bnc-fi-banner.png",
       "pageID": "bnc-fi",
-      "description": "A free-wheeling candid chat with a legend of the theatre and films"
+      "description": "A free-wheeling candid chat with a legend of the theatre and films",
+      "registration": {}
     }
   },
   "folk-fluence": {
@@ -198,7 +199,8 @@
       "name": "Why Do We Dance",
       "image": "ff-wdwd-banner.png",
       "pageID": "ff-wdwd",
-      "description": "Expanding the idea of dance to movement"
+      "description": "Expanding the idea of dance to movement",
+      "registration": {}
     }
   },
   "iridescence": {
@@ -331,7 +333,7 @@
             "link": "/events/strings-attached/the-manta-sidhu-show"
           },
           {
-            "image": "sa-sb-banner.png",
+            "image": "sa-s-banner.png",
             "link": "/events/strings-attached/space-band"
           }
         ]
@@ -388,8 +390,8 @@
     },
     "space-band": {
       "name": "Space/Band",
-      "image": "sa-sb-banner.png",
-      "pageID": "sa-sb",
+      "image": "sa-s-banner.png",
+      "pageID": "sa-s",
       "description": "An online platform which calls upon artists to engage in collaborative online musical performances",
       "registration": {
         "public": {

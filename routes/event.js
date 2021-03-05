@@ -114,6 +114,7 @@ async function renderSubevent(req, res, next) {
 	routingData = routingData[event]
 	if (!(subevent in routingData)) { return next(createError(404)) }
 
+
 	var registration = routingData[subevent].registration || null;
 	if (registration) {
 		registration.closed = true
@@ -224,9 +225,7 @@ async function renderSubevent(req, res, next) {
 		// 		registration.seatsFull = true
 		// 	}
 		// }
-		if (err.details = 'Quota exceeded.') {
-			webrender();
-		}
+		webrender();
 	}
 
 }
