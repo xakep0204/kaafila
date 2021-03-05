@@ -79,7 +79,9 @@ async function confirmOrder(req, res, next) {
 	}
 }
 
-router.get("/snsnartshaat", (req, res, next) => renderHaat(req, res));
-router.post("/confirmorder", (req, res, next) => confirmOrder(req, res));
+router.get("/snsnartshaat", (req, res, next) => res.redirect("/"));
+router.post("/confirmorder", (req, res, next) => res.status(404).send());
+// router.get("/snsnartshaat", (req, res, next) => renderHaat(req, res));
+// router.post("/confirmorder", (req, res, next) => confirmOrder(req, res));
 
 module.exports = router;
