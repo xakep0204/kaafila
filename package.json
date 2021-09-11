@@ -19,6 +19,9 @@
     "nodemailer": "^6.4.13"
   },
   "nodemonConfig": {
-    "watch": ["views/", "*.hbs"]
+    "watch": [
+      "views/",
+      "*.hbs"
+    ]
   }
 }
