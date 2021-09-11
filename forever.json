@@ -1,0 +1,9 @@
+{
+   "uid": "kaafila-prod",
+   "script": "bin/www",
+   "append": true,
+   "sourceDir": "/var/www/snsartsfestival.in/kaafila",
+   "logFile": "/var/log/snsartsfestival.in/forever.log",
+   "outFile": "/var/log/snsartsfestival.in/forever-out.log",
+   "errFile": "/var/log/snsartsfestival.in/forever-error.log"
+}
