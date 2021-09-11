@@ -22,7 +22,7 @@ async function renderHaat(req, res, next) {
 		if (!artist[artist_name] && doc.data().itemPrice != 0) {
 			artist[artist_name] = {
 			name: artist_name,
-			picture: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/favicon.png",
+			picture: "https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in/img/favicon.png",
 			products: []
 			};
 			artist[artist_name].products.push(Object.assign(doc.data(), {'id': doc.id}));
@@ -30,12 +30,12 @@ async function renderHaat(req, res, next) {
 		else if (!artist[artist_name] && doc.data().itemPrice == 0){
 		artist[artist_name] = {
 			name: artist_name,
-			picture: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/"+doc.data().itemImg,
+			picture: "https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in/img/snsnartshaat/"+doc.data().itemImg,
 			products: []
 			};
 		}
 		else if (artist[artist_name] && doc.data().itemPrice == 0){
-			artist[artist_name].picture = "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/snsnartshaat/" + doc.data().itemImg;
+			artist[artist_name].picture = "https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in/img/snsnartshaat/" + doc.data().itemImg;
 		}
 		else if (artist[artist_name] && doc.data().itemPrice != 0){
 			artist[artist_name].products.push(Object.assign(doc.data(), {'id': doc.id}));

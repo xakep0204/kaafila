@@ -147,7 +147,7 @@ async function signUpEmailPublic() {
 				var user = await firebase.auth().currentUser;
 				const updateUserProfile = await user.updateProfile({
 					displayName: $("[data-tab='publicUsers'] #signUpForm #name").val(),
-					photoURL: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/profile-blank.png",
+					photoURL: "https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in/img/profile-blank.png",
 				})
 				const sendVerificationEmail = user.sendEmailVerification()
 				const updateUserDatabase = await db.collection("publicUsers").doc(user.uid).set({
@@ -208,7 +208,7 @@ async function signUpEmailSchool() {
 				var user = await firebase.auth().currentUser;
 				const updateUserProfile = await user.updateProfile({
 					displayName: $("[data-tab='schoolUsers'] #signUpForm #schoolName").val(),
-					photoURL: "https://atkhrfnsco.cloudimg.io/v7/dev.snsartsfestival.in/img/profile-blank.png",
+					photoURL: "https://atkhrfnsco.cloudimg.io/v7/snsartsfestival.in/img/profile-blank.png",
 				})
 				const sendVerificationEmail = user.sendEmailVerification()
 				const updateUserDatabase = await db.collection("schoolUsers").doc(user.uid).set({

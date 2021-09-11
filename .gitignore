@@ -26,4 +26,9 @@ typings/
 .next
 
 .DS_Store
-public/img
+public/img/banners
+public/img/gallery
+public/img/judges
+public/img/snsartshaat
+public/img/spirit-of-freedom
+public/img/team
